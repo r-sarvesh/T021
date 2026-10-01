@@ -46,7 +46,7 @@ export const severityLabelLong: Record<Severity, string> = {
   unscored: 'Unscored — insufficient data',
 }
 
-export const severityOrder: Severity[] = ['critical', 'high', 'medium', 'low']
+export const severityOrder = ['critical', 'high', 'medium', 'low'] as const satisfies readonly Severity[]
 
 export function roleLabel(role: 'admin' | 'analyst'): string {
   return role === 'admin' ? 'Administrator' : 'Security Analyst'

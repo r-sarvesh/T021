@@ -49,6 +49,7 @@ const severityRank: Record<Severity, number> = {
   high: 3,
   medium: 2,
   low: 1,
+  unscored: 0,
 }
 
 // ---------------------------------------------------------------------------
