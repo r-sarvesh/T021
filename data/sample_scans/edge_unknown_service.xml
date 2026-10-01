@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="file:///usr/local/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.94 scan initiated as: nmap -sV -p 1-10000 -oX edge_unknown_service.xml 192.168.1.50 -->
+<nmaprun scanner="nmap" args="nmap -sV -p 1-10000 -oX edge_unknown_service.xml 192.168.1.50" start="1755080400" startstr="Wed Aug 13 09:00:00 2026" version="7.94" xmloutputversion="1.05">
+  <scaninfo type="syn" protocol="tcp" numservices="10000" services="1-10000"/>
+  <verbose level="0"/>
+  <debugging level="0"/>
+  <host starttime="1755080401" endtime="1755080430">
+    <status state="up" reason="syn-ack" reason_ttl="64"/>
+    <address addr="192.168.1.50" addrtype="ipv4"/>
+    <hostnames>
+      <hostname name="iot-sensor-50.corp.local" type="PTR"/>
+    </hostnames>
+    <ports>
+      <extraports state="closed" count="9997"/>
+      <port protocol="tcp" portid="1883">
+        <state state="open" reason="syn-ack" reason_ttl="64"/>
+        <service name="unknown" product="MQTT Broker" version="3.1.1" extrainfo="custom" method="probed" conf="8"/>
+      </port>
+      <port protocol="tcp" portid="8883">
+        <state state="open" reason="syn-ack" reason_ttl="64"/>
+        <service name="myservice" product="AcmeCorp WidgetServer" version="0.9-beta+build.123" method="probed" conf="5"/>
+        <script id="banner" output="AcmeWidget v0.9-beta ready"/>
+      </port>
+      <port protocol="tcp" portid="9999">
+        <state state="open" reason="syn-ack" reason_ttl="64"/>
+        <service name="unknown" method="table" conf="3"/>
+      </port>
+    </ports>
+    <os>
+      <osmatch name="Embedded Linux" accuracy="85"/>
+    </os>
+  </host>
+  <runstats>
+    <finished time="1755080430" timestr="Wed Aug 13 09:01:00 2026" elapsed="30.0" summary="Nmap done at Wed Aug 13 09:01:00 2026; 1 IP addresses (1 hosts up) scanned in 30.0 seconds" exit="success"/>
+    <hosts up="1" down="0" total="1"/>
+  </runstats>
+</nmaprun>

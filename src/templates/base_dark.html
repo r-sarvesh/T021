@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Cyber Health Assessment{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script defer src="{{ url_for('static', filename='lucide-umd.js') }}"></script>
+  <style>
+    :root {
+      --bg: #0B0E13;
+      --sidebar: #11151C;
+      --sidebar-hover: #1A1F2E;
+      --card: #151A23;
+      --card-border: #1E2633;
+      --card-hover: #1C2330;
+      --text: #E6E8EB;
+      --text-muted: #8B949E;
+      --text-faint: #5A6573;
+      --accent: #00D4FF;
+      --accent-hover: #00B8E6;
+      --critical: #FF3B30;
+      --critical-bg: rgba(255,59,48,0.12);
+      --critical-border: rgba(255,59,48,0.3);
+      --high: #FF9500;
+      --high-bg: rgba(255,149,0,0.12);
+      --high-border: rgba(255,149,0,0.3);
+      --medium: #FFCC02;
+      --medium-bg: rgba(255,204,2,0.12);
+      --medium-border: rgba(255,204,2,0.3);
+      --low: #5AC8FA;
+      --low-bg: rgba(90,200,250,0.12);
+      --low-border: rgba(90,200,250,0.3);
+      --evidence: #30D158;
+      --evidence-bg: rgba(48,209,88,0.12);
+      --evidence-border: rgba(48,209,88,0.3);
+      --info: #8E8E93;
+      --border: #1E2633;
+      --border-light: #252B36;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.5;
+      display: flex;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    code, .mono { font-family: 'IBM Plex Mono', monospace; }
+
+    /* Sidebar */
+    .sidebar {
+      width: 220px;
+      background: var(--sidebar);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+    .sidebar-brand {
+      padding: 20px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .sidebar-brand .logo {
+      width: 32px; height: 32px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent);
+    }
+    .sidebar-brand h1 {
+      margin: 0;
+      font-size: 13px; font-weight: 700;
+      line-height: 1.2;
+      color: var(--text);
+    }
+    .sidebar-brand .sub {
+      font-size: 11px; color: var(--text-muted);
+      font-weight: 400;
+    }
+    .sidebar-nav {
+      padding: 12px 8px;
+      flex: 1;
+    }
+    .sidebar-nav a {
+      display: flex; align-items: center; gap: 10px;
+      padding: 9px 12px;
+      border-radius: 8px;
+      color: var(--text-muted);
+      font-size: 13px; font-weight: 500;
+      margin-bottom: 2px;
+      transition: all 0.15s;
+    }
+    .sidebar-nav a:hover {
+      background: var(--sidebar-hover);
+      color: var(--text);
+      text-decoration: none;
+    }
+    .sidebar-nav a.active {
+      background: var(--card);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .sidebar-nav a .ic { width: 16px; height: 16px; }
+    .sidebar-footer {
+      padding: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .sidebar-user {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 12px;
+    }
+    .sidebar-user .avatar {
+      width: 32px; height: 32px;
+      background: #1A3A4A;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 600;
+      color: var(--accent);
+      border: 1px solid rgba(0,212,255,0.2);
+    }
+    .sidebar-user .name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .sidebar-user .role { font-size: 11px; color: var(--text-muted); }
+    .sidebar-footer a {
+      display: flex; align-items: center; gap: 8px;
+      color: var(--text-muted); font-size: 13px;
+    }
+    .sidebar-footer a:hover { color: var(--text); }
+
+    /* Main */
+    .main {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg);
+    }
+    .topbar {
+      height: 56px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center;
+      padding: 0 24px;
+      gap: 16px;
+      position: sticky; top: 0; z-index: 10;
+    }
+    .topbar .breadcrumb {
+      font-size: 13px; color: var(--text-muted);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .topbar .breadcrumb span { color: var(--text); }
+    .topbar .actions { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+    .topbar .user {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600;
+    }
+    .topbar .user .avatar-sm {
+      width: 28px; height: 28px;
+      background: #1A3A4A;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; color: var(--accent);
+      border: 1px solid rgba(0,212,255,0.2);
+    }
+    .content {
+      padding: 24px;
+      max-width: 1400px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 16px;
+    }
+    .card-header {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background: var(--accent);
+      color: #001018;
+      border: none;
+      padding: 9px 16px;
+      border-radius: 8px;
+      font-size: 13px; font-weight: 600;
+      display: inline-flex; align-items: center; gap: 8px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .btn-primary:hover { background: var(--accent-hover); text-decoration: none; color: #001018; }
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 7px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      display: inline-flex; align-items: center; gap: 6px;
+      cursor: pointer;
+    }
+    .btn-ghost:hover { background: var(--card); }
+
+    /* Severity badges */
+    .badge-critical { background: var(--critical-bg); border: 1px solid var(--critical-border); color: var(--critical); }
+    .badge-high { background: var(--high-bg); border: 1px solid var(--high-border); color: var(--high); }
+    .badge-medium { background: var(--medium-bg); border: 1px solid var(--medium-border); color: var(--medium); }
+    .badge-low { background: var(--low-bg); border: 1px solid var(--low-border); color: var(--low); }
+    .badge-evidence { background: var(--evidence-bg); border: 1px solid var(--evidence-border); color: var(--evidence); }
+
+    /* Mobile */
+    @media (max-width: 900px) {
+      .sidebar { display: none; }
+    }
+  </style>
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="logo"><i data-lucide="shield-check" class="ic" style="width:16px;height:16px;"></i></div>
+      <div>
+        <h1>Cyber Health Assess</h1>
+        <div class="sub">Assessment Platform</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="{{ url_for('dashboard') }}" class="{% if request.path == '/dashboard' or request.path == '/' %}active{% endif %}"><i data-lucide="layout-grid" class="ic"></i> Dashboard</a>
+      <a href="{{ url_for('scans_library') }}" class="{% if request.path.startswith('/scans') %}active{% endif %}"><i data-lucide="scan-search" class="ic"></i> Scans</a>
+      <a href="{{ url_for('report_upload') }}"><i data-lucide="upload" class="ic"></i> Import Scan</a>
+      <a href="{{ url_for('reports_view') }}" class="{% if request.path.startswith('/reports') %}active{% endif %}"><i data-lucide="file-text" class="ic"></i> Reports</a>
+      <a href="#"><i data-lucide="scroll-text" class="ic"></i> Audit Log</a>
+      <a href="#"><i data-lucide="settings" class="ic"></i> Settings</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="avatar">P</div>
+        <div>
+          <div class="name">Peter</div>
+          <div class="role">Administrator</div>
+        </div>
+      </div>
+      <a href="{{ url_for('logout') }}"><i data-lucide="log-out" class="ic" style="width:14px;height:14px;"></i> Logout</a>
+    </div>
+  </aside>
+  <div class="main">
+    <header class="topbar">
+      <div class="breadcrumb">
+        {% block breadcrumb %}<span>Dashboard</span>{% endblock %}
+      </div>
+      <div class="actions">
+        {% block topbar_actions %}{% endblock %}
+        <div class="user">
+          <div class="avatar-sm">P</div>
+          <span>Peter</span>
+        </div>
+      </div>
+    </header>
+    <main class="content">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (window.lucide) window.lucide.createIcons();
+    });
+  </script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

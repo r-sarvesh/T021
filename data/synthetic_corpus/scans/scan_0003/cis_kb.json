@@ -1,0 +1,71 @@
+[
+  {
+    "id": "CIS-SMB-001",
+    "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+    "section": "Network Security",
+    "control_title": "Disable SMBv1 and require SMB signing",
+    "text": "Legacy SMBv1 should be disabled on all Windows hosts, as it lacks modern security controls and is the protocol version targeted by well-known remote code execution exploits. SMB signing should be required to prevent relay and tampering attacks. Disable SMBv1 via PowerShell (Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol) or Group Policy, and verify no legacy applications depend on it before rollout.",
+    "applies_to": [
+      "smb",
+      "microsoft-ds",
+      "windows_server",
+      "windows"
+    ],
+    "level": 1,
+    "remediation_type": "feature_removal"
+  },
+  {
+    "id": "CIS-SMB-002",
+    "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+    "section": "Network Security",
+    "control_title": "Apply security updates for SMB remote code execution vulnerabilities promptly",
+    "text": "Hosts exposing SMB services should be patched against known remote code execution vulnerabilities as a priority, since SMB is a common lateral-movement and ransomware entry vector. Maintain a patch cadence that applies critical SMB-related security updates within 72 hours of release for internet- or high-value-network-facing systems.",
+    "applies_to": [
+      "smb",
+      "microsoft-ds",
+      "windows_server",
+      "windows"
+    ],
+    "level": 1,
+    "remediation_type": "patch_management"
+  },
+  {
+    "id": "CIS-RDP-001",
+    "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+    "section": "Remote Access",
+    "control_title": "Restrict RDP exposure and enforce Network Level Authentication",
+    "text": "Remote Desktop Protocol should not be exposed directly to untrusted networks. Where RDP is required, enforce Network Level Authentication (NLA), require multi-factor authentication, and restrict access via firewall rules or a VPN/bastion host rather than direct internet exposure. Unrestricted RDP exposure is one of the most common initial access vectors in ransomware incidents.",
+    "applies_to": [
+      "rdp",
+      "ms-wbt-server",
+      "windows",
+      "windows_server"
+    ],
+    "level": 1,
+    "remediation_type": "network_configuration"
+  },
+  {
+    "id": "CIS-REDIS-001",
+    "benchmark": "CIS Redis Benchmark (illustrative)",
+    "section": "Authentication",
+    "control_title": "Require authentication for Redis access (requirepass)",
+    "text": "Redis should require a password via the requirepass directive for all access. A Redis instance bound to the network with no password allows any reachable client to read, modify, or destroy all data and, in some configurations, run Lua scripts. If Redis is not required to be network-exposed, bind it to loopback only.",
+    "applies_to": [
+      "redis"
+    ],
+    "level": 1,
+    "remediation_type": "configuration"
+  },
+  {
+    "id": "CIS-REDIS-002",
+    "benchmark": "CIS Redis Benchmark (illustrative)",
+    "section": "Network Exposure",
+    "control_title": "Restrict Redis network exposure and enable protected-mode",
+    "text": "Redis protected-mode should stay enabled and the server should bind to internal interfaces only, so the database cannot be reached from untrusted networks. Where remote access is required, place it behind a bastion/VPN rather than direct exposure.",
+    "applies_to": [
+      "redis"
+    ],
+    "level": 1,
+    "remediation_type": "network_configuration"
+  }
+]

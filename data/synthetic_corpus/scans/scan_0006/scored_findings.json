@@ -1,0 +1,216 @@
+{
+  "host_risk_summary": [
+    {
+      "host": "10.20.30.1",
+      "hostname": "web-apache-06.corp.local",
+      "os_guess": "Linux 4.15 - 5.6",
+      "open_service_count": 2,
+      "vuln_finding_count": 2,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 9.8,
+      "criticality_multiplier": 1.2,
+      "criticality_reason": "Externally-facing application server",
+      "adjusted_risk_score": 10.0,
+      "risk_band": "CRITICAL"
+    },
+    {
+      "host": "10.20.30.2",
+      "hostname": "win10-06.corp.local",
+      "os_guess": "Microsoft Windows 10 1903",
+      "open_service_count": 2,
+      "vuln_finding_count": 1,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 10.0,
+      "criticality_multiplier": 1.0,
+      "criticality_reason": "Standard asset, no elevated criticality tag matched",
+      "adjusted_risk_score": 10.0,
+      "risk_band": "CRITICAL"
+    }
+  ],
+  "prioritized_findings": [
+    {
+      "type": "vuln",
+      "host": "10.20.30.2",
+      "hostname": "win10-06.corp.local",
+      "os_guess": "Microsoft Windows 10 1903",
+      "port": 445,
+      "protocol": "tcp",
+      "service": "microsoft-ds",
+      "product": "Windows 10 Pro 1903 microsoft-ds",
+      "version": null,
+      "cve_refs": [
+        "CVE-2020-0796"
+      ],
+      "nse_script": "smb-vuln-smbghost",
+      "raw_output": "VULNERABLE: SMBv3 Compression buffer overflow Remote Code Execution (SMBGhost). State: VULNERABLE Risk factor: CRITICAL  IDs: CVE:CVE-2020-0796",
+      "severity_score": 10.0,
+      "severity_band": "CRITICAL",
+      "scoring_rationale": "CVSS v3 base score 10.0 from ['CVE-2020-0796']"
+    },
+    {
+      "type": "vuln",
+      "host": "10.20.30.1",
+      "hostname": "web-apache-06.corp.local",
+      "os_guess": "Linux 4.15 - 5.6",
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.49",
+      "cve_refs": [
+        "CVE-2021-41773"
+      ],
+      "nse_script": "http-vuln-cve2021-41773",
+      "raw_output": "VULNERABLE: Apache 2.4.49 path traversal leading to file disclosure and RCE. IDs: CVE:CVE-2021-41773",
+      "severity_score": 9.8,
+      "severity_band": "CRITICAL",
+      "scoring_rationale": "CVSS v3 base score 9.8 from ['CVE-2021-41773']"
+    },
+    {
+      "type": "vuln",
+      "host": "10.20.30.1",
+      "hostname": "web-apache-06.corp.local",
+      "os_guess": "Linux 4.15 - 5.6",
+      "port": 443,
+      "protocol": "tcp",
+      "service": "https",
+      "product": "Apache httpd",
+      "version": "2.4.49",
+      "cve_refs": [
+        "CVE-2022-0778"
+      ],
+      "nse_script": "ssl-ccs-injection",
+      "raw_output": "VULNERABLE: TLS server vulnerable to BN_mod_sqrt infinite-loop denial of service. IDs: CVE:CVE-2022-0778",
+      "severity_score": 7.5,
+      "severity_band": "HIGH",
+      "scoring_rationale": "CVSS v3 base score 7.5 from ['CVE-2022-0778']"
+    }
+  ],
+  "all_scored_findings": [
+    {
+      "type": "asset",
+      "host": "10.20.30.1",
+      "hostname": "web-apache-06.corp.local",
+      "os_guess": "Linux 4.15 - 5.6",
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.49",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+    },
+    {
+      "type": "vuln",
+      "host": "10.20.30.1",
+      "hostname": "web-apache-06.corp.local",
+      "os_guess": "Linux 4.15 - 5.6",
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.49",
+      "cve_refs": [
+        "CVE-2021-41773"
+      ],
+      "nse_script": "http-vuln-cve2021-41773",
+      "raw_output": "VULNERABLE: Apache 2.4.49 path traversal leading to file disclosure and RCE. IDs: CVE:CVE-2021-41773",
+      "severity_score": 9.8,
+      "severity_band": "CRITICAL",
+      "scoring_rationale": "CVSS v3 base score 9.8 from ['CVE-2021-41773']"
+    },
+    {
+      "type": "asset",
+      "host": "10.20.30.1",
+      "hostname": "web-apache-06.corp.local",
+      "os_guess": "Linux 4.15 - 5.6",
+      "port": 443,
+      "protocol": "tcp",
+      "service": "https",
+      "product": "Apache httpd",
+      "version": "2.4.49",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+    },
+    {
+      "type": "vuln",
+      "host": "10.20.30.1",
+      "hostname": "web-apache-06.corp.local",
+      "os_guess": "Linux 4.15 - 5.6",
+      "port": 443,
+      "protocol": "tcp",
+      "service": "https",
+      "product": "Apache httpd",
+      "version": "2.4.49",
+      "cve_refs": [
+        "CVE-2022-0778"
+      ],
+      "nse_script": "ssl-ccs-injection",
+      "raw_output": "VULNERABLE: TLS server vulnerable to BN_mod_sqrt infinite-loop denial of service. IDs: CVE:CVE-2022-0778",
+      "severity_score": 7.5,
+      "severity_band": "HIGH",
+      "scoring_rationale": "CVSS v3 base score 7.5 from ['CVE-2022-0778']"
+    },
+    {
+      "type": "asset",
+      "host": "10.20.30.2",
+      "hostname": "win10-06.corp.local",
+      "os_guess": "Microsoft Windows 10 1903",
+      "port": 445,
+      "protocol": "tcp",
+      "service": "microsoft-ds",
+      "product": "Windows 10 Pro 1903 microsoft-ds",
+      "version": null,
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 1.5,
+      "severity_band": "LOW",
+      "scoring_rationale": "Baseline exposure risk for open 'microsoft-ds' service"
+    },
+    {
+      "type": "vuln",
+      "host": "10.20.30.2",
+      "hostname": "win10-06.corp.local",
+      "os_guess": "Microsoft Windows 10 1903",
+      "port": 445,
+      "protocol": "tcp",
+      "service": "microsoft-ds",
+      "product": "Windows 10 Pro 1903 microsoft-ds",
+      "version": null,
+      "cve_refs": [
+        "CVE-2020-0796"
+      ],
+      "nse_script": "smb-vuln-smbghost",
+      "raw_output": "VULNERABLE: SMBv3 Compression buffer overflow Remote Code Execution (SMBGhost). State: VULNERABLE Risk factor: CRITICAL  IDs: CVE:CVE-2020-0796",
+      "severity_score": 10.0,
+      "severity_band": "CRITICAL",
+      "scoring_rationale": "CVSS v3 base score 10.0 from ['CVE-2020-0796']"
+    },
+    {
+      "type": "asset",
+      "host": "10.20.30.2",
+      "hostname": "win10-06.corp.local",
+      "os_guess": "Microsoft Windows 10 1903",
+      "port": 139,
+      "protocol": "tcp",
+      "service": "netbios-ssn",
+      "product": "Microsoft Windows netbios-ssn",
+      "version": null,
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+    }
+  ]
+}

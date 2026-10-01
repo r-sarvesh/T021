@@ -1,0 +1,308 @@
+{
+  "meta": {
+    "label": "Benchmark output from real Gemini API calls (grounded vs ungrounded prompt conditions), distinct from the live-pipeline retrieval view in /demo",
+    "existence_mode_live_small": "live NVD API 2.0",
+    "existence_mode_corpus": "per-scan local cve_kb",
+    "generated_at": "2026-09-02T22:12:10.687779",
+    "docs_ref": "docs/rag_retrieval_schema.md:258 sections 8.2-8.4",
+    "note": "Do not run synthesize.py --offline for this exhibit; values are from actual Gemini runs"
+  },
+  "side_by_side": {
+    "finding_ref": "192.168.1.10:445/tcp/microsoft-ds/smb-vuln-ms17-010",
+    "host": "192.168.1.10",
+    "service": "microsoft-ds",
+    "nse_script": "smb-vuln-ms17-010",
+    "severity_band": "HIGH",
+    "grounded": {
+      "finding_ref": "192.168.1.10:445/tcp/microsoft-ds/smb-vuln-ms17-010",
+      "host": "192.168.1.10",
+      "port": 445,
+      "service": "microsoft-ds",
+      "nse_script": "smb-vuln-ms17-010",
+      "severity_band": "HIGH",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 192.168.1.10 (dc01.corp.local)\nOS guess: Microsoft Windows Server 2012 R2\nPort 445/tcp service: microsoft-ds\nProduct/version: Windows Server 2012 R2 microsoft-ds\nNmap NSE script flagged: smb-vuln-ms17-010\nNSE raw output: VULNERABLE: Remote Code Execution vulnerability in Microsoft SMBv1 servers (ms17-010) State: VULNERABLE Risk factor: HIGH  IDs: CVE:[CVE ID redacted]\nRule-engine severity: HIGH (score 8.1)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n- CVE-2017-0143 | CVSS v3 8.1 HIGH | KEV-listed: True | Description: The SMBv1 server in Microsoft Windows Vista SP2; Windows Server 2008 SP2 and R2 SP1; Windows 7 SP1; Windows 8.1; Windows Server 2012 Gold and R2; Windows RT 8.1; and Windows 10 Gold, 1511, and 1607; and Windows Server 2016 allows remote attackers to execute arbitrary code via crafted packets, aka 'Windows SMB Remote Code Execution Vulnerability.' This vulnerability is different from those described in CVE-2017-0144, CVE-2017-0145, CVE-2017-0146, and CVE-2017-0148.\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-SMB-001 (CIS Microsoft Windows Server Benchmark (illustrative)): Disable SMBv1 and require SMB signing — Legacy SMBv1 should be disabled on all Windows hosts, as it lacks modern security controls and is the protocol version targeted by well-known remote code execution exploits. SMB signing should be required to prevent relay and tampering attacks. Disable SMBv1 via PowerShell (Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol) or Group Policy, and verify no legacy applications depend on it before rollout.\n- CIS-SMB-002 (CIS Microsoft Windows Server Benchmark (illustrative)): Apply security updates for SMB remote code execution vulnerabilities promptly — Hosts exposing SMB services should be patched against known remote code execution vulnerabilities as a priority, since SMB is a common lateral-movement and ransomware entry vector. Maintain a patch cadence that applies critical SMB-related security updates within 72 hours of release for internet- or high-value-network-facing systems.\n- CIS-RDP-001 (CIS Microsoft Windows Server Benchmark (illustrative)): Restrict RDP exposure and enforce Network Level Authentication — Remote Desktop Protocol should not be exposed directly to untrusted networks. Where RDP is required, enforce Network Level Authentication (NLA), require multi-factor authentication, and restrict access via firewall rules or a VPN/bastion host rather than direct internet exposure. Unrestricted RDP exposure is one of the most common initial access vectors in ransomware incidents.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [
+        "CVE-2017-0143"
+      ],
+      "raw_output": "{\n  \"plain_language_explanation\": \"Our scan detected a severe vulnerability on dc01.corp.local (192.168.1.10), a Windows Server 2012 R2 system, specifically related to its outdated SMBv1 service. This vulnerability, known as CVE-2017-0143, has a high risk score of 8.1 and could allow an attacker to remotely execute malicious code on the server, posing a significant security risk. The rule engine rated this finding as HIGH.\",\n  \"cve_ids_mentioned\": [\n    \"CVE-2017-0143\"\n  ],\n  \"cis_controls_referenced\": [\n    \"CIS-SMB-001\",\n    \"CIS-SMB-002\"\n  ],\n  \"remediation_steps\": [\n    \"Disable SMBv1 on dc01.corp.local via PowerShell (Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol) or Group Policy, verifying no legacy applications depend on it before rollout.\",\n    \"Require SMB signing on the server to prevent relay and tampering attacks.\",\n    \"Apply relevant security updates for SMB remote code execution vulnerabilities promptly, prioritizing critical updates within 72 hours.\"\n  ]\n}",
+      "parsed": {
+        "plain_language_explanation": "Our scan detected a severe vulnerability on dc01.corp.local (192.168.1.10), a Windows Server 2012 R2 system, specifically related to its outdated SMBv1 service. This vulnerability, known as CVE-2017-0143, has a high risk score of 8.1 and could allow an attacker to remotely execute malicious code on the server, posing a significant security risk. The rule engine rated this finding as HIGH.",
+        "cve_ids_mentioned": [
+          "CVE-2017-0143"
+        ],
+        "cis_controls_referenced": [
+          "CIS-SMB-001",
+          "CIS-SMB-002"
+        ],
+        "remediation_steps": [
+          "Disable SMBv1 on dc01.corp.local via PowerShell (Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol) or Group Policy, verifying no legacy applications depend on it before rollout.",
+          "Require SMB signing on the server to prevent relay and tampering attacks.",
+          "Apply relevant security updates for SMB remote code execution vulnerabilities promptly, prioritizing critical updates within 72 hours."
+        ]
+      },
+      "extracted_cve_ids": [
+        "CVE-2017-0143"
+      ],
+      "ok": true
+    },
+    "ungrounded": {
+      "finding_ref": "192.168.1.10:445/tcp/microsoft-ds/smb-vuln-ms17-010",
+      "host": "192.168.1.10",
+      "port": 445,
+      "service": "microsoft-ds",
+      "nse_script": "smb-vuln-ms17-010",
+      "severity_band": "HIGH",
+      "prompt_variant": "ungrounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder.\n\nFINDING:\nHost 192.168.1.10 (dc01.corp.local)\nOS guess: Microsoft Windows Server 2012 R2\nPort 445/tcp service: microsoft-ds\nProduct/version: Windows Server 2012 R2 microsoft-ds\nNmap NSE script flagged: smb-vuln-ms17-010\nNSE raw output: VULNERABLE: Remote Code Execution vulnerability in Microsoft SMBv1 servers (ms17-010) State: VULNERABLE Risk factor: HIGH  IDs: CVE:[CVE ID redacted]\nRule-engine severity: HIGH (score 8.1)\n\nINSTRUCTIONS:\nName the CVE ID(s), CVSS score(s), and CIS control(s) relevant to this finding if you know them from your cybersecurity knowledge. An accurate, specific citation is expected from an expert. If you are NOT certain a CVE ID or CVSS score actually exists, do not invent one — say the relevant CVE information is unavailable.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [
+        "CVE-2017-0143"
+      ],
+      "raw_output": "{\n  \"plain_language_explanation\": \"Our critical server, dc01.corp.local, has a severe vulnerability (EternalBlue, CVE-2017-0144) in its outdated file-sharing service (SMBv1). This flaw, with a CVSS v3.1 score of 9.8 (CRITICAL), allows attackers to remotely take full control of the server without authentication, posing a significant risk to our entire network as this server is likely a Domain Controller. Our system rated this issue as HIGH severity (score 8.1), demanding immediate attention.\",\n  \"cve_ids_mentioned\": [\n    \"CVE-2017-0144\"\n  ],\n  \"cis_controls_referenced\": [\n    \"CIS 2\",\n    \"CIS 4\",\n    \"CIS 7\"\n  ],\n  \"remediation_steps\": [\n    \"Immediately apply the Microsoft security update MS17-010 to patch the EternalBlue vulnerability on dc01.corp.local.\",\n    \"Disable the Server Message Block version 1 (SMBv1) protocol on the server, as it is outdated and insecure.\",\n    \"Implement a robust patch management process to ensure all critical systems are updated promptly.\",\n    \"Assess and strengthen network segmentation to restrict direct exposure of critical servers to potentially untrusted networks.\"\n  ]\n}",
+      "parsed": {
+        "plain_language_explanation": "Our critical server, dc01.corp.local, has a severe vulnerability (EternalBlue, CVE-2017-0144) in its outdated file-sharing service (SMBv1). This flaw, with a CVSS v3.1 score of 9.8 (CRITICAL), allows attackers to remotely take full control of the server without authentication, posing a significant risk to our entire network as this server is likely a Domain Controller. Our system rated this issue as HIGH severity (score 8.1), demanding immediate attention.",
+        "cve_ids_mentioned": [
+          "CVE-2017-0144"
+        ],
+        "cis_controls_referenced": [
+          "CIS 2",
+          "CIS 4",
+          "CIS 7"
+        ],
+        "remediation_steps": [
+          "Immediately apply the Microsoft security update MS17-010 to patch the EternalBlue vulnerability on dc01.corp.local.",
+          "Disable the Server Message Block version 1 (SMBv1) protocol on the server, as it is outdated and insecure.",
+          "Implement a robust patch management process to ensure all critical systems are updated promptly.",
+          "Assess and strengthen network segmentation to restrict direct exposure of critical servers to potentially untrusted networks."
+        ]
+      },
+      "extracted_cve_ids": [
+        "CVE-2017-0144"
+      ],
+      "ok": true
+    },
+    "scored_grounded": {
+      "finding_ref": "192.168.1.10:445/tcp/microsoft-ds/smb-vuln-ms17-010",
+      "host": "192.168.1.10",
+      "port": 445,
+      "service": "microsoft-ds",
+      "nse_script": "smb-vuln-ms17-010",
+      "severity_band": "HIGH",
+      "prompt_variant": "grounded",
+      "cited_cve_ids": [
+        "CVE-2017-0143"
+      ],
+      "allowed_cve_ids": [
+        "CVE-2017-0143",
+        "CVE-2017-0144",
+        "CVE-2017-0145",
+        "CVE-2017-0146",
+        "CVE-2017-0148"
+      ],
+      "fabricated_cve_ids": [],
+      "unsupported_cve_ids": [],
+      "unverifiable_cve_ids": [],
+      "has_fabricated": false,
+      "has_unsupported": false,
+      "has_bad_citation": false,
+      "citation_count": 1,
+      "bad_citation_count": 0,
+      "existence_lookup_log": []
+    },
+    "scored_ungrounded": {
+      "finding_ref": "192.168.1.10:445/tcp/microsoft-ds/smb-vuln-ms17-010",
+      "host": "192.168.1.10",
+      "port": 445,
+      "service": "microsoft-ds",
+      "nse_script": "smb-vuln-ms17-010",
+      "severity_band": "HIGH",
+      "prompt_variant": "ungrounded",
+      "cited_cve_ids": [
+        "CVE-2017-0144"
+      ],
+      "allowed_cve_ids": [],
+      "fabricated_cve_ids": [],
+      "unsupported_cve_ids": [
+        "CVE-2017-0144"
+      ],
+      "unverifiable_cve_ids": [],
+      "has_fabricated": false,
+      "has_unsupported": true,
+      "has_bad_citation": true,
+      "citation_count": 1,
+      "bad_citation_count": 1,
+      "existence_lookup_log": [
+        {
+          "cve_id": "CVE-2017-0144",
+          "existence": true
+        }
+      ]
+    }
+  },
+  "summary_live_small": {
+    "source_file": "reports/summary_live_small.txt",
+    "verbatim": "========================================================================\nHALLUCINATION BENCHMARK SUMMARY\n========================================================================\nExistence mode : live NVD API 2.0\nInput files    : ../reports/llm_live_small.jsonl\n\n--- VARIANT: GROUNDED (2 scored findings) ---\n  per-finding  , any bad citation : 0/2 (0.0%)\n  per-finding  , fabricated CVE   : 0/2 (0.0%)\n  per-finding  , unsupported CVE  : 0/2 (0.0%)\n  findings with zero citations    : 0 (0/2)\n  per-citation , bad citations    : 0/2 (0.0%) (of 2 total citations)\n  per-citation , fabricated CVE   : 0/2 (0.0%)\n  per-citation , unsupported CVE  : 0/2 (0.0%)\n\n--- VARIANT: UNGROUNDED (2 scored findings) ---\n  per-finding  , any bad citation : 2/2 (100.0%)\n  per-finding  , fabricated CVE   : 0/2 (0.0%)\n  per-finding  , unsupported CVE  : 2/2 (100.0%)\n  findings with zero citations    : 0 (0/2)\n  per-citation , bad citations    : 2/2 (100.0%) (of 2 total citations)\n  per-citation , fabricated CVE   : 0/2 (0.0%)\n  per-citation , unsupported CVE  : 2/2 (100.0%)\n  findings with >=1 bad citation:\n    - 192.168.1.10:445/tcp/microsoft-ds/smb-vuln-ms17-010\n    - 192.168.1.20:3306/tcp/mysql/mysql-vuln-cve2012-2122\n\n--- GROUNDED vs UNGROUNDED (headline) ---\n  per-finding bad-citation rate : grounded 0/2 (0.0%)  vs  ungrounded 2/2 (100.0%)\n  per-citation bad-citation rate : grounded 0/2 (0.0%)  vs  ungrounded 2/2 (100.0%)\n\nInterpretation:\n  - fabricated_cve (grounded) should be ~0: the model only saw\n    retrieved context, so inventing IDs is structurally blocked.\n  - unsupported_cve (ungrounded) is the interesting delta: real\n    CVEs cited from memory without retrieval evidence.",
+    "structured": {
+      "grounded": {
+        "per_finding_any": {
+          "num": 0,
+          "den": 2,
+          "pct": 0.0
+        },
+        "per_finding_fabricated": {
+          "num": 0,
+          "den": 2,
+          "pct": 0.0
+        },
+        "per_finding_unsupported": {
+          "num": 0,
+          "den": 2,
+          "pct": 0.0
+        },
+        "findings_zero_citations": {
+          "num": 0,
+          "den": 2
+        },
+        "per_citation_bad": {
+          "num": 0,
+          "den": 2,
+          "pct": 0.0
+        },
+        "per_citation_fabricated": {
+          "num": 0,
+          "den": 2,
+          "pct": 0.0
+        },
+        "per_citation_unsupported": {
+          "num": 0,
+          "den": 2,
+          "pct": 0.0
+        },
+        "total_citations": 2
+      },
+      "ungrounded": {
+        "per_finding_any": {
+          "num": 2,
+          "den": 2,
+          "pct": 100.0
+        },
+        "per_finding_fabricated": {
+          "num": 0,
+          "den": 2,
+          "pct": 0.0
+        },
+        "per_finding_unsupported": {
+          "num": 2,
+          "den": 2,
+          "pct": 100.0
+        },
+        "findings_zero_citations": {
+          "num": 0,
+          "den": 2
+        },
+        "per_citation_bad": {
+          "num": 2,
+          "den": 2,
+          "pct": 100.0
+        },
+        "per_citation_fabricated": {
+          "num": 0,
+          "den": 2,
+          "pct": 0.0
+        },
+        "per_citation_unsupported": {
+          "num": 2,
+          "den": 2,
+          "pct": 100.0
+        },
+        "total_citations": 2
+      },
+      "headline_per_finding": "grounded 0/2 (0.0%) vs ungrounded 2/2 (100.0%)",
+      "headline_per_citation": "grounded 0/2 (0.0%) vs ungrounded 2/2 (100.0%)"
+    }
+  },
+  "summary_corpus": {
+    "source_file": "data/synthetic_corpus/hallucination_summary.txt",
+    "verbatim": "========================================================================\nHALLUCINATION BENCHMARK SUMMARY\n========================================================================\nExistence mode : per-scan local cve_kb\nInput files    : D:\\Downloads\\op\\data\\synthetic_corpus\\scans\\scan_0001\\llm_output.jsonl, D:\\Downloads\\op\\data\\synthetic_corpus\\scans\\scan_0002\\llm_output.jsonl, D:\\Downloads\\op\\data\\synthetic_corpus\\scans\\scan_0003\\llm_output.jsonl, D:\\Downloads\\op\\data\\synthetic_corpus\\scans\\scan_0004\\llm_output.jsonl, D:\\Downloads\\op\\data\\synthetic_corpus\\scans\\scan_0005\\llm_output.jsonl, D:\\Downloads\\op\\data\\synthetic_corpus\\scans\\scan_0006\\llm_output.jsonl, D:\\Downloads\\op\\data\\synthetic_corpus\\scans\\scan_0007\\llm_output.jsonl, D:\\Downloads\\op\\data\\synthetic_corpus\\scans\\scan_0008\\llm_output.jsonl, D:\\Downloads\\op\\data\\synthetic_corpus\\scans\\scan_0009\\llm_output.jsonl, D:\\Downloads\\op\\data\\synthetic_corpus\\scans\\scan_0010\\llm_output.jsonl, D:\\Downloads\\op\\data\\synthetic_corpus\\scans\\scan_0011\\llm_output.jsonl, D:\\Downloads\\op\\data\\synthetic_corpus\\scans\\scan_0012\\llm_output.jsonl\n\n--- VARIANT: GROUNDED (58 scored findings) ---\n  per-finding  , any bad citation : 0/58 (0.0%)\n  per-finding  , fabricated CVE   : 0/58 (0.0%)\n  per-finding  , unsupported CVE  : 0/58 (0.0%)\n  findings with zero citations    : 37 (37/58)\n  per-citation , bad citations    : 0/28 (0.0%) (of 28 total citations)\n  per-citation , fabricated CVE   : 0/28 (0.0%)\n  per-citation , unsupported CVE  : 0/28 (0.0%)\n\n--- VARIANT: UNGROUNDED (58 scored findings) ---\n  per-finding  , any bad citation : 0/58 (0.0%)\n  per-finding  , fabricated CVE   : 0/58 (0.0%)\n  per-finding  , unsupported CVE  : 0/58 (0.0%)\n  findings with zero citations    : 58 (58/58)\n  per-citation , bad citations    : 0/0 (0.0%) (of 0 total citations)\n  per-citation , fabricated CVE   : 0/0 (0.0%)\n  per-citation , unsupported CVE  : 0/0 (0.0%)\n\n--- GROUNDED vs UNGROUNDED (headline) ---\n  per-finding bad-citation rate : grounded 0/58 (0.0%)  vs  ungrounded 0/58 (0.0%)\n  per-citation bad-citation rate : grounded 0/28 (0.0%)  vs  ungrounded 0/0 (0.0%)\n\nInterpretation:\n  - fabricated_cve (grounded) should be ~0: the model only saw\n    retrieved context, so inventing IDs is structurally blocked.\n  - unsupported_cve (ungrounded) is the interesting delta: real\n    CVEs cited from memory without retrieval evidence.",
+    "structured": {
+      "grounded": {
+        "per_finding_any": {
+          "num": 0,
+          "den": 58,
+          "pct": 0.0
+        },
+        "per_finding_fabricated": {
+          "num": 0,
+          "den": 58,
+          "pct": 0.0
+        },
+        "per_finding_unsupported": {
+          "num": 0,
+          "den": 58,
+          "pct": 0.0
+        },
+        "findings_zero_citations": {
+          "num": 37,
+          "den": 58
+        },
+        "per_citation_bad": {
+          "num": 0,
+          "den": 28,
+          "pct": 0.0
+        },
+        "per_citation_fabricated": {
+          "num": 0,
+          "den": 28,
+          "pct": 0.0
+        },
+        "per_citation_unsupported": {
+          "num": 0,
+          "den": 28,
+          "pct": 0.0
+        },
+        "total_citations": 28
+      },
+      "ungrounded": {
+        "per_finding_any": {
+          "num": 0,
+          "den": 58,
+          "pct": 0.0
+        },
+        "per_finding_fabricated": {
+          "num": 0,
+          "den": 58,
+          "pct": 0.0
+        },
+        "per_finding_unsupported": {
+          "num": 0,
+          "den": 58,
+          "pct": 0.0
+        },
+        "findings_zero_citations": {
+          "num": 58,
+          "den": 58
+        },
+        "per_citation_bad": {
+          "num": 0,
+          "den": 0,
+          "pct": 0.0
+        },
+        "per_citation_fabricated": {
+          "num": 0,
+          "den": 0,
+          "pct": 0.0
+        },
+        "per_citation_unsupported": {
+          "num": 0,
+          "den": 0,
+          "pct": 0.0
+        },
+        "total_citations": 0
+      },
+      "headline_per_finding": "grounded 0/58 (0.0%) vs ungrounded 0/58 (0.0%)",
+      "headline_per_citation": "grounded 0/28 (0.0%) vs ungrounded 0/0 N/A (abstention)",
+      "headline_detailed": "citation issuance: grounded cited a CVE in 21/58 findings vs ungrounded 0/58 · citation precision: of the 28 citations grounded issued, 28/28 (100%) were supported — 0 fabricated, 0 unsupported · ungrounded issued zero citations across all 58 findings, so its 0/0 bad-citation rate reflects abstention, not accuracy · source data/synthetic_corpus/hallucination_summary.txt"
+    }
+  },
+  "taxonomy_note": "fabricated_cve = cited ID does not exist in NVD at all; unsupported_cve = cited ID is real but not in retrieved/injected context for that finding (existence checked via live NVD API for live_small, via local cve_kb for corpus). See docs/rag_retrieval_schema.md 8.1-8.2."
+}

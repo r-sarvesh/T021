@@ -1,0 +1,276 @@
+{
+  "config": {
+    "repo": "D:\\Downloads\\KnowledgeRAG4LLMVulD",
+    "synthetic_kb": "D:\\Downloads\\op\\data\\knowledge_base\\synthetic_cve_kb.json",
+    "synthetic_kb_size": 20,
+    "temp_kb": "D:\\Downloads\\op\\eval\\results\\tmp_vulrag_kb.json",
+    "seed": 42,
+    "split": "80/20 stratified by CWE, same as vulrag_eval.py",
+    "no_llm": true
+  },
+  "locate": {
+    "validation_files": [
+      "src/benchmark_harness.py:69 CVE_PATTERN",
+      "src/benchmark_harness.py:154 _allowed_cve_set",
+      "src/benchmark_harness.py:169 score_record",
+      "src/cite_extract.py:28 CVE_PATTERN",
+      "src/webapp.py:484 _validate_live_citations",
+      "src/synthesize.py:149 extract_cve_ids",
+      "src/prompt_templates.py:59 _GROUNDED_CITATION_RULE"
+    ],
+    "enforcement": "benchmark-only advisory - live path prompts and flags but does NOT strip citations (see webapp.py:516 flags.append, 1101-1120 report stores synthesized as-is, 1831 flash warning only; synthesize.py:342 smoke check prints only)",
+    "grounded_representation": "grounded_findings.json: finding.grounding_context={cve_records:[{id,text,cvss...} or {not_found}], cis_matches:[{similarity_score}]}, injected into build_grounded_prompt retrieve block",
+    "mockclient": "src/llm_client.py:153 MockClient.complete echoes CVE IDs found in prompt via CVE_PATTERN.findall(prompt) into cve_ids_mentioned, deterministic JSON, no network"
+  },
+  "isolated": {
+    "counts_per_case_type": {
+      "valid": 1,
+      "fabricated": 1,
+      "sibling": 1,
+      "sibling_0143_0144": 1,
+      "format_variants": 6,
+      "no_evidence": 1,
+      "both_retrieved": 2
+    },
+    "details": {
+      "valid": {
+        "grounded": [
+          "CVE-2017-0143"
+        ],
+        "cited": [
+          "CVE-2017-0143"
+        ],
+        "extracted": [
+          "CVE-2017-0143"
+        ],
+        "webapp_flags": [],
+        "benchmark_bad": false
+      },
+      "fabricated": {
+        "grounded": [
+          "CVE-2017-0143"
+        ],
+        "cited": [
+          "CVE-2099-0001"
+        ],
+        "extracted": [
+          "CVE-2099-0001"
+        ],
+        "webapp_flags": [
+          {
+            "finding_ref": "10.0.0.1:22/ssh/test-script",
+            "cited": [
+              "CVE-2099-0001"
+            ],
+            "allowed": [
+              "CVE-2017-0143"
+            ],
+            "fabricated": [
+              "CVE-2099-0001"
+            ],
+            "unsupported": [],
+            "has_fabricated": true,
+            "has_unsupported": false
+          }
+        ],
+        "benchmark_fabricated": [
+          "CVE-2099-0001"
+        ]
+      },
+      "sibling": {
+        "grounded": [
+          "CVE-2017-0143"
+        ],
+        "cited": [
+          "CVE-2012-2122"
+        ],
+        "extracted": [
+          "CVE-2012-2122"
+        ],
+        "webapp_flags": [
+          {
+            "finding_ref": "10.0.0.1:22/ssh/test-script",
+            "cited": [
+              "CVE-2012-2122"
+            ],
+            "allowed": [
+              "CVE-2017-0143"
+            ],
+            "fabricated": [],
+            "unsupported": [
+              "CVE-2012-2122"
+            ],
+            "has_fabricated": false,
+            "has_unsupported": true
+          }
+        ],
+        "benchmark_unsupported": [
+          "CVE-2012-2122"
+        ],
+        "pair": "CVE-2017-0143 grounded vs CVE-2012-2122 cited"
+      },
+      "sibling_0143_0144": {
+        "grounded": [
+          "CVE-2017-0143"
+        ],
+        "cited": [
+          "CVE-2017-0144"
+        ],
+        "extracted": [
+          "CVE-2017-0144"
+        ],
+        "webapp_flags": [
+          {
+            "finding_ref": "10.0.0.1:22/ssh/test-script",
+            "cited": [
+              "CVE-2017-0144"
+            ],
+            "allowed": [
+              "CVE-2017-0143"
+            ],
+            "fabricated": [],
+            "unsupported": [
+              "CVE-2017-0144"
+            ],
+            "has_fabricated": false,
+            "has_unsupported": true
+          }
+        ],
+        "benchmark_unsupported": [],
+        "pair": "CVE-2017-0143 grounded vs CVE-2017-0144 cited",
+        "note": "augmented KB for task-required pair; synthetic KB originally lacks 0144"
+      },
+      "both_retrieved_0143": {
+        "grounded": [
+          "CVE-2017-0143",
+          "CVE-2017-0144"
+        ],
+        "cited": [
+          "CVE-2017-0143"
+        ],
+        "extracted": [
+          "CVE-2017-0143"
+        ],
+        "webapp_flags": [],
+        "expected": "NOT flagged"
+      },
+      "both_retrieved_0144": {
+        "grounded": [
+          "CVE-2017-0143",
+          "CVE-2017-0144"
+        ],
+        "cited": [
+          "CVE-2017-0144"
+        ],
+        "extracted": [
+          "CVE-2017-0144"
+        ],
+        "webapp_flags": [],
+        "expected": "NOT flagged"
+      },
+      "no_evidence": {
+        "grounded": [],
+        "cited": [
+          "CVE-2017-0143"
+        ],
+        "extracted": [
+          "CVE-2017-0143"
+        ],
+        "webapp_flags": [
+          {
+            "finding_ref": "10.0.0.1:22/ssh/test-script",
+            "cited": [
+              "CVE-2017-0143"
+            ],
+            "allowed": [],
+            "fabricated": [],
+            "unsupported": [
+              "CVE-2017-0143"
+            ],
+            "has_fabricated": false,
+            "has_unsupported": true
+          }
+        ]
+      },
+      "format_variants": {
+        "lowercase": {
+          "raw": "This is cve-2017-0143 lower case should not be extracted per case-sensitive regex.",
+          "extracted": [
+            "CVE-2017-0143"
+          ],
+          "flagged": false,
+          "would_bypass": false
+        },
+        "space": {
+          "raw": "This is CVE 2017-0143 with space, not hyphen.",
+          "extracted": [
+            "CVE-2017-0143"
+          ],
+          "flagged": false,
+          "would_bypass": false
+        },
+        "sentence": {
+          "raw": "We found CVE-2017-0143 inside a sentence describing the issue.",
+          "extracted": [
+            "CVE-2017-0143"
+          ],
+          "flagged": false,
+          "would_bypass": false
+        },
+        "multiple": {
+          "raw": "{\"plain_language_explanation\": \"Multiple\", \"cve_ids_mentioned\": [\"CVE-2017-0143\", \"CVE-2012-2122\", \"CVE-2099-0001\"]} CVE",
+          "extracted": [
+            "CVE-2017-0143",
+            "CVE-2012-2122",
+            "CVE-2099-0001"
+          ],
+          "flagged": true,
+          "would_bypass": false
+        },
+        "underscore_fabricated": {
+          "raw": "This is CVE_2099_0001 underscore fabricated should be flagged",
+          "extracted": [
+            "CVE-2099-0001"
+          ],
+          "flagged": true,
+          "would_bypass": false
+        },
+        "en_dash_valid": {
+          "raw": "This is CVE–2017–0143 en-dash valid should now be extracted",
+          "extracted": [
+            "CVE-2017-0143"
+          ],
+          "flagged": false,
+          "would_bypass": false
+        }
+      }
+    },
+    "fabricated_reaching_final": 1,
+    "unsupported_reaching_final": 1,
+    "valid_wrongly_removed": 0
+  },
+  "scale": {
+    "per_category": {
+      "valid": 300,
+      "fabricated": 300,
+      "sibling": 300
+    },
+    "fabricated_reaching_final": 300,
+    "unsupported_reaching_final": 300,
+    "valid_wrongly_removed": 0,
+    "fabricated_total": 300,
+    "unsupported_total": 300,
+    "valid_total": 300,
+    "fabricated_rate": 1.0,
+    "unsupported_rate": 1.0,
+    "valid_wrongly_removed_rate": 0.0,
+    "pair_0143_0144_both_in_temp": false
+  },
+  "summary": {
+    "fabricated_citations_reaching_final_output": 300,
+    "unsupported_citations_reaching_final_output": 300,
+    "valid_citations_wrongly_removed": 0,
+    "enforcement": "live pipeline does NOT enforce - flags only (webapp.py:516, 1831; synthesize.py:342); enforcement is prompt instruction + benchmark/post-hoc flagging",
+    "caveat": "Fake outputs test the safeguard, not the model's real behavior; all injections bypass LLM, so counts measure validator coverage, not model hallucination rate. Format variants bypass due to case-sensitive CVE regex."
+  }
+}

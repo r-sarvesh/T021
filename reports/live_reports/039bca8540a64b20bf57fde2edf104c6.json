@@ -1,0 +1,693 @@
+{
+  "report_id": "039bca8540a64b20bf57fde2edf104c6",
+  "filename": "dept.xml",
+  "uploaded_at": "2026-09-24T15:04:16.344396+00:00",
+  "uploaded_by": "admin",
+  "findings": [
+    {
+      "type": "asset",
+      "host": "10.20.30.15",
+      "hostname": "dept-fileserver01",
+      "os_guess": "Microsoft Windows Server 2008 R2",
+      "port": 139,
+      "protocol": "tcp",
+      "service": "netbios-ssn",
+      "product": "Microsoft Windows netbios-ssn",
+      "version": null,
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "asset",
+      "host": "10.20.30.15",
+      "hostname": "dept-fileserver01",
+      "os_guess": "Microsoft Windows Server 2008 R2",
+      "port": 445,
+      "protocol": "tcp",
+      "service": "microsoft-ds",
+      "product": "Windows Server 2008 R2 microsoft-ds",
+      "version": "6.1.7601",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "asset",
+      "host": "10.20.30.15",
+      "hostname": "dept-fileserver01",
+      "os_guess": "Microsoft Windows Server 2008 R2",
+      "port": 3389,
+      "protocol": "tcp",
+      "service": "ms-wbt-server",
+      "product": "Microsoft Terminal Services",
+      "version": null,
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "asset",
+      "host": "10.20.30.15",
+      "hostname": "dept-fileserver01",
+      "os_guess": "Microsoft Windows Server 2008 R2",
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Microsoft IIS httpd",
+      "version": "7.5",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "asset",
+      "host": "10.20.30.15",
+      "hostname": "dept-fileserver01",
+      "os_guess": "Microsoft Windows Server 2008 R2",
+      "port": 21,
+      "protocol": "tcp",
+      "service": "ftp",
+      "product": "vsftpd",
+      "version": "2.3.4",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "asset",
+      "host": "10.20.30.15",
+      "hostname": "dept-fileserver01",
+      "os_guess": "Microsoft Windows Server 2008 R2",
+      "port": 3000,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Node.js",
+      "version": "18.12.1",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    }
+  ],
+  "scored": {
+    "host_risk_summary": [
+      {
+        "host": "10.20.30.15",
+        "hostname": "dept-fileserver01",
+        "os_guess": "Microsoft Windows Server 2008 R2",
+        "open_service_count": 6,
+        "vuln_finding_count": 0,
+        "unscored_finding_count": 0,
+        "max_raw_vuln_score": 0.0,
+        "criticality_multiplier": 1.0,
+        "criticality_reason": "Standard asset, no elevated criticality tag matched",
+        "adjusted_risk_score": 0.0,
+        "risk_band": "INFO"
+      }
+    ],
+    "prioritized_findings": [],
+    "all_scored_findings": [
+      {
+        "type": "asset",
+        "host": "10.20.30.15",
+        "hostname": "dept-fileserver01",
+        "os_guess": "Microsoft Windows Server 2008 R2",
+        "port": 139,
+        "protocol": "tcp",
+        "service": "netbios-ssn",
+        "product": "Microsoft Windows netbios-ssn",
+        "version": null,
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 0.0,
+        "severity_band": "INFO",
+        "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+      },
+      {
+        "type": "asset",
+        "host": "10.20.30.15",
+        "hostname": "dept-fileserver01",
+        "os_guess": "Microsoft Windows Server 2008 R2",
+        "port": 445,
+        "protocol": "tcp",
+        "service": "microsoft-ds",
+        "product": "Windows Server 2008 R2 microsoft-ds",
+        "version": "6.1.7601",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 1.5,
+        "severity_band": "LOW",
+        "scoring_rationale": "Baseline exposure risk for open 'microsoft-ds' service"
+      },
+      {
+        "type": "asset",
+        "host": "10.20.30.15",
+        "hostname": "dept-fileserver01",
+        "os_guess": "Microsoft Windows Server 2008 R2",
+        "port": 3389,
+        "protocol": "tcp",
+        "service": "ms-wbt-server",
+        "product": "Microsoft Terminal Services",
+        "version": null,
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 1.5,
+        "severity_band": "LOW",
+        "scoring_rationale": "Baseline exposure risk for open 'ms-wbt-server' service"
+      },
+      {
+        "type": "asset",
+        "host": "10.20.30.15",
+        "hostname": "dept-fileserver01",
+        "os_guess": "Microsoft Windows Server 2008 R2",
+        "port": 80,
+        "protocol": "tcp",
+        "service": "http",
+        "product": "Microsoft IIS httpd",
+        "version": "7.5",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 0.0,
+        "severity_band": "INFO",
+        "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+      },
+      {
+        "type": "asset",
+        "host": "10.20.30.15",
+        "hostname": "dept-fileserver01",
+        "os_guess": "Microsoft Windows Server 2008 R2",
+        "port": 21,
+        "protocol": "tcp",
+        "service": "ftp",
+        "product": "vsftpd",
+        "version": "2.3.4",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 1.0,
+        "severity_band": "LOW",
+        "scoring_rationale": "Baseline exposure risk for open 'ftp' service"
+      },
+      {
+        "type": "asset",
+        "host": "10.20.30.15",
+        "hostname": "dept-fileserver01",
+        "os_guess": "Microsoft Windows Server 2008 R2",
+        "port": 3000,
+        "protocol": "tcp",
+        "service": "http",
+        "product": "Node.js",
+        "version": "18.12.1",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 0.0,
+        "severity_band": "INFO",
+        "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+      }
+    ]
+  },
+  "grounded": [
+    {
+      "type": "asset",
+      "host": "10.20.30.15",
+      "hostname": "dept-fileserver01",
+      "os_guess": "Microsoft Windows Server 2008 R2",
+      "port": 139,
+      "protocol": "tcp",
+      "service": "netbios-ssn",
+      "product": "Microsoft Windows netbios-ssn",
+      "version": null,
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-RDP-001",
+            "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+            "section": "Remote Access",
+            "control_title": "Restrict RDP exposure and enforce Network Level Authentication",
+            "text": "Remote Desktop Protocol should not be exposed directly to untrusted networks. Where RDP is required, enforce Network Level Authentication (NLA), require multi-factor authentication, and restrict access via firewall rules or a VPN/bastion host rather than direct internet exposure. Unrestricted RDP exposure is one of the most common initial access vectors in ransomware incidents.",
+            "applies_to": [
+              "rdp",
+              "ms-wbt-server",
+              "windows",
+              "windows_server"
+            ],
+            "level": 1,
+            "remediation_type": "network_configuration",
+            "similarity_score": 0.148
+          },
+          {
+            "id": "CIS-SMB-001",
+            "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+            "section": "Network Security",
+            "control_title": "Disable SMBv1 and require SMB signing",
+            "text": "Legacy SMBv1 should be disabled on all Windows hosts, as it lacks modern security controls and is the protocol version targeted by well-known remote code execution exploits. SMB signing should be required to prevent relay and tampering attacks. Disable SMBv1 via PowerShell (Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol) or Group Policy, and verify no legacy applications depend on it before rollout.",
+            "applies_to": [
+              "smb",
+              "microsoft-ds",
+              "windows_server",
+              "windows"
+            ],
+            "level": 1,
+            "remediation_type": "feature_removal",
+            "similarity_score": 0.128
+          },
+          {
+            "id": "CIS-SMB-002",
+            "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+            "section": "Network Security",
+            "control_title": "Apply security updates for SMB remote code execution vulnerabilities promptly",
+            "text": "Hosts exposing SMB services should be patched against known remote code execution vulnerabilities as a priority, since SMB is a common lateral-movement and ransomware entry vector. Maintain a patch cadence that applies critical SMB-related security updates within 72 hours of release for internet- or high-value-network-facing systems.",
+            "applies_to": [
+              "smb",
+              "microsoft-ds",
+              "windows_server",
+              "windows"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.0
+          }
+        ],
+        "service_tags_used": [
+          "windows",
+          "netbios-ssn"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "10.20.30.15",
+      "hostname": "dept-fileserver01",
+      "os_guess": "Microsoft Windows Server 2008 R2",
+      "port": 445,
+      "protocol": "tcp",
+      "service": "microsoft-ds",
+      "product": "Windows Server 2008 R2 microsoft-ds",
+      "version": "6.1.7601",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 1.5,
+      "severity_band": "LOW",
+      "scoring_rationale": "Baseline exposure risk for open 'microsoft-ds' service",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-RDP-001",
+            "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+            "section": "Remote Access",
+            "control_title": "Restrict RDP exposure and enforce Network Level Authentication",
+            "text": "Remote Desktop Protocol should not be exposed directly to untrusted networks. Where RDP is required, enforce Network Level Authentication (NLA), require multi-factor authentication, and restrict access via firewall rules or a VPN/bastion host rather than direct internet exposure. Unrestricted RDP exposure is one of the most common initial access vectors in ransomware incidents.",
+            "applies_to": [
+              "rdp",
+              "ms-wbt-server",
+              "windows",
+              "windows_server"
+            ],
+            "level": 1,
+            "remediation_type": "network_configuration",
+            "similarity_score": 0.115
+          },
+          {
+            "id": "CIS-SMB-001",
+            "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+            "section": "Network Security",
+            "control_title": "Disable SMBv1 and require SMB signing",
+            "text": "Legacy SMBv1 should be disabled on all Windows hosts, as it lacks modern security controls and is the protocol version targeted by well-known remote code execution exploits. SMB signing should be required to prevent relay and tampering attacks. Disable SMBv1 via PowerShell (Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol) or Group Policy, and verify no legacy applications depend on it before rollout.",
+            "applies_to": [
+              "smb",
+              "microsoft-ds",
+              "windows_server",
+              "windows"
+            ],
+            "level": 1,
+            "remediation_type": "feature_removal",
+            "similarity_score": 0.1
+          },
+          {
+            "id": "CIS-SMB-002",
+            "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+            "section": "Network Security",
+            "control_title": "Apply security updates for SMB remote code execution vulnerabilities promptly",
+            "text": "Hosts exposing SMB services should be patched against known remote code execution vulnerabilities as a priority, since SMB is a common lateral-movement and ransomware entry vector. Maintain a patch cadence that applies critical SMB-related security updates within 72 hours of release for internet- or high-value-network-facing systems.",
+            "applies_to": [
+              "smb",
+              "microsoft-ds",
+              "windows_server",
+              "windows"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.0
+          }
+        ],
+        "service_tags_used": [
+          "microsoft-ds",
+          "windows_server"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "10.20.30.15",
+      "hostname": "dept-fileserver01",
+      "os_guess": "Microsoft Windows Server 2008 R2",
+      "port": 3389,
+      "protocol": "tcp",
+      "service": "ms-wbt-server",
+      "product": "Microsoft Terminal Services",
+      "version": null,
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 1.5,
+      "severity_band": "LOW",
+      "scoring_rationale": "Baseline exposure risk for open 'ms-wbt-server' service",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-RDP-001",
+            "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+            "section": "Remote Access",
+            "control_title": "Restrict RDP exposure and enforce Network Level Authentication",
+            "text": "Remote Desktop Protocol should not be exposed directly to untrusted networks. Where RDP is required, enforce Network Level Authentication (NLA), require multi-factor authentication, and restrict access via firewall rules or a VPN/bastion host rather than direct internet exposure. Unrestricted RDP exposure is one of the most common initial access vectors in ransomware incidents.",
+            "applies_to": [
+              "rdp",
+              "ms-wbt-server",
+              "windows",
+              "windows_server"
+            ],
+            "level": 1,
+            "remediation_type": "network_configuration",
+            "similarity_score": 0.08
+          }
+        ],
+        "service_tags_used": [
+          "ms-wbt-server"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "10.20.30.15",
+      "hostname": "dept-fileserver01",
+      "os_guess": "Microsoft Windows Server 2008 R2",
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Microsoft IIS httpd",
+      "version": "7.5",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-WEB-001",
+            "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+            "section": "Server Hardening",
+            "control_title": "Keep web server software on a supported, patched version",
+            "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+            "applies_to": [
+              "http",
+              "https",
+              "apache_httpd"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.245
+          }
+        ],
+        "service_tags_used": [
+          "http"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "10.20.30.15",
+      "hostname": "dept-fileserver01",
+      "os_guess": "Microsoft Windows Server 2008 R2",
+      "port": 21,
+      "protocol": "tcp",
+      "service": "ftp",
+      "product": "vsftpd",
+      "version": "2.3.4",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 1.0,
+      "severity_band": "LOW",
+      "scoring_rationale": "Baseline exposure risk for open 'ftp' service",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-FTP-001",
+            "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+            "section": "File Transfer Services",
+            "control_title": "Disable anonymous FTP authentication",
+            "text": "Anonymous FTP login should be disabled unless there is an explicit, documented business requirement for public unauthenticated file access. Anonymous access allows any network-reachable client to list directories and, depending on configuration, upload or retrieve files without accountability. Where FTP is required at all, prefer SFTP/FTPS with authenticated access.",
+            "applies_to": [
+              "ftp"
+            ],
+            "level": 1,
+            "remediation_type": "configuration",
+            "similarity_score": 0.312
+          }
+        ],
+        "service_tags_used": [
+          "ftp"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "10.20.30.15",
+      "hostname": "dept-fileserver01",
+      "os_guess": "Microsoft Windows Server 2008 R2",
+      "port": 3000,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Node.js",
+      "version": "18.12.1",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-WEB-001",
+            "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+            "section": "Server Hardening",
+            "control_title": "Keep web server software on a supported, patched version",
+            "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+            "applies_to": [
+              "http",
+              "https",
+              "apache_httpd"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.145
+          }
+        ],
+        "service_tags_used": [
+          "http"
+        ]
+      }
+    }
+  ],
+  "synthesized": [
+    {
+      "finding_ref": "10.20.30.15:445/tcp/microsoft-ds/asset",
+      "host": "10.20.30.15",
+      "port": 445,
+      "service": "microsoft-ds",
+      "nse_script": null,
+      "severity_band": "LOW",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 10.20.30.15 (dept-fileserver01)\nOS guess: Microsoft Windows Server 2008 R2\nPort 445/tcp service: microsoft-ds\nProduct/version: Windows Server 2008 R2 microsoft-ds 6.1.7601\nRule-engine severity: LOW (score 1.5)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n(none retrieved)\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-RDP-001 (CIS Microsoft Windows Server Benchmark (illustrative)): Restrict RDP exposure and enforce Network Level Authentication — Remote Desktop Protocol should not be exposed directly to untrusted networks. Where RDP is required, enforce Network Level Authentication (NLA), require multi-factor authentication, and restrict access via firewall rules or a VPN/bastion host rather than direct internet exposure. Unrestricted RDP exposure is one of the most common initial access vectors in ransomware incidents.\n- CIS-SMB-001 (CIS Microsoft Windows Server Benchmark (illustrative)): Disable SMBv1 and require SMB signing — Legacy SMBv1 should be disabled on all Windows hosts, as it lacks modern security controls and is the protocol version targeted by well-known remote code execution exploits. SMB signing should be required to prevent relay and tampering attacks. Disable SMBv1 via PowerShell (Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol) or Group Policy, and verify no legacy applications depend on it before rollout.\n- CIS-SMB-002 (CIS Microsoft Windows Server Benchmark (illustrative)): Apply security updates for SMB remote code execution vulnerabilities promptly — Hosts exposing SMB services should be patched against known remote code execution vulnerabilities as a priority, since SMB is a common lateral-movement and ransomware entry vector. Maintain a patch cadence that applies critical SMB-related security updates within 72 hours of release for internet- or high-value-network-facing systems.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [],
+      "ok": true
+    },
+    {
+      "finding_ref": "10.20.30.15:3389/tcp/ms-wbt-server/asset",
+      "host": "10.20.30.15",
+      "port": 3389,
+      "service": "ms-wbt-server",
+      "nse_script": null,
+      "severity_band": "LOW",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 10.20.30.15 (dept-fileserver01)\nOS guess: Microsoft Windows Server 2008 R2\nPort 3389/tcp service: ms-wbt-server\nProduct/version: Microsoft Terminal Services\nRule-engine severity: LOW (score 1.5)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n(none retrieved)\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-RDP-001 (CIS Microsoft Windows Server Benchmark (illustrative)): Restrict RDP exposure and enforce Network Level Authentication — Remote Desktop Protocol should not be exposed directly to untrusted networks. Where RDP is required, enforce Network Level Authentication (NLA), require multi-factor authentication, and restrict access via firewall rules or a VPN/bastion host rather than direct internet exposure. Unrestricted RDP exposure is one of the most common initial access vectors in ransomware incidents.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [],
+      "ok": true
+    },
+    {
+      "finding_ref": "10.20.30.15:21/tcp/ftp/asset",
+      "host": "10.20.30.15",
+      "port": 21,
+      "service": "ftp",
+      "nse_script": null,
+      "severity_band": "LOW",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 10.20.30.15 (dept-fileserver01)\nOS guess: Microsoft Windows Server 2008 R2\nPort 21/tcp service: ftp\nProduct/version: vsftpd 2.3.4\nRule-engine severity: LOW (score 1.0)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n(none retrieved)\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-FTP-001 (CIS Generic Server Hardening Benchmark (illustrative)): Disable anonymous FTP authentication — Anonymous FTP login should be disabled unless there is an explicit, documented business requirement for public unauthenticated file access. Anonymous access allows any network-reachable client to list directories and, depending on configuration, upload or retrieve files without accountability. Where FTP is required at all, prefer SFTP/FTPS with authenticated access.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [],
+      "ok": true
+    },
+    {
+      "finding_ref": "10.20.30.15:139/tcp/netbios-ssn/asset",
+      "host": "10.20.30.15",
+      "port": 139,
+      "service": "netbios-ssn",
+      "nse_script": null,
+      "severity_band": "INFO",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 10.20.30.15 (dept-fileserver01)\nOS guess: Microsoft Windows Server 2008 R2\nPort 139/tcp service: netbios-ssn\nProduct/version: Microsoft Windows netbios-ssn\nRule-engine severity: INFO (score 0.0)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n(none retrieved)\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-RDP-001 (CIS Microsoft Windows Server Benchmark (illustrative)): Restrict RDP exposure and enforce Network Level Authentication — Remote Desktop Protocol should not be exposed directly to untrusted networks. Where RDP is required, enforce Network Level Authentication (NLA), require multi-factor authentication, and restrict access via firewall rules or a VPN/bastion host rather than direct internet exposure. Unrestricted RDP exposure is one of the most common initial access vectors in ransomware incidents.\n- CIS-SMB-001 (CIS Microsoft Windows Server Benchmark (illustrative)): Disable SMBv1 and require SMB signing — Legacy SMBv1 should be disabled on all Windows hosts, as it lacks modern security controls and is the protocol version targeted by well-known remote code execution exploits. SMB signing should be required to prevent relay and tampering attacks. Disable SMBv1 via PowerShell (Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol) or Group Policy, and verify no legacy applications depend on it before rollout.\n- CIS-SMB-002 (CIS Microsoft Windows Server Benchmark (illustrative)): Apply security updates for SMB remote code execution vulnerabilities promptly — Hosts exposing SMB services should be patched against known remote code execution vulnerabilities as a priority, since SMB is a common lateral-movement and ransomware entry vector. Maintain a patch cadence that applies critical SMB-related security updates within 72 hours of release for internet- or high-value-network-facing systems.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [],
+      "ok": true
+    },
+    {
+      "finding_ref": "10.20.30.15:80/tcp/http/asset",
+      "host": "10.20.30.15",
+      "port": 80,
+      "service": "http",
+      "nse_script": null,
+      "severity_band": "INFO",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 10.20.30.15 (dept-fileserver01)\nOS guess: Microsoft Windows Server 2008 R2\nPort 80/tcp service: http\nProduct/version: Microsoft IIS httpd 7.5\nRule-engine severity: INFO (score 0.0)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n(none retrieved)\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-WEB-001 (CIS Apache HTTP Server Benchmark (illustrative)): Keep web server software on a supported, patched version — Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [],
+      "ok": true
+    },
+    {
+      "finding_ref": "10.20.30.15:3000/tcp/http/asset",
+      "host": "10.20.30.15",
+      "port": 3000,
+      "service": "http",
+      "nse_script": null,
+      "severity_band": "INFO",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 10.20.30.15 (dept-fileserver01)\nOS guess: Microsoft Windows Server 2008 R2\nPort 3000/tcp service: http\nProduct/version: Node.js 18.12.1\nRule-engine severity: INFO (score 0.0)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n(none retrieved)\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-WEB-001 (CIS Apache HTTP Server Benchmark (illustrative)): Keep web server software on a supported, patched version — Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [],
+      "ok": true
+    }
+  ],
+  "quota_info": {
+    "requested": 6,
+    "quota_remaining": 20,
+    "quota_exceeded": false,
+    "synthesized": 6,
+    "skipped": 0,
+    "message": " (using offline mock — no GEMINI_API_KEY)"
+  },
+  "validation_flags": [],
+  "has_hallucination": false,
+  "host_summary": [
+    {
+      "host": "10.20.30.15",
+      "hostname": "dept-fileserver01",
+      "os_guess": "Microsoft Windows Server 2008 R2",
+      "open_service_count": 6,
+      "vuln_finding_count": 0,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 0.0,
+      "criticality_multiplier": 1.0,
+      "criticality_reason": "Standard asset, no elevated criticality tag matched",
+      "adjusted_risk_score": 0.0,
+      "risk_band": "INFO"
+    }
+  ],
+  "cve_records_total": 0,
+  "cis_matches_total": 10,
+  "hosts_up": 1,
+  "is_empty_scan": false,
+  "is_no_findings": false
+}

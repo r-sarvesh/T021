@@ -1,0 +1,64 @@
+# Nmap 7.94 scan initiated Wed Aug 13 09:00:00 2026 as: nmap -sS -sV -O -A -p- -oN sample_scan.txt 192.168.1.0/24
+
+Nmap scan report for dc01.corp.local (192.168.1.10)
+Host is up (0.0021s latency).
+Not shown: 65520 filtered tcp ports (no-response)
+PORT     STATE SERVICE       VERSION
+21/tcp   open  ftp           Microsoft ftpd
+| ftp-anon: Anonymous FTP login allowed (FTP code 230)
+53/tcp   open  domain        Microsoft DNS
+135/tcp  open  msrpc         Microsoft Windows RPC
+139/tcp  open  netbios-ssn   Microsoft Windows netbios-ssn
+389/tcp  open  ldap          Microsoft Windows Active Directory LDAP (Domain: corp.local)
+445/tcp  open  microsoft-ds  Windows Server 2012 R2 microsoft-ds
+| smb-vuln-ms17-010:
+|   VULNERABLE:
+|   Remote Code Execution vulnerability in Microsoft SMBv1 servers (ms17-010)
+|     State: VULNERABLE
+|     Risk factor: HIGH
+|     IDs:  CVE:CVE-2017-0143
+|_    Disclosure date: 2017-03-14
+3389/tcp open  ms-wbt-server Microsoft Terminal Services
+| rdp-vuln-ms12-020:
+|   VULNERABLE:
+|_  MS12-020 Remote Desktop Protocol Denial of Service
+MAC Address: 00:0C:29:3A:5B:7E (VMware)
+Device type: general purpose
+Running: Microsoft Windows Server 2012|2016
+OS details: Microsoft Windows Server 2012 R2
+
+Nmap scan report for webapp01.corp.local (192.168.1.20)
+Host is up (0.0033s latency).
+Not shown: 65530 closed tcp ports (reset)
+PORT     STATE SERVICE VERSION
+22/tcp   open  ssh     OpenSSH 7.4 (protocol 2.0)
+80/tcp   open  http    Apache httpd 2.4.29
+|_http-title: Welcome - Corp Internal App
+443/tcp  open  ssl/http Apache httpd 2.4.29
+| ssl-cert: Subject: commonName=webapp01.corp.local
+| Not valid after:  2024-05-10T00:00:00
+|_ssl-known-key: Certificate expired
+3306/tcp open  mysql   MySQL 5.5.62
+| mysql-vuln-cve2012-2122:
+|   VULNERABLE:
+|   MySQL/MariaDB weak password authentication security bypass
+|     IDs:  CVE:CVE-2012-2122
+|_    Risk factor: HIGH
+MAC Address: 00:0C:29:AA:1C:22 (VMware)
+Device type: general purpose
+Running: Linux 4.X|5.X
+OS details: Linux 4.15 - 5.6
+
+Nmap scan report for ws-fin-07.corp.local (192.168.1.30)
+Host is up (0.0019s latency).
+Not shown: 65531 filtered tcp ports (no-response)
+PORT     STATE SERVICE       VERSION
+135/tcp  open  msrpc         Microsoft Windows RPC
+445/tcp  open  microsoft-ds  Windows 10 Pro microsoft-ds
+3389/tcp open  ms-wbt-server Microsoft Terminal Services
+MAC Address: 00:0C:29:BB:2D:33 (VMware)
+Device type: general purpose
+Running: Microsoft Windows 10
+OS details: Microsoft Windows 10
+
+# Nmap done at Wed Aug 13 09:01:00 2026 -- 3 IP addresses (3 hosts up) scanned in 60.32 seconds

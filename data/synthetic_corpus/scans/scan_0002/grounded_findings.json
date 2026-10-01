@@ -1,0 +1,684 @@
+[
+  {
+    "type": "asset",
+    "host": "10.20.30.1",
+    "hostname": "dc02.corp.local",
+    "os_guess": "Microsoft Windows Server 2012 R2",
+    "port": 135,
+    "protocol": "tcp",
+    "service": "msrpc",
+    "product": "Microsoft Windows RPC",
+    "version": null,
+    "cve_refs": [],
+    "nse_script": null,
+    "raw_output": null,
+    "severity_score": 0.0,
+    "severity_band": "INFO",
+    "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+    "grounding_context": {
+      "cve_records": [],
+      "cis_matches": [
+        {
+          "id": "CIS-RDP-001",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Remote Access",
+          "control_title": "Restrict RDP exposure and enforce Network Level Authentication",
+          "text": "Remote Desktop Protocol should not be exposed directly to untrusted networks. Where RDP is required, enforce Network Level Authentication (NLA), require multi-factor authentication, and restrict access via firewall rules or a VPN/bastion host rather than direct internet exposure. Unrestricted RDP exposure is one of the most common initial access vectors in ransomware incidents.",
+          "applies_to": [
+            "rdp",
+            "ms-wbt-server",
+            "windows",
+            "windows_server"
+          ],
+          "level": 1,
+          "remediation_type": "network_configuration",
+          "similarity_score": 0.158
+        },
+        {
+          "id": "CIS-SMB-001",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Network Security",
+          "control_title": "Disable SMBv1 and require SMB signing",
+          "text": "Legacy SMBv1 should be disabled on all Windows hosts, as it lacks modern security controls and is the protocol version targeted by well-known remote code execution exploits. SMB signing should be required to prevent relay and tampering attacks. Disable SMBv1 via PowerShell (Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol) or Group Policy, and verify no legacy applications depend on it before rollout.",
+          "applies_to": [
+            "smb",
+            "microsoft-ds",
+            "windows_server",
+            "windows"
+          ],
+          "level": 1,
+          "remediation_type": "feature_removal",
+          "similarity_score": 0.122
+        },
+        {
+          "id": "CIS-SMB-002",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Network Security",
+          "control_title": "Apply security updates for SMB remote code execution vulnerabilities promptly",
+          "text": "Hosts exposing SMB services should be patched against known remote code execution vulnerabilities as a priority, since SMB is a common lateral-movement and ransomware entry vector. Maintain a patch cadence that applies critical SMB-related security updates within 72 hours of release for internet- or high-value-network-facing systems.",
+          "applies_to": [
+            "smb",
+            "microsoft-ds",
+            "windows_server",
+            "windows"
+          ],
+          "level": 1,
+          "remediation_type": "patch_management",
+          "similarity_score": 0.0
+        }
+      ],
+      "service_tags_used": [
+        "windows",
+        "msrpc"
+      ]
+    }
+  },
+  {
+    "type": "asset",
+    "host": "10.20.30.1",
+    "hostname": "dc02.corp.local",
+    "os_guess": "Microsoft Windows Server 2012 R2",
+    "port": 139,
+    "protocol": "tcp",
+    "service": "netbios-ssn",
+    "product": "Microsoft Windows netbios-ssn",
+    "version": null,
+    "cve_refs": [],
+    "nse_script": null,
+    "raw_output": null,
+    "severity_score": 0.0,
+    "severity_band": "INFO",
+    "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+    "grounding_context": {
+      "cve_records": [],
+      "cis_matches": [
+        {
+          "id": "CIS-RDP-001",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Remote Access",
+          "control_title": "Restrict RDP exposure and enforce Network Level Authentication",
+          "text": "Remote Desktop Protocol should not be exposed directly to untrusted networks. Where RDP is required, enforce Network Level Authentication (NLA), require multi-factor authentication, and restrict access via firewall rules or a VPN/bastion host rather than direct internet exposure. Unrestricted RDP exposure is one of the most common initial access vectors in ransomware incidents.",
+          "applies_to": [
+            "rdp",
+            "ms-wbt-server",
+            "windows",
+            "windows_server"
+          ],
+          "level": 1,
+          "remediation_type": "network_configuration",
+          "similarity_score": 0.158
+        },
+        {
+          "id": "CIS-SMB-001",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Network Security",
+          "control_title": "Disable SMBv1 and require SMB signing",
+          "text": "Legacy SMBv1 should be disabled on all Windows hosts, as it lacks modern security controls and is the protocol version targeted by well-known remote code execution exploits. SMB signing should be required to prevent relay and tampering attacks. Disable SMBv1 via PowerShell (Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol) or Group Policy, and verify no legacy applications depend on it before rollout.",
+          "applies_to": [
+            "smb",
+            "microsoft-ds",
+            "windows_server",
+            "windows"
+          ],
+          "level": 1,
+          "remediation_type": "feature_removal",
+          "similarity_score": 0.122
+        },
+        {
+          "id": "CIS-SMB-002",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Network Security",
+          "control_title": "Apply security updates for SMB remote code execution vulnerabilities promptly",
+          "text": "Hosts exposing SMB services should be patched against known remote code execution vulnerabilities as a priority, since SMB is a common lateral-movement and ransomware entry vector. Maintain a patch cadence that applies critical SMB-related security updates within 72 hours of release for internet- or high-value-network-facing systems.",
+          "applies_to": [
+            "smb",
+            "microsoft-ds",
+            "windows_server",
+            "windows"
+          ],
+          "level": 1,
+          "remediation_type": "patch_management",
+          "similarity_score": 0.0
+        }
+      ],
+      "service_tags_used": [
+        "windows",
+        "netbios-ssn"
+      ]
+    }
+  },
+  {
+    "type": "asset",
+    "host": "10.20.30.1",
+    "hostname": "dc02.corp.local",
+    "os_guess": "Microsoft Windows Server 2012 R2",
+    "port": 445,
+    "protocol": "tcp",
+    "service": "microsoft-ds",
+    "product": "Windows Server 2012 R2 microsoft-ds",
+    "version": null,
+    "cve_refs": [],
+    "nse_script": null,
+    "raw_output": null,
+    "severity_score": 1.5,
+    "severity_band": "LOW",
+    "scoring_rationale": "Baseline exposure risk for open 'microsoft-ds' service",
+    "grounding_context": {
+      "cve_records": [],
+      "cis_matches": [
+        {
+          "id": "CIS-RDP-001",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Remote Access",
+          "control_title": "Restrict RDP exposure and enforce Network Level Authentication",
+          "text": "Remote Desktop Protocol should not be exposed directly to untrusted networks. Where RDP is required, enforce Network Level Authentication (NLA), require multi-factor authentication, and restrict access via firewall rules or a VPN/bastion host rather than direct internet exposure. Unrestricted RDP exposure is one of the most common initial access vectors in ransomware incidents.",
+          "applies_to": [
+            "rdp",
+            "ms-wbt-server",
+            "windows",
+            "windows_server"
+          ],
+          "level": 1,
+          "remediation_type": "network_configuration",
+          "similarity_score": 0.125
+        },
+        {
+          "id": "CIS-SMB-001",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Network Security",
+          "control_title": "Disable SMBv1 and require SMB signing",
+          "text": "Legacy SMBv1 should be disabled on all Windows hosts, as it lacks modern security controls and is the protocol version targeted by well-known remote code execution exploits. SMB signing should be required to prevent relay and tampering attacks. Disable SMBv1 via PowerShell (Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol) or Group Policy, and verify no legacy applications depend on it before rollout.",
+          "applies_to": [
+            "smb",
+            "microsoft-ds",
+            "windows_server",
+            "windows"
+          ],
+          "level": 1,
+          "remediation_type": "feature_removal",
+          "similarity_score": 0.096
+        },
+        {
+          "id": "CIS-SMB-002",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Network Security",
+          "control_title": "Apply security updates for SMB remote code execution vulnerabilities promptly",
+          "text": "Hosts exposing SMB services should be patched against known remote code execution vulnerabilities as a priority, since SMB is a common lateral-movement and ransomware entry vector. Maintain a patch cadence that applies critical SMB-related security updates within 72 hours of release for internet- or high-value-network-facing systems.",
+          "applies_to": [
+            "smb",
+            "microsoft-ds",
+            "windows_server",
+            "windows"
+          ],
+          "level": 1,
+          "remediation_type": "patch_management",
+          "similarity_score": 0.0
+        }
+      ],
+      "service_tags_used": [
+        "microsoft-ds",
+        "windows_server"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.1",
+    "hostname": "dc02.corp.local",
+    "os_guess": "Microsoft Windows Server 2012 R2",
+    "port": 445,
+    "protocol": "tcp",
+    "service": "microsoft-ds",
+    "product": "Windows Server 2012 R2 microsoft-ds",
+    "version": null,
+    "cve_refs": [
+      "CVE-2017-0143"
+    ],
+    "nse_script": "smb-vuln-ms17-010",
+    "raw_output": "VULNERABLE: Remote Code Execution vulnerability in Microsoft SMBv1 servers (ms17-010) State: VULNERABLE Risk factor: HIGH  IDs: CVE:CVE-2017-0143",
+    "severity_score": 8.1,
+    "severity_band": "HIGH",
+    "scoring_rationale": "CVSS v3 base score 8.1 from ['CVE-2017-0143']",
+    "grounding_context": {
+      "cve_records": [
+        {
+          "id": "CVE-2017-0143",
+          "text": "The SMBv1 server in Microsoft Windows Vista SP2; Windows Server 2008 SP2 and R2 SP1; Windows 7 SP1; Windows 8.1; Windows Server 2012 Gold and R2; Windows RT 8.1; and Windows 10 Gold, 1511, and 1607; and Windows Server 2016 allows remote attackers to execute arbitrary code via crafted packets, aka 'Windows SMB Remote Code Execution Vulnerability.' This vulnerability is different from those described in CVE-2017-0144, CVE-2017-0145, CVE-2017-0146, and CVE-2017-0148.",
+          "cvss_v3_score": 8.1,
+          "cvss_v3_vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss_severity": "HIGH",
+          "cwe_ids": [
+            "CWE-20"
+          ],
+          "published_date": "2017-03-17T01:59:00.243",
+          "last_modified_date": "2018-10-12T22:02:31.463",
+          "references": [
+            "https://nvd.nist.gov/vuln/detail/CVE-2017-0143",
+            "https://technet.microsoft.com/library/security/MS17-010"
+          ],
+          "kev_listed": true,
+          "kev_date_added": "2021-11-03"
+        }
+      ],
+      "cis_matches": [
+        {
+          "id": "CIS-SMB-001",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Network Security",
+          "control_title": "Disable SMBv1 and require SMB signing",
+          "text": "Legacy SMBv1 should be disabled on all Windows hosts, as it lacks modern security controls and is the protocol version targeted by well-known remote code execution exploits. SMB signing should be required to prevent relay and tampering attacks. Disable SMBv1 via PowerShell (Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol) or Group Policy, and verify no legacy applications depend on it before rollout.",
+          "applies_to": [
+            "smb",
+            "microsoft-ds",
+            "windows_server",
+            "windows"
+          ],
+          "level": 1,
+          "remediation_type": "feature_removal",
+          "similarity_score": 0.286
+        },
+        {
+          "id": "CIS-SMB-002",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Network Security",
+          "control_title": "Apply security updates for SMB remote code execution vulnerabilities promptly",
+          "text": "Hosts exposing SMB services should be patched against known remote code execution vulnerabilities as a priority, since SMB is a common lateral-movement and ransomware entry vector. Maintain a patch cadence that applies critical SMB-related security updates within 72 hours of release for internet- or high-value-network-facing systems.",
+          "applies_to": [
+            "smb",
+            "microsoft-ds",
+            "windows_server",
+            "windows"
+          ],
+          "level": 1,
+          "remediation_type": "patch_management",
+          "similarity_score": 0.181
+        },
+        {
+          "id": "CIS-RDP-001",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Remote Access",
+          "control_title": "Restrict RDP exposure and enforce Network Level Authentication",
+          "text": "Remote Desktop Protocol should not be exposed directly to untrusted networks. Where RDP is required, enforce Network Level Authentication (NLA), require multi-factor authentication, and restrict access via firewall rules or a VPN/bastion host rather than direct internet exposure. Unrestricted RDP exposure is one of the most common initial access vectors in ransomware incidents.",
+          "applies_to": [
+            "rdp",
+            "ms-wbt-server",
+            "windows",
+            "windows_server"
+          ],
+          "level": 1,
+          "remediation_type": "network_configuration",
+          "similarity_score": 0.087
+        }
+      ],
+      "service_tags_used": [
+        "microsoft-ds",
+        "windows_server"
+      ]
+    }
+  },
+  {
+    "type": "asset",
+    "host": "10.20.30.1",
+    "hostname": "dc02.corp.local",
+    "os_guess": "Microsoft Windows Server 2012 R2",
+    "port": 3389,
+    "protocol": "tcp",
+    "service": "ms-wbt-server",
+    "product": "Microsoft Terminal Services",
+    "version": null,
+    "cve_refs": [],
+    "nse_script": null,
+    "raw_output": null,
+    "severity_score": 1.5,
+    "severity_band": "LOW",
+    "scoring_rationale": "Baseline exposure risk for open 'ms-wbt-server' service",
+    "grounding_context": {
+      "cve_records": [],
+      "cis_matches": [
+        {
+          "id": "CIS-RDP-001",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Remote Access",
+          "control_title": "Restrict RDP exposure and enforce Network Level Authentication",
+          "text": "Remote Desktop Protocol should not be exposed directly to untrusted networks. Where RDP is required, enforce Network Level Authentication (NLA), require multi-factor authentication, and restrict access via firewall rules or a VPN/bastion host rather than direct internet exposure. Unrestricted RDP exposure is one of the most common initial access vectors in ransomware incidents.",
+          "applies_to": [
+            "rdp",
+            "ms-wbt-server",
+            "windows",
+            "windows_server"
+          ],
+          "level": 1,
+          "remediation_type": "network_configuration",
+          "similarity_score": 0.086
+        }
+      ],
+      "service_tags_used": [
+        "ms-wbt-server"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.1",
+    "hostname": "dc02.corp.local",
+    "os_guess": "Microsoft Windows Server 2012 R2",
+    "port": 3389,
+    "protocol": "tcp",
+    "service": "ms-wbt-server",
+    "product": "Microsoft Terminal Services",
+    "version": null,
+    "cve_refs": [],
+    "nse_script": "rdp-vuln-ms12-020",
+    "raw_output": "VULNERABLE: MS12-020 Remote Desktop Protocol Denial of Service",
+    "severity_score": 7.5,
+    "severity_band": "HIGH",
+    "scoring_rationale": "Unauthenticated remote denial-of-service against RDP service",
+    "grounding_context": {
+      "cve_records": [],
+      "cis_matches": [
+        {
+          "id": "CIS-RDP-001",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Remote Access",
+          "control_title": "Restrict RDP exposure and enforce Network Level Authentication",
+          "text": "Remote Desktop Protocol should not be exposed directly to untrusted networks. Where RDP is required, enforce Network Level Authentication (NLA), require multi-factor authentication, and restrict access via firewall rules or a VPN/bastion host rather than direct internet exposure. Unrestricted RDP exposure is one of the most common initial access vectors in ransomware incidents.",
+          "applies_to": [
+            "rdp",
+            "ms-wbt-server",
+            "windows",
+            "windows_server"
+          ],
+          "level": 1,
+          "remediation_type": "network_configuration",
+          "similarity_score": 0.28
+        }
+      ],
+      "service_tags_used": [
+        "ms-wbt-server"
+      ]
+    }
+  },
+  {
+    "type": "asset",
+    "host": "10.20.30.2",
+    "hostname": "web-apache2-02.corp.local",
+    "os_guess": "Linux 3.10 - 4.6",
+    "port": 80,
+    "protocol": "tcp",
+    "service": "http",
+    "product": "Apache httpd",
+    "version": "2.4.38",
+    "cve_refs": [],
+    "nse_script": null,
+    "raw_output": null,
+    "severity_score": 0.0,
+    "severity_band": "INFO",
+    "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+    "grounding_context": {
+      "cve_records": [],
+      "cis_matches": [
+        {
+          "id": "CIS-WEB-001",
+          "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+          "section": "Server Hardening",
+          "control_title": "Keep web server software on a supported, patched version",
+          "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+          "applies_to": [
+            "http",
+            "https",
+            "apache_httpd"
+          ],
+          "level": 1,
+          "remediation_type": "patch_management",
+          "similarity_score": 0.309
+        },
+        {
+          "id": "CIS-TLS-001",
+          "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+          "section": "Transport Security",
+          "control_title": "Monitor and renew TLS certificates before expiry",
+          "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+          "applies_to": [
+            "https",
+            "ssl",
+            "tls",
+            "apache_httpd",
+            "nginx"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.0
+        }
+      ],
+      "service_tags_used": [
+        "http",
+        "apache_httpd"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.2",
+    "hostname": "web-apache2-02.corp.local",
+    "os_guess": "Linux 3.10 - 4.6",
+    "port": 80,
+    "protocol": "tcp",
+    "service": "http",
+    "product": "Apache httpd",
+    "version": "2.4.38",
+    "cve_refs": [
+      "CVE-2019-0211"
+    ],
+    "nse_script": "http-vuln-cve2019-0211",
+    "raw_output": "VULNERABLE: Apache scoreboard manipulation allows privilege escalation to root. IDs: CVE:CVE-2019-0211",
+    "severity_score": 7.8,
+    "severity_band": "HIGH",
+    "scoring_rationale": "CVSS v3 base score 7.8 from ['CVE-2019-0211']",
+    "grounding_context": {
+      "cve_records": [
+        {
+          "id": "CVE-2019-0211",
+          "text": "In Apache HTTP Server 2.4 releases 2.4.17 to 2.4.38, with MPM event, worker or prefork, code executing in less-privileged child processes or threads (including scripts executed by an in-process scripting interpreter) could execute arbitrary code with the privileges of the parent process (usually root) by manipulating the scoreboard. Non-Unix systems are not affected.",
+          "cvss_v3_score": 7.8,
+          "cvss_v3_vector": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "cvss_severity": "HIGH",
+          "cwe_ids": [
+            "CWE-416",
+            "CWE-416"
+          ],
+          "published_date": "2019-04-08T22:29:00.387",
+          "last_modified_date": "2026-06-17T02:07:58.710",
+          "references": [
+            "http://lists.opensuse.org/opensuse-security-announce/2019-04/msg00051.html",
+            "http://lists.opensuse.org/opensuse-security-announce/2019-04/msg00061.html",
+            "http://lists.opensuse.org/opensuse-security-announce/2019-04/msg00084.html",
+            "http://packetstormsecurity.com/files/152386/Apache-2.4.38-Root-Privilege-Escalation.html",
+            "http://packetstormsecurity.com/files/152415/Slackware-Security-Advisory-httpd-Updates.html"
+          ],
+          "kev_listed": null,
+          "kev_date_added": null
+        }
+      ],
+      "cis_matches": [
+        {
+          "id": "CIS-WEB-001",
+          "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+          "section": "Server Hardening",
+          "control_title": "Keep web server software on a supported, patched version",
+          "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+          "applies_to": [
+            "http",
+            "https",
+            "apache_httpd"
+          ],
+          "level": 1,
+          "remediation_type": "patch_management",
+          "similarity_score": 0.255
+        },
+        {
+          "id": "CIS-TLS-001",
+          "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+          "section": "Transport Security",
+          "control_title": "Monitor and renew TLS certificates before expiry",
+          "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+          "applies_to": [
+            "https",
+            "ssl",
+            "tls",
+            "apache_httpd",
+            "nginx"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.0
+        }
+      ],
+      "service_tags_used": [
+        "http",
+        "apache_httpd"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.2",
+    "hostname": "web-apache2-02.corp.local",
+    "os_guess": "Linux 3.10 - 4.6",
+    "port": 80,
+    "protocol": "tcp",
+    "service": "http",
+    "product": "Apache httpd",
+    "version": "2.4.38",
+    "cve_refs": [
+      "CVE-2017-15715"
+    ],
+    "nse_script": "http-vuln-cve2017-15715",
+    "raw_output": "VULNERABLE: FilesMatch newline bypass permits restricted file upload. IDs: CVE:CVE-2017-15715",
+    "severity_score": 8.1,
+    "severity_band": "HIGH",
+    "scoring_rationale": "CVSS v3 base score 8.1 from ['CVE-2017-15715']",
+    "grounding_context": {
+      "cve_records": [
+        {
+          "id": "CVE-2017-15715",
+          "text": "In Apache httpd 2.4.0 to 2.4.29, the expression specified in <FilesMatch> could match '$' to a newline character in a malicious filename, rather than matching only the end of the filename. This could be exploited in environments where uploads of some files are are externally blocked, but only by matching the trailing portion of the filename.",
+          "cvss_v3_score": 8.1,
+          "cvss_v3_vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss_severity": "HIGH",
+          "cwe_ids": [
+            "CWE-20"
+          ],
+          "published_date": "2018-03-26T15:29:00.287",
+          "last_modified_date": "2026-06-17T01:08:09.157",
+          "references": [
+            "http://www.openwall.com/lists/oss-security/2018/03/24/6",
+            "http://www.securityfocus.com/bid/103525",
+            "http://www.securitytracker.com/id/1040570",
+            "https://access.redhat.com/errata/RHSA-2018:3558",
+            "https://access.redhat.com/errata/RHSA-2019:0366"
+          ],
+          "kev_listed": null,
+          "kev_date_added": null
+        }
+      ],
+      "cis_matches": [
+        {
+          "id": "CIS-WEB-001",
+          "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+          "section": "Server Hardening",
+          "control_title": "Keep web server software on a supported, patched version",
+          "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+          "applies_to": [
+            "http",
+            "https",
+            "apache_httpd"
+          ],
+          "level": 1,
+          "remediation_type": "patch_management",
+          "similarity_score": 0.269
+        },
+        {
+          "id": "CIS-TLS-001",
+          "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+          "section": "Transport Security",
+          "control_title": "Monitor and renew TLS certificates before expiry",
+          "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+          "applies_to": [
+            "https",
+            "ssl",
+            "tls",
+            "apache_httpd",
+            "nginx"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.0
+        }
+      ],
+      "service_tags_used": [
+        "http",
+        "apache_httpd"
+      ]
+    }
+  },
+  {
+    "type": "asset",
+    "host": "10.20.30.2",
+    "hostname": "web-apache2-02.corp.local",
+    "os_guess": "Linux 3.10 - 4.6",
+    "port": 443,
+    "protocol": "tcp",
+    "service": "https",
+    "product": "Apache httpd",
+    "version": "2.4.38",
+    "cve_refs": [],
+    "nse_script": null,
+    "raw_output": null,
+    "severity_score": 0.0,
+    "severity_band": "INFO",
+    "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+    "grounding_context": {
+      "cve_records": [],
+      "cis_matches": [
+        {
+          "id": "CIS-WEB-001",
+          "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+          "section": "Server Hardening",
+          "control_title": "Keep web server software on a supported, patched version",
+          "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+          "applies_to": [
+            "http",
+            "https",
+            "apache_httpd"
+          ],
+          "level": 1,
+          "remediation_type": "patch_management",
+          "similarity_score": 0.309
+        },
+        {
+          "id": "CIS-TLS-001",
+          "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+          "section": "Transport Security",
+          "control_title": "Monitor and renew TLS certificates before expiry",
+          "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+          "applies_to": [
+            "https",
+            "ssl",
+            "tls",
+            "apache_httpd",
+            "nginx"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.0
+        }
+      ],
+      "service_tags_used": [
+        "https",
+        "tls",
+        "apache_httpd",
+        "ssl"
+      ]
+    }
+  }
+]

@@ -1,0 +1,393 @@
+[
+  {
+    "type": "asset",
+    "host": "10.20.30.1",
+    "hostname": "srv-ssh2-01.corp.local",
+    "os_guess": "Linux 5.4 - 6.1",
+    "port": 22,
+    "protocol": "tcp",
+    "service": "ssh",
+    "product": "OpenSSH",
+    "version": "9.3",
+    "cve_refs": [],
+    "nse_script": null,
+    "raw_output": null,
+    "severity_score": 0.0,
+    "severity_band": "INFO",
+    "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+    "grounding_context": {
+      "cve_records": [],
+      "cis_matches": [
+        {
+          "id": "CIS-SSH-001",
+          "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+          "section": "Remote Access",
+          "control_title": "Disable password authentication in favor of key-based SSH login",
+          "text": "SSH should be configured to disable password authentication and require public-key authentication instead, reducing exposure to credential-stuffing and brute-force attacks. Combine this with disabling root login over SSH and restricting access to specific source networks where feasible.",
+          "applies_to": [
+            "ssh",
+            "openssh"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.365
+        }
+      ],
+      "service_tags_used": [
+        "ssh",
+        "openssh"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.1",
+    "hostname": "srv-ssh2-01.corp.local",
+    "os_guess": "Linux 5.4 - 6.1",
+    "port": 22,
+    "protocol": "tcp",
+    "service": "ssh",
+    "product": "OpenSSH",
+    "version": "9.3",
+    "cve_refs": [
+      "CVE-2023-38408"
+    ],
+    "nse_script": "ssh-vuln-agent-pkcs11",
+    "raw_output": "VULNERABLE: ssh-agent PKCS#11 unsanitized search path enables remote code execution when agent is forwarded. IDs: CVE:CVE-2023-38408",
+    "severity_score": 9.8,
+    "severity_band": "CRITICAL",
+    "scoring_rationale": "CVSS v3 base score 9.8 from ['CVE-2023-38408']",
+    "grounding_context": {
+      "cve_records": [
+        {
+          "id": "CVE-2023-38408",
+          "text": "The PKCS#11 feature in ssh-agent in OpenSSH before 9.3p2 has an insufficiently trustworthy search path, leading to remote code execution if an agent is forwarded to an attacker-controlled system. (Code in /usr/lib is not necessarily safe for loading into ssh-agent.) NOTE: this issue exists because of an incomplete fix for CVE-2016-10009.",
+          "cvss_v3_score": 9.8,
+          "cvss_v3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss_severity": "CRITICAL",
+          "cwe_ids": [
+            "CWE-428",
+            "CWE-428"
+          ],
+          "published_date": "2023-07-20T03:15:10.170",
+          "last_modified_date": "2026-06-17T06:10:06.760",
+          "references": [
+            "http://packetstormsecurity.com/files/173661/OpenSSH-Forwarded-SSH-Agent-Remote-Code-Execution.html",
+            "http://www.openwall.com/lists/oss-security/2023/07/20/1",
+            "http://www.openwall.com/lists/oss-security/2023/07/20/2",
+            "http://www.openwall.com/lists/oss-security/2023/09/22/11",
+            "http://www.openwall.com/lists/oss-security/2023/09/22/9"
+          ],
+          "kev_listed": null,
+          "kev_date_added": null
+        }
+      ],
+      "cis_matches": [
+        {
+          "id": "CIS-SSH-001",
+          "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+          "section": "Remote Access",
+          "control_title": "Disable password authentication in favor of key-based SSH login",
+          "text": "SSH should be configured to disable password authentication and require public-key authentication instead, reducing exposure to credential-stuffing and brute-force attacks. Combine this with disabling root login over SSH and restricting access to specific source networks where feasible.",
+          "applies_to": [
+            "ssh",
+            "openssh"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.356
+        }
+      ],
+      "service_tags_used": [
+        "ssh",
+        "openssh"
+      ]
+    }
+  },
+  {
+    "type": "asset",
+    "host": "10.20.30.2",
+    "hostname": "srv-tls-01.corp.local",
+    "os_guess": "Linux 3.10 - 4.6",
+    "port": 443,
+    "protocol": "tcp",
+    "service": "https",
+    "product": "OpenSSL",
+    "version": "1.0.1e",
+    "cve_refs": [],
+    "nse_script": null,
+    "raw_output": null,
+    "severity_score": 0.0,
+    "severity_band": "INFO",
+    "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+    "grounding_context": {
+      "cve_records": [],
+      "cis_matches": [
+        {
+          "id": "CIS-WEB-001",
+          "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+          "section": "Server Hardening",
+          "control_title": "Keep web server software on a supported, patched version",
+          "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+          "applies_to": [
+            "http",
+            "https",
+            "apache_httpd"
+          ],
+          "level": 1,
+          "remediation_type": "patch_management",
+          "similarity_score": 0.141
+        },
+        {
+          "id": "CIS-TLS-001",
+          "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+          "section": "Transport Security",
+          "control_title": "Monitor and renew TLS certificates before expiry",
+          "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+          "applies_to": [
+            "https",
+            "ssl",
+            "tls",
+            "apache_httpd",
+            "nginx"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.0
+        }
+      ],
+      "service_tags_used": [
+        "https",
+        "tls",
+        "ssl"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.2",
+    "hostname": "srv-tls-01.corp.local",
+    "os_guess": "Linux 3.10 - 4.6",
+    "port": 443,
+    "protocol": "tcp",
+    "service": "https",
+    "product": "OpenSSL",
+    "version": "1.0.1e",
+    "cve_refs": [
+      "CVE-2014-0160"
+    ],
+    "nse_script": "ssl-heartbleed",
+    "raw_output": "VULNERABLE: OpenSSL heartbeat extension buffer over-read leaks process memory (Heartbleed). Risk factor: HIGH  IDs: CVE:CVE-2014-0160",
+    "severity_score": 7.5,
+    "severity_band": "HIGH",
+    "scoring_rationale": "CVSS v3 base score 7.5 from ['CVE-2014-0160']",
+    "grounding_context": {
+      "cve_records": [
+        {
+          "id": "CVE-2014-0160",
+          "text": "The (1) TLS and (2) DTLS implementations in OpenSSL 1.0.1 before 1.0.1g do not properly handle Heartbeat Extension packets, which allows remote attackers to obtain sensitive information from process memory via crafted packets that trigger a buffer over-read, as demonstrated by reading private keys, related to d1_both.c and t1_lib.c, aka the Heartbleed bug.",
+          "cvss_v3_score": 7.5,
+          "cvss_v3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "cvss_severity": "HIGH",
+          "cwe_ids": [
+            "CWE-125",
+            "CWE-125"
+          ],
+          "published_date": "2014-04-07T22:55:03.893",
+          "last_modified_date": "2026-06-17T00:02:24.467",
+          "references": [
+            "http://advisories.mageia.org/MGASA-2014-0165.html",
+            "http://blog.fox-it.com/2014/04/08/openssl-heartbleed-bug-live-blog/",
+            "http://cogentdatahub.com/ReleaseNotes.html",
+            "http://download.schneider-electric.com/files?p_Doc_Ref=SEVD%202014-119-01",
+            "http://git.openssl.org/gitweb/?p=openssl.git%3Ba=commit%3Bh=96db9023b881d7cd9f379b0c154650d6c108e9a3"
+          ],
+          "kev_listed": null,
+          "kev_date_added": null
+        }
+      ],
+      "cis_matches": [
+        {
+          "id": "CIS-TLS-001",
+          "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+          "section": "Transport Security",
+          "control_title": "Monitor and renew TLS certificates before expiry",
+          "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+          "applies_to": [
+            "https",
+            "ssl",
+            "tls",
+            "apache_httpd",
+            "nginx"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.0
+        },
+        {
+          "id": "CIS-WEB-001",
+          "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+          "section": "Server Hardening",
+          "control_title": "Keep web server software on a supported, patched version",
+          "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+          "applies_to": [
+            "http",
+            "https",
+            "apache_httpd"
+          ],
+          "level": 1,
+          "remediation_type": "patch_management",
+          "similarity_score": 0.0
+        }
+      ],
+      "service_tags_used": [
+        "https",
+        "tls",
+        "ssl"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.2",
+    "hostname": "srv-tls-01.corp.local",
+    "os_guess": "Linux 3.10 - 4.6",
+    "port": 443,
+    "protocol": "tcp",
+    "service": "https",
+    "product": "OpenSSL",
+    "version": "1.0.1e",
+    "cve_refs": [
+      "CVE-2014-3566"
+    ],
+    "nse_script": "ssl-poodle",
+    "raw_output": "VULNERABLE: SSLv3 CBC padding oracle allows cleartext recovery (POODLE). IDs: CVE:CVE-2014-3566",
+    "severity_score": 3.4,
+    "severity_band": "LOW",
+    "scoring_rationale": "CVSS v3 base score 3.4 from ['CVE-2014-3566']",
+    "grounding_context": {
+      "cve_records": [
+        {
+          "id": "CVE-2014-3566",
+          "text": "The SSL protocol 3.0, as used in OpenSSL through 1.0.1i and other products, uses nondeterministic CBC padding, which makes it easier for man-in-the-middle attackers to obtain cleartext data via a padding-oracle attack, aka the \"POODLE\" issue.",
+          "cvss_v3_score": 3.4,
+          "cvss_v3_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:C/C:L/I:N/A:N",
+          "cvss_severity": "LOW",
+          "cwe_ids": [
+            "CWE-310",
+            "CWE-329"
+          ],
+          "published_date": "2014-10-15T00:55:02.137",
+          "last_modified_date": "2026-06-17T00:08:29.637",
+          "references": [
+            "ftp://ftp.netbsd.org/pub/NetBSD/security/advisories/NetBSD-SA2014-015.txt.asc",
+            "http://advisories.mageia.org/MGASA-2014-0416.html",
+            "http://aix.software.ibm.com/aix/efixes/security/openssl_advisory11.asc",
+            "http://archives.neohapsis.com/archives/bugtraq/2014-10/0101.html",
+            "http://archives.neohapsis.com/archives/bugtraq/2014-10/0103.html"
+          ],
+          "kev_listed": null,
+          "kev_date_added": null
+        }
+      ],
+      "cis_matches": [
+        {
+          "id": "CIS-TLS-001",
+          "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+          "section": "Transport Security",
+          "control_title": "Monitor and renew TLS certificates before expiry",
+          "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+          "applies_to": [
+            "https",
+            "ssl",
+            "tls",
+            "apache_httpd",
+            "nginx"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.0
+        },
+        {
+          "id": "CIS-WEB-001",
+          "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+          "section": "Server Hardening",
+          "control_title": "Keep web server software on a supported, patched version",
+          "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+          "applies_to": [
+            "http",
+            "https",
+            "apache_httpd"
+          ],
+          "level": 1,
+          "remediation_type": "patch_management",
+          "similarity_score": 0.0
+        }
+      ],
+      "service_tags_used": [
+        "https",
+        "tls",
+        "ssl"
+      ]
+    }
+  },
+  {
+    "type": "asset",
+    "host": "10.20.30.2",
+    "hostname": "srv-tls-01.corp.local",
+    "os_guess": "Linux 3.10 - 4.6",
+    "port": 8443,
+    "protocol": "tcp",
+    "service": "https",
+    "product": "OpenSSL",
+    "version": "1.0.1e",
+    "cve_refs": [],
+    "nse_script": null,
+    "raw_output": null,
+    "severity_score": 0.0,
+    "severity_band": "INFO",
+    "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+    "grounding_context": {
+      "cve_records": [],
+      "cis_matches": [
+        {
+          "id": "CIS-WEB-001",
+          "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+          "section": "Server Hardening",
+          "control_title": "Keep web server software on a supported, patched version",
+          "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+          "applies_to": [
+            "http",
+            "https",
+            "apache_httpd"
+          ],
+          "level": 1,
+          "remediation_type": "patch_management",
+          "similarity_score": 0.141
+        },
+        {
+          "id": "CIS-TLS-001",
+          "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+          "section": "Transport Security",
+          "control_title": "Monitor and renew TLS certificates before expiry",
+          "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+          "applies_to": [
+            "https",
+            "ssl",
+            "tls",
+            "apache_httpd",
+            "nginx"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.0
+        }
+      ],
+      "service_tags_used": [
+        "https",
+        "tls",
+        "ssl"
+      ]
+    }
+  }
+]

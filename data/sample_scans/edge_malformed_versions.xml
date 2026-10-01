@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="file:///usr/local/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.94 scan initiated as: nmap -sV -oX edge_malformed_versions.xml 192.168.1.70 -->
+<nmaprun scanner="nmap" args="nmap -sV -oX edge_malformed_versions.xml 192.168.1.70" start="1755080400" startstr="Wed Aug 13 09:00:00 2026" version="7.94" xmloutputversion="1.05">
+  <scaninfo type="syn" protocol="tcp" numservices="1000" services="1-1000"/>
+  <verbose level="0"/>
+  <debugging level="0"/>
+  <host starttime="1755080401" endtime="1755080440">
+    <status state="up" reason="syn-ack" reason_ttl="64"/>
+    <address addr="192.168.1.70" addrtype="ipv4"/>
+    <hostnames>
+      <hostname name="legacy-app.corp.local" type="PTR"/>
+    </hostnames>
+    <ports>
+      <extraports state="closed" count="995"/>
+      <port protocol="tcp" portid="80">
+        <state state="open" reason="syn-ack" reason_ttl="64"/>
+        <service name="http" product="Apache httpd" version="v1..2.3-beta+exp.sha.5114f85-" method="probed" conf="10"/>
+      </port>
+      <port protocol="tcp" portid="443">
+        <state state="open" reason="syn-ack" reason_ttl="64"/>
+        <service name="https" product="Apache httpd" version="2.4.52&quot; onclick=&quot;alert(1)" extrainfo="&lt;script&gt;test&lt;/script&gt;" method="probed" conf="10"/>
+      </port>
+      <port protocol="tcp" portid="3306">
+        <state state="open" reason="syn-ack" reason_ttl="64"/>
+        <service name="mysql" product="MySQL" version="" method="probed" conf="3"/>
+        <script id="mysql-info" output="MySQL 5.7.32 banner, no CVE here, just version string is empty"/>
+      </port>
+      <port protocol="tcp" portid="9999">
+        <state state="open" reason="syn-ack" reason_ttl="64"/>
+        <service name="unknown" product="VeryLongProductNameThatExceedsNormalLengthAndContainsUnicode—Test™" version="9.9.9.9.9.9.9.9.9.9-very-long-version-string-that-is-supposed-to-test-buffer-handling-and-truncation-behaviour-in-downstream-systems-1234567890" method="probed" conf="1"/>
+        <script id="banner" output="Just a banner, not VULNERABLE, no CVE"/>
+      </port>
+      <port protocol="tcp" portid="65535">
+        <state state="open" reason="syn-ack" reason_ttl="64"/>
+        <service name="telnet" product="BusyBox telnetd" version="1.35.0" method="probed" conf="10"/>
+      </port>
+    </ports>
+    <os>
+      <osmatch name="Linux 2.6" accuracy="90"/>
+    </os>
+  </host>
+  <runstats>
+    <finished time="1755080440" timestr="Wed Aug 13 09:01:00 2026" elapsed="40.0" summary="Nmap done at Wed Aug 13 09:01:00 2026; 1 IP addresses (1 hosts up) scanned in 40.0 seconds" exit="success"/>
+    <hosts up="1" down="0" total="1"/>
+  </runstats>
+</nmaprun>

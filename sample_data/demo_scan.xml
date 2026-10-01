@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="file:///usr/local/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.94 scan initiated as: nmap -sS -sV -O -script smb-vuln-ms17-010,mysql-vuln-cve2012-2122 -oX demo_scan.xml 192.168.1.10-12 -->
+<!-- Demo scan - synthetic, hand-crafted for capstone live review. No live network was scanned. -->
+<nmaprun scanner="nmap" args="nmap -sS -sV -O --script smb-vuln-ms17-010,mysql-vuln-cve2012-2122 -p 22,80,139,443,445,3306 -oX demo_scan.xml 192.168.1.10-12" start="1755080400" startstr="Wed Aug 13 09:00:00 2026" version="7.94" xmloutputversion="1.05">
+  <scaninfo type="syn" protocol="tcp" numservices="6" services="22,80,139,443,445,3306"/>
+  <verbose level="0"/>
+  <debugging level="0"/>
+
+  <host starttime="1755080401" endtime="1755080455">
+    <status state="up" reason="arp-response" reason_ttl="0"/>
+    <address addr="192.168.1.10" addrtype="ipv4"/>
+    <address addr="00:0C:29:3A:5B:7E" addrtype="mac" vendor="VMware, Inc."/>
+    <hostnames>
+      <hostname name="fileserver01.corp.local" type="PTR"/>
+    </hostnames>
+    <ports>
+      <extraports state="filtered" count="65530"/>
+      <port protocol="tcp" portid="139">
+        <state state="open" reason="syn-ack" reason_ttl="128"/>
+        <service name="netbios-ssn" product="Microsoft Windows netbios-ssn" method="probed" conf="10"/>
+      </port>
+      <port protocol="tcp" portid="445">
+        <state state="open" reason="syn-ack" reason_ttl="128"/>
+        <service name="microsoft-ds" product="Windows Server 2008 R2 SMBv1" version="6.1.7601" extrainfo="workgroup: CORP" ostype="Windows" method="probed" conf="10"/>
+        <script id="smb-vuln-ms17-010" output="VULNERABLE: Remote Code Execution vulnerability in Microsoft SMBv1 servers (ms17-010) State: VULNERABLE Risk factor: HIGH  IDs: CVE:CVE-2017-0143 Disclosure date: 2017-03-14 References: https://technet.microsoft.com/en-us/library/security/ms17-010.aspx"/>
+      </port>
+    </ports>
+    <os>
+      <osmatch name="Microsoft Windows Server 2008 R2 SP1" accuracy="98"/>
+      <osclass osfamily="Windows" osgen="7" accuracy="98"/>
+    </os>
+    <times srtt="512" rttvar="30" to="100000"/>
+  </host>
+
+  <host starttime="1755080401" endtime="1755080460">
+    <status state="up" reason="arp-response" reason_ttl="0"/>
+    <address addr="192.168.1.11" addrtype="ipv4"/>
+    <address addr="00:0C:29:AA:1C:23" addrtype="mac" vendor="VMware, Inc."/>
+    <hostnames>
+      <hostname name="dbserver01.corp.local" type="PTR"/>
+    </hostnames>
+    <ports>
+      <extraports state="closed" count="65532"/>
+      <port protocol="tcp" portid="22">
+        <state state="open" reason="syn-ack" reason_ttl="64"/>
+        <service name="ssh" product="OpenSSH" version="7.4" extrainfo="protocol 2.0" ostype="Linux" method="probed" conf="10"/>
+      </port>
+      <port protocol="tcp" portid="3306">
+        <state state="open" reason="syn-ack" reason_ttl="64"/>
+        <service name="mysql" product="MySQL" version="5.1.63" method="probed" conf="10"/>
+        <script id="mysql-vuln-cve2012-2122" output="VULNERABLE: MySQL/MariaDB weak password authentication security bypass State: VULNERABLE (Exploitable) Risk factor: HIGH  IDs: CVE:CVE-2012-2122 Disclosure date: 2012-06-11"/>
+      </port>
+    </ports>
+    <os>
+      <osmatch name="Linux 4.15 - 5.6" accuracy="95"/>
+      <osclass osfamily="Linux" osgen="4.X" accuracy="95"/>
+    </os>
+    <times srtt="420" rttvar="25" to="100000"/>
+  </host>
+
+  <host starttime="1755080401" endtime="1755080450">
+    <status state="up" reason="arp-response" reason_ttl="0"/>
+    <address addr="192.168.1.12" addrtype="ipv4"/>
+    <address addr="00:0C:29:BB:2D:34" addrtype="mac" vendor="VMware, Inc."/>
+    <hostnames>
+      <hostname name="webserver01.corp.local" type="PTR"/>
+    </hostnames>
+    <ports>
+      <extraports state="filtered" count="65532"/>
+      <port protocol="tcp" portid="80">
+        <state state="open" reason="syn-ack" reason_ttl="64"/>
+        <service name="http" product="Apache httpd" version="2.4.52" extrainfo="(Ubuntu)" method="probed" conf="10"/>
+      </port>
+      <port protocol="tcp" portid="443">
+        <state state="open" reason="syn-ack" reason_ttl="64"/>
+        <service name="https" product="Apache httpd" version="2.4.52" extrainfo="(Ubuntu)" tunnel="ssl" method="probed" conf="10"/>
+      </port>
+    </ports>
+    <os>
+      <osmatch name="Linux 5.4 - 5.15" accuracy="96"/>
+      <osclass osfamily="Linux" osgen="5.X" accuracy="96"/>
+    </os>
+    <times srtt="380" rttvar="20" to="100000"/>
+  </host>
+
+  <runstats>
+    <finished time="1755080460" timestr="Wed Aug 13 09:01:00 2026" elapsed="60.32" summary="Nmap done at Wed Aug 13 09:01:00 2026; 3 IP addresses (3 hosts up) scanned in 60.32 seconds" exit="success"/>
+    <hosts up="3" down="0" total="3"/>
+  </runstats>
+</nmaprun>

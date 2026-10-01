@@ -1,0 +1,15 @@
+[
+  {
+    "id": "CIS-SSH-001",
+    "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+    "section": "Remote Access",
+    "control_title": "Disable password authentication in favor of key-based SSH login",
+    "text": "SSH should be configured to disable password authentication and require public-key authentication instead, reducing exposure to credential-stuffing and brute-force attacks. Combine this with disabling root login over SSH and restricting access to specific source networks where feasible.",
+    "applies_to": [
+      "ssh",
+      "openssh"
+    ],
+    "level": 1,
+    "remediation_type": "configuration"
+  }
+]

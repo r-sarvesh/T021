@@ -1,0 +1,267 @@
+{% extends "base_dark.html" %}
+{% block title %}{{ scan_id }} — Cyber Health Assessment{% endblock %}
+{% block breadcrumb %}<a href="{{ url_for('scans_library') }}" style="color:var(--text-muted);">Scans</a> <span style="color:var(--text-faint);">/</span> <span>{{ scan_id }}</span>{% endblock %}
+{% block head %}
+<style>
+  /* Dark overrides for scan detail — keep evidence theme but on dark bg */
+  .host-card { background: var(--card); border:1px solid var(--card-border); border-top:3px solid var(--border); }
+  .host-card .hname { color: var(--text); }
+  .host-card .hip, .host-card .reason { color: var(--text-muted); border-color: var(--border); }
+  .ledger th { background: var(--card); color: var(--text-muted); border-color: var(--border); }
+  .ledger td { border-color: var(--border); color: var(--text); }
+  .ledger tbody tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+  .ledger tbody tr:hover td { background: rgba(0,212,255,0.04); }
+  .exhibit { background: var(--card); border-color: var(--border); border-left-color: var(--accent); }
+  .exhibit.empty { background: transparent; border-left-color: var(--border); }
+  .exhibit .case .id { color: var(--text); }
+  .exhibit .abstract { color: var(--text); }
+  .exhibit .meta { color: var(--text-muted); }
+  .chip { background: var(--card); border-color: var(--border); color: var(--text); }
+  .chip.cve { background: rgba(0,212,255,0.1); border-color: rgba(0,212,255,0.3); color: var(--accent); }
+  .chip.cis { background: rgba(139,148,158,0.1); border-color: var(--border); color: var(--text-muted); }
+  .banner { background: var(--card); border-color: var(--border); }
+  .banner-ok { border-left-color: var(--evidence); }
+  .banner-warn { border-left-color: var(--critical); }
+  .toolbar { border-color: var(--border); }
+  .toolbar input, .toolbar select { background: var(--card); border-color: var(--border); color: var(--text); }
+  .sec-label { color: var(--text); }
+  .sec-label .rule { border-color: var(--border); }
+  .readout { color: var(--text-muted); }
+  .readout .sep { color: var(--border); }
+  .mark { background: var(--card); border-color: var(--border); }
+  .export-link { background: var(--card); border-color: var(--border); color: var(--accent); }
+  .export-link:hover { background: rgba(0,212,255,0.08); }
+</style>
+{% endblock %}
+{% block content %}
+
+{# Severity shape icons — color+shape pattern before the word #}
+{% macro sev_icon(band) %}{% if band == 'CRITICAL' %}<i data-lucide="circle-fill" class="shape"></i>{% elif band == 'HIGH' %}<i data-lucide="triangle" class="shape"></i>{% elif band == 'MEDIUM' %}<i data-lucide="circle" class="shape"></i>{% elif band == 'LOW' %}<i data-lucide="circle-dashed" class="shape"></i>{% elif band == 'INFO' %}<i data-lucide="circle-dash" class="shape"></i>{% else %}<i data-lucide="minus" class="shape"></i>{% endif %}{% endmacro %}
+
+{% with msgs = get_flashed_messages(with_categories=true) %}
+{% if msgs %}
+{% for category, message in msgs %}
+<div class="banner banner-{{ 'warn' if category == 'warn' else 'ok' }}" role="status">
+  <i data-lucide="{{ 'alert-triangle' if category == 'warn' else 'check-circle' }}" class="ic ic-{{ 'critical' if category == 'warn' else 'evidence' }}"></i>
+  <span>{{ message }}</span>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<div class="readout" style="margin-bottom:var(--sp-4)">
+  <i data-lucide="scan" class="ic ic-ink"></i> <span>{{ scan_id }}</span>
+  <span class="sep">&middot;</span>
+  <span>{{ findings|length }} findings</span>
+  <span class="sep">&middot;</span>
+  <span>{{ cve_records_total }} CVE record(s) retrieved</span>
+  <span class="sep">&middot;</span>
+  <span>{{ cis_matches_total }} CIS match(es)</span>
+  {% if llm_exists %}
+  <span class="sep">&middot;</span><span class="chip cve"><i data-lucide="sparkles" class="ic"></i>LLM synthesis available</span>
+  {% endif %}
+  <span class="sep">&middot;</span>
+  <a class="export-link" href="{{ url_for('export_scan', scan_id=scan_id) }}" title="Download grounded_findings.json">
+    <i data-lucide="download" class="ic"></i> export JSON
+  </a>
+</div>
+
+{% if host_summary %}
+<div class="sec-label"><i data-lucide="server" class="ic ic-ink"></i> Host risk<span class="rule"></span></div>
+<div class="host-grid">
+  {% for h in host_summary %}
+  <div class="host-card tab-{{ h.risk_band }}{% if h.risk_band in ['INFO'] %} clean{% endif %}">
+    <div class="hname" title="{{ h.hostname or h.host }}">{{ h.hostname or h.host }}</div>
+    <div class="hip"><i data-lucide="network" class="ic"></i> {{ h.host }}</div>
+    <div class="riskline">
+      <span class="riskval riskval-{{ h.risk_band }}">{{ h.adjusted_risk_score }}</span>
+      <span class="mark mark-{{ h.risk_band }}">{{ sev_icon(h.risk_band) }}{{ h.risk_band }}</span>
+    </div>
+    <div class="reason">
+      <i data-lucide="file-text" class="ic" style="margin-right:3px"></i>{{ h.criticality_reason }}
+      <br><span><i data-lucide="monitor" class="ic" style="margin-right:3px"></i>{{ h.os_guess or 'OS unknown' }} &middot; {{ h.open_service_count }} open</span>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+<div class="sec-label"><i data-lucide="list-checks" class="ic ic-ink"></i> Findings
+  <span class="sep">&middot;</span><span class="muted">{{ findings|length }} — every claim below is either cited or explicitly ungrounded</span>
+  <span class="rule"></span>
+</div>
+
+<div class="toolbar">
+  <span class="tlabel"><i data-lucide="filter" class="ic"></i> filter</span>
+  <input type="search" id="q" placeholder="service · CVE · host · product…" style="flex:1">
+  <select id="sev">
+    <option value="">All severities</option>
+    <option>CRITICAL</option><option>HIGH</option><option>MEDIUM</option>
+    <option>LOW</option><option>INFO</option><option>UNSCORED</option>
+  </select>
+  <select id="type">
+    <option value="">All types</option>
+    <option value="vuln">Vulnerabilities</option>
+    <option value="asset">Assets only</option>
+  </select>
+</div>
+
+<div class="panel">
+  <table class="ledger" id="ft">
+    <thead>
+      <tr>
+        <th style="width:110px">Severity</th>
+        <th>Host</th>
+        <th>Service</th>
+        <th style="width:90px">Port</th>
+        <th>CVE refs</th>
+        <th style="width:120px">Grounding</th>
+        <th style="width:190px">Finding / evidence</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for f in findings %}
+      {% set cves = f.grounding_context.cve_records or [] %}
+      {% set ciss = f.grounding_context.cis_matches or [] %}
+      {% set has_evidence = cves or ciss %}
+      <tr data-sev="{{ f.severity_band }}" data-type="{{ f.type }}"
+          data-search="{{ ((f.service or '') ~ ' ' ~ (f.host or '') ~ ' ' ~ ((f.cve_refs or [])|join(' '))) ~ ' ' ~ ((f.hostname or '')) ~ ' ' ~ ((f.product or '')) }}">
+        <td>
+          <span class="mark mark-{{ f.severity_band }}">{{ sev_icon(f.severity_band) }}{{ f.severity_band }}</span>
+          {% if f.severity_score is not none %}
+          <div class="muted" style="font-family:var(--font-mono);font-size:11px;margin-top:3px">{{ '%.1f'|format(f.severity_score) }}</div>
+          {% endif %}
+        </td>
+        <td>
+          <div class="mono" style="font-size:12.5px">{{ f.host }}</div>
+          <div class="muted" style="font-size:11px">{{ f.hostname }}</div>
+        </td>
+        <td>
+          <div>{{ f.service or '&mdash;' }}</div>
+          <div class="muted" style="font-size:11px">{{ f.version or f.product or '' }}</div>
+        </td>
+        <td class="mono-cell">{{ f.port }}/<span class="muted">{{ f.protocol }}</span></td>
+        <td>
+          {% if f.cve_refs %}
+            {% for c in f.cve_refs %}<span class="chip cve">{{ c }}</span>{% endfor %}
+          {% else %}<span class="nocite">&mdash; no CVE ref</span>{% endif %}
+        </td>
+        <td>
+          {% if has_evidence %}
+            <span class="chip cve"><i data-lucide="shield-check" class="ic"></i>{{ cves|length }} CVE</span>
+            {% if ciss %}<span class="chip cis"><i data-lucide="bookmark-check" class="ic"></i>{{ ciss|length }} CIS</span>{% endif %}
+          {% else %}
+            <span class="chip drain"><i data-lucide="shield-x" class="ic"></i>ungrounded</span>
+          {% endif %}
+        </td>
+        <td>
+          {% if f.nse_script %}<div class="mono" style="font-size:12px">{{ f.nse_script }}</div>{% endif %}
+          <details{% if cves and not ciss %} class="has-evidence"{% endif %}>
+            {% if has_evidence %}
+            <summary class="evidence-toggle">Evidence &nbsp;&#9656;</summary>
+            {% else %}
+            <summary class="drain-toggle">No citation available &nbsp;&#9656;</summary>
+            {% endif %}
+            <div class="exhibit{% if not has_evidence %} empty{% endif %}">
+              {% if f.scoring_rationale %}
+              <div class="meta" style="margin-bottom:6px">Scoring rationale: {{ f.scoring_rationale }}</div>
+              {% endif %}
+
+              {% if not has_evidence %}
+                No citation available for this finding.
+                {% if not f.cve_refs %}<br><span class="nocite">No CVE was assigned to this NSE result, and no CIS control matched the service.</span>{% endif %}
+              {% endif %}
+
+              {% for rec in cves %}
+              <div class="case">
+                <i data-lucide="file-search" class="ic ic-evidence"></i>
+                <span class="id">{{ rec.id }}</span>
+                {% if rec.not_found or rec.status == 'not_found' %}
+                <span class="mark mark-failed">NOT IN KB</span>
+                <span class="src">unresolved &mdash; no local record</span>
+                {% else %}
+                <span class="mark mark-{{ rec.cvss_severity or 'INFO' }}">{{ sev_icon(rec.cvss_severity or 'INFO') }}{{ rec.cvss_severity or 'INFO' }}</span>
+                <span class="cvss">CVSS&nbsp;<b>{{ rec.cvss_v3_score }}</b></span>
+                {% if rec.kev_listed %}<span class="kev">ACTIVELY EXPLOITED{% if rec.kev_date_added %} {{ rec.kev_date_added }}{% endif %}</span>{% endif %}
+                <span class="src">verified &mdash; CVE record</span>
+                {% endif %}
+              </div>
+              {% if rec.not_found or rec.status == 'not_found' %}
+              <p class="abstract">No local record in the knowledge base for this CVE &mdash; grounding is incomplete for this finding.</p>
+              {% else %}
+              <p class="abstract">{{ rec.text }}</p>
+              <div class="meta">
+                {% if rec.cwe_ids and rec.cwe_ids|length %}<span>CWE: {{ rec.cwe_ids|join(', ') }}</span>{% endif %}
+                {% if rec.published_date %}<span> &middot; published {{ (rec.published_date or '')[:10] }}</span>{% endif %}
+                {% if rec.cvss_v3_vector %}<span> &middot; <span class="mono">{{ rec.cvss_v3_vector }}</span></span>{% endif %}
+              </div>
+              {% if rec.references %}
+              <div class="refs meta">
+                refs:
+                {% for r in rec.references[:3] %}
+                  <a href="{{ r }}">{{ r.split('//')[-1].split('/')[0] }}/&hellip;</a>{% if not loop.last %}, {% endif %}
+                {% endfor %}
+              </div>
+              {% endif %}
+              {% endif %}
+              {% endfor %}
+
+              {% if ciss %}
+              <ul class="cis-list">
+                {% for c in ciss %}
+                <li>
+                  <span>
+                    <span class="chip cis">{{ c.id }}</span>
+                    <span class="csection">{{ c.section }}</span>
+                    {% if c.level is not none %} &middot; L{{ c.level }}{% endif %}
+                    <br><span style="display:inline-block;margin-top:2px">{{ c.control_title }}</span>
+                  </span>
+                  <span class="chip cis"><span class="sim">sim {{ '%.3f'|format(c.similarity_score or 0) }}</span></span>
+                </li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+            </div>
+          </details>
+        </td>
+      </tr>
+      {% else %}
+      <tr><td colspan="7" class="empty">No findings.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+  const q = document.getElementById('q');
+  const sev = document.getElementById('sev');
+  const type = document.getElementById('type');
+  const rows = Array.from(document.querySelectorAll('#ft tbody tr'));
+  const emptyMsg = document.createElement('tr');
+  emptyMsg.innerHTML = '<td colspan="7" class="empty">No findings match the filter.</td>';
+
+  function apply() {
+    const query = q.value.trim().toLowerCase();
+    const sv = sev.value;
+    const ty = type.value;
+    let visible = 0;
+    rows.forEach(r => {
+      const okQ = !query || (r.dataset.search || '').toLowerCase().includes(query);
+      const okS = !sv || r.dataset.sev === sv;
+      const okT = !ty || r.dataset.type === ty;
+      r.style.display = (okQ && okS && okT) ? '' : 'none';
+      if (okQ && okS && okT) visible++;
+    });
+    const tbody = document.querySelector('#ft tbody');
+    const hasEmpty = tbody.contains(emptyMsg);
+    if (visible === 0 && !hasEmpty) tbody.appendChild(emptyMsg);
+    if (visible > 0 && hasEmpty) tbody.removeChild(emptyMsg);
+  }
+  q.addEventListener('input', apply);
+  sev.addEventListener('change', apply);
+  type.addEventListener('change', apply);
+</script>
+{% endblock %}

@@ -1,0 +1,179 @@
+[
+  {
+    "type": "asset",
+    "host": "10.20.30.1",
+    "hostname": "db-mongo-10.corp.local",
+    "os_guess": "Linux 4.15 - 5.6",
+    "port": 27017,
+    "protocol": "tcp",
+    "service": "mongodb",
+    "product": "MongoDB",
+    "version": "3.6.13",
+    "cve_refs": [],
+    "nse_script": null,
+    "raw_output": null,
+    "severity_score": 2.0,
+    "severity_band": "LOW",
+    "scoring_rationale": "Baseline exposure risk for open 'mongodb' service",
+    "grounding_context": {
+      "cve_records": [],
+      "cis_matches": [
+        {
+          "id": "CIS-MONGO-002",
+          "benchmark": "CIS MongoDB Benchmark (illustrative)",
+          "section": "Network Exposure",
+          "control_title": "Bind MongoDB to internal interfaces only",
+          "text": "MongoDB should bind to 127.0.0.1 or internal interfaces, never 0.0.0.0 on a public network. Use firewall rules or security groups to restrict inbound database traffic to the application tier.",
+          "applies_to": [
+            "mongodb"
+          ],
+          "level": 1,
+          "remediation_type": "network_configuration",
+          "similarity_score": 0.17
+        },
+        {
+          "id": "CIS-MONGO-001",
+          "benchmark": "CIS MongoDB Benchmark (illustrative)",
+          "section": "Authentication",
+          "control_title": "Enable MongoDB authentication",
+          "text": "MongoDB should run with authorization enabled. Instances started without --auth accept every connection as the all-powerful role and expose every collection to any reachable client \u00e2\u20ac\u201d a pattern behind several large-scale data breaches.",
+          "applies_to": [
+            "mongodb"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.161
+        }
+      ],
+      "service_tags_used": [
+        "mongodb"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.1",
+    "hostname": "db-mongo-10.corp.local",
+    "os_guess": "Linux 4.15 - 5.6",
+    "port": 27017,
+    "protocol": "tcp",
+    "service": "mongodb",
+    "product": "MongoDB",
+    "version": "3.6.13",
+    "cve_refs": [],
+    "nse_script": "mongodb-info",
+    "raw_output": "VULNERABLE: MongoDB server running with no authentication \u00e2\u20ac\u201d every connection is authorized as admin.",
+    "severity_score": 7.0,
+    "severity_band": "HIGH",
+    "scoring_rationale": "MongoDB exposed with authentication disabled \u2014 unauthenticated access to all collections",
+    "grounding_context": {
+      "cve_records": [],
+      "cis_matches": [
+        {
+          "id": "CIS-MONGO-001",
+          "benchmark": "CIS MongoDB Benchmark (illustrative)",
+          "section": "Authentication",
+          "control_title": "Enable MongoDB authentication",
+          "text": "MongoDB should run with authorization enabled. Instances started without --auth accept every connection as the all-powerful role and expose every collection to any reachable client \u00e2\u20ac\u201d a pattern behind several large-scale data breaches.",
+          "applies_to": [
+            "mongodb"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.227
+        },
+        {
+          "id": "CIS-MONGO-002",
+          "benchmark": "CIS MongoDB Benchmark (illustrative)",
+          "section": "Network Exposure",
+          "control_title": "Bind MongoDB to internal interfaces only",
+          "text": "MongoDB should bind to 127.0.0.1 or internal interfaces, never 0.0.0.0 on a public network. Use firewall rules or security groups to restrict inbound database traffic to the application tier.",
+          "applies_to": [
+            "mongodb"
+          ],
+          "level": 1,
+          "remediation_type": "network_configuration",
+          "similarity_score": 0.16
+        }
+      ],
+      "service_tags_used": [
+        "mongodb"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.1",
+    "hostname": "db-mongo-10.corp.local",
+    "os_guess": "Linux 4.15 - 5.6",
+    "port": 27017,
+    "protocol": "tcp",
+    "service": "mongodb",
+    "product": "MongoDB",
+    "version": "3.6.13",
+    "cve_refs": [
+      "CVE-2019-2386"
+    ],
+    "nse_script": "mongodb-vuln-cve2019-2386",
+    "raw_output": "VULNERABLE: MongoDB authorization session persists after user deletion (user-account conflation). IDs: CVE:CVE-2019-2386",
+    "severity_score": 7.1,
+    "severity_band": "HIGH",
+    "scoring_rationale": "CVSS v3 base score 7.1 from ['CVE-2019-2386']",
+    "grounding_context": {
+      "cve_records": [
+        {
+          "id": "CVE-2019-2386",
+          "text": "After user deletion in MongoDB Server the improper invalidation of authorization sessions allows an authenticated user's session to persist and become conflated with new accounts, if those accounts reuse the names of deleted ones. This issue affects MongoDB Server v4.0 versions prior to 4.0.9; MongoDB Server v3.6 versions prior to 3.6.13 and MongoDB Server v3.4 versions prior to 3.4.22.\n\nWorkaround: \nAfter deleting one or more users, restart any nodes which may have had active user authorization sessions.\n\nRefrain from creating user accounts with the same name as previously deleted accounts.",
+          "cvss_v3_score": 7.1,
+          "cvss_v3_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:H/I:H/A:H",
+          "cvss_severity": "HIGH",
+          "cwe_ids": [
+            "CWE-285",
+            "CWE-613"
+          ],
+          "published_date": "2019-08-06T19:15:13.613",
+          "last_modified_date": "2026-06-17T02:33:44.377",
+          "references": [
+            "https://jira.mongodb.org/browse/SERVER-38984",
+            "https://www.talosintelligence.com/vulnerability_reports/TALOS-2019-0829",
+            "https://jira.mongodb.org/browse/SERVER-38984",
+            "https://www.talosintelligence.com/vulnerability_reports/TALOS-2019-0829"
+          ],
+          "kev_listed": null,
+          "kev_date_added": null
+        }
+      ],
+      "cis_matches": [
+        {
+          "id": "CIS-MONGO-001",
+          "benchmark": "CIS MongoDB Benchmark (illustrative)",
+          "section": "Authentication",
+          "control_title": "Enable MongoDB authentication",
+          "text": "MongoDB should run with authorization enabled. Instances started without --auth accept every connection as the all-powerful role and expose every collection to any reachable client \u00e2\u20ac\u201d a pattern behind several large-scale data breaches.",
+          "applies_to": [
+            "mongodb"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.242
+        },
+        {
+          "id": "CIS-MONGO-002",
+          "benchmark": "CIS MongoDB Benchmark (illustrative)",
+          "section": "Network Exposure",
+          "control_title": "Bind MongoDB to internal interfaces only",
+          "text": "MongoDB should bind to 127.0.0.1 or internal interfaces, never 0.0.0.0 on a public network. Use firewall rules or security groups to restrict inbound database traffic to the application tier.",
+          "applies_to": [
+            "mongodb"
+          ],
+          "level": 1,
+          "remediation_type": "network_configuration",
+          "similarity_score": 0.154
+        }
+      ],
+      "service_tags_used": [
+        "mongodb"
+      ]
+    }
+  }
+]

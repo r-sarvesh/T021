@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Cyber Health Assessment{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,620&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,620&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+  <script defer src="{{ url_for('static', filename='lucide-umd.js') }}"></script>
+  <style>
+    /* ============================================================
+       Design tokens — evidence/chain-of-custody system
+       ============================================================ */
+    :root {
+      --ink:             #14181F;  /* near-black, blue-leaning: text + dark surfaces */
+      --paper:           #F7F6F2;  /* cool off-white, quiet */
+
+      --evidence:        #2A6F6F;  /* teal — ONLY for sourced/grounded/cited states */
+      --signal-critical: #B23A2E;  /* muted brick red — CRITICAL only */
+      --signal-high:     #C97A2B;  /* burnt amber — HIGH only */
+      --signal-medium:   #A37434;  /* weather-worn ochre — MEDIUM */
+      --signal-low:      #6E7A5A;  /* dry olive — LOW */
+      --signal-info:     #5E6B78;  /* slate — INFO */
+      --signal-mute:     #8B8A85;  /* warm grey — UNSCORED / no-CVE / decoy (drained) */
+
+      /* derived — ink with opacity for rules and hairlines */
+      --rule-strong: rgba(20,24,31,.35);
+      --rule:        rgba(20,24,31,.18);
+      --rule-faint:  rgba(20,24,31,.10);
+
+      /* evidence tint backgrounds */
+      --evidence-wash: rgba(42,111,111,.08);
+      --signal-wash:   rgba(178,58,46,.07);
+
+      /* type */
+      --font-display: "Fraunces", "Georgia", serif;
+      --font-body:    "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+      --font-mono:    "IBM Plex Mono", Consolas, "Courier New", monospace;
+
+      /* spacing scale */
+      --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 24px; --sp-6: 36px;
+    }
+
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      background: var(--paper);
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    a { color: var(--evidence); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    a:focus-visible, button:focus-visible, summary:focus-visible,
+    input:focus-visible, select:focus-visible {
+      outline: 2px solid var(--evidence);
+      outline-offset: 2px;
+    }
+
+    /* thin mono header — like the masthead of a lab report */
+    header {
+      display: flex; align-items: baseline; gap: var(--sp-4);
+      padding: var(--sp-3) var(--sp-5);
+      border-bottom: 2px solid var(--ink);
+      background: var(--paper);
+    }
+    .brand { display: flex; align-items: baseline; gap: var(--sp-3); min-width: 0; }
+    .brand h1 {
+      margin: 0;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .brand .sub {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--signal-mute);
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .nav { margin-left: auto; display: flex; gap: var(--sp-4); }
+    .nav a {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .nav a:hover { color: var(--evidence); text-decoration: none; }
+
+    main { padding: var(--sp-5) var(--sp-5) var(--sp-6); max-width: 1180px; margin: 0 auto; }
+
+    footer {
+      padding: var(--sp-4) var(--sp-5) var(--sp-6);
+      text-align: center;
+      color: var(--signal-mute);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: .04em;
+    }
+    footer .pipe { margin: 0 var(--sp-2); color: var(--rule-strong); }
+
+    /* section label — ruled group heading */
+    .sec-label {
+      display: flex; align-items: center; gap: var(--sp-3);
+      font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase; color: var(--ink);
+      margin: var(--sp-6) 0 var(--sp-3);
+    }
+    .sec-label:first-child { margin-top: 0; }
+    .sec-label .rule { flex: 1; border-bottom: 1px solid var(--rule); }
+
+    /* ledger values are always data */
+    code, .mono, [data-mono="true"] { font-family: var(--font-mono); }
+    .muted { color: var(--signal-mute); }
+
+    /* ============================================================
+       Severity marks — flat, ink-ruled, colored edge + shape + text
+       Shape carries the severity pattern; color reinforces it.
+       ============================================================ */
+    .mark {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 10px; font-weight: 600;
+      letter-spacing: .08em; text-transform: uppercase;
+      padding: 3px 8px;
+      border: 1px solid var(--rule-strong);
+      border-left-width: 3px;
+      background: var(--paper);
+      line-height: 1.3;
+      white-space: nowrap;
+    }
+    .mark .shape {
+      width: 7px; height: 7px; flex: 0 0 auto;
+    }
+    .mark-CRITICAL { color: var(--signal-critical); border-left-color: var(--signal-critical); }
+    .mark-HIGH     { color: var(--signal-high);     border-left-color: var(--signal-high); }
+    .mark-MEDIUM   { color: var(--signal-medium);   border-left-color: var(--signal-medium); }
+    .mark-LOW      { color: var(--signal-low);      border-left-color: var(--signal-low); }
+    .mark-INFO     { color: var(--signal-info);     border-left-color: var(--signal-info); }
+    .mark-UNSCORED { color: var(--signal-mute);     border-left-color: var(--signal-mute);
+                     filter: grayscale(.4); }
+    .mark-scored, .mark-failed { letter-spacing: .12em; }
+    .mark-scored  { border-left-color: var(--evidence); color: var(--evidence); }
+    .mark-failed  { border-left-color: var(--signal-critical); color: var(--signal-critical); }
+
+    /* Lucide integration — icons are line-glyph placeholders before text. */
+    .ic { display: inline-block; width: 1em; height: 1em; vertical-align: -0.15em; flex: 0 0 auto; }
+    .ic-lg { width: 64px; height: 64px; }
+    .ic-evidence { color: var(--evidence); }
+    .ic-critical { color: var(--signal-critical); }
+    .ic-high     { color: var(--signal-high); }
+    .ic-mute     { color: var(--signal-mute); }
+    .ic-ink      { color: var(--ink); }
+    .ic-medium   { color: var(--signal-medium); }
+
+    /* ============================================================
+       Index cards — flat, bordered, left-edge risk tab (HOST cards)
+       ============================================================ */
+    .host-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: var(--sp-3);
+    }
+    .host-card {
+      background: var(--paper);
+      border: 1px solid var(--rule-strong);
+      border-radius: 2px;
+      padding: var(--sp-3) var(--sp-4);
+      border-top: 3px solid var(--ink);
+      min-width: 0;
+    }
+    .host-card .hname {
+      font-family: var(--font-display);
+      font-weight: 620;
+      font-size: 17px;
+      letter-spacing: .01em;
+      margin: 0 0 2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .host-card .hip { font-size: 12px; color: var(--signal-mute); }
+    .host-card .riskline { display: flex; align-items: baseline; gap: var(--sp-2); margin: var(--sp-2) 0 var(--sp-2); }
+    .host-card .riskval {
+      font-family: var(--font-mono); font-weight: 600; font-size: 19px;
+    }
+    .riskval-CRITICAL { color: var(--signal-critical); }
+    .riskval-HIGH     { color: var(--signal-high); }
+    .riskval-MEDIUM   { color: var(--signal-medium); }
+    .riskval-LOW      { color: var(--signal-low); }
+    .riskval-INFO     { color: var(--signal-info); }
+    .riskval-UNSCORED { color: var(--signal-mute); }
+    .host-card .reason {
+      font-size: 11px; line-height: 1.4; color: var(--signal-mute);
+      border-top: 1px dotted var(--rule-strong);
+      padding-top: var(--sp-2);
+    }
+    .host-card.tab-CRITICAL { border-top-color: var(--signal-critical); }
+    .host-card.tab-HIGH     { border-top-color: var(--signal-high); }
+    .host-card.tab-MEDIUM   { border-top-color: var(--signal-medium); }
+    .host-card.tab-LOW      { border-top-color: var(--signal-low); }
+    .host-card.tab-INFO     { border-top-color: var(--signal-info); }
+    .host-card.tab-UNSCORED { border-top-color: var(--signal-mute); }
+    .host-card.clean { opacity: .85; }
+
+    /* ============================================================
+       Stat / overview cards (index)
+       ============================================================ */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: var(--sp-2);
+      margin: var(--sp-3) 0;
+    }
+    .stat {
+      border: 1px solid var(--rule);
+      border-top: 3px solid var(--rule-strong);   /* thin identity edge accents the icon */
+      border-radius: 2px;
+      background: var(--paper);
+      padding: var(--sp-3) var(--sp-3);
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .stat .ic-wrap { display: flex; align-items: center; gap: 8px; }
+    .stat .ic { width: 16px; height: 16px; }
+    .stat .num { font-family: var(--font-mono); font-weight: 600; font-size: 22px; }
+    .stat .num a { color: inherit; }
+    .stat .lbl {
+      font-size: 11px; letter-spacing: .06em; text-transform: uppercase;
+      color: var(--signal-mute); margin-top: 2px;
+    }
+    .stat.evidence { border-top-color: var(--evidence); }
+    .stat.drain    { border-top-color: var(--signal-mute); }
+    .stat.good     { border-top-color: var(--signal-low); }
+    .stat.bad      { border-top-color: var(--signal-critical); }
+    .stat.plain    { border-top-color: var(--signal-info); }
+
+    .panel { margin-bottom: var(--sp-5); }
+
+    /* ============================================================
+       Ledger tables — the findings report
+       Zebra striping (subtle) + 1px bottom rule + visible hover.
+       Chose zebra over a per-row rule: both reads as "track the row
+       across the screen" without noise.
+       ============================================================ */
+    .ledger { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .ledger th {
+      font-family: var(--font-mono);
+      font-size: 10.5px; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--ink);
+      text-align: left;
+      padding: var(--sp-3) var(--sp-3);
+      border-bottom: 1px solid var(--rule-strong);
+      background: var(--paper);
+      position: sticky; top: 0;
+    }
+    .ledger td {
+      padding: 14px var(--sp-3);            /* ~1.5x previous row height */
+      border-bottom: 1px solid var(--rule-faint);
+      vertical-align: top;
+    }
+    .ledger tbody tr { transition: background .08s ease; }
+    /* zebra: ~3% ink tint on alternating rows */
+    .ledger tbody tr:nth-child(even) td { background: rgba(20,24,31,.035); }
+    .ledger tbody tr:hover td { background: var(--evidence-wash); }
+    .ledger td.mono-cell { font-family: var(--font-mono); font-size: 12.5px; }
+    .ledger td .row-meta { font-size: 11px; }
+
+    .chip {
+      display: inline-flex; align-items: baseline; gap: 4px;
+      font-family: var(--font-mono); font-size: 11px;
+      border: 1px solid var(--rule-strong);
+      border-radius: 2px;
+      padding: 1px 6px;
+      margin: 1px 2px 1px 0;
+      background: var(--paper);
+      color: var(--ink);
+    }
+    .chip.cve  { border-color: var(--evidence); color: var(--evidence);
+                 background: var(--evidence-wash); }
+    .chip.cis  { border-color: var(--signal-info); color: var(--signal-info); }
+    .chip.drain { border-color: var(--signal-mute); color: var(--signal-mute);
+                  background: transparent; }
+    .chip .sim  { border-left: 1px solid currentColor; padding-left: 5px;
+                  opacity: .8; }
+    .export-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--evidence);
+      border: 1px solid var(--rule-strong); border-radius: 2px;
+      padding: 3px 8px; white-space: nowrap;
+    }
+    .export-link:hover { background: var(--evidence-wash); text-decoration: none; }
+
+    /* ============================================================
+       Tag walls — progressive disclosure
+       Collapsed by default: show a leading slice + "+N more" toggle.
+       Kept visually quieter than headline stats (smaller, muted).
+       ============================================================ */
+    .tagrow {
+      display: flex; align-items: flex-start; gap: var(--sp-3);
+      margin: var(--sp-2) 0;
+    }
+    .tagrow .tlabel {
+      flex: 0 0 auto;
+      font-family: var(--font-mono); font-size: 10.5px;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--signal-mute);
+      padding-top: 3px;
+      min-width: 110px;
+    }
+    .tagrow .tags { display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: center; }
+    .tagrow .chip { font-size: 10.5px; opacity: .72; margin: 0; }
+    .tagrow .chip.cve { opacity: .85; }
+    .tag-more {
+      font-family: var(--font-mono); font-size: 10.5px;
+      letter-spacing: .03em; text-transform: uppercase;
+      color: var(--evidence);
+      background: var(--paper);
+      border: 1px dashed var(--rule-strong);
+      border-radius: 2px;
+      padding: 2px 8px;
+      cursor: pointer;
+    }
+    .tag-more:hover { border-color: var(--evidence); background: var(--evidence-wash); }
+    .tag-hidden { display: none !important; }
+
+    /* ============================================================
+       Login — the verification gate
+       One flat card, evidence icon above the form: being authenticated
+       is "getting verified" in the same spirit as CVE verification.
+       ============================================================ */
+    .login-main { max-width: 100% !important; }
+    .login-wrap {
+      display: flex; justify-content: center; align-items: flex-start;
+      padding-top: 7vh;
+    }
+    .login-card {
+      width: 100%; max-width: 400px;
+      background: var(--paper);
+      border: 1px solid var(--rule-strong);
+      border-top: 3px solid var(--evidence);
+      border-radius: 2px;
+      padding: var(--sp-6) var(--sp-5) var(--sp-5);
+    }
+    .login-card .lock { display: block; margin: 0 auto var(--sp-4); }
+    .login-card h1 {
+      font-family: var(--font-display); font-weight: 620; font-size: 24px;
+      text-align: center; margin: 0 0 var(--sp-2);
+    }
+    .login-card .sub {
+      text-align: center; color: var(--signal-mute); font-size: 12.5px;
+      margin: 0 auto var(--sp-5); max-width: 300px;
+    }
+    .login-field { margin-bottom: var(--sp-4); }
+    .login-field label {
+      display: block;
+      font-family: var(--font-mono); font-size: 10.5px;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--signal-mute); margin-bottom: 5px;
+    }
+    .login-field input {
+      width: 100%;
+      font-family: var(--font-mono); font-size: 13px;
+      color: var(--ink);
+      background: var(--paper);
+      border: 1px solid var(--rule-strong);
+      border-radius: 2px;
+      padding: 9px 11px;
+    }
+    .login-field input:focus { border-color: var(--evidence); outline-offset: 1px; }
+    .login-submit {
+      width: 100%;
+      font-family: var(--font-mono); font-size: 12px;
+      font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--paper); background: var(--ink);
+      border: 1px solid var(--ink); border-radius: 2px;
+      padding: 11px;
+      cursor: pointer;
+    }
+    .login-submit:hover { background: var(--evidence); border-color: var(--evidence); }
+    .login-error {
+      display: flex; align-items: center; gap: 7px;
+      color: var(--signal-critical); font-size: 12.5px;
+      border: 1px solid var(--signal-critical); border-radius: 2px;
+      background: var(--signal-wash);
+      padding: 8px 10px; margin: var(--sp-3) 0 0;
+    }
+    .login-meta {
+      text-align: center; font-family: var(--font-mono); font-size: 10.5px;
+      color: var(--signal-mute); margin-top: var(--sp-5);
+    }
+    .login-meta code { font-size: 10.5px; }
+
+    /* ============================================================
+       Evidence exhibit — THE signature element
+       A cited footnote / lab exhibit: bordered block, mono case
+       number, CVSS, KEV stamp, CIS controls with plain similarity.
+       ============================================================ */
+    .exhibit {
+      border: 1px solid var(--rule-strong);
+      border-left: 4px solid var(--evidence);
+      border-radius: 2px;
+      background: var(--paper);
+      margin: var(--sp-2) 0 0;
+      padding: var(--sp-3);
+    }
+    .exhibit.empty {
+      border-left-color: var(--signal-mute);
+      background: transparent;
+      color: var(--signal-mute);
+    }
+    .exhibit .case {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      font-size: 12.5px;
+      letter-spacing: .03em;
+      display: flex; align-items: baseline; gap: var(--sp-2); flex-wrap: wrap;
+      margin-bottom: var(--sp-2);
+      padding-bottom: var(--sp-2);
+      border-bottom: 1px dotted var(--rule-strong);
+    }
+    .exhibit .case .id { color: var(--ink); }
+    .exhibit .case .src { font-size: 10px; color: var(--signal-mute);
+                          text-transform: uppercase; letter-spacing: .1em; }
+    .exhibit .case .kev {
+      font-size: 9.5px; letter-spacing: .12em; font-weight: 600;
+      color: var(--signal-critical);
+      border: 1px solid var(--signal-critical);
+      border-radius: 1px;
+      padding: 1px 5px;
+      transform: rotate(-.5deg);
+      text-transform: uppercase;
+    }
+    .exhibit .cvss { font-family: var(--font-mono); font-size: 11.5px; }
+    .exhibit .cvss b { font-weight: 600; }
+    .exhibit .abstract { font-size: 12.5px; margin: 0 0 var(--sp-2); color: var(--ink); }
+    .exhibit .meta {
+      font-family: var(--font-mono); font-size: 10.5px; color: var(--signal-mute);
+      letter-spacing: .02em;
+    }
+    .exhibit .refs { margin-top: var(--sp-2); }
+    .exhibit .refs a {}
+    .cis-list { margin: var(--sp-2) 0 0; padding: 0; list-style: none; }
+    .cis-list li {
+      display: flex; justify-content: space-between; align-items: baseline;
+      gap: var(--sp-3);
+      border-top: 1px solid var(--rule-faint);
+      padding: var(--sp-2) 0;
+      font-size: 12px;
+    }
+    .cis-list .csection { font-family: var(--font-mono); font-size: 10.5px;
+                          color: var(--signal-mute); text-transform: uppercase; }
+
+    details { margin-top: var(--sp-2); }
+    summary {
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase;
+      display: inline-list-item;
+      list-style-position: outside;
+      user-select: none;
+    }
+    summary:hover { color: var(--evidence); }
+    summary.evidence-toggle { color: var(--evidence); }
+    summary.drain-toggle { color: var(--signal-mute); }
+
+    /* empty / no-citation state */
+    .nocite {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: .04em;
+      color: var(--signal-mute);
+    }
+
+    /* ============================================================
+       Toolbar (filter) — preserved JS targets, restyled
+       ============================================================ */
+    .toolbar {
+      display: flex; gap: var(--sp-2); align-items: center;
+      flex-wrap: wrap;
+      margin: var(--sp-3) 0;
+      padding: var(--sp-2) 0;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+    .toolbar .tlabel {
+      font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--signal-mute); margin-right: var(--sp-1);
+    }
+    input[type=search], select {
+      font-family: var(--font-mono); font-size: 12px;
+      color: var(--ink);
+      background: var(--paper);
+      border: 1px solid var(--rule-strong);
+      border-radius: 2px;
+      padding: 5px 9px;
+    }
+    input[type=search]::placeholder { color: var(--signal-mute); }
+    input[type=search]:focus, select:focus { outline-offset: 1px; }
+    input[type=search] { flex: 1; min-width: 200px; }
+
+    .empty { padding: var(--sp-5); text-align: center; color: var(--signal-mute); font-size: 13px; }
+    .empty code, code { background: transparent; }
+
+    /* readout strip like a report header footnote */
+    .readout {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink);
+      margin: 0 0 var(--sp-2);
+    }
+    .readout .sep { color: var(--rule-strong); margin: 0 var(--sp-2); }
+
+    /* ============================================================
+       Import flow — form card, dropzone, processing spinner
+       ============================================================ */
+    .form-card {
+      max-width: 520px;
+      background: var(--paper);
+      border: 1px solid var(--rule-strong);
+      border-top: 3px solid var(--evidence);
+      border-radius: 2px;
+      padding: var(--sp-5);
+    }
+    .form-card label {
+      display: block;
+      font-family: var(--font-mono); font-size: 10.5px;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--signal-mute); margin-bottom: 6px;
+    }
+    .dropzone {
+      display: block;
+      border: 1px dashed var(--rule-strong);
+      border-radius: 2px;
+      padding: var(--sp-5) var(--sp-4);
+      text-align: center;
+      color: var(--signal-mute);
+      font-size: 12.5px;
+      cursor: pointer;
+      background: var(--paper);
+      margin-bottom: var(--sp-4);
+    }
+    .dropzone .ic-lg { width: 34px; height: 34px; display: block; margin: 0 auto var(--sp-2); }
+    .dropzone:hover { border-color: var(--evidence); background: var(--evidence-wash); }
+    .dropzone.has-file { border-color: var(--evidence); color: var(--evidence); border-style: solid; }
+    .form-submit-btn {
+      width: 100%;
+      font-family: var(--font-mono); font-size: 12px;
+      font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--paper); background: var(--ink);
+      border: 1px solid var(--ink); border-radius: 2px;
+      padding: 11px;
+      cursor: pointer;
+    }
+    .form-submit-btn:hover:not(:disabled) { background: var(--evidence); border-color: var(--evidence); }
+    .form-submit-btn:disabled { opacity: .55; cursor: progress; }
+    .import-busy { text-align: center; margin-top: var(--sp-4); }
+    .import-busy > div:last-child {
+      font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: .1em; text-transform: uppercase; color: var(--signal-mute);
+    }
+    .spin {
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      border: 2px solid var(--rule);
+      border-top-color: var(--evidence);
+      animation: spin .8s linear infinite;
+      margin: 0 auto var(--sp-3);
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* inline notice banner (import warnings / confirmations) */
+    .banner {
+      display: flex; align-items: flex-start; gap: 8px;
+      border: 1px solid var(--rule-strong);
+      border-left-width: 4px;
+      border-radius: 2px;
+      padding: 10px 12px;
+      font-size: 12.5px;
+      margin: 0 0 var(--sp-4);
+    }
+    .banner .ic { flex: 0 0 auto; margin-top: 2px; }
+    .banner-ok   { border-left-color: var(--evidence); background: var(--evidence-wash); color: var(--ink); }
+    .banner-warn { border-left-color: var(--signal-critical); background: var(--signal-wash); color: var(--ink); }
+
+    @media (max-width: 900px) {
+      .host-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+      main { padding: var(--sp-4); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <h1>Cyber Health Assessment</h1>
+      <span class="sub">{{ corpus }}</span>
+    </div>
+    <div class="nav">
+      {% block nav %}
+      <a href="{{ url_for('index') }}">Scans</a>
+      <a href="{{ url_for('import_scan') }}">Import</a>
+      {% endblock %}
+      {% if session.get('authenticated') %}
+      <a href="{{ url_for('logout') }}" style="color:var(--signal-mute)">log out</a>
+      {% endif %}
+    </div>
+  </header>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+  <footer>
+    rule-engine scoring <span class="pipe">&bull;</span>
+    CVE / CIS grounding <span class="pipe">&bull;</span>
+    LLM synthesis <span class="pipe">&bull;</span>
+    every severity claim must carry a citation
+  </footer>
+  {% block scripts %}{% endblock %}
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (window.lucide) { window.lucide.createIcons(); }
+    });
+  </script>
+</body>
+</html>

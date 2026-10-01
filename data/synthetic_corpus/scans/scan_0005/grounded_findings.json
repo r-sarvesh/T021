@@ -1,0 +1,182 @@
+[
+  {
+    "type": "asset",
+    "host": "10.20.30.1",
+    "hostname": "decoy-web-05.corp.local",
+    "os_guess": "Linux 4.15 - 5.6",
+    "port": 443,
+    "protocol": "tcp",
+    "service": "https",
+    "product": "Apache httpd",
+    "version": "2.4.29",
+    "cve_refs": [],
+    "nse_script": null,
+    "raw_output": null,
+    "severity_score": 0.0,
+    "severity_band": "INFO",
+    "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+    "grounding_context": {
+      "cve_records": [],
+      "cis_matches": [
+        {
+          "id": "CIS-WEB-001",
+          "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+          "section": "Server Hardening",
+          "control_title": "Keep web server software on a supported, patched version",
+          "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+          "applies_to": [
+            "http",
+            "https",
+            "apache_httpd"
+          ],
+          "level": 1,
+          "remediation_type": "patch_management",
+          "similarity_score": 0.319
+        },
+        {
+          "id": "CIS-TLS-001",
+          "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+          "section": "Transport Security",
+          "control_title": "Monitor and renew TLS certificates before expiry",
+          "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+          "applies_to": [
+            "https",
+            "ssl",
+            "tls",
+            "apache_httpd",
+            "nginx"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.0
+        }
+      ],
+      "service_tags_used": [
+        "ssl",
+        "apache_httpd",
+        "https",
+        "tls"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.1",
+    "hostname": "decoy-web-05.corp.local",
+    "os_guess": "Linux 4.15 - 5.6",
+    "port": 443,
+    "protocol": "tcp",
+    "service": "https",
+    "product": "Apache httpd",
+    "version": "2.4.29",
+    "cve_refs": [],
+    "nse_script": "ssl-cert",
+    "raw_output": "Subject: commonName=decoy-web.corp.local  Not valid after: 2024-05-10T00:00:00",
+    "severity_score": 3.5,
+    "severity_band": "LOW",
+    "scoring_rationale": "TLS certificate has expired \u2014 encrypted channel cannot be authenticated",
+    "grounding_context": {
+      "cve_records": [],
+      "cis_matches": [
+        {
+          "id": "CIS-WEB-001",
+          "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+          "section": "Server Hardening",
+          "control_title": "Keep web server software on a supported, patched version",
+          "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+          "applies_to": [
+            "http",
+            "https",
+            "apache_httpd"
+          ],
+          "level": 1,
+          "remediation_type": "patch_management",
+          "similarity_score": 0.225
+        },
+        {
+          "id": "CIS-TLS-001",
+          "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+          "section": "Transport Security",
+          "control_title": "Monitor and renew TLS certificates before expiry",
+          "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+          "applies_to": [
+            "https",
+            "ssl",
+            "tls",
+            "apache_httpd",
+            "nginx"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.197
+        }
+      ],
+      "service_tags_used": [
+        "ssl",
+        "apache_httpd",
+        "https",
+        "tls"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.1",
+    "hostname": "decoy-web-05.corp.local",
+    "os_guess": "Linux 4.15 - 5.6",
+    "port": 443,
+    "protocol": "tcp",
+    "service": "https",
+    "product": "Apache httpd",
+    "version": "2.4.29",
+    "cve_refs": [],
+    "nse_script": "ssl-known-key",
+    "raw_output": "Certificate expired",
+    "severity_score": 4.0,
+    "severity_band": "MEDIUM",
+    "scoring_rationale": "Expired TLS certificate undermines transport trust and may trigger client warnings",
+    "grounding_context": {
+      "cve_records": [],
+      "cis_matches": [
+        {
+          "id": "CIS-TLS-001",
+          "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+          "section": "Transport Security",
+          "control_title": "Monitor and renew TLS certificates before expiry",
+          "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+          "applies_to": [
+            "https",
+            "ssl",
+            "tls",
+            "apache_httpd",
+            "nginx"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.388
+        },
+        {
+          "id": "CIS-WEB-001",
+          "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+          "section": "Server Hardening",
+          "control_title": "Keep web server software on a supported, patched version",
+          "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+          "applies_to": [
+            "http",
+            "https",
+            "apache_httpd"
+          ],
+          "level": 1,
+          "remediation_type": "patch_management",
+          "similarity_score": 0.098
+        }
+      ],
+      "service_tags_used": [
+        "ssl",
+        "apache_httpd",
+        "https",
+        "tls"
+      ]
+    }
+  }
+]

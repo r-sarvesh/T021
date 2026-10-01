@@ -1,0 +1,213 @@
+{
+  "scan_results": [
+    {
+      "scan_id": "scan_0001",
+      "hosts": 2,
+      "findings": 6,
+      "vuln_findings": 3,
+      "decoy_vuln_findings": 0,
+      "cve_refs_total": 3,
+      "cve_resolved": 3,
+      "cve_not_found": 0,
+      "cve_not_found_details": [],
+      "severity_bands": [
+        "CRITICAL",
+        "HIGH",
+        "INFO",
+        "LOW"
+      ]
+    },
+    {
+      "scan_id": "scan_0002",
+      "hosts": 2,
+      "findings": 10,
+      "vuln_findings": 4,
+      "decoy_vuln_findings": 1,
+      "cve_refs_total": 3,
+      "cve_resolved": 3,
+      "cve_not_found": 0,
+      "cve_not_found_details": [],
+      "severity_bands": [
+        "HIGH",
+        "INFO",
+        "LOW"
+      ]
+    },
+    {
+      "scan_id": "scan_0003",
+      "hosts": 2,
+      "findings": 9,
+      "vuln_findings": 5,
+      "decoy_vuln_findings": 2,
+      "cve_refs_total": 3,
+      "cve_resolved": 3,
+      "cve_not_found": 0,
+      "cve_not_found_details": [],
+      "severity_bands": [
+        "CRITICAL",
+        "HIGH",
+        "INFO",
+        "LOW"
+      ]
+    },
+    {
+      "scan_id": "scan_0004",
+      "hosts": 1,
+      "findings": 2,
+      "vuln_findings": 1,
+      "decoy_vuln_findings": 0,
+      "cve_refs_total": 1,
+      "cve_resolved": 1,
+      "cve_not_found": 0,
+      "cve_not_found_details": [],
+      "severity_bands": [
+        "LOW"
+      ]
+    },
+    {
+      "scan_id": "scan_0005",
+      "hosts": 1,
+      "findings": 3,
+      "vuln_findings": 2,
+      "decoy_vuln_findings": 2,
+      "cve_refs_total": 0,
+      "cve_resolved": 0,
+      "cve_not_found": 0,
+      "cve_not_found_details": [],
+      "severity_bands": [
+        "INFO",
+        "LOW",
+        "MEDIUM"
+      ]
+    },
+    {
+      "scan_id": "scan_0006",
+      "hosts": 2,
+      "findings": 7,
+      "vuln_findings": 3,
+      "decoy_vuln_findings": 0,
+      "cve_refs_total": 3,
+      "cve_resolved": 3,
+      "cve_not_found": 0,
+      "cve_not_found_details": [],
+      "severity_bands": [
+        "CRITICAL",
+        "HIGH",
+        "INFO",
+        "LOW"
+      ]
+    },
+    {
+      "scan_id": "scan_0007",
+      "hosts": 2,
+      "findings": 5,
+      "vuln_findings": 3,
+      "decoy_vuln_findings": 0,
+      "cve_refs_total": 3,
+      "cve_resolved": 3,
+      "cve_not_found": 0,
+      "cve_not_found_details": [],
+      "severity_bands": [
+        "CRITICAL",
+        "INFO",
+        "LOW"
+      ]
+    },
+    {
+      "scan_id": "scan_0008",
+      "hosts": 1,
+      "findings": 4,
+      "vuln_findings": 2,
+      "decoy_vuln_findings": 1,
+      "cve_refs_total": 1,
+      "cve_resolved": 1,
+      "cve_not_found": 0,
+      "cve_not_found_details": [],
+      "severity_bands": [
+        "CRITICAL",
+        "INFO",
+        "LOW",
+        "MEDIUM"
+      ]
+    },
+    {
+      "scan_id": "scan_0009",
+      "hosts": 1,
+      "findings": 3,
+      "vuln_findings": 1,
+      "decoy_vuln_findings": 0,
+      "cve_refs_total": 1,
+      "cve_resolved": 1,
+      "cve_not_found": 0,
+      "cve_not_found_details": [],
+      "severity_bands": [
+        "CRITICAL",
+        "INFO",
+        "LOW"
+      ]
+    },
+    {
+      "scan_id": "scan_0010",
+      "hosts": 1,
+      "findings": 3,
+      "vuln_findings": 2,
+      "decoy_vuln_findings": 1,
+      "cve_refs_total": 1,
+      "cve_resolved": 1,
+      "cve_not_found": 0,
+      "cve_not_found_details": [],
+      "severity_bands": [
+        "HIGH",
+        "LOW"
+      ]
+    },
+    {
+      "scan_id": "scan_0011",
+      "hosts": 1,
+      "findings": 3,
+      "vuln_findings": 1,
+      "decoy_vuln_findings": 1,
+      "cve_refs_total": 0,
+      "cve_resolved": 0,
+      "cve_not_found": 0,
+      "cve_not_found_details": [],
+      "severity_bands": [
+        "INFO",
+        "LOW",
+        "MEDIUM"
+      ]
+    },
+    {
+      "scan_id": "scan_0012",
+      "hosts": 1,
+      "findings": 3,
+      "vuln_findings": 2,
+      "decoy_vuln_findings": 0,
+      "cve_refs_total": 2,
+      "cve_resolved": 2,
+      "cve_not_found": 0,
+      "cve_not_found_details": [],
+      "severity_bands": [
+        "INFO",
+        "MEDIUM"
+      ]
+    }
+  ],
+  "totals": {
+    "scans": 12,
+    "findings": 58,
+    "vuln_findings": 29,
+    "decoy_vuln_findings": 8,
+    "cve_refs_total": 21,
+    "cve_resolved": 21,
+    "cve_not_found": 0,
+    "severity_bands_seen": [
+      "CRITICAL",
+      "HIGH",
+      "INFO",
+      "LOW",
+      "MEDIUM"
+    ]
+  },
+  "coverage_ok": true
+}

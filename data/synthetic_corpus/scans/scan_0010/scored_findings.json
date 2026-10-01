@@ -1,0 +1,110 @@
+{
+  "host_risk_summary": [
+    {
+      "host": "10.20.30.1",
+      "hostname": "db-mongo-10.corp.local",
+      "os_guess": "Linux 4.15 - 5.6",
+      "open_service_count": 1,
+      "vuln_finding_count": 2,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 7.1,
+      "criticality_multiplier": 1.0,
+      "criticality_reason": "Standard asset, no elevated criticality tag matched",
+      "adjusted_risk_score": 7.1,
+      "risk_band": "HIGH"
+    }
+  ],
+  "prioritized_findings": [
+    {
+      "type": "vuln",
+      "host": "10.20.30.1",
+      "hostname": "db-mongo-10.corp.local",
+      "os_guess": "Linux 4.15 - 5.6",
+      "port": 27017,
+      "protocol": "tcp",
+      "service": "mongodb",
+      "product": "MongoDB",
+      "version": "3.6.13",
+      "cve_refs": [
+        "CVE-2019-2386"
+      ],
+      "nse_script": "mongodb-vuln-cve2019-2386",
+      "raw_output": "VULNERABLE: MongoDB authorization session persists after user deletion (user-account conflation). IDs: CVE:CVE-2019-2386",
+      "severity_score": 7.1,
+      "severity_band": "HIGH",
+      "scoring_rationale": "CVSS v3 base score 7.1 from ['CVE-2019-2386']"
+    },
+    {
+      "type": "vuln",
+      "host": "10.20.30.1",
+      "hostname": "db-mongo-10.corp.local",
+      "os_guess": "Linux 4.15 - 5.6",
+      "port": 27017,
+      "protocol": "tcp",
+      "service": "mongodb",
+      "product": "MongoDB",
+      "version": "3.6.13",
+      "cve_refs": [],
+      "nse_script": "mongodb-info",
+      "raw_output": "VULNERABLE: MongoDB server running with no authentication \u00e2\u20ac\u201d every connection is authorized as admin.",
+      "severity_score": 7.0,
+      "severity_band": "HIGH",
+      "scoring_rationale": "MongoDB exposed with authentication disabled \u2014 unauthenticated access to all collections"
+    }
+  ],
+  "all_scored_findings": [
+    {
+      "type": "asset",
+      "host": "10.20.30.1",
+      "hostname": "db-mongo-10.corp.local",
+      "os_guess": "Linux 4.15 - 5.6",
+      "port": 27017,
+      "protocol": "tcp",
+      "service": "mongodb",
+      "product": "MongoDB",
+      "version": "3.6.13",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 2.0,
+      "severity_band": "LOW",
+      "scoring_rationale": "Baseline exposure risk for open 'mongodb' service"
+    },
+    {
+      "type": "vuln",
+      "host": "10.20.30.1",
+      "hostname": "db-mongo-10.corp.local",
+      "os_guess": "Linux 4.15 - 5.6",
+      "port": 27017,
+      "protocol": "tcp",
+      "service": "mongodb",
+      "product": "MongoDB",
+      "version": "3.6.13",
+      "cve_refs": [],
+      "nse_script": "mongodb-info",
+      "raw_output": "VULNERABLE: MongoDB server running with no authentication \u00e2\u20ac\u201d every connection is authorized as admin.",
+      "severity_score": 7.0,
+      "severity_band": "HIGH",
+      "scoring_rationale": "MongoDB exposed with authentication disabled \u2014 unauthenticated access to all collections"
+    },
+    {
+      "type": "vuln",
+      "host": "10.20.30.1",
+      "hostname": "db-mongo-10.corp.local",
+      "os_guess": "Linux 4.15 - 5.6",
+      "port": 27017,
+      "protocol": "tcp",
+      "service": "mongodb",
+      "product": "MongoDB",
+      "version": "3.6.13",
+      "cve_refs": [
+        "CVE-2019-2386"
+      ],
+      "nse_script": "mongodb-vuln-cve2019-2386",
+      "raw_output": "VULNERABLE: MongoDB authorization session persists after user deletion (user-account conflation). IDs: CVE:CVE-2019-2386",
+      "severity_score": 7.1,
+      "severity_band": "HIGH",
+      "scoring_rationale": "CVSS v3 base score 7.1 from ['CVE-2019-2386']"
+    }
+  ]
+}

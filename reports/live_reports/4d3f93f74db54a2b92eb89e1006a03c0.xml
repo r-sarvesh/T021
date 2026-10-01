@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="file:///usr/local/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.94 scan initiated for demo presentation -->
+<nmaprun scanner="nmap" args="nmap -sV -O -oX dept.xml 10.20.30.15" start="1757308800" startstr="Mon Sep  8 09:00:00 2026" version="7.94" xmloutputversion="1.05">
+  <scaninfo type="syn" protocol="tcp" numservices="1000" services="1-1000"/>
+  <verbose level="0"/>
+  <debugging level="0"/>
+
+  <host starttime="1757308800" endtime="1757308868">
+    <status state="up" reason="syn-ack" reason_ttl="64"/>
+    <address addr="10.20.30.15" addrtype="ipv4"/>
+    <hostnames>
+      <hostname name="dept-fileserver01" type="PTR"/>
+    </hostnames>
+
+    <ports>
+      <extraports state="closed" count="996">
+        <extrareasons reason="conn-refused" count="996"/>
+      </extraports>
+
+      <port protocol="tcp" portid="139">
+        <state state="open" reason="syn-ack" reason_ttl="64"/>
+        <service name="netbios-ssn" product="Microsoft Windows netbios-ssn" ostype="Windows" method="probed" conf="10"/>
+      </port>
+
+      <port protocol="tcp" portid="445">
+        <state state="open" reason="syn-ack" reason_ttl="64"/>
+        <service name="microsoft-ds" product="Windows Server 2008 R2 microsoft-ds" version="6.1.7601" ostype="Windows" method="probed" conf="10">
+          <cpe>cpe:/o:microsoft:windows_server_2008:r2</cpe>
+        </service>
+      </port>
+
+      <port protocol="tcp" portid="3389">
+        <state state="open" reason="syn-ack" reason_ttl="64"/>
+        <service name="ms-wbt-server" product="Microsoft Terminal Services" method="probed" conf="10">
+          <cpe>cpe:/a:microsoft:terminal_services</cpe>
+        </service>
+      </port>
+
+      <port protocol="tcp" portid="80">
+        <state state="open" reason="syn-ack" reason_ttl="64"/>
+        <service name="http" product="Microsoft IIS httpd" version="7.5" method="probed" conf="10">
+          <cpe>cpe:/a:microsoft:iis:7.5</cpe>
+        </service>
+      </port>
+
+      <port protocol="tcp" portid="21">
+        <state state="open" reason="syn-ack" reason_ttl="64"/>
+        <service name="ftp" product="vsftpd" version="2.3.4" method="probed" conf="10">
+          <cpe>cpe:/a:vsftpd:vsftpd:2.3.4</cpe>
+        </service>
+      </port>
+    </ports>
+
+    <os>
+      <osmatch name="Microsoft Windows Server 2008 R2" accuracy="97" line="12345">
+        <osclass type="general purpose" vendor="Microsoft" osfamily="Windows" osgen="7" accuracy="97">
+          <cpe>cpe:/o:microsoft:windows_server_2008:r2</cpe>
+        </osclass>
+      </osmatch>
+    </os>
+
+    <uptime seconds="512340" lastboot="Wed Sep  2 14:22:11 2026"/>
+    <times srtt="1421" rttvar="812" to="100000"/>
+  </host>
+
+  <runstats>
+    <finished time="1757308868" timestr="Mon Sep  8 09:01:08 2026" summary="1 IP address (1 host up) scanned in 68.00 seconds" elapsed="68.00" exit="success"/>
+    <hosts up="1" down="0" total="1"/>
+  </runstats>
+</nmaprun>

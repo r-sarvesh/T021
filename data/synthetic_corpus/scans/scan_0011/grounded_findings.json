@@ -1,0 +1,118 @@
+[
+  {
+    "type": "asset",
+    "host": "10.20.30.1",
+    "hostname": "decoy-ftp-11.corp.local",
+    "os_guess": "FreeBSD 9.x",
+    "port": 21,
+    "protocol": "tcp",
+    "service": "ftp",
+    "product": "ProFTPD",
+    "version": "1.3.5",
+    "cve_refs": [],
+    "nse_script": null,
+    "raw_output": null,
+    "severity_score": 1.0,
+    "severity_band": "LOW",
+    "scoring_rationale": "Baseline exposure risk for open 'ftp' service",
+    "grounding_context": {
+      "cve_records": [],
+      "cis_matches": [
+        {
+          "id": "CIS-FTP-001",
+          "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+          "section": "File Transfer Services",
+          "control_title": "Disable anonymous FTP authentication",
+          "text": "Anonymous FTP login should be disabled unless there is an explicit, documented business requirement for public unauthenticated file access. Anonymous access allows any network-reachable client to list directories and, depending on configuration, upload or retrieve files without accountability. Where FTP is required at all, prefer SFTP/FTPS with authenticated access.",
+          "applies_to": [
+            "ftp"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.288
+        }
+      ],
+      "service_tags_used": [
+        "ftp"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.1",
+    "hostname": "decoy-ftp-11.corp.local",
+    "os_guess": "FreeBSD 9.x",
+    "port": 21,
+    "protocol": "tcp",
+    "service": "ftp",
+    "product": "ProFTPD",
+    "version": "1.3.5",
+    "cve_refs": [],
+    "nse_script": "ftp-anon",
+    "raw_output": "Anonymous FTP login allowed (FTP code 230)",
+    "severity_score": 5.5,
+    "severity_band": "MEDIUM",
+    "scoring_rationale": "Anonymous FTP access allows unauthenticated file listing/upload",
+    "grounding_context": {
+      "cve_records": [],
+      "cis_matches": [
+        {
+          "id": "CIS-FTP-001",
+          "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+          "section": "File Transfer Services",
+          "control_title": "Disable anonymous FTP authentication",
+          "text": "Anonymous FTP login should be disabled unless there is an explicit, documented business requirement for public unauthenticated file access. Anonymous access allows any network-reachable client to list directories and, depending on configuration, upload or retrieve files without accountability. Where FTP is required at all, prefer SFTP/FTPS with authenticated access.",
+          "applies_to": [
+            "ftp"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.58
+        }
+      ],
+      "service_tags_used": [
+        "ftp"
+      ]
+    }
+  },
+  {
+    "type": "asset",
+    "host": "10.20.30.1",
+    "hostname": "decoy-ftp-11.corp.local",
+    "os_guess": "FreeBSD 9.x",
+    "port": 22,
+    "protocol": "tcp",
+    "service": "ssh",
+    "product": "OpenSSH",
+    "version": "7.2",
+    "cve_refs": [],
+    "nse_script": null,
+    "raw_output": null,
+    "severity_score": 0.0,
+    "severity_band": "INFO",
+    "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+    "grounding_context": {
+      "cve_records": [],
+      "cis_matches": [
+        {
+          "id": "CIS-SSH-001",
+          "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+          "section": "Remote Access",
+          "control_title": "Disable password authentication in favor of key-based SSH login",
+          "text": "SSH should be configured to disable password authentication and require public-key authentication instead, reducing exposure to credential-stuffing and brute-force attacks. Combine this with disabling root login over SSH and restricting access to specific source networks where feasible.",
+          "applies_to": [
+            "ssh",
+            "openssh"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.384
+        }
+      ],
+      "service_tags_used": [
+        "openssh",
+        "ssh"
+      ]
+    }
+  }
+]

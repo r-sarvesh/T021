@@ -1,0 +1,92 @@
+[
+  {
+    "id": "CIS-SMB-001",
+    "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+    "section": "Network Security",
+    "control_title": "Disable SMBv1 and require SMB signing",
+    "text": "Legacy SMBv1 should be disabled on all Windows hosts, as it lacks modern security controls and is the protocol version targeted by well-known remote code execution exploits. SMB signing should be required to prevent relay and tampering attacks. Disable SMBv1 via PowerShell (Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol) or Group Policy, and verify no legacy applications depend on it before rollout.",
+    "applies_to": ["smb", "microsoft-ds", "windows_server", "windows"],
+    "level": 1,
+    "remediation_type": "feature_removal"
+  },
+  {
+    "id": "CIS-SMB-002",
+    "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+    "section": "Network Security",
+    "control_title": "Apply security updates for SMB remote code execution vulnerabilities promptly",
+    "text": "Hosts exposing SMB services should be patched against known remote code execution vulnerabilities as a priority, since SMB is a common lateral-movement and ransomware entry vector. Maintain a patch cadence that applies critical SMB-related security updates within 72 hours of release for internet- or high-value-network-facing systems.",
+    "applies_to": ["smb", "microsoft-ds", "windows_server", "windows"],
+    "level": 1,
+    "remediation_type": "patch_management"
+  },
+  {
+    "id": "CIS-RDP-001",
+    "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+    "section": "Remote Access",
+    "control_title": "Restrict RDP exposure and enforce Network Level Authentication",
+    "text": "Remote Desktop Protocol should not be exposed directly to untrusted networks. Where RDP is required, enforce Network Level Authentication (NLA), require multi-factor authentication, and restrict access via firewall rules or a VPN/bastion host rather than direct internet exposure. Unrestricted RDP exposure is one of the most common initial access vectors in ransomware incidents.",
+    "applies_to": ["rdp", "ms-wbt-server", "windows", "windows_server"],
+    "level": 1,
+    "remediation_type": "network_configuration"
+  },
+  {
+    "id": "CIS-FTP-001",
+    "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+    "section": "File Transfer Services",
+    "control_title": "Disable anonymous FTP authentication",
+    "text": "Anonymous FTP login should be disabled unless there is an explicit, documented business requirement for public unauthenticated file access. Anonymous access allows any network-reachable client to list directories and, depending on configuration, upload or retrieve files without accountability. Where FTP is required at all, prefer SFTP/FTPS with authenticated access.",
+    "applies_to": ["ftp"],
+    "level": 1,
+    "remediation_type": "configuration"
+  },
+  {
+    "id": "CIS-MYSQL-001",
+    "benchmark": "CIS MySQL Benchmark (illustrative)",
+    "section": "Authentication",
+    "control_title": "Keep database engine patched against authentication bypass vulnerabilities",
+    "text": "Database servers should run supported, patched versions of the database engine. Older MySQL/MariaDB versions have contained authentication bypass vulnerabilities that allow login without correct credentials under certain conditions. Apply vendor security patches promptly and avoid running end-of-life database versions in production.",
+    "applies_to": ["mysql"],
+    "level": 1,
+    "remediation_type": "patch_management"
+  },
+  {
+    "id": "CIS-MYSQL-002",
+    "benchmark": "CIS MySQL Benchmark (illustrative)",
+    "section": "Network Exposure",
+    "control_title": "Restrict database network exposure to application tiers only",
+    "text": "Database services should not be reachable from general user networks or the internet. Bind the database to internal interfaces only and use firewall rules or security groups to restrict inbound connections to the specific application servers that require access.",
+    "applies_to": ["mysql"],
+    "level": 1,
+    "remediation_type": "network_configuration"
+  },
+  {
+    "id": "CIS-TLS-001",
+    "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+    "section": "Transport Security",
+    "control_title": "Monitor and renew TLS certificates before expiry",
+    "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+    "applies_to": ["https", "ssl", "tls", "apache_httpd", "nginx"],
+    "level": 1,
+    "remediation_type": "configuration"
+  },
+  {
+    "id": "CIS-WEB-001",
+    "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+    "section": "Server Hardening",
+    "control_title": "Keep web server software on a supported, patched version",
+    "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+    "applies_to": ["http", "https", "apache_httpd"],
+    "level": 1,
+    "remediation_type": "patch_management"
+  },
+  {
+    "id": "CIS-SSH-001",
+    "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+    "section": "Remote Access",
+    "control_title": "Disable password authentication in favor of key-based SSH login",
+    "text": "SSH should be configured to disable password authentication and require public-key authentication instead, reducing exposure to credential-stuffing and brute-force attacks. Combine this with disabling root login over SSH and restricting access to specific source networks where feasible.",
+    "applies_to": ["ssh", "openssh"],
+    "level": 1,
+    "remediation_type": "configuration"
+  }
+]

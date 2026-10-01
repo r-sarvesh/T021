@@ -1,0 +1,76 @@
+{
+  "host_risk_summary": [
+    {
+      "host": "10.20.30.1",
+      "hostname": "db-mysql2-04.corp.local",
+      "os_guess": "Linux 4.15 - 5.6",
+      "open_service_count": 1,
+      "vuln_finding_count": 1,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 3.3,
+      "criticality_multiplier": 1.0,
+      "criticality_reason": "Standard asset, no elevated criticality tag matched",
+      "adjusted_risk_score": 3.3,
+      "risk_band": "LOW"
+    }
+  ],
+  "prioritized_findings": [
+    {
+      "type": "vuln",
+      "host": "10.20.30.1",
+      "hostname": "db-mysql2-04.corp.local",
+      "os_guess": "Linux 4.15 - 5.6",
+      "port": 3306,
+      "protocol": "tcp",
+      "service": "mysql",
+      "product": "MySQL",
+      "version": "5.6.31",
+      "cve_refs": [
+        "CVE-2016-0643"
+      ],
+      "nse_script": "mysql-vuln-cve2016-0643",
+      "raw_output": "VULNERABLE: MySQL DML information disclosure allows local confidentiality breach. IDs: CVE:CVE-2016-0643",
+      "severity_score": 3.3,
+      "severity_band": "LOW",
+      "scoring_rationale": "CVSS v3 base score 3.3 from ['CVE-2016-0643']"
+    }
+  ],
+  "all_scored_findings": [
+    {
+      "type": "asset",
+      "host": "10.20.30.1",
+      "hostname": "db-mysql2-04.corp.local",
+      "os_guess": "Linux 4.15 - 5.6",
+      "port": 3306,
+      "protocol": "tcp",
+      "service": "mysql",
+      "product": "MySQL",
+      "version": "5.6.31",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 1.0,
+      "severity_band": "LOW",
+      "scoring_rationale": "Baseline exposure risk for open 'mysql' service"
+    },
+    {
+      "type": "vuln",
+      "host": "10.20.30.1",
+      "hostname": "db-mysql2-04.corp.local",
+      "os_guess": "Linux 4.15 - 5.6",
+      "port": 3306,
+      "protocol": "tcp",
+      "service": "mysql",
+      "product": "MySQL",
+      "version": "5.6.31",
+      "cve_refs": [
+        "CVE-2016-0643"
+      ],
+      "nse_script": "mysql-vuln-cve2016-0643",
+      "raw_output": "VULNERABLE: MySQL DML information disclosure allows local confidentiality breach. IDs: CVE:CVE-2016-0643",
+      "severity_score": 3.3,
+      "severity_band": "LOW",
+      "scoring_rationale": "CVSS v3 base score 3.3 from ['CVE-2016-0643']"
+    }
+  ]
+}

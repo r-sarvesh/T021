@@ -1,0 +1,553 @@
+[
+  {
+    "type": "asset",
+    "host": "10.20.30.1",
+    "hostname": "ws-legacy-03.corp.local",
+    "os_guess": "Microsoft Windows 7 SP1",
+    "port": 135,
+    "protocol": "tcp",
+    "service": "msrpc",
+    "product": "Microsoft Windows RPC",
+    "version": null,
+    "cve_refs": [],
+    "nse_script": null,
+    "raw_output": null,
+    "severity_score": 0.0,
+    "severity_band": "INFO",
+    "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+    "grounding_context": {
+      "cve_records": [],
+      "cis_matches": [
+        {
+          "id": "CIS-RDP-001",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Remote Access",
+          "control_title": "Restrict RDP exposure and enforce Network Level Authentication",
+          "text": "Remote Desktop Protocol should not be exposed directly to untrusted networks. Where RDP is required, enforce Network Level Authentication (NLA), require multi-factor authentication, and restrict access via firewall rules or a VPN/bastion host rather than direct internet exposure. Unrestricted RDP exposure is one of the most common initial access vectors in ransomware incidents.",
+          "applies_to": [
+            "rdp",
+            "ms-wbt-server",
+            "windows",
+            "windows_server"
+          ],
+          "level": 1,
+          "remediation_type": "network_configuration",
+          "similarity_score": 0.17
+        },
+        {
+          "id": "CIS-SMB-001",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Network Security",
+          "control_title": "Disable SMBv1 and require SMB signing",
+          "text": "Legacy SMBv1 should be disabled on all Windows hosts, as it lacks modern security controls and is the protocol version targeted by well-known remote code execution exploits. SMB signing should be required to prevent relay and tampering attacks. Disable SMBv1 via PowerShell (Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol) or Group Policy, and verify no legacy applications depend on it before rollout.",
+          "applies_to": [
+            "smb",
+            "microsoft-ds",
+            "windows_server",
+            "windows"
+          ],
+          "level": 1,
+          "remediation_type": "feature_removal",
+          "similarity_score": 0.121
+        },
+        {
+          "id": "CIS-SMB-002",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Network Security",
+          "control_title": "Apply security updates for SMB remote code execution vulnerabilities promptly",
+          "text": "Hosts exposing SMB services should be patched against known remote code execution vulnerabilities as a priority, since SMB is a common lateral-movement and ransomware entry vector. Maintain a patch cadence that applies critical SMB-related security updates within 72 hours of release for internet- or high-value-network-facing systems.",
+          "applies_to": [
+            "smb",
+            "microsoft-ds",
+            "windows_server",
+            "windows"
+          ],
+          "level": 1,
+          "remediation_type": "patch_management",
+          "similarity_score": 0.0
+        }
+      ],
+      "service_tags_used": [
+        "msrpc",
+        "windows"
+      ]
+    }
+  },
+  {
+    "type": "asset",
+    "host": "10.20.30.1",
+    "hostname": "ws-legacy-03.corp.local",
+    "os_guess": "Microsoft Windows 7 SP1",
+    "port": 445,
+    "protocol": "tcp",
+    "service": "microsoft-ds",
+    "product": "Windows 7 Professional microsoft-ds",
+    "version": null,
+    "cve_refs": [],
+    "nse_script": null,
+    "raw_output": null,
+    "severity_score": 1.5,
+    "severity_band": "LOW",
+    "scoring_rationale": "Baseline exposure risk for open 'microsoft-ds' service",
+    "grounding_context": {
+      "cve_records": [],
+      "cis_matches": [
+        {
+          "id": "CIS-RDP-001",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Remote Access",
+          "control_title": "Restrict RDP exposure and enforce Network Level Authentication",
+          "text": "Remote Desktop Protocol should not be exposed directly to untrusted networks. Where RDP is required, enforce Network Level Authentication (NLA), require multi-factor authentication, and restrict access via firewall rules or a VPN/bastion host rather than direct internet exposure. Unrestricted RDP exposure is one of the most common initial access vectors in ransomware incidents.",
+          "applies_to": [
+            "rdp",
+            "ms-wbt-server",
+            "windows",
+            "windows_server"
+          ],
+          "level": 1,
+          "remediation_type": "network_configuration",
+          "similarity_score": 0.17
+        },
+        {
+          "id": "CIS-SMB-001",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Network Security",
+          "control_title": "Disable SMBv1 and require SMB signing",
+          "text": "Legacy SMBv1 should be disabled on all Windows hosts, as it lacks modern security controls and is the protocol version targeted by well-known remote code execution exploits. SMB signing should be required to prevent relay and tampering attacks. Disable SMBv1 via PowerShell (Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol) or Group Policy, and verify no legacy applications depend on it before rollout.",
+          "applies_to": [
+            "smb",
+            "microsoft-ds",
+            "windows_server",
+            "windows"
+          ],
+          "level": 1,
+          "remediation_type": "feature_removal",
+          "similarity_score": 0.121
+        },
+        {
+          "id": "CIS-SMB-002",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Network Security",
+          "control_title": "Apply security updates for SMB remote code execution vulnerabilities promptly",
+          "text": "Hosts exposing SMB services should be patched against known remote code execution vulnerabilities as a priority, since SMB is a common lateral-movement and ransomware entry vector. Maintain a patch cadence that applies critical SMB-related security updates within 72 hours of release for internet- or high-value-network-facing systems.",
+          "applies_to": [
+            "smb",
+            "microsoft-ds",
+            "windows_server",
+            "windows"
+          ],
+          "level": 1,
+          "remediation_type": "patch_management",
+          "similarity_score": 0.0
+        }
+      ],
+      "service_tags_used": [
+        "windows",
+        "microsoft-ds"
+      ]
+    }
+  },
+  {
+    "type": "asset",
+    "host": "10.20.30.1",
+    "hostname": "ws-legacy-03.corp.local",
+    "os_guess": "Microsoft Windows 7 SP1",
+    "port": 3389,
+    "protocol": "tcp",
+    "service": "ms-wbt-server",
+    "product": "Microsoft Terminal Services",
+    "version": null,
+    "cve_refs": [],
+    "nse_script": null,
+    "raw_output": null,
+    "severity_score": 1.5,
+    "severity_band": "LOW",
+    "scoring_rationale": "Baseline exposure risk for open 'ms-wbt-server' service",
+    "grounding_context": {
+      "cve_records": [],
+      "cis_matches": [
+        {
+          "id": "CIS-RDP-001",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Remote Access",
+          "control_title": "Restrict RDP exposure and enforce Network Level Authentication",
+          "text": "Remote Desktop Protocol should not be exposed directly to untrusted networks. Where RDP is required, enforce Network Level Authentication (NLA), require multi-factor authentication, and restrict access via firewall rules or a VPN/bastion host rather than direct internet exposure. Unrestricted RDP exposure is one of the most common initial access vectors in ransomware incidents.",
+          "applies_to": [
+            "rdp",
+            "ms-wbt-server",
+            "windows",
+            "windows_server"
+          ],
+          "level": 1,
+          "remediation_type": "network_configuration",
+          "similarity_score": 0.092
+        }
+      ],
+      "service_tags_used": [
+        "ms-wbt-server"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.1",
+    "hostname": "ws-legacy-03.corp.local",
+    "os_guess": "Microsoft Windows 7 SP1",
+    "port": 3389,
+    "protocol": "tcp",
+    "service": "ms-wbt-server",
+    "product": "Microsoft Terminal Services",
+    "version": null,
+    "cve_refs": [],
+    "nse_script": "rdp-vuln-ms12-020",
+    "raw_output": "VULNERABLE: MS12-020 Remote Desktop Protocol Denial of Service",
+    "severity_score": 7.5,
+    "severity_band": "HIGH",
+    "scoring_rationale": "Unauthenticated remote denial-of-service against RDP service",
+    "grounding_context": {
+      "cve_records": [],
+      "cis_matches": [
+        {
+          "id": "CIS-RDP-001",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Remote Access",
+          "control_title": "Restrict RDP exposure and enforce Network Level Authentication",
+          "text": "Remote Desktop Protocol should not be exposed directly to untrusted networks. Where RDP is required, enforce Network Level Authentication (NLA), require multi-factor authentication, and restrict access via firewall rules or a VPN/bastion host rather than direct internet exposure. Unrestricted RDP exposure is one of the most common initial access vectors in ransomware incidents.",
+          "applies_to": [
+            "rdp",
+            "ms-wbt-server",
+            "windows",
+            "windows_server"
+          ],
+          "level": 1,
+          "remediation_type": "network_configuration",
+          "similarity_score": 0.295
+        }
+      ],
+      "service_tags_used": [
+        "ms-wbt-server"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.1",
+    "hostname": "ws-legacy-03.corp.local",
+    "os_guess": "Microsoft Windows 7 SP1",
+    "port": 3389,
+    "protocol": "tcp",
+    "service": "ms-wbt-server",
+    "product": "Microsoft Terminal Services",
+    "version": null,
+    "cve_refs": [
+      "CVE-2019-0708"
+    ],
+    "nse_script": "smb-vuln-ms17-010",
+    "raw_output": "VULNERABLE: Pre-auth Remote Code Execution in RDP (BlueKeep). Risk factor: CRITICAL  IDs: CVE:CVE-2019-0708",
+    "severity_score": 9.8,
+    "severity_band": "CRITICAL",
+    "scoring_rationale": "CVSS v3 base score 9.8 from ['CVE-2019-0708']",
+    "grounding_context": {
+      "cve_records": [
+        {
+          "id": "CVE-2019-0708",
+          "text": "A remote code execution vulnerability exists in Remote Desktop Services formerly known as Terminal Services when an unauthenticated attacker connects to the target system using RDP and sends specially crafted requests, aka 'Remote Desktop Services Remote Code Execution Vulnerability'.",
+          "cvss_v3_score": 9.8,
+          "cvss_v3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss_severity": "CRITICAL",
+          "cwe_ids": [
+            "CWE-416",
+            "CWE-416"
+          ],
+          "published_date": "2019-05-16T19:29:00.427",
+          "last_modified_date": "2026-06-17T02:08:44.017",
+          "references": [
+            "http://packetstormsecurity.com/files/153133/Microsoft-Windows-Remote-Desktop-BlueKeep-Denial-Of-Service.html",
+            "http://packetstormsecurity.com/files/153627/Microsoft-Windows-RDP-BlueKeep-Denial-Of-Service.html",
+            "http://packetstormsecurity.com/files/154579/BlueKeep-RDP-Remote-Windows-Kernel-Use-After-Free.html",
+            "http://packetstormsecurity.com/files/155389/Microsoft-Windows-7-x86-BlueKeep-RDP-Use-After-Free.html",
+            "http://packetstormsecurity.com/files/162960/Microsoft-RDP-Remote-Code-Execution.html"
+          ],
+          "kev_listed": null,
+          "kev_date_added": null
+        }
+      ],
+      "cis_matches": [
+        {
+          "id": "CIS-RDP-001",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Remote Access",
+          "control_title": "Restrict RDP exposure and enforce Network Level Authentication",
+          "text": "Remote Desktop Protocol should not be exposed directly to untrusted networks. Where RDP is required, enforce Network Level Authentication (NLA), require multi-factor authentication, and restrict access via firewall rules or a VPN/bastion host rather than direct internet exposure. Unrestricted RDP exposure is one of the most common initial access vectors in ransomware incidents.",
+          "applies_to": [
+            "rdp",
+            "ms-wbt-server",
+            "windows",
+            "windows_server"
+          ],
+          "level": 1,
+          "remediation_type": "network_configuration",
+          "similarity_score": 0.216
+        }
+      ],
+      "service_tags_used": [
+        "ms-wbt-server"
+      ]
+    }
+  },
+  {
+    "type": "asset",
+    "host": "10.20.30.2",
+    "hostname": "cache-redis-03.corp.local",
+    "os_guess": "Linux 4.15 - 5.6",
+    "port": 6379,
+    "protocol": "tcp",
+    "service": "redis",
+    "product": "Redis key-value store",
+    "version": "6.0.15",
+    "cve_refs": [],
+    "nse_script": null,
+    "raw_output": null,
+    "severity_score": 2.0,
+    "severity_band": "LOW",
+    "scoring_rationale": "Baseline exposure risk for open 'redis' service",
+    "grounding_context": {
+      "cve_records": [],
+      "cis_matches": [
+        {
+          "id": "CIS-REDIS-001",
+          "benchmark": "CIS Redis Benchmark (illustrative)",
+          "section": "Authentication",
+          "control_title": "Require authentication for Redis access (requirepass)",
+          "text": "Redis should require a password via the requirepass directive for all access. A Redis instance bound to the network with no password allows any reachable client to read, modify, or destroy all data and, in some configurations, run Lua scripts. If Redis is not required to be network-exposed, bind it to loopback only.",
+          "applies_to": [
+            "redis"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.388
+        },
+        {
+          "id": "CIS-REDIS-002",
+          "benchmark": "CIS Redis Benchmark (illustrative)",
+          "section": "Network Exposure",
+          "control_title": "Restrict Redis network exposure and enable protected-mode",
+          "text": "Redis protected-mode should stay enabled and the server should bind to internal interfaces only, so the database cannot be reached from untrusted networks. Where remote access is required, place it behind a bastion/VPN rather than direct exposure.",
+          "applies_to": [
+            "redis"
+          ],
+          "level": 1,
+          "remediation_type": "network_configuration",
+          "similarity_score": 0.235
+        }
+      ],
+      "service_tags_used": [
+        "redis"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.2",
+    "hostname": "cache-redis-03.corp.local",
+    "os_guess": "Linux 4.15 - 5.6",
+    "port": 6379,
+    "protocol": "tcp",
+    "service": "redis",
+    "product": "Redis key-value store",
+    "version": "6.0.15",
+    "cve_refs": [],
+    "nse_script": "redis-info",
+    "raw_output": "VULNERABLE: Redis server reachable with no password (no requirepass configured).",
+    "severity_score": 7.0,
+    "severity_band": "HIGH",
+    "scoring_rationale": "Redis server reachable with no authentication \u2014 remote data theft/overwrite without credentials",
+    "grounding_context": {
+      "cve_records": [],
+      "cis_matches": [
+        {
+          "id": "CIS-REDIS-001",
+          "benchmark": "CIS Redis Benchmark (illustrative)",
+          "section": "Authentication",
+          "control_title": "Require authentication for Redis access (requirepass)",
+          "text": "Redis should require a password via the requirepass directive for all access. A Redis instance bound to the network with no password allows any reachable client to read, modify, or destroy all data and, in some configurations, run Lua scripts. If Redis is not required to be network-exposed, bind it to loopback only.",
+          "applies_to": [
+            "redis"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.514
+        },
+        {
+          "id": "CIS-REDIS-002",
+          "benchmark": "CIS Redis Benchmark (illustrative)",
+          "section": "Network Exposure",
+          "control_title": "Restrict Redis network exposure and enable protected-mode",
+          "text": "Redis protected-mode should stay enabled and the server should bind to internal interfaces only, so the database cannot be reached from untrusted networks. Where remote access is required, place it behind a bastion/VPN rather than direct exposure.",
+          "applies_to": [
+            "redis"
+          ],
+          "level": 1,
+          "remediation_type": "network_configuration",
+          "similarity_score": 0.25
+        }
+      ],
+      "service_tags_used": [
+        "redis"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.2",
+    "hostname": "cache-redis-03.corp.local",
+    "os_guess": "Linux 4.15 - 5.6",
+    "port": 6379,
+    "protocol": "tcp",
+    "service": "redis",
+    "product": "Redis key-value store",
+    "version": "6.0.15",
+    "cve_refs": [
+      "CVE-2022-0543"
+    ],
+    "nse_script": "redis-vuln-cve2022-0543",
+    "raw_output": "VULNERABLE: Debian-packaged Redis Lua sandbox escape allows remote code execution. IDs: CVE:CVE-2022-0543",
+    "severity_score": 10.0,
+    "severity_band": "CRITICAL",
+    "scoring_rationale": "CVSS v3 base score 10.0 from ['CVE-2022-0543']",
+    "grounding_context": {
+      "cve_records": [
+        {
+          "id": "CVE-2022-0543",
+          "text": "It was discovered, that redis, a persistent key-value database, due to a packaging issue, is prone to a (Debian-specific) Lua sandbox escape, which could result in remote code execution.",
+          "cvss_v3_score": 10.0,
+          "cvss_v3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+          "cvss_severity": "CRITICAL",
+          "cwe_ids": [
+            "CWE-862",
+            "CWE-862"
+          ],
+          "published_date": "2022-02-18T20:15:17.583",
+          "last_modified_date": "2026-06-17T04:20:48.593",
+          "references": [
+            "http://packetstormsecurity.com/files/166885/Redis-Lua-Sandbox-Escape.html",
+            "https://bugs.debian.org/1005787",
+            "https://lists.debian.org/debian-security-announce/2022/msg00048.html",
+            "https://security.netapp.com/advisory/ntap-20220331-0004/",
+            "https://www.debian.org/security/2022/dsa-5081"
+          ],
+          "kev_listed": null,
+          "kev_date_added": null
+        }
+      ],
+      "cis_matches": [
+        {
+          "id": "CIS-REDIS-001",
+          "benchmark": "CIS Redis Benchmark (illustrative)",
+          "section": "Authentication",
+          "control_title": "Require authentication for Redis access (requirepass)",
+          "text": "Redis should require a password via the requirepass directive for all access. A Redis instance bound to the network with no password allows any reachable client to read, modify, or destroy all data and, in some configurations, run Lua scripts. If Redis is not required to be network-exposed, bind it to loopback only.",
+          "applies_to": [
+            "redis"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.441
+        },
+        {
+          "id": "CIS-REDIS-002",
+          "benchmark": "CIS Redis Benchmark (illustrative)",
+          "section": "Network Exposure",
+          "control_title": "Restrict Redis network exposure and enable protected-mode",
+          "text": "Redis protected-mode should stay enabled and the server should bind to internal interfaces only, so the database cannot be reached from untrusted networks. Where remote access is required, place it behind a bastion/VPN rather than direct exposure.",
+          "applies_to": [
+            "redis"
+          ],
+          "level": 1,
+          "remediation_type": "network_configuration",
+          "similarity_score": 0.174
+        }
+      ],
+      "service_tags_used": [
+        "redis"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.2",
+    "hostname": "cache-redis-03.corp.local",
+    "os_guess": "Linux 4.15 - 5.6",
+    "port": 6379,
+    "protocol": "tcp",
+    "service": "redis",
+    "product": "Redis key-value store",
+    "version": "6.0.15",
+    "cve_refs": [
+      "CVE-2021-32761"
+    ],
+    "nse_script": "redis-vuln-cve2021-32761",
+    "raw_output": "VULNERABLE: Redis integer overflow in BIT commands corrupts heap / leaks contents. IDs: CVE:CVE-2021-32761",
+    "severity_score": 7.5,
+    "severity_band": "HIGH",
+    "scoring_rationale": "CVSS v3 base score 7.5 from ['CVE-2021-32761']",
+    "grounding_context": {
+      "cve_records": [
+        {
+          "id": "CVE-2021-32761",
+          "text": "Redis is an in-memory database that persists on disk. A vulnerability involving out-of-bounds read and integer overflow to buffer overflow exists starting with version 2.2 and prior to versions 5.0.13, 6.0.15, and 6.2.5. On 32-bit systems, Redis `*BIT*` command are vulnerable to integer overflow that can potentially be exploited to corrupt the heap, leak arbitrary heap contents or trigger remote code execution. The vulnerability involves changing the default `proto-max-bulk-len` configuration parameter to a very large value and constructing specially crafted commands bit commands. This problem only affects Redis on 32-bit platforms, or compiled as a 32-bit binary. Redis versions 5.0.`3m 6.0.15, and 6.2.5 contain patches for this issue. An additional workaround to mitigate the problem without patching the `redis-server` executable is to prevent users from modifying the `proto-max-bulk-len` configuration parameter. This can be done using ACL to restrict unprivileged users from using the CONFIG SET command.",
+          "cvss_v3_score": 7.5,
+          "cvss_v3_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+          "cvss_severity": "HIGH",
+          "cwe_ids": [
+            "CWE-125",
+            "CWE-680",
+            "CWE-190"
+          ],
+          "published_date": "2021-07-21T21:15:07.670",
+          "last_modified_date": "2026-06-17T03:53:34.540",
+          "references": [
+            "https://github.com/redis/redis/security/advisories/GHSA-8wxq-j7rp-g8wj",
+            "https://lists.debian.org/debian-lts-announce/2021/07/msg00017.html",
+            "https://lists.debian.org/debian-lts-announce/2021/08/msg00026.html",
+            "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/6O7AUOROBYGP5IMGJPC5HZ3R2RB6GZ5X/",
+            "https://lists.fedoraproject.org/archives/list/package-announce%40lists.fedoraproject.org/message/VGX7RRAWGXWXEAKJTQYSDSBO2BC3SAHD/"
+          ],
+          "kev_listed": null,
+          "kev_date_added": null
+        }
+      ],
+      "cis_matches": [
+        {
+          "id": "CIS-REDIS-001",
+          "benchmark": "CIS Redis Benchmark (illustrative)",
+          "section": "Authentication",
+          "control_title": "Require authentication for Redis access (requirepass)",
+          "text": "Redis should require a password via the requirepass directive for all access. A Redis instance bound to the network with no password allows any reachable client to read, modify, or destroy all data and, in some configurations, run Lua scripts. If Redis is not required to be network-exposed, bind it to loopback only.",
+          "applies_to": [
+            "redis"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.406
+        },
+        {
+          "id": "CIS-REDIS-002",
+          "benchmark": "CIS Redis Benchmark (illustrative)",
+          "section": "Network Exposure",
+          "control_title": "Restrict Redis network exposure and enable protected-mode",
+          "text": "Redis protected-mode should stay enabled and the server should bind to internal interfaces only, so the database cannot be reached from untrusted networks. Where remote access is required, place it behind a bastion/VPN rather than direct exposure.",
+          "applies_to": [
+            "redis"
+          ],
+          "level": 1,
+          "remediation_type": "network_configuration",
+          "similarity_score": 0.185
+        }
+      ],
+      "service_tags_used": [
+        "redis"
+      ]
+    }
+  }
+]

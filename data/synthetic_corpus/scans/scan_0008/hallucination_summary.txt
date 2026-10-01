@@ -1,0 +1,33 @@
+========================================================================
+HALLUCINATION BENCHMARK SUMMARY
+========================================================================
+Existence mode : local cve_kb (D:\Downloads\op\data\synthetic_corpus\scans\scan_0008\cve_kb.json)
+Input files    : D:\Downloads\op\data\synthetic_corpus\scans\scan_0008\llm_output.jsonl
+
+--- VARIANT: GROUNDED (4 scored findings) ---
+  per-finding  , any bad citation : 0/4 (0.0%)
+  per-finding  , fabricated CVE   : 0/4 (0.0%)
+  per-finding  , unsupported CVE  : 0/4 (0.0%)
+  findings with zero citations    : 3 (3/4)
+  per-citation , bad citations    : 0/1 (0.0%) (of 1 total citations)
+  per-citation , fabricated CVE   : 0/1 (0.0%)
+  per-citation , unsupported CVE  : 0/1 (0.0%)
+
+--- VARIANT: UNGROUNDED (4 scored findings) ---
+  per-finding  , any bad citation : 0/4 (0.0%)
+  per-finding  , fabricated CVE   : 0/4 (0.0%)
+  per-finding  , unsupported CVE  : 0/4 (0.0%)
+  findings with zero citations    : 4 (4/4)
+  per-citation , bad citations    : 0/0 (0.0%) (of 0 total citations)
+  per-citation , fabricated CVE   : 0/0 (0.0%)
+  per-citation , unsupported CVE  : 0/0 (0.0%)
+
+--- GROUNDED vs UNGROUNDED (headline) ---
+  per-finding bad-citation rate : grounded 0/4 (0.0%)  vs  ungrounded 0/4 (0.0%)
+  per-citation bad-citation rate : grounded 0/1 (0.0%)  vs  ungrounded 0/0 (0.0%)
+
+Interpretation:
+  - fabricated_cve (grounded) should be ~0: the model only saw
+    retrieved context, so inventing IDs is structurally blocked.
+  - unsupported_cve (ungrounded) is the interesting delta: real
+    CVEs cited from memory without retrieval evidence.

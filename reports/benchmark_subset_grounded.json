@@ -1,0 +1,1084 @@
+[
+  {
+    "type": "vuln",
+    "host": "10.20.30.2",
+    "hostname": "web-apache2-02.corp.local",
+    "os_guess": "Linux 3.10 - 4.6",
+    "port": 80,
+    "protocol": "tcp",
+    "service": "http",
+    "product": "Apache httpd",
+    "version": "2.4.38",
+    "cve_refs": [
+      "CVE-2017-15715"
+    ],
+    "nse_script": "http-vuln-cve2017-15715",
+    "raw_output": "VULNERABLE: FilesMatch newline bypass permits restricted file upload. IDs: CVE:CVE-2017-15715",
+    "severity_score": 8.1,
+    "severity_band": "HIGH",
+    "scoring_rationale": "CVSS v3 base score 8.1 from ['CVE-2017-15715']",
+    "grounding_context": {
+      "cve_records": [
+        {
+          "id": "CVE-2017-15715",
+          "text": "In Apache httpd 2.4.0 to 2.4.29, the expression specified in <FilesMatch> could match '$' to a newline character in a malicious filename, rather than matching only the end of the filename. This could be exploited in environments where uploads of some files are are externally blocked, but only by matching the trailing portion of the filename.",
+          "cvss_v3_score": 8.1,
+          "cvss_v3_vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss_severity": "HIGH",
+          "cwe_ids": [
+            "CWE-20"
+          ],
+          "published_date": "2018-03-26T15:29:00.287",
+          "last_modified_date": "2026-06-17T01:08:09.157",
+          "references": [
+            "http://www.openwall.com/lists/oss-security/2018/03/24/6",
+            "http://www.securityfocus.com/bid/103525",
+            "http://www.securitytracker.com/id/1040570",
+            "https://access.redhat.com/errata/RHSA-2018:3558",
+            "https://access.redhat.com/errata/RHSA-2019:0366"
+          ],
+          "kev_listed": null,
+          "kev_date_added": null
+        }
+      ],
+      "cis_matches": [
+        {
+          "id": "CIS-WEB-001",
+          "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+          "section": "Server Hardening",
+          "control_title": "Keep web server software on a supported, patched version",
+          "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+          "applies_to": [
+            "http",
+            "https",
+            "apache_httpd"
+          ],
+          "level": 1,
+          "remediation_type": "patch_management",
+          "similarity_score": 0.269
+        },
+        {
+          "id": "CIS-TLS-001",
+          "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+          "section": "Transport Security",
+          "control_title": "Monitor and renew TLS certificates before expiry",
+          "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+          "applies_to": [
+            "https",
+            "ssl",
+            "tls",
+            "apache_httpd",
+            "nginx"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.0
+        }
+      ],
+      "service_tags_used": [
+        "http",
+        "apache_httpd"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.1",
+    "hostname": "web-apache-06.corp.local",
+    "os_guess": "Linux 4.15 - 5.6",
+    "port": 80,
+    "protocol": "tcp",
+    "service": "http",
+    "product": "Apache httpd",
+    "version": "2.4.49",
+    "cve_refs": [
+      "CVE-2021-41773"
+    ],
+    "nse_script": "http-vuln-cve2021-41773",
+    "raw_output": "VULNERABLE: Apache 2.4.49 path traversal leading to file disclosure and RCE. IDs: CVE:CVE-2021-41773",
+    "severity_score": 9.8,
+    "severity_band": "CRITICAL",
+    "scoring_rationale": "CVSS v3 base score 9.8 from ['CVE-2021-41773']",
+    "grounding_context": {
+      "cve_records": [
+        {
+          "id": "CVE-2021-41773",
+          "text": "A flaw was found in a change made to path normalization in Apache HTTP Server 2.4.49. An attacker could use a path traversal attack to map URLs to files outside the directories configured by Alias-like directives. If files outside of these directories are not protected by the usual default configuration \"require all denied\", these requests can succeed. If CGI scripts are also enabled for these aliased pathes, this could allow for remote code execution. This issue is known to be exploited in the wild. This issue only affects Apache 2.4.49 and not earlier versions. The fix in Apache HTTP Server 2.4.50 was found to be incomplete, see CVE-2021-42013.",
+          "cvss_v3_score": 9.8,
+          "cvss_v3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss_severity": "CRITICAL",
+          "cwe_ids": [
+            "CWE-22",
+            "CWE-22"
+          ],
+          "published_date": "2021-10-05T09:15:07.593",
+          "last_modified_date": "2026-06-17T04:08:53.933",
+          "references": [
+            "http://packetstormsecurity.com/files/164418/Apache-HTTP-Server-2.4.49-Path-Traversal-Remote-Code-Execution.html",
+            "http://packetstormsecurity.com/files/164418/Apache-HTTP-Server-2.4.49-Path-Traversal.html",
+            "http://packetstormsecurity.com/files/164629/Apache-2.4.49-2.4.50-Traversal-Remote-Code-Execution.html",
+            "http://packetstormsecurity.com/files/164941/Apache-HTTP-Server-2.4.50-Remote-Code-Execution.html",
+            "http://www.openwall.com/lists/oss-security/2021/10/05/2"
+          ],
+          "kev_listed": null,
+          "kev_date_added": null
+        }
+      ],
+      "cis_matches": [
+        {
+          "id": "CIS-WEB-001",
+          "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+          "section": "Server Hardening",
+          "control_title": "Keep web server software on a supported, patched version",
+          "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+          "applies_to": [
+            "http",
+            "https",
+            "apache_httpd"
+          ],
+          "level": 1,
+          "remediation_type": "patch_management",
+          "similarity_score": 0.254
+        },
+        {
+          "id": "CIS-TLS-001",
+          "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+          "section": "Transport Security",
+          "control_title": "Monitor and renew TLS certificates before expiry",
+          "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+          "applies_to": [
+            "https",
+            "ssl",
+            "tls",
+            "apache_httpd",
+            "nginx"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.0
+        }
+      ],
+      "service_tags_used": [
+        "apache_httpd",
+        "http"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.1",
+    "hostname": "decoy-web-05.corp.local",
+    "os_guess": "Linux 4.15 - 5.6",
+    "port": 443,
+    "protocol": "tcp",
+    "service": "https",
+    "product": "Apache httpd",
+    "version": "2.4.29",
+    "cve_refs": [],
+    "nse_script": "ssl-known-key",
+    "raw_output": "Certificate expired",
+    "severity_score": 4.0,
+    "severity_band": "MEDIUM",
+    "scoring_rationale": "Expired TLS certificate undermines transport trust and may trigger client warnings",
+    "grounding_context": {
+      "cve_records": [],
+      "cis_matches": [
+        {
+          "id": "CIS-TLS-001",
+          "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+          "section": "Transport Security",
+          "control_title": "Monitor and renew TLS certificates before expiry",
+          "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+          "applies_to": [
+            "https",
+            "ssl",
+            "tls",
+            "apache_httpd",
+            "nginx"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.388
+        },
+        {
+          "id": "CIS-WEB-001",
+          "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+          "section": "Server Hardening",
+          "control_title": "Keep web server software on a supported, patched version",
+          "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+          "applies_to": [
+            "http",
+            "https",
+            "apache_httpd"
+          ],
+          "level": 1,
+          "remediation_type": "patch_management",
+          "similarity_score": 0.098
+        }
+      ],
+      "service_tags_used": [
+        "ssl",
+        "apache_httpd",
+        "https",
+        "tls"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.1",
+    "hostname": "decoy-ftp-11.corp.local",
+    "os_guess": "FreeBSD 9.x",
+    "port": 21,
+    "protocol": "tcp",
+    "service": "ftp",
+    "product": "ProFTPD",
+    "version": "1.3.5",
+    "cve_refs": [],
+    "nse_script": "ftp-anon",
+    "raw_output": "Anonymous FTP login allowed (FTP code 230)",
+    "severity_score": 5.5,
+    "severity_band": "MEDIUM",
+    "scoring_rationale": "Anonymous FTP access allows unauthenticated file listing/upload",
+    "grounding_context": {
+      "cve_records": [],
+      "cis_matches": [
+        {
+          "id": "CIS-FTP-001",
+          "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+          "section": "File Transfer Services",
+          "control_title": "Disable anonymous FTP authentication",
+          "text": "Anonymous FTP login should be disabled unless there is an explicit, documented business requirement for public unauthenticated file access. Anonymous access allows any network-reachable client to list directories and, depending on configuration, upload or retrieve files without accountability. Where FTP is required at all, prefer SFTP/FTPS with authenticated access.",
+          "applies_to": [
+            "ftp"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.58
+        }
+      ],
+      "service_tags_used": [
+        "ftp"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.1",
+    "hostname": "db-mongo-10.corp.local",
+    "os_guess": "Linux 4.15 - 5.6",
+    "port": 27017,
+    "protocol": "tcp",
+    "service": "mongodb",
+    "product": "MongoDB",
+    "version": "3.6.13",
+    "cve_refs": [
+      "CVE-2019-2386"
+    ],
+    "nse_script": "mongodb-vuln-cve2019-2386",
+    "raw_output": "VULNERABLE: MongoDB authorization session persists after user deletion (user-account conflation). IDs: CVE:CVE-2019-2386",
+    "severity_score": 7.1,
+    "severity_band": "HIGH",
+    "scoring_rationale": "CVSS v3 base score 7.1 from ['CVE-2019-2386']",
+    "grounding_context": {
+      "cve_records": [
+        {
+          "id": "CVE-2019-2386",
+          "text": "After user deletion in MongoDB Server the improper invalidation of authorization sessions allows an authenticated user's session to persist and become conflated with new accounts, if those accounts reuse the names of deleted ones. This issue affects MongoDB Server v4.0 versions prior to 4.0.9; MongoDB Server v3.6 versions prior to 3.6.13 and MongoDB Server v3.4 versions prior to 3.4.22.\n\nWorkaround: \nAfter deleting one or more users, restart any nodes which may have had active user authorization sessions.\n\nRefrain from creating user accounts with the same name as previously deleted accounts.",
+          "cvss_v3_score": 7.1,
+          "cvss_v3_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:U/C:H/I:H/A:H",
+          "cvss_severity": "HIGH",
+          "cwe_ids": [
+            "CWE-285",
+            "CWE-613"
+          ],
+          "published_date": "2019-08-06T19:15:13.613",
+          "last_modified_date": "2026-06-17T02:33:44.377",
+          "references": [
+            "https://jira.mongodb.org/browse/SERVER-38984",
+            "https://www.talosintelligence.com/vulnerability_reports/TALOS-2019-0829",
+            "https://jira.mongodb.org/browse/SERVER-38984",
+            "https://www.talosintelligence.com/vulnerability_reports/TALOS-2019-0829"
+          ],
+          "kev_listed": null,
+          "kev_date_added": null
+        }
+      ],
+      "cis_matches": [
+        {
+          "id": "CIS-MONGO-001",
+          "benchmark": "CIS MongoDB Benchmark (illustrative)",
+          "section": "Authentication",
+          "control_title": "Enable MongoDB authentication",
+          "text": "MongoDB should run with authorization enabled. Instances started without --auth accept every connection as the all-powerful role and expose every collection to any reachable client â€” a pattern behind several large-scale data breaches.",
+          "applies_to": [
+            "mongodb"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.242
+        },
+        {
+          "id": "CIS-MONGO-002",
+          "benchmark": "CIS MongoDB Benchmark (illustrative)",
+          "section": "Network Exposure",
+          "control_title": "Bind MongoDB to internal interfaces only",
+          "text": "MongoDB should bind to 127.0.0.1 or internal interfaces, never 0.0.0.0 on a public network. Use firewall rules or security groups to restrict inbound database traffic to the application tier.",
+          "applies_to": [
+            "mongodb"
+          ],
+          "level": 1,
+          "remediation_type": "network_configuration",
+          "similarity_score": 0.154
+        }
+      ],
+      "service_tags_used": [
+        "mongodb"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.1",
+    "hostname": "db-mysql-07.corp.local",
+    "os_guess": "Linux 3.10 - 4.6",
+    "port": 3306,
+    "protocol": "tcp",
+    "service": "mysql",
+    "product": "MySQL",
+    "version": "5.5.62",
+    "cve_refs": [
+      "CVE-2016-6662"
+    ],
+    "nse_script": "mysql-vuln-cve2016-6662",
+    "raw_output": "VULNERABLE: MySQL general_log_file privilege escalation enables root RCE. IDs: CVE:CVE-2016-6662",
+    "severity_score": 9.8,
+    "severity_band": "CRITICAL",
+    "scoring_rationale": "CVSS v3 base score 9.8 from ['CVE-2016-6662']",
+    "grounding_context": {
+      "cve_records": [
+        {
+          "id": "CVE-2016-6662",
+          "text": "Oracle MySQL through 5.5.52, 5.6.x through 5.6.33, and 5.7.x through 5.7.15; MariaDB before 5.5.51, 10.0.x before 10.0.27, and 10.1.x before 10.1.17; and Percona Server before 5.5.51-38.1, 5.6.x before 5.6.32-78.0, and 5.7.x before 5.7.14-7 allow local users to create arbitrary configurations and bypass certain protection mechanisms by setting general_log_file to a my.cnf configuration. NOTE: this can be leveraged to execute arbitrary code with root privileges by setting malloc_lib. NOTE: the affected MySQL version information is from Oracle's October 2016 CPU. Oracle has not commented on third-party claims that the issue was silently patched in MySQL 5.5.52, 5.6.33, and 5.7.15.",
+          "cvss_v3_score": 9.8,
+          "cvss_v3_vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss_severity": "CRITICAL",
+          "cwe_ids": [
+            "CWE-264"
+          ],
+          "published_date": "2016-09-20T18:59:00.127",
+          "last_modified_date": "2026-06-17T00:51:32.947",
+          "references": [
+            "http://legalhackers.com/advisories/MySQL-Exploit-Remote-Root-Code-Execution-Privesc-CVE-2016-6662.html",
+            "http://rhn.redhat.com/errata/RHSA-2016-2058.html",
+            "http://rhn.redhat.com/errata/RHSA-2016-2059.html",
+            "http://rhn.redhat.com/errata/RHSA-2016-2060.html",
+            "http://rhn.redhat.com/errata/RHSA-2016-2061.html"
+          ],
+          "kev_listed": null,
+          "kev_date_added": null
+        }
+      ],
+      "cis_matches": [
+        {
+          "id": "CIS-MYSQL-001",
+          "benchmark": "CIS MySQL Benchmark (illustrative)",
+          "section": "Authentication",
+          "control_title": "Keep database engine patched against authentication bypass vulnerabilities",
+          "text": "Database servers should run supported, patched versions of the database engine. Older MySQL/MariaDB versions have contained authentication bypass vulnerabilities that allow login without correct credentials under certain conditions. Apply vendor security patches promptly and avoid running end-of-life database versions in production.",
+          "applies_to": [
+            "mysql"
+          ],
+          "level": 1,
+          "remediation_type": "patch_management",
+          "similarity_score": 0.149
+        },
+        {
+          "id": "CIS-MYSQL-002",
+          "benchmark": "CIS MySQL Benchmark (illustrative)",
+          "section": "Network Exposure",
+          "control_title": "Restrict database network exposure to application tiers only",
+          "text": "Database services should not be reachable from general user networks or the internet. Bind the database to internal interfaces only and use firewall rules or security groups to restrict inbound connections to the specific application servers that require access.",
+          "applies_to": [
+            "mysql"
+          ],
+          "level": 1,
+          "remediation_type": "network_configuration",
+          "similarity_score": 0.0
+        }
+      ],
+      "service_tags_used": [
+        "mysql"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.1",
+    "hostname": "db-mysql2-04.corp.local",
+    "os_guess": "Linux 4.15 - 5.6",
+    "port": 3306,
+    "protocol": "tcp",
+    "service": "mysql",
+    "product": "MySQL",
+    "version": "5.6.31",
+    "cve_refs": [
+      "CVE-2016-0643"
+    ],
+    "nse_script": "mysql-vuln-cve2016-0643",
+    "raw_output": "VULNERABLE: MySQL DML information disclosure allows local confidentiality breach. IDs: CVE:CVE-2016-0643",
+    "severity_score": 3.3,
+    "severity_band": "LOW",
+    "scoring_rationale": "CVSS v3 base score 3.3 from ['CVE-2016-0643']",
+    "grounding_context": {
+      "cve_records": [
+        {
+          "id": "CVE-2016-0643",
+          "text": "Unspecified vulnerability in Oracle MySQL 5.5.48 and earlier, 5.6.29 and earlier, and 5.7.11 and earlier and MariaDB before 5.5.49, 10.0.x before 10.0.25, and 10.1.x before 10.1.14 allows local users to affect confidentiality via vectors related to DML.",
+          "cvss_v3_score": 3.3,
+          "cvss_v3_vector": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N",
+          "cvss_severity": "LOW",
+          "cwe_ids": [],
+          "published_date": "2016-04-21T10:59:12.757",
+          "last_modified_date": "2026-06-17T00:37:55.273",
+          "references": [
+            "http://lists.opensuse.org/opensuse-security-announce/2016-05/msg00035.html",
+            "http://lists.opensuse.org/opensuse-security-announce/2016-05/msg00053.html",
+            "http://lists.opensuse.org/opensuse-security-announce/2016-06/msg00033.html",
+            "http://lists.opensuse.org/opensuse-security-announce/2016-06/msg00034.html",
+            "http://lists.opensuse.org/opensuse-security-announce/2016-06/msg00051.html"
+          ],
+          "kev_listed": null,
+          "kev_date_added": null
+        }
+      ],
+      "cis_matches": [
+        {
+          "id": "CIS-MYSQL-001",
+          "benchmark": "CIS MySQL Benchmark (illustrative)",
+          "section": "Authentication",
+          "control_title": "Keep database engine patched against authentication bypass vulnerabilities",
+          "text": "Database servers should run supported, patched versions of the database engine. Older MySQL/MariaDB versions have contained authentication bypass vulnerabilities that allow login without correct credentials under certain conditions. Apply vendor security patches promptly and avoid running end-of-life database versions in production.",
+          "applies_to": [
+            "mysql"
+          ],
+          "level": 1,
+          "remediation_type": "patch_management",
+          "similarity_score": 0.157
+        },
+        {
+          "id": "CIS-MYSQL-002",
+          "benchmark": "CIS MySQL Benchmark (illustrative)",
+          "section": "Network Exposure",
+          "control_title": "Restrict database network exposure to application tiers only",
+          "text": "Database services should not be reachable from general user networks or the internet. Bind the database to internal interfaces only and use firewall rules or security groups to restrict inbound connections to the specific application servers that require access.",
+          "applies_to": [
+            "mysql"
+          ],
+          "level": 1,
+          "remediation_type": "network_configuration",
+          "similarity_score": 0.0
+        }
+      ],
+      "service_tags_used": [
+        "mysql"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.2",
+    "hostname": "srv-ssh2-07.corp.local",
+    "os_guess": "Linux 5.4 - 6.1",
+    "port": 22,
+    "protocol": "tcp",
+    "service": "ssh",
+    "product": "OpenSSH",
+    "version": "9.3",
+    "cve_refs": [
+      "CVE-2023-38408"
+    ],
+    "nse_script": "ssh-vuln-agent-pkcs11",
+    "raw_output": "VULNERABLE: ssh-agent PKCS#11 unsanitized search path enables remote code execution when agent is forwarded. IDs: CVE:CVE-2023-38408",
+    "severity_score": 9.8,
+    "severity_band": "CRITICAL",
+    "scoring_rationale": "CVSS v3 base score 9.8 from ['CVE-2023-38408']",
+    "grounding_context": {
+      "cve_records": [
+        {
+          "id": "CVE-2023-38408",
+          "text": "The PKCS#11 feature in ssh-agent in OpenSSH before 9.3p2 has an insufficiently trustworthy search path, leading to remote code execution if an agent is forwarded to an attacker-controlled system. (Code in /usr/lib is not necessarily safe for loading into ssh-agent.) NOTE: this issue exists because of an incomplete fix for CVE-2016-10009.",
+          "cvss_v3_score": 9.8,
+          "cvss_v3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss_severity": "CRITICAL",
+          "cwe_ids": [
+            "CWE-428",
+            "CWE-428"
+          ],
+          "published_date": "2023-07-20T03:15:10.170",
+          "last_modified_date": "2026-06-17T06:10:06.760",
+          "references": [
+            "http://packetstormsecurity.com/files/173661/OpenSSH-Forwarded-SSH-Agent-Remote-Code-Execution.html",
+            "http://www.openwall.com/lists/oss-security/2023/07/20/1",
+            "http://www.openwall.com/lists/oss-security/2023/07/20/2",
+            "http://www.openwall.com/lists/oss-security/2023/09/22/11",
+            "http://www.openwall.com/lists/oss-security/2023/09/22/9"
+          ],
+          "kev_listed": null,
+          "kev_date_added": null
+        }
+      ],
+      "cis_matches": [
+        {
+          "id": "CIS-SSH-001",
+          "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+          "section": "Remote Access",
+          "control_title": "Disable password authentication in favor of key-based SSH login",
+          "text": "SSH should be configured to disable password authentication and require public-key authentication instead, reducing exposure to credential-stuffing and brute-force attacks. Combine this with disabling root login over SSH and restricting access to specific source networks where feasible.",
+          "applies_to": [
+            "ssh",
+            "openssh"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.377
+        }
+      ],
+      "service_tags_used": [
+        "ssh",
+        "openssh"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.1",
+    "hostname": "srv-ssh-12.corp.local",
+    "os_guess": "Linux 4.15 - 5.6",
+    "port": 22,
+    "protocol": "tcp",
+    "service": "ssh",
+    "product": "OpenSSH",
+    "version": "7.4",
+    "cve_refs": [
+      "CVE-2016-6210"
+    ],
+    "nse_script": "ssh-vuln-cve2016-6210",
+    "raw_output": "VULNERABLE: OpenSSH user enumeration via password-hash timing difference. IDs: CVE:CVE-2016-6210",
+    "severity_score": 5.9,
+    "severity_band": "MEDIUM",
+    "scoring_rationale": "CVSS v3 base score 5.9 from ['CVE-2016-6210']",
+    "grounding_context": {
+      "cve_records": [
+        {
+          "id": "CVE-2016-6210",
+          "text": "sshd in OpenSSH before 7.3, when SHA256 or SHA512 are used for user password hashing, uses BLOWFISH hashing on a static password when the username does not exist, which allows remote attackers to enumerate users by leveraging the timing difference between responses when a large password is provided.",
+          "cvss_v3_score": 5.9,
+          "cvss_v3_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "cvss_severity": "MEDIUM",
+          "cwe_ids": [
+            "CWE-200",
+            "CWE-200"
+          ],
+          "published_date": "2017-02-13T17:59:00.153",
+          "last_modified_date": "2026-06-17T00:50:38.270",
+          "references": [
+            "http://seclists.org/fulldisclosure/2016/Jul/51",
+            "http://www.debian.org/security/2016/dsa-3626",
+            "http://www.securityfocus.com/bid/91812",
+            "http://www.securitytracker.com/id/1036319",
+            "https://access.redhat.com/errata/RHSA-2017:2029"
+          ],
+          "kev_listed": null,
+          "kev_date_added": null
+        }
+      ],
+      "cis_matches": [
+        {
+          "id": "CIS-SSH-001",
+          "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+          "section": "Remote Access",
+          "control_title": "Disable password authentication in favor of key-based SSH login",
+          "text": "SSH should be configured to disable password authentication and require public-key authentication instead, reducing exposure to credential-stuffing and brute-force attacks. Combine this with disabling root login over SSH and restricting access to specific source networks where feasible.",
+          "applies_to": [
+            "ssh",
+            "openssh"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.375
+        }
+      ],
+      "service_tags_used": [
+        "openssh",
+        "ssh"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.2",
+    "hostname": "srv-tls-01.corp.local",
+    "os_guess": "Linux 3.10 - 4.6",
+    "port": 443,
+    "protocol": "tcp",
+    "service": "https",
+    "product": "OpenSSL",
+    "version": "1.0.1e",
+    "cve_refs": [
+      "CVE-2014-0160"
+    ],
+    "nse_script": "ssl-heartbleed",
+    "raw_output": "VULNERABLE: OpenSSL heartbeat extension buffer over-read leaks process memory (Heartbleed). Risk factor: HIGH  IDs: CVE:CVE-2014-0160",
+    "severity_score": 7.5,
+    "severity_band": "HIGH",
+    "scoring_rationale": "CVSS v3 base score 7.5 from ['CVE-2014-0160']",
+    "grounding_context": {
+      "cve_records": [
+        {
+          "id": "CVE-2014-0160",
+          "text": "The (1) TLS and (2) DTLS implementations in OpenSSL 1.0.1 before 1.0.1g do not properly handle Heartbeat Extension packets, which allows remote attackers to obtain sensitive information from process memory via crafted packets that trigger a buffer over-read, as demonstrated by reading private keys, related to d1_both.c and t1_lib.c, aka the Heartbleed bug.",
+          "cvss_v3_score": 7.5,
+          "cvss_v3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "cvss_severity": "HIGH",
+          "cwe_ids": [
+            "CWE-125",
+            "CWE-125"
+          ],
+          "published_date": "2014-04-07T22:55:03.893",
+          "last_modified_date": "2026-06-17T00:02:24.467",
+          "references": [
+            "http://advisories.mageia.org/MGASA-2014-0165.html",
+            "http://blog.fox-it.com/2014/04/08/openssl-heartbleed-bug-live-blog/",
+            "http://cogentdatahub.com/ReleaseNotes.html",
+            "http://download.schneider-electric.com/files?p_Doc_Ref=SEVD%202014-119-01",
+            "http://git.openssl.org/gitweb/?p=openssl.git%3Ba=commit%3Bh=96db9023b881d7cd9f379b0c154650d6c108e9a3"
+          ],
+          "kev_listed": null,
+          "kev_date_added": null
+        }
+      ],
+      "cis_matches": [
+        {
+          "id": "CIS-TLS-001",
+          "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+          "section": "Transport Security",
+          "control_title": "Monitor and renew TLS certificates before expiry",
+          "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+          "applies_to": [
+            "https",
+            "ssl",
+            "tls",
+            "apache_httpd",
+            "nginx"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.0
+        },
+        {
+          "id": "CIS-WEB-001",
+          "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+          "section": "Server Hardening",
+          "control_title": "Keep web server software on a supported, patched version",
+          "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+          "applies_to": [
+            "http",
+            "https",
+            "apache_httpd"
+          ],
+          "level": 1,
+          "remediation_type": "patch_management",
+          "similarity_score": 0.0
+        }
+      ],
+      "service_tags_used": [
+        "https",
+        "tls",
+        "ssl"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.2",
+    "hostname": "cache-redis-03.corp.local",
+    "os_guess": "Linux 4.15 - 5.6",
+    "port": 6379,
+    "protocol": "tcp",
+    "service": "redis",
+    "product": "Redis key-value store",
+    "version": "6.0.15",
+    "cve_refs": [
+      "CVE-2022-0543"
+    ],
+    "nse_script": "redis-vuln-cve2022-0543",
+    "raw_output": "VULNERABLE: Debian-packaged Redis Lua sandbox escape allows remote code execution. IDs: CVE:CVE-2022-0543",
+    "severity_score": 10.0,
+    "severity_band": "CRITICAL",
+    "scoring_rationale": "CVSS v3 base score 10.0 from ['CVE-2022-0543']",
+    "grounding_context": {
+      "cve_records": [
+        {
+          "id": "CVE-2022-0543",
+          "text": "It was discovered, that redis, a persistent key-value database, due to a packaging issue, is prone to a (Debian-specific) Lua sandbox escape, which could result in remote code execution.",
+          "cvss_v3_score": 10.0,
+          "cvss_v3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+          "cvss_severity": "CRITICAL",
+          "cwe_ids": [
+            "CWE-862",
+            "CWE-862"
+          ],
+          "published_date": "2022-02-18T20:15:17.583",
+          "last_modified_date": "2026-06-17T04:20:48.593",
+          "references": [
+            "http://packetstormsecurity.com/files/166885/Redis-Lua-Sandbox-Escape.html",
+            "https://bugs.debian.org/1005787",
+            "https://lists.debian.org/debian-security-announce/2022/msg00048.html",
+            "https://security.netapp.com/advisory/ntap-20220331-0004/",
+            "https://www.debian.org/security/2022/dsa-5081"
+          ],
+          "kev_listed": null,
+          "kev_date_added": null
+        }
+      ],
+      "cis_matches": [
+        {
+          "id": "CIS-REDIS-001",
+          "benchmark": "CIS Redis Benchmark (illustrative)",
+          "section": "Authentication",
+          "control_title": "Require authentication for Redis access (requirepass)",
+          "text": "Redis should require a password via the requirepass directive for all access. A Redis instance bound to the network with no password allows any reachable client to read, modify, or destroy all data and, in some configurations, run Lua scripts. If Redis is not required to be network-exposed, bind it to loopback only.",
+          "applies_to": [
+            "redis"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.441
+        },
+        {
+          "id": "CIS-REDIS-002",
+          "benchmark": "CIS Redis Benchmark (illustrative)",
+          "section": "Network Exposure",
+          "control_title": "Restrict Redis network exposure and enable protected-mode",
+          "text": "Redis protected-mode should stay enabled and the server should bind to internal interfaces only, so the database cannot be reached from untrusted networks. Where remote access is required, place it behind a bastion/VPN rather than direct exposure.",
+          "applies_to": [
+            "redis"
+          ],
+          "level": 1,
+          "remediation_type": "network_configuration",
+          "similarity_score": 0.174
+        }
+      ],
+      "service_tags_used": [
+        "redis"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.1",
+    "hostname": "ftp-08.corp.local",
+    "os_guess": "Linux 3.10 - 4.6",
+    "port": 21,
+    "protocol": "tcp",
+    "service": "ftp",
+    "product": "vsftpd",
+    "version": "2.3.4",
+    "cve_refs": [
+      "CVE-2011-2523"
+    ],
+    "nse_script": "ftp-vuln-backdoor",
+    "raw_output": "VULNERABLE: vsftpd 2.3.4 contains a backdoor opening a shell on port 6200. IDs: CVE:CVE-2011-2523",
+    "severity_score": 9.8,
+    "severity_band": "CRITICAL",
+    "scoring_rationale": "CVSS v3 base score 9.8 from ['CVE-2011-2523']",
+    "grounding_context": {
+      "cve_records": [
+        {
+          "id": "CVE-2011-2523",
+          "text": "vsftpd 2.3.4 downloaded between 20110630 and 20110703 contains a backdoor which opens a shell on port 6200/tcp.",
+          "cvss_v3_score": 9.8,
+          "cvss_v3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss_severity": "CRITICAL",
+          "cwe_ids": [
+            "CWE-78"
+          ],
+          "published_date": "2019-11-27T21:15:12.387",
+          "last_modified_date": "2026-06-16T23:31:30.717",
+          "references": [
+            "http://packetstormsecurity.com/files/162145/vsftpd-2.3.4-Backdoor-Command-Execution.html",
+            "https://access.redhat.com/security/cve/cve-2011-2523",
+            "https://packetstormsecurity.com/files/102745/VSFTPD-2.3.4-Backdoor-Command-Execution.html",
+            "https://security-tracker.debian.org/tracker/CVE-2011-2523",
+            "https://vigilance.fr/vulnerability/vsftpd-backdoor-in-version-2-3-4-10805"
+          ],
+          "kev_listed": null,
+          "kev_date_added": null
+        }
+      ],
+      "cis_matches": [
+        {
+          "id": "CIS-FTP-001",
+          "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+          "section": "File Transfer Services",
+          "control_title": "Disable anonymous FTP authentication",
+          "text": "Anonymous FTP login should be disabled unless there is an explicit, documented business requirement for public unauthenticated file access. Anonymous access allows any network-reachable client to list directories and, depending on configuration, upload or retrieve files without accountability. Where FTP is required at all, prefer SFTP/FTPS with authenticated access.",
+          "applies_to": [
+            "ftp"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.302
+        }
+      ],
+      "service_tags_used": [
+        "ftp"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.1",
+    "hostname": "ws-legacy-03.corp.local",
+    "os_guess": "Microsoft Windows 7 SP1",
+    "port": 3389,
+    "protocol": "tcp",
+    "service": "ms-wbt-server",
+    "product": "Microsoft Terminal Services",
+    "version": null,
+    "cve_refs": [
+      "CVE-2019-0708"
+    ],
+    "nse_script": "smb-vuln-ms17-010",
+    "raw_output": "VULNERABLE: Pre-auth Remote Code Execution in RDP (BlueKeep). Risk factor: CRITICAL  IDs: CVE:CVE-2019-0708",
+    "severity_score": 9.8,
+    "severity_band": "CRITICAL",
+    "scoring_rationale": "CVSS v3 base score 9.8 from ['CVE-2019-0708']",
+    "grounding_context": {
+      "cve_records": [
+        {
+          "id": "CVE-2019-0708",
+          "text": "A remote code execution vulnerability exists in Remote Desktop Services formerly known as Terminal Services when an unauthenticated attacker connects to the target system using RDP and sends specially crafted requests, aka 'Remote Desktop Services Remote Code Execution Vulnerability'.",
+          "cvss_v3_score": 9.8,
+          "cvss_v3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss_severity": "CRITICAL",
+          "cwe_ids": [
+            "CWE-416",
+            "CWE-416"
+          ],
+          "published_date": "2019-05-16T19:29:00.427",
+          "last_modified_date": "2026-06-17T02:08:44.017",
+          "references": [
+            "http://packetstormsecurity.com/files/153133/Microsoft-Windows-Remote-Desktop-BlueKeep-Denial-Of-Service.html",
+            "http://packetstormsecurity.com/files/153627/Microsoft-Windows-RDP-BlueKeep-Denial-Of-Service.html",
+            "http://packetstormsecurity.com/files/154579/BlueKeep-RDP-Remote-Windows-Kernel-Use-After-Free.html",
+            "http://packetstormsecurity.com/files/155389/Microsoft-Windows-7-x86-BlueKeep-RDP-Use-After-Free.html",
+            "http://packetstormsecurity.com/files/162960/Microsoft-RDP-Remote-Code-Execution.html"
+          ],
+          "kev_listed": null,
+          "kev_date_added": null
+        }
+      ],
+      "cis_matches": [
+        {
+          "id": "CIS-RDP-001",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Remote Access",
+          "control_title": "Restrict RDP exposure and enforce Network Level Authentication",
+          "text": "Remote Desktop Protocol should not be exposed directly to untrusted networks. Where RDP is required, enforce Network Level Authentication (NLA), require multi-factor authentication, and restrict access via firewall rules or a VPN/bastion host rather than direct internet exposure. Unrestricted RDP exposure is one of the most common initial access vectors in ransomware incidents.",
+          "applies_to": [
+            "rdp",
+            "ms-wbt-server",
+            "windows",
+            "windows_server"
+          ],
+          "level": 1,
+          "remediation_type": "network_configuration",
+          "similarity_score": 0.216
+        }
+      ],
+      "service_tags_used": [
+        "ms-wbt-server"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.1",
+    "hostname": "dc02.corp.local",
+    "os_guess": "Microsoft Windows Server 2012 R2",
+    "port": 445,
+    "protocol": "tcp",
+    "service": "microsoft-ds",
+    "product": "Windows Server 2012 R2 microsoft-ds",
+    "version": null,
+    "cve_refs": [
+      "CVE-2017-0143"
+    ],
+    "nse_script": "smb-vuln-ms17-010",
+    "raw_output": "VULNERABLE: Remote Code Execution vulnerability in Microsoft SMBv1 servers (ms17-010) State: VULNERABLE Risk factor: HIGH  IDs: CVE:CVE-2017-0143",
+    "severity_score": 8.1,
+    "severity_band": "HIGH",
+    "scoring_rationale": "CVSS v3 base score 8.1 from ['CVE-2017-0143']",
+    "grounding_context": {
+      "cve_records": [
+        {
+          "id": "CVE-2017-0143",
+          "text": "The SMBv1 server in Microsoft Windows Vista SP2; Windows Server 2008 SP2 and R2 SP1; Windows 7 SP1; Windows 8.1; Windows Server 2012 Gold and R2; Windows RT 8.1; and Windows 10 Gold, 1511, and 1607; and Windows Server 2016 allows remote attackers to execute arbitrary code via crafted packets, aka 'Windows SMB Remote Code Execution Vulnerability.' This vulnerability is different from those described in CVE-2017-0144, CVE-2017-0145, CVE-2017-0146, and CVE-2017-0148.",
+          "cvss_v3_score": 8.1,
+          "cvss_v3_vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss_severity": "HIGH",
+          "cwe_ids": [
+            "CWE-20"
+          ],
+          "published_date": "2017-03-17T01:59:00.243",
+          "last_modified_date": "2018-10-12T22:02:31.463",
+          "references": [
+            "https://nvd.nist.gov/vuln/detail/CVE-2017-0143",
+            "https://technet.microsoft.com/library/security/MS17-010"
+          ],
+          "kev_listed": true,
+          "kev_date_added": "2021-11-03"
+        }
+      ],
+      "cis_matches": [
+        {
+          "id": "CIS-SMB-001",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Network Security",
+          "control_title": "Disable SMBv1 and require SMB signing",
+          "text": "Legacy SMBv1 should be disabled on all Windows hosts, as it lacks modern security controls and is the protocol version targeted by well-known remote code execution exploits. SMB signing should be required to prevent relay and tampering attacks. Disable SMBv1 via PowerShell (Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol) or Group Policy, and verify no legacy applications depend on it before rollout.",
+          "applies_to": [
+            "smb",
+            "microsoft-ds",
+            "windows_server",
+            "windows"
+          ],
+          "level": 1,
+          "remediation_type": "feature_removal",
+          "similarity_score": 0.286
+        },
+        {
+          "id": "CIS-SMB-002",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Network Security",
+          "control_title": "Apply security updates for SMB remote code execution vulnerabilities promptly",
+          "text": "Hosts exposing SMB services should be patched against known remote code execution vulnerabilities as a priority, since SMB is a common lateral-movement and ransomware entry vector. Maintain a patch cadence that applies critical SMB-related security updates within 72 hours of release for internet- or high-value-network-facing systems.",
+          "applies_to": [
+            "smb",
+            "microsoft-ds",
+            "windows_server",
+            "windows"
+          ],
+          "level": 1,
+          "remediation_type": "patch_management",
+          "similarity_score": 0.181
+        },
+        {
+          "id": "CIS-RDP-001",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Remote Access",
+          "control_title": "Restrict RDP exposure and enforce Network Level Authentication",
+          "text": "Remote Desktop Protocol should not be exposed directly to untrusted networks. Where RDP is required, enforce Network Level Authentication (NLA), require multi-factor authentication, and restrict access via firewall rules or a VPN/bastion host rather than direct internet exposure. Unrestricted RDP exposure is one of the most common initial access vectors in ransomware incidents.",
+          "applies_to": [
+            "rdp",
+            "ms-wbt-server",
+            "windows",
+            "windows_server"
+          ],
+          "level": 1,
+          "remediation_type": "network_configuration",
+          "similarity_score": 0.087
+        }
+      ],
+      "service_tags_used": [
+        "microsoft-ds",
+        "windows_server"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.2",
+    "hostname": "win10-06.corp.local",
+    "os_guess": "Microsoft Windows 10 1903",
+    "port": 445,
+    "protocol": "tcp",
+    "service": "microsoft-ds",
+    "product": "Windows 10 Pro 1903 microsoft-ds",
+    "version": null,
+    "cve_refs": [
+      "CVE-2020-0796"
+    ],
+    "nse_script": "smb-vuln-smbghost",
+    "raw_output": "VULNERABLE: SMBv3 Compression buffer overflow Remote Code Execution (SMBGhost). State: VULNERABLE Risk factor: CRITICAL  IDs: CVE:CVE-2020-0796",
+    "severity_score": 10.0,
+    "severity_band": "CRITICAL",
+    "scoring_rationale": "CVSS v3 base score 10.0 from ['CVE-2020-0796']",
+    "grounding_context": {
+      "cve_records": [
+        {
+          "id": "CVE-2020-0796",
+          "text": "A remote code execution vulnerability exists in the way that the Microsoft Server Message Block 3.1.1 (SMBv3) protocol handles certain requests, aka 'Windows SMBv3 Client/Server Remote Code Execution Vulnerability'.",
+          "cvss_v3_score": 10.0,
+          "cvss_v3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+          "cvss_severity": "CRITICAL",
+          "cwe_ids": [
+            "CWE-119",
+            "CWE-119"
+          ],
+          "published_date": "2020-03-12T16:15:15.627",
+          "last_modified_date": "2026-08-12T05:17:28.620",
+          "references": [
+            "http://packetstormsecurity.com/files/156731/CoronaBlue-SMBGhost-Microsoft-Windows-10-SMB-3.1.1-Proof-Of-Concept.html",
+            "http://packetstormsecurity.com/files/156732/Microsoft-Windows-SMB-3.1.1-Remote-Code-Execution.html",
+            "http://packetstormsecurity.com/files/156980/Microsoft-Windows-10-SMB-3.1.1-Local-Privilege-Escalation.html",
+            "http://packetstormsecurity.com/files/157110/SMBv3-Compression-Buffer-Overflow.html",
+            "http://packetstormsecurity.com/files/157901/Microsoft-Windows-SMBGhost-Remote-Code-Execution.html"
+          ],
+          "kev_listed": null,
+          "kev_date_added": null
+        }
+      ],
+      "cis_matches": [
+        {
+          "id": "CIS-SMB-002",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Network Security",
+          "control_title": "Apply security updates for SMB remote code execution vulnerabilities promptly",
+          "text": "Hosts exposing SMB services should be patched against known remote code execution vulnerabilities as a priority, since SMB is a common lateral-movement and ransomware entry vector. Maintain a patch cadence that applies critical SMB-related security updates within 72 hours of release for internet- or high-value-network-facing systems.",
+          "applies_to": [
+            "smb",
+            "microsoft-ds",
+            "windows_server",
+            "windows"
+          ],
+          "level": 1,
+          "remediation_type": "patch_management",
+          "similarity_score": 0.245
+        },
+        {
+          "id": "CIS-SMB-001",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Network Security",
+          "control_title": "Disable SMBv1 and require SMB signing",
+          "text": "Legacy SMBv1 should be disabled on all Windows hosts, as it lacks modern security controls and is the protocol version targeted by well-known remote code execution exploits. SMB signing should be required to prevent relay and tampering attacks. Disable SMBv1 via PowerShell (Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol) or Group Policy, and verify no legacy applications depend on it before rollout.",
+          "applies_to": [
+            "smb",
+            "microsoft-ds",
+            "windows_server",
+            "windows"
+          ],
+          "level": 1,
+          "remediation_type": "feature_removal",
+          "similarity_score": 0.226
+        }
+      ],
+      "service_tags_used": [
+        "windows",
+        "microsoft-ds"
+      ]
+    }
+  }
+]

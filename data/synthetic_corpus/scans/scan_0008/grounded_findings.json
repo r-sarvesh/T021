@@ -1,0 +1,164 @@
+[
+  {
+    "type": "asset",
+    "host": "10.20.30.1",
+    "hostname": "ftp-08.corp.local",
+    "os_guess": "Linux 3.10 - 4.6",
+    "port": 21,
+    "protocol": "tcp",
+    "service": "ftp",
+    "product": "vsftpd",
+    "version": "2.3.4",
+    "cve_refs": [],
+    "nse_script": null,
+    "raw_output": null,
+    "severity_score": 1.0,
+    "severity_band": "LOW",
+    "scoring_rationale": "Baseline exposure risk for open 'ftp' service",
+    "grounding_context": {
+      "cve_records": [],
+      "cis_matches": [
+        {
+          "id": "CIS-FTP-001",
+          "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+          "section": "File Transfer Services",
+          "control_title": "Disable anonymous FTP authentication",
+          "text": "Anonymous FTP login should be disabled unless there is an explicit, documented business requirement for public unauthenticated file access. Anonymous access allows any network-reachable client to list directories and, depending on configuration, upload or retrieve files without accountability. Where FTP is required at all, prefer SFTP/FTPS with authenticated access.",
+          "applies_to": [
+            "ftp"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.302
+        }
+      ],
+      "service_tags_used": [
+        "ftp"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.1",
+    "hostname": "ftp-08.corp.local",
+    "os_guess": "Linux 3.10 - 4.6",
+    "port": 21,
+    "protocol": "tcp",
+    "service": "ftp",
+    "product": "vsftpd",
+    "version": "2.3.4",
+    "cve_refs": [
+      "CVE-2011-2523"
+    ],
+    "nse_script": "ftp-vuln-backdoor",
+    "raw_output": "VULNERABLE: vsftpd 2.3.4 contains a backdoor opening a shell on port 6200. IDs: CVE:CVE-2011-2523",
+    "severity_score": 9.8,
+    "severity_band": "CRITICAL",
+    "scoring_rationale": "CVSS v3 base score 9.8 from ['CVE-2011-2523']",
+    "grounding_context": {
+      "cve_records": [
+        {
+          "id": "CVE-2011-2523",
+          "text": "vsftpd 2.3.4 downloaded between 20110630 and 20110703 contains a backdoor which opens a shell on port 6200/tcp.",
+          "cvss_v3_score": 9.8,
+          "cvss_v3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+          "cvss_severity": "CRITICAL",
+          "cwe_ids": [
+            "CWE-78"
+          ],
+          "published_date": "2019-11-27T21:15:12.387",
+          "last_modified_date": "2026-06-16T23:31:30.717",
+          "references": [
+            "http://packetstormsecurity.com/files/162145/vsftpd-2.3.4-Backdoor-Command-Execution.html",
+            "https://access.redhat.com/security/cve/cve-2011-2523",
+            "https://packetstormsecurity.com/files/102745/VSFTPD-2.3.4-Backdoor-Command-Execution.html",
+            "https://security-tracker.debian.org/tracker/CVE-2011-2523",
+            "https://vigilance.fr/vulnerability/vsftpd-backdoor-in-version-2-3-4-10805"
+          ],
+          "kev_listed": null,
+          "kev_date_added": null
+        }
+      ],
+      "cis_matches": [
+        {
+          "id": "CIS-FTP-001",
+          "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+          "section": "File Transfer Services",
+          "control_title": "Disable anonymous FTP authentication",
+          "text": "Anonymous FTP login should be disabled unless there is an explicit, documented business requirement for public unauthenticated file access. Anonymous access allows any network-reachable client to list directories and, depending on configuration, upload or retrieve files without accountability. Where FTP is required at all, prefer SFTP/FTPS with authenticated access.",
+          "applies_to": [
+            "ftp"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.302
+        }
+      ],
+      "service_tags_used": [
+        "ftp"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.1",
+    "hostname": "ftp-08.corp.local",
+    "os_guess": "Linux 3.10 - 4.6",
+    "port": 21,
+    "protocol": "tcp",
+    "service": "ftp",
+    "product": "vsftpd",
+    "version": "2.3.4",
+    "cve_refs": [],
+    "nse_script": "ftp-anon",
+    "raw_output": "Anonymous FTP login allowed (FTP code 230)",
+    "severity_score": 5.5,
+    "severity_band": "MEDIUM",
+    "scoring_rationale": "Anonymous FTP access allows unauthenticated file listing/upload",
+    "grounding_context": {
+      "cve_records": [],
+      "cis_matches": [
+        {
+          "id": "CIS-FTP-001",
+          "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+          "section": "File Transfer Services",
+          "control_title": "Disable anonymous FTP authentication",
+          "text": "Anonymous FTP login should be disabled unless there is an explicit, documented business requirement for public unauthenticated file access. Anonymous access allows any network-reachable client to list directories and, depending on configuration, upload or retrieve files without accountability. Where FTP is required at all, prefer SFTP/FTPS with authenticated access.",
+          "applies_to": [
+            "ftp"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.591
+        }
+      ],
+      "service_tags_used": [
+        "ftp"
+      ]
+    }
+  },
+  {
+    "type": "asset",
+    "host": "10.20.30.1",
+    "hostname": "ftp-08.corp.local",
+    "os_guess": "Linux 3.10 - 4.6",
+    "port": 6200,
+    "protocol": "tcp",
+    "service": "unknown",
+    "product": null,
+    "version": null,
+    "cve_refs": [],
+    "nse_script": null,
+    "raw_output": null,
+    "severity_score": 0.0,
+    "severity_band": "INFO",
+    "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+    "grounding_context": {
+      "cve_records": [],
+      "cis_matches": [],
+      "service_tags_used": [
+        "unknown"
+      ]
+    }
+  }
+]

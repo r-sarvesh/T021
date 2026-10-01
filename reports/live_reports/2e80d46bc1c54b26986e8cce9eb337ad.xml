@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="file:///usr/share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.94 scan initiated as: nmap -sV -oX demo_test_small2.xml 10.0.0.20 -->
+<nmaprun scanner="nmap" args="nmap -sV -oX demo_test_small2.xml 10.0.0.20" start="1757066500" startstr="Fri Sep 05 09:01:40 2026" version="7.94" xmloutputversion="1.05">
+<scaninfo type="syn" protocol="tcp" numservices="1000" services="1-1000"/>
+<verbose level="0"/>
+<debugging level="0"/>
+
+<host starttime="1757066501" endtime="1757066512">
+<status state="up" reason="syn-ack" reason_ttl="64"/>
+<address addr="10.0.0.20" addrtype="ipv4"/>
+<hostnames>
+<hostname name="app-srv03.testlab.local" type="PTR"/>
+</hostnames>
+<ports>
+<port protocol="tcp" portid="22">
+<state state="open" reason="syn-ack" reason_ttl="64"/>
+<service name="ssh" product="OpenSSH" version="8.9p1 Ubuntu 3ubuntu0.6" extrainfo="Ubuntu Linux; protocol 2.0" ostype="Linux" method="probed" conf="10"/>
+</port>
+<port protocol="tcp" portid="8080">
+<state state="open" reason="syn-ack" reason_ttl="64"/>
+<service name="http" product="Apache Tomcat" version="9.0.62" method="probed" conf="10"/>
+<script id="http-vuln-log4shell" output="VULNERABLE: Apache Log4j Remote Code Execution (Log4Shell). State: VULNERABLE. IDs: CVE:CVE-2021-44228. Risk factor: CRITICAL. JNDI lookup pattern detected in HTTP header injection test; server appears to be running a vulnerable Log4j 2.x version reachable via this endpoint."/>
+</port>
+</ports>
+<os>
+<osmatch name="Linux 5.4 - 5.15" accuracy="94"/>
+</os>
+</host>
+
+<runstats>
+<finished time="1757066520" timestr="Fri Sep 05 09:02:00 2026" elapsed="20.0" summary="Nmap done at Fri Sep 05 09:02:00 2026; 1 IP address (1 host up) scanned in 20.0 seconds" exit="success"/>
+<hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

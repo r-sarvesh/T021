@@ -1,0 +1,92 @@
+[
+  {
+    "type": "asset",
+    "host": "10.20.30.1",
+    "hostname": "srv-ssh2-01.corp.local",
+    "os_guess": "Linux 5.4 - 6.1",
+    "port": 22,
+    "protocol": "tcp",
+    "service": "ssh",
+    "product": "OpenSSH",
+    "version": "9.3",
+    "cve_refs": [],
+    "nse_script": null,
+    "raw_output": null
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.1",
+    "hostname": "srv-ssh2-01.corp.local",
+    "os_guess": "Linux 5.4 - 6.1",
+    "port": 22,
+    "protocol": "tcp",
+    "service": "ssh",
+    "product": "OpenSSH",
+    "version": "9.3",
+    "cve_refs": [
+      "CVE-2023-38408"
+    ],
+    "nse_script": "ssh-vuln-agent-pkcs11",
+    "raw_output": "VULNERABLE: ssh-agent PKCS#11 unsanitized search path enables remote code execution when agent is forwarded. IDs: CVE:CVE-2023-38408"
+  },
+  {
+    "type": "asset",
+    "host": "10.20.30.2",
+    "hostname": "srv-tls-01.corp.local",
+    "os_guess": "Linux 3.10 - 4.6",
+    "port": 443,
+    "protocol": "tcp",
+    "service": "https",
+    "product": "OpenSSL",
+    "version": "1.0.1e",
+    "cve_refs": [],
+    "nse_script": null,
+    "raw_output": null
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.2",
+    "hostname": "srv-tls-01.corp.local",
+    "os_guess": "Linux 3.10 - 4.6",
+    "port": 443,
+    "protocol": "tcp",
+    "service": "https",
+    "product": "OpenSSL",
+    "version": "1.0.1e",
+    "cve_refs": [
+      "CVE-2014-0160"
+    ],
+    "nse_script": "ssl-heartbleed",
+    "raw_output": "VULNERABLE: OpenSSL heartbeat extension buffer over-read leaks process memory (Heartbleed). Risk factor: HIGH  IDs: CVE:CVE-2014-0160"
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.2",
+    "hostname": "srv-tls-01.corp.local",
+    "os_guess": "Linux 3.10 - 4.6",
+    "port": 443,
+    "protocol": "tcp",
+    "service": "https",
+    "product": "OpenSSL",
+    "version": "1.0.1e",
+    "cve_refs": [
+      "CVE-2014-3566"
+    ],
+    "nse_script": "ssl-poodle",
+    "raw_output": "VULNERABLE: SSLv3 CBC padding oracle allows cleartext recovery (POODLE). IDs: CVE:CVE-2014-3566"
+  },
+  {
+    "type": "asset",
+    "host": "10.20.30.2",
+    "hostname": "srv-tls-01.corp.local",
+    "os_guess": "Linux 3.10 - 4.6",
+    "port": 8443,
+    "protocol": "tcp",
+    "service": "https",
+    "product": "OpenSSL",
+    "version": "1.0.1e",
+    "cve_refs": [],
+    "nse_script": null,
+    "raw_output": null
+  }
+]

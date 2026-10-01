@@ -1,0 +1,134 @@
+{% extends "base_dark.html" %}
+{% block title %}Dashboard — Cyber Health Assessment{% endblock %}
+{% block breadcrumb %}<span>Dashboard</span>{% endblock %}
+{% block topbar_actions %}
+<a href="{{ url_for('report_upload') }}" class="btn-primary"><i data-lucide="upload" class="ic" style="width:14px;height:14px;"></i> Import Nmap scan</a>
+{% endblock %}
+{% block content %}
+<div style="margin-bottom: 24px;">
+  <h1 style="margin:0 0 4px; font-size: 20px; font-weight: 700; color: var(--text);">Assessment overview</h1>
+  <p style="margin:0; font-size: 13px; color: var(--text-muted);">Current cybersecurity health across all completed scans.</p>
+</div>
+
+{# Row 1: 4 stat cards #}
+<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 16px;">
+  <div class="card">
+    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 12px;">
+      <span style="font-size:12px; color:var(--text-muted); font-weight:500;">Total scans</span>
+      <span style="width:28px;height:28px; background: rgba(0,212,255,0.12); border:1px solid rgba(0,212,255,0.2); border-radius:6px; display:flex;align-items:center;justify-content:center; color:var(--accent);"><i data-lucide="activity" class="ic" style="width:14px;height:14px;"></i></span>
+    </div>
+    <div style="font-size:28px; font-weight:700; color:var(--accent); line-height:1;">{{ totals.scans }}</div>
+  </div>
+  <div class="card">
+    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 12px;">
+      <span style="font-size:12px; color:var(--text-muted); font-weight:500;">Total findings</span>
+      <span style="width:28px;height:28px; background: rgba(139,148,158,0.12); border:1px solid rgba(139,148,158,0.2); border-radius:6px; display:flex;align-items:center;justify-content:center; color:var(--text-muted);"><i data-lucide="bug" class="ic" style="width:14px;height:14px;"></i></span>
+    </div>
+    <div style="font-size:28px; font-weight:700; color:var(--text); line-height:1;">{{ totals.findings }}</div>
+  </div>
+  <div class="card">
+    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 12px;">
+      <span style="font-size:12px; color:var(--text-muted); font-weight:500;">Hosts assessed</span>
+      <span style="width:28px;height:28px; background: rgba(139,148,158,0.12); border:1px solid rgba(139,148,158,0.2); border-radius:6px; display:flex;align-items:center;justify-content:center; color:var(--text-muted);"><i data-lucide="server" class="ic" style="width:14px;height:14px;"></i></span>
+    </div>
+    <div style="font-size:28px; font-weight:700; color:var(--text); line-height:1;">{{ totals.hosts }}</div>
+  </div>
+  <div class="card">
+    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 12px;">
+      <span style="font-size:12px; color:var(--text-muted); font-weight:500;">Evidence-backed</span>
+      <span style="width:28px;height:28px; background: var(--evidence-bg); border:1px solid var(--evidence-border); border-radius:6px; display:flex;align-items:center;justify-content:center; color:var(--evidence);"><i data-lucide="shield-check" class="ic" style="width:14px;height:14px;"></i></span>
+    </div>
+    <div style="font-size:28px; font-weight:700; color:var(--evidence); line-height:1;">{{ totals.evidence_backed }}</div>
+    <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">{{ totals.evidence_unverified }} unverified</div>
+  </div>
+</div>
+
+{# Row 2: Critical/High/Medium/Low #}
+<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 16px;">
+  <div class="card">
+    <div style="font-size:12px; color:var(--text-muted); font-weight:500; margin-bottom:8px;">Critical findings</div>
+    <div style="font-size:28px; font-weight:700; color:var(--critical); line-height:1;">{{ severity_counts.CRITICAL }}</div>
+  </div>
+  <div class="card">
+    <div style="font-size:12px; color:var(--text-muted); font-weight:500; margin-bottom:8px;">High findings</div>
+    <div style="font-size:28px; font-weight:700; color:var(--high); line-height:1;">{{ severity_counts.HIGH }}</div>
+  </div>
+  <div class="card">
+    <div style="font-size:12px; color:var(--text-muted); font-weight:500; margin-bottom:8px;">Medium findings</div>
+    <div style="font-size:28px; font-weight:700; color:var(--medium); line-height:1;">{{ severity_counts.MEDIUM }}</div>
+  </div>
+  <div class="card">
+    <div style="font-size:12px; color:var(--text-muted); font-weight:500; margin-bottom:8px;">Low findings</div>
+    <div style="font-size:28px; font-weight:700; color:var(--low); line-height:1;">{{ severity_counts.LOW }}</div>
+  </div>
+</div>
+
+{# Row 3: Security health, Severity distribution, Evidence coverage #}
+<div style="display: grid; grid-template-columns: 1.1fr 1fr 1fr; gap: 16px;">
+  <div class="card">
+    <div style="font-size:13px; font-weight:600; color:var(--text); margin-bottom:16px;">Security health</div>
+    <div style="margin-bottom:16px;">
+      <div style="font-size:12px; color:var(--text-muted); margin-bottom:6px;">Overall risk</div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        {% if overall_risk == 'CRITICAL' %}
+        <span style="background: var(--critical-bg); border:1px solid var(--critical-border); color:var(--critical); padding:4px 8px; border-radius:6px; font-size:12px; font-weight:600; display:inline-flex; align-items:center; gap:6px;"><i data-lucide="shield-alert" class="ic" style="width:12px;height:12px;"></i> Critical</span>
+        <span style="font-size:13px; font-weight:600; color:var(--text);">Critical exposure present</span>
+        {% elif overall_risk == 'HIGH' %}
+        <span style="background: var(--high-bg); border:1px solid var(--high-border); color:var(--high); padding:4px 8px; border-radius:6px; font-size:12px; font-weight:600; display:inline-flex; align-items:center; gap:6px;"><i data-lucide="alert-triangle" class="ic" style="width:12px;height:12px;"></i> High</span>
+        <span style="font-size:13px; font-weight:600; color:var(--text);">High exposure present</span>
+        {% else %}
+        <span style="background: var(--low-bg); border:1px solid var(--low-border); color:var(--low); padding:4px 8px; border-radius:6px; font-size:12px; font-weight:600;">{{ overall_risk }}</span>
+        <span style="font-size:13px; color:var(--text-muted);">No critical exposure</span>
+        {% endif %}
+      </div>
+    </div>
+    <div style="background: var(--bg); border:1px solid var(--border); border-radius:8px; padding:12px; display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+      <span style="display:flex; align-items:center; gap:8px; font-size:12px; color:var(--text-muted);"><i data-lucide="shield-check" class="ic" style="width:14px;height:14px; color:var(--evidence);"></i> Critical exposure</span>
+      <span style="font-size:16px; font-weight:700; color:var(--critical);">{{ severity_counts.CRITICAL }}</span>
+    </div>
+    <div>
+      <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+        <span style="font-size:12px; color:var(--text-muted);">Evidence coverage</span>
+        <span style="font-size:12px; font-weight:600; color:var(--evidence);">{{ evidence_coverage }}%</span>
+      </div>
+      <div style="height:8px; background: var(--bg); border:1px solid var(--border); border-radius:4px; overflow:hidden;">
+        <div style="height:100%; width: {{ evidence_coverage }}%; background: var(--evidence); border-radius:4px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div style="font-size:13px; font-weight:600; color:var(--text); margin-bottom:16px;">Severity distribution</div>
+    <div style="height:10px; background: var(--bg); border:1px solid var(--border); border-radius:5px; display:flex; overflow:hidden; margin-bottom:16px;">
+      {% set total_sev = severity_counts.CRITICAL + severity_counts.HIGH + severity_counts.MEDIUM + severity_counts.LOW %}
+      {% if total_sev > 0 %}
+      <div style="width: {{ (severity_counts.CRITICAL/total_sev*100)|round(1) }}%; background: var(--critical);"></div>
+      <div style="width: {{ (severity_counts.HIGH/total_sev*100)|round(1) }}%; background: var(--high);"></div>
+      <div style="width: {{ (severity_counts.MEDIUM/total_sev*100)|round(1) }}%; background: var(--medium);"></div>
+      <div style="width: {{ (severity_counts.LOW/total_sev*100)|round(1) }}%; background: var(--low);"></div>
+      {% endif %}
+    </div>
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px; font-size:12px;">
+      <div style="display:flex; align-items:center; gap:8px;"><span style="width:8px;height:8px; background:var(--critical); border-radius:50%;"></span> Critical <strong style="color:var(--text);">{{ severity_counts.CRITICAL }}</strong></div>
+      <div style="display:flex; align-items:center; gap:8px;"><span style="width:8px;height:8px; background:var(--high); border-radius:50%;"></span> High <strong style="color:var(--text);">{{ severity_counts.HIGH }}</strong></div>
+      <div style="display:flex; align-items:center; gap:8px;"><span style="width:8px;height:8px; background:var(--medium); border-radius:50%;"></span> Medium <strong style="color:var(--text);">{{ severity_counts.MEDIUM }}</strong></div>
+      <div style="display:flex; align-items:center; gap:8px;"><span style="width:8px;height:8px; background:var(--low); border-radius:50%;"></span> Low <strong style="color:var(--text);">{{ severity_counts.LOW }}</strong></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div style="font-size:13px; font-weight:600; color:var(--text); margin-bottom:16px;">Evidence coverage</div>
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-bottom:16px;">
+      <div style="background: var(--evidence-bg); border:1px solid var(--evidence-border); border-radius:8px; padding:12px;">
+        <div style="display:flex; align-items:center; gap:6px; font-size:11px; color:var(--evidence); font-weight:600; margin-bottom:4px;"><i data-lucide="shield-check" class="ic" style="width:12px;height:12px;"></i> Backed</div>
+        <div style="font-size:24px; font-weight:700; color:var(--evidence);">{{ totals.evidence_backed }}</div>
+      </div>
+      <div style="background: rgba(139,148,158,0.08); border:1px solid var(--border); border-radius:8px; padding:12px;">
+        <div style="display:flex; align-items:center; gap:6px; font-size:11px; color:var(--text-muted); font-weight:600; margin-bottom:4px;"><i data-lucide="shield-x" class="ic" style="width:12px;height:12px;"></i> Unverified</div>
+        <div style="font-size:24px; font-weight:700; color:var(--text-muted);">{{ totals.evidence_unverified }}</div>
+      </div>
+    </div>
+    <p style="margin:0; font-size:11px; color:var(--text-muted); line-height:1.5;">Findings without matched CVE or CIS evidence are never hidden and never presented as verified.</p>
+  </div>
+</div>
+{% endblock %}

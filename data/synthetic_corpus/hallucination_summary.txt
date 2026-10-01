@@ -1,0 +1,33 @@
+========================================================================
+HALLUCINATION BENCHMARK SUMMARY
+========================================================================
+Existence mode : per-scan local cve_kb
+Input files    : D:\Downloads\op\data\synthetic_corpus\scans\scan_0001\llm_output.jsonl, D:\Downloads\op\data\synthetic_corpus\scans\scan_0002\llm_output.jsonl, D:\Downloads\op\data\synthetic_corpus\scans\scan_0003\llm_output.jsonl, D:\Downloads\op\data\synthetic_corpus\scans\scan_0004\llm_output.jsonl, D:\Downloads\op\data\synthetic_corpus\scans\scan_0005\llm_output.jsonl, D:\Downloads\op\data\synthetic_corpus\scans\scan_0006\llm_output.jsonl, D:\Downloads\op\data\synthetic_corpus\scans\scan_0007\llm_output.jsonl, D:\Downloads\op\data\synthetic_corpus\scans\scan_0008\llm_output.jsonl, D:\Downloads\op\data\synthetic_corpus\scans\scan_0009\llm_output.jsonl, D:\Downloads\op\data\synthetic_corpus\scans\scan_0010\llm_output.jsonl, D:\Downloads\op\data\synthetic_corpus\scans\scan_0011\llm_output.jsonl, D:\Downloads\op\data\synthetic_corpus\scans\scan_0012\llm_output.jsonl
+
+--- VARIANT: GROUNDED (58 scored findings) ---
+  per-finding  , any bad citation : 0/58 (0.0%)
+  per-finding  , fabricated CVE   : 0/58 (0.0%)
+  per-finding  , unsupported CVE  : 0/58 (0.0%)
+  findings with zero citations    : 37 (37/58)
+  per-citation , bad citations    : 0/28 (0.0%) (of 28 total citations)
+  per-citation , fabricated CVE   : 0/28 (0.0%)
+  per-citation , unsupported CVE  : 0/28 (0.0%)
+
+--- VARIANT: UNGROUNDED (58 scored findings) ---
+  per-finding  , any bad citation : 0/58 (0.0%)
+  per-finding  , fabricated CVE   : 0/58 (0.0%)
+  per-finding  , unsupported CVE  : 0/58 (0.0%)
+  findings with zero citations    : 58 (58/58)
+  per-citation , bad citations    : 0/0 (0.0%) (of 0 total citations)
+  per-citation , fabricated CVE   : 0/0 (0.0%)
+  per-citation , unsupported CVE  : 0/0 (0.0%)
+
+--- GROUNDED vs UNGROUNDED (headline) ---
+  per-finding bad-citation rate : grounded 0/58 (0.0%)  vs  ungrounded 0/58 (0.0%)
+  per-citation bad-citation rate : grounded 0/28 (0.0%)  vs  ungrounded 0/0 (0.0%)
+
+Interpretation:
+  - fabricated_cve (grounded) should be ~0: the model only saw
+    retrieved context, so inventing IDs is structurally blocked.
+  - unsupported_cve (ungrounded) is the interesting delta: real
+    CVEs cited from memory without retrieval evidence.

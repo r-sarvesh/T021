@@ -1,0 +1,14 @@
+[
+  {
+    "id": "CIS-FTP-001",
+    "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+    "section": "File Transfer Services",
+    "control_title": "Disable anonymous FTP authentication",
+    "text": "Anonymous FTP login should be disabled unless there is an explicit, documented business requirement for public unauthenticated file access. Anonymous access allows any network-reachable client to list directories and, depending on configuration, upload or retrieve files without accountability. Where FTP is required at all, prefer SFTP/FTPS with authenticated access.",
+    "applies_to": [
+      "ftp"
+    ],
+    "level": 1,
+    "remediation_type": "configuration"
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "CIS-TLS-001",
+    "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+    "section": "Transport Security",
+    "control_title": "Monitor and renew TLS certificates before expiry",
+    "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+    "applies_to": [
+      "https",
+      "ssl",
+      "tls",
+      "apache_httpd",
+      "nginx"
+    ],
+    "level": 1,
+    "remediation_type": "configuration"
+  },
+  {
+    "id": "CIS-WEB-001",
+    "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+    "section": "Server Hardening",
+    "control_title": "Keep web server software on a supported, patched version",
+    "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+    "applies_to": [
+      "http",
+      "https",
+      "apache_httpd"
+    ],
+    "level": 1,
+    "remediation_type": "patch_management"
+  }
+]

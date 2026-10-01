@@ -1,0 +1,44 @@
+[
+  {
+    "type": "asset",
+    "host": "10.20.30.1",
+    "hostname": "decoy-web-05.corp.local",
+    "os_guess": "Linux 4.15 - 5.6",
+    "port": 443,
+    "protocol": "tcp",
+    "service": "https",
+    "product": "Apache httpd",
+    "version": "2.4.29",
+    "cve_refs": [],
+    "nse_script": null,
+    "raw_output": null
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.1",
+    "hostname": "decoy-web-05.corp.local",
+    "os_guess": "Linux 4.15 - 5.6",
+    "port": 443,
+    "protocol": "tcp",
+    "service": "https",
+    "product": "Apache httpd",
+    "version": "2.4.29",
+    "cve_refs": [],
+    "nse_script": "ssl-cert",
+    "raw_output": "Subject: commonName=decoy-web.corp.local  Not valid after: 2024-05-10T00:00:00"
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.1",
+    "hostname": "decoy-web-05.corp.local",
+    "os_guess": "Linux 4.15 - 5.6",
+    "port": 443,
+    "protocol": "tcp",
+    "service": "https",
+    "product": "Apache httpd",
+    "version": "2.4.29",
+    "cve_refs": [],
+    "nse_script": "ssl-known-key",
+    "raw_output": "Certificate expired"
+  }
+]

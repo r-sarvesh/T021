@@ -1,0 +1,1137 @@
+{
+  "report_id": "a8f101cd7f1943c597a0b2b6c16e91d2",
+  "filename": "demo_scan.xml",
+  "uploaded_at": "2026-09-05T16:12:10.821312+00:00",
+  "uploaded_by": "admin",
+  "findings": [
+    {
+      "type": "asset",
+      "host": "192.168.1.10",
+      "hostname": "fileserver01.corp.local",
+      "os_guess": "Microsoft Windows Server 2008 R2 SP1",
+      "port": 139,
+      "protocol": "tcp",
+      "service": "netbios-ssn",
+      "product": "Microsoft Windows netbios-ssn",
+      "version": null,
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "asset",
+      "host": "192.168.1.10",
+      "hostname": "fileserver01.corp.local",
+      "os_guess": "Microsoft Windows Server 2008 R2 SP1",
+      "port": 445,
+      "protocol": "tcp",
+      "service": "microsoft-ds",
+      "product": "Windows Server 2008 R2 SMBv1",
+      "version": "6.1.7601",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "vuln",
+      "host": "192.168.1.10",
+      "hostname": "fileserver01.corp.local",
+      "os_guess": "Microsoft Windows Server 2008 R2 SP1",
+      "port": 445,
+      "protocol": "tcp",
+      "service": "microsoft-ds",
+      "product": "Windows Server 2008 R2 SMBv1",
+      "version": "6.1.7601",
+      "cve_refs": [
+        "CVE-2017-0143"
+      ],
+      "nse_script": "smb-vuln-ms17-010",
+      "raw_output": "VULNERABLE: Remote Code Execution vulnerability in Microsoft SMBv1 servers (ms17-010) State: VULNERABLE Risk factor: HIGH  IDs: CVE:CVE-2017-0143 Disclosure date: 2017-03-14 References: https://technet.microsoft.com/en-us/library/security/ms17-010.aspx"
+    },
+    {
+      "type": "asset",
+      "host": "192.168.1.11",
+      "hostname": "dbserver01.corp.local",
+      "os_guess": "Linux 4.15 - 5.6",
+      "port": 22,
+      "protocol": "tcp",
+      "service": "ssh",
+      "product": "OpenSSH",
+      "version": "7.4",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "asset",
+      "host": "192.168.1.11",
+      "hostname": "dbserver01.corp.local",
+      "os_guess": "Linux 4.15 - 5.6",
+      "port": 3306,
+      "protocol": "tcp",
+      "service": "mysql",
+      "product": "MySQL",
+      "version": "5.1.63",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "vuln",
+      "host": "192.168.1.11",
+      "hostname": "dbserver01.corp.local",
+      "os_guess": "Linux 4.15 - 5.6",
+      "port": 3306,
+      "protocol": "tcp",
+      "service": "mysql",
+      "product": "MySQL",
+      "version": "5.1.63",
+      "cve_refs": [
+        "CVE-2012-2122"
+      ],
+      "nse_script": "mysql-vuln-cve2012-2122",
+      "raw_output": "VULNERABLE: MySQL/MariaDB weak password authentication security bypass State: VULNERABLE (Exploitable) Risk factor: HIGH  IDs: CVE:CVE-2012-2122 Disclosure date: 2012-06-11"
+    },
+    {
+      "type": "asset",
+      "host": "192.168.1.12",
+      "hostname": "webserver01.corp.local",
+      "os_guess": "Linux 5.4 - 5.15",
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "asset",
+      "host": "192.168.1.12",
+      "hostname": "webserver01.corp.local",
+      "os_guess": "Linux 5.4 - 5.15",
+      "port": 443,
+      "protocol": "tcp",
+      "service": "https",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    }
+  ],
+  "scored": {
+    "host_risk_summary": [
+      {
+        "host": "192.168.1.11",
+        "hostname": "dbserver01.corp.local",
+        "os_guess": "Linux 4.15 - 5.6",
+        "open_service_count": 2,
+        "vuln_finding_count": 1,
+        "unscored_finding_count": 0,
+        "max_raw_vuln_score": 9.8,
+        "criticality_multiplier": 1.0,
+        "criticality_reason": "Standard asset, no elevated criticality tag matched",
+        "adjusted_risk_score": 9.8,
+        "risk_band": "CRITICAL"
+      },
+      {
+        "host": "192.168.1.10",
+        "hostname": "fileserver01.corp.local",
+        "os_guess": "Microsoft Windows Server 2008 R2 SP1",
+        "open_service_count": 2,
+        "vuln_finding_count": 1,
+        "unscored_finding_count": 0,
+        "max_raw_vuln_score": 8.1,
+        "criticality_multiplier": 1.0,
+        "criticality_reason": "Standard asset, no elevated criticality tag matched",
+        "adjusted_risk_score": 8.1,
+        "risk_band": "HIGH"
+      },
+      {
+        "host": "192.168.1.12",
+        "hostname": "webserver01.corp.local",
+        "os_guess": "Linux 5.4 - 5.15",
+        "open_service_count": 2,
+        "vuln_finding_count": 0,
+        "unscored_finding_count": 0,
+        "max_raw_vuln_score": 0.0,
+        "criticality_multiplier": 1.2,
+        "criticality_reason": "Externally-facing application server",
+        "adjusted_risk_score": 0.0,
+        "risk_band": "INFO"
+      }
+    ],
+    "prioritized_findings": [
+      {
+        "type": "vuln",
+        "host": "192.168.1.11",
+        "hostname": "dbserver01.corp.local",
+        "os_guess": "Linux 4.15 - 5.6",
+        "port": 3306,
+        "protocol": "tcp",
+        "service": "mysql",
+        "product": "MySQL",
+        "version": "5.1.63",
+        "cve_refs": [
+          "CVE-2012-2122"
+        ],
+        "nse_script": "mysql-vuln-cve2012-2122",
+        "raw_output": "VULNERABLE: MySQL/MariaDB weak password authentication security bypass State: VULNERABLE (Exploitable) Risk factor: HIGH  IDs: CVE:CVE-2012-2122 Disclosure date: 2012-06-11",
+        "severity_score": 9.8,
+        "severity_band": "CRITICAL",
+        "scoring_rationale": "CVSS v3 base score 9.8 from ['CVE-2012-2122']"
+      },
+      {
+        "type": "vuln",
+        "host": "192.168.1.10",
+        "hostname": "fileserver01.corp.local",
+        "os_guess": "Microsoft Windows Server 2008 R2 SP1",
+        "port": 445,
+        "protocol": "tcp",
+        "service": "microsoft-ds",
+        "product": "Windows Server 2008 R2 SMBv1",
+        "version": "6.1.7601",
+        "cve_refs": [
+          "CVE-2017-0143"
+        ],
+        "nse_script": "smb-vuln-ms17-010",
+        "raw_output": "VULNERABLE: Remote Code Execution vulnerability in Microsoft SMBv1 servers (ms17-010) State: VULNERABLE Risk factor: HIGH  IDs: CVE:CVE-2017-0143 Disclosure date: 2017-03-14 References: https://technet.microsoft.com/en-us/library/security/ms17-010.aspx",
+        "severity_score": 8.1,
+        "severity_band": "HIGH",
+        "scoring_rationale": "CVSS v3 base score 8.1 from ['CVE-2017-0143']"
+      }
+    ],
+    "all_scored_findings": [
+      {
+        "type": "asset",
+        "host": "192.168.1.10",
+        "hostname": "fileserver01.corp.local",
+        "os_guess": "Microsoft Windows Server 2008 R2 SP1",
+        "port": 139,
+        "protocol": "tcp",
+        "service": "netbios-ssn",
+        "product": "Microsoft Windows netbios-ssn",
+        "version": null,
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 0.0,
+        "severity_band": "INFO",
+        "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+      },
+      {
+        "type": "asset",
+        "host": "192.168.1.10",
+        "hostname": "fileserver01.corp.local",
+        "os_guess": "Microsoft Windows Server 2008 R2 SP1",
+        "port": 445,
+        "protocol": "tcp",
+        "service": "microsoft-ds",
+        "product": "Windows Server 2008 R2 SMBv1",
+        "version": "6.1.7601",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 1.5,
+        "severity_band": "LOW",
+        "scoring_rationale": "Baseline exposure risk for open 'microsoft-ds' service"
+      },
+      {
+        "type": "vuln",
+        "host": "192.168.1.10",
+        "hostname": "fileserver01.corp.local",
+        "os_guess": "Microsoft Windows Server 2008 R2 SP1",
+        "port": 445,
+        "protocol": "tcp",
+        "service": "microsoft-ds",
+        "product": "Windows Server 2008 R2 SMBv1",
+        "version": "6.1.7601",
+        "cve_refs": [
+          "CVE-2017-0143"
+        ],
+        "nse_script": "smb-vuln-ms17-010",
+        "raw_output": "VULNERABLE: Remote Code Execution vulnerability in Microsoft SMBv1 servers (ms17-010) State: VULNERABLE Risk factor: HIGH  IDs: CVE:CVE-2017-0143 Disclosure date: 2017-03-14 References: https://technet.microsoft.com/en-us/library/security/ms17-010.aspx",
+        "severity_score": 8.1,
+        "severity_band": "HIGH",
+        "scoring_rationale": "CVSS v3 base score 8.1 from ['CVE-2017-0143']"
+      },
+      {
+        "type": "asset",
+        "host": "192.168.1.11",
+        "hostname": "dbserver01.corp.local",
+        "os_guess": "Linux 4.15 - 5.6",
+        "port": 22,
+        "protocol": "tcp",
+        "service": "ssh",
+        "product": "OpenSSH",
+        "version": "7.4",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 0.0,
+        "severity_band": "INFO",
+        "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+      },
+      {
+        "type": "asset",
+        "host": "192.168.1.11",
+        "hostname": "dbserver01.corp.local",
+        "os_guess": "Linux 4.15 - 5.6",
+        "port": 3306,
+        "protocol": "tcp",
+        "service": "mysql",
+        "product": "MySQL",
+        "version": "5.1.63",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 1.0,
+        "severity_band": "LOW",
+        "scoring_rationale": "Baseline exposure risk for open 'mysql' service"
+      },
+      {
+        "type": "vuln",
+        "host": "192.168.1.11",
+        "hostname": "dbserver01.corp.local",
+        "os_guess": "Linux 4.15 - 5.6",
+        "port": 3306,
+        "protocol": "tcp",
+        "service": "mysql",
+        "product": "MySQL",
+        "version": "5.1.63",
+        "cve_refs": [
+          "CVE-2012-2122"
+        ],
+        "nse_script": "mysql-vuln-cve2012-2122",
+        "raw_output": "VULNERABLE: MySQL/MariaDB weak password authentication security bypass State: VULNERABLE (Exploitable) Risk factor: HIGH  IDs: CVE:CVE-2012-2122 Disclosure date: 2012-06-11",
+        "severity_score": 9.8,
+        "severity_band": "CRITICAL",
+        "scoring_rationale": "CVSS v3 base score 9.8 from ['CVE-2012-2122']"
+      },
+      {
+        "type": "asset",
+        "host": "192.168.1.12",
+        "hostname": "webserver01.corp.local",
+        "os_guess": "Linux 5.4 - 5.15",
+        "port": 80,
+        "protocol": "tcp",
+        "service": "http",
+        "product": "Apache httpd",
+        "version": "2.4.52",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 0.0,
+        "severity_band": "INFO",
+        "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+      },
+      {
+        "type": "asset",
+        "host": "192.168.1.12",
+        "hostname": "webserver01.corp.local",
+        "os_guess": "Linux 5.4 - 5.15",
+        "port": 443,
+        "protocol": "tcp",
+        "service": "https",
+        "product": "Apache httpd",
+        "version": "2.4.52",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 0.0,
+        "severity_band": "INFO",
+        "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+      }
+    ]
+  },
+  "grounded": [
+    {
+      "type": "asset",
+      "host": "192.168.1.10",
+      "hostname": "fileserver01.corp.local",
+      "os_guess": "Microsoft Windows Server 2008 R2 SP1",
+      "port": 139,
+      "protocol": "tcp",
+      "service": "netbios-ssn",
+      "product": "Microsoft Windows netbios-ssn",
+      "version": null,
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-RDP-001",
+            "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+            "section": "Remote Access",
+            "control_title": "Restrict RDP exposure and enforce Network Level Authentication",
+            "text": "Remote Desktop Protocol should not be exposed directly to untrusted networks. Where RDP is required, enforce Network Level Authentication (NLA), require multi-factor authentication, and restrict access via firewall rules or a VPN/bastion host rather than direct internet exposure. Unrestricted RDP exposure is one of the most common initial access vectors in ransomware incidents.",
+            "applies_to": [
+              "rdp",
+              "ms-wbt-server",
+              "windows",
+              "windows_server"
+            ],
+            "level": 1,
+            "remediation_type": "network_configuration",
+            "similarity_score": 0.148
+          },
+          {
+            "id": "CIS-SMB-001",
+            "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+            "section": "Network Security",
+            "control_title": "Disable SMBv1 and require SMB signing",
+            "text": "Legacy SMBv1 should be disabled on all Windows hosts, as it lacks modern security controls and is the protocol version targeted by well-known remote code execution exploits. SMB signing should be required to prevent relay and tampering attacks. Disable SMBv1 via PowerShell (Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol) or Group Policy, and verify no legacy applications depend on it before rollout.",
+            "applies_to": [
+              "smb",
+              "microsoft-ds",
+              "windows_server",
+              "windows"
+            ],
+            "level": 1,
+            "remediation_type": "feature_removal",
+            "similarity_score": 0.128
+          },
+          {
+            "id": "CIS-SMB-002",
+            "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+            "section": "Network Security",
+            "control_title": "Apply security updates for SMB remote code execution vulnerabilities promptly",
+            "text": "Hosts exposing SMB services should be patched against known remote code execution vulnerabilities as a priority, since SMB is a common lateral-movement and ransomware entry vector. Maintain a patch cadence that applies critical SMB-related security updates within 72 hours of release for internet- or high-value-network-facing systems.",
+            "applies_to": [
+              "smb",
+              "microsoft-ds",
+              "windows_server",
+              "windows"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.0
+          }
+        ],
+        "service_tags_used": [
+          "netbios-ssn",
+          "windows"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "192.168.1.10",
+      "hostname": "fileserver01.corp.local",
+      "os_guess": "Microsoft Windows Server 2008 R2 SP1",
+      "port": 445,
+      "protocol": "tcp",
+      "service": "microsoft-ds",
+      "product": "Windows Server 2008 R2 SMBv1",
+      "version": "6.1.7601",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 1.5,
+      "severity_band": "LOW",
+      "scoring_rationale": "Baseline exposure risk for open 'microsoft-ds' service",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-SMB-001",
+            "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+            "section": "Network Security",
+            "control_title": "Disable SMBv1 and require SMB signing",
+            "text": "Legacy SMBv1 should be disabled on all Windows hosts, as it lacks modern security controls and is the protocol version targeted by well-known remote code execution exploits. SMB signing should be required to prevent relay and tampering attacks. Disable SMBv1 via PowerShell (Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol) or Group Policy, and verify no legacy applications depend on it before rollout.",
+            "applies_to": [
+              "smb",
+              "microsoft-ds",
+              "windows_server",
+              "windows"
+            ],
+            "level": 1,
+            "remediation_type": "feature_removal",
+            "similarity_score": 0.254
+          },
+          {
+            "id": "CIS-RDP-001",
+            "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+            "section": "Remote Access",
+            "control_title": "Restrict RDP exposure and enforce Network Level Authentication",
+            "text": "Remote Desktop Protocol should not be exposed directly to untrusted networks. Where RDP is required, enforce Network Level Authentication (NLA), require multi-factor authentication, and restrict access via firewall rules or a VPN/bastion host rather than direct internet exposure. Unrestricted RDP exposure is one of the most common initial access vectors in ransomware incidents.",
+            "applies_to": [
+              "rdp",
+              "ms-wbt-server",
+              "windows",
+              "windows_server"
+            ],
+            "level": 1,
+            "remediation_type": "network_configuration",
+            "similarity_score": 0.098
+          },
+          {
+            "id": "CIS-SMB-002",
+            "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+            "section": "Network Security",
+            "control_title": "Apply security updates for SMB remote code execution vulnerabilities promptly",
+            "text": "Hosts exposing SMB services should be patched against known remote code execution vulnerabilities as a priority, since SMB is a common lateral-movement and ransomware entry vector. Maintain a patch cadence that applies critical SMB-related security updates within 72 hours of release for internet- or high-value-network-facing systems.",
+            "applies_to": [
+              "smb",
+              "microsoft-ds",
+              "windows_server",
+              "windows"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.0
+          }
+        ],
+        "service_tags_used": [
+          "microsoft-ds",
+          "windows_server"
+        ]
+      }
+    },
+    {
+      "type": "vuln",
+      "host": "192.168.1.10",
+      "hostname": "fileserver01.corp.local",
+      "os_guess": "Microsoft Windows Server 2008 R2 SP1",
+      "port": 445,
+      "protocol": "tcp",
+      "service": "microsoft-ds",
+      "product": "Windows Server 2008 R2 SMBv1",
+      "version": "6.1.7601",
+      "cve_refs": [
+        "CVE-2017-0143"
+      ],
+      "nse_script": "smb-vuln-ms17-010",
+      "raw_output": "VULNERABLE: Remote Code Execution vulnerability in Microsoft SMBv1 servers (ms17-010) State: VULNERABLE Risk factor: HIGH  IDs: CVE:CVE-2017-0143 Disclosure date: 2017-03-14 References: https://technet.microsoft.com/en-us/library/security/ms17-010.aspx",
+      "severity_score": 8.1,
+      "severity_band": "HIGH",
+      "scoring_rationale": "CVSS v3 base score 8.1 from ['CVE-2017-0143']",
+      "grounding_context": {
+        "cve_records": [
+          {
+            "id": "CVE-2017-0143",
+            "text": "The SMBv1 server in Microsoft Windows Vista SP2; Windows Server 2008 SP2 and R2 SP1; Windows 7 SP1; Windows 8.1; Windows Server 2012 Gold and R2; Windows RT 8.1; and Windows 10 Gold, 1511, and 1607; and Windows Server 2016 allows remote attackers to execute arbitrary code via crafted packets, aka 'Windows SMB Remote Code Execution Vulnerability.' This vulnerability is different from those described in CVE-2017-0144, CVE-2017-0145, CVE-2017-0146, and CVE-2017-0148.",
+            "cvss_v3_score": 8.1,
+            "cvss_v3_vector": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "cvss_severity": "HIGH",
+            "cwe_ids": [
+              "CWE-20"
+            ],
+            "published_date": "2017-03-17T01:59:00.243",
+            "last_modified_date": "2018-10-12T22:02:31.463",
+            "references": [
+              "https://nvd.nist.gov/vuln/detail/CVE-2017-0143",
+              "https://technet.microsoft.com/library/security/MS17-010"
+            ],
+            "kev_listed": true,
+            "kev_date_added": "2021-11-03"
+          }
+        ],
+        "cis_matches": [
+          {
+            "id": "CIS-SMB-001",
+            "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+            "section": "Network Security",
+            "control_title": "Disable SMBv1 and require SMB signing",
+            "text": "Legacy SMBv1 should be disabled on all Windows hosts, as it lacks modern security controls and is the protocol version targeted by well-known remote code execution exploits. SMB signing should be required to prevent relay and tampering attacks. Disable SMBv1 via PowerShell (Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol) or Group Policy, and verify no legacy applications depend on it before rollout.",
+            "applies_to": [
+              "smb",
+              "microsoft-ds",
+              "windows_server",
+              "windows"
+            ],
+            "level": 1,
+            "remediation_type": "feature_removal",
+            "similarity_score": 0.333
+          },
+          {
+            "id": "CIS-SMB-002",
+            "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+            "section": "Network Security",
+            "control_title": "Apply security updates for SMB remote code execution vulnerabilities promptly",
+            "text": "Hosts exposing SMB services should be patched against known remote code execution vulnerabilities as a priority, since SMB is a common lateral-movement and ransomware entry vector. Maintain a patch cadence that applies critical SMB-related security updates within 72 hours of release for internet- or high-value-network-facing systems.",
+            "applies_to": [
+              "smb",
+              "microsoft-ds",
+              "windows_server",
+              "windows"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.16
+          },
+          {
+            "id": "CIS-RDP-001",
+            "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+            "section": "Remote Access",
+            "control_title": "Restrict RDP exposure and enforce Network Level Authentication",
+            "text": "Remote Desktop Protocol should not be exposed directly to untrusted networks. Where RDP is required, enforce Network Level Authentication (NLA), require multi-factor authentication, and restrict access via firewall rules or a VPN/bastion host rather than direct internet exposure. Unrestricted RDP exposure is one of the most common initial access vectors in ransomware incidents.",
+            "applies_to": [
+              "rdp",
+              "ms-wbt-server",
+              "windows",
+              "windows_server"
+            ],
+            "level": 1,
+            "remediation_type": "network_configuration",
+            "similarity_score": 0.076
+          }
+        ],
+        "service_tags_used": [
+          "microsoft-ds",
+          "windows_server"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "192.168.1.11",
+      "hostname": "dbserver01.corp.local",
+      "os_guess": "Linux 4.15 - 5.6",
+      "port": 22,
+      "protocol": "tcp",
+      "service": "ssh",
+      "product": "OpenSSH",
+      "version": "7.4",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-SSH-001",
+            "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+            "section": "Remote Access",
+            "control_title": "Disable password authentication in favor of key-based SSH login",
+            "text": "SSH should be configured to disable password authentication and require public-key authentication instead, reducing exposure to credential-stuffing and brute-force attacks. Combine this with disabling root login over SSH and restricting access to specific source networks where feasible.",
+            "applies_to": [
+              "ssh",
+              "openssh"
+            ],
+            "level": 1,
+            "remediation_type": "configuration",
+            "similarity_score": 0.397
+          }
+        ],
+        "service_tags_used": [
+          "openssh",
+          "ssh"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "192.168.1.11",
+      "hostname": "dbserver01.corp.local",
+      "os_guess": "Linux 4.15 - 5.6",
+      "port": 3306,
+      "protocol": "tcp",
+      "service": "mysql",
+      "product": "MySQL",
+      "version": "5.1.63",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 1.0,
+      "severity_band": "LOW",
+      "scoring_rationale": "Baseline exposure risk for open 'mysql' service",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-MYSQL-001",
+            "benchmark": "CIS MySQL Benchmark (illustrative)",
+            "section": "Authentication",
+            "control_title": "Keep database engine patched against authentication bypass vulnerabilities",
+            "text": "Database servers should run supported, patched versions of the database engine. Older MySQL/MariaDB versions have contained authentication bypass vulnerabilities that allow login without correct credentials under certain conditions. Apply vendor security patches promptly and avoid running end-of-life database versions in production.",
+            "applies_to": [
+              "mysql"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.161
+          },
+          {
+            "id": "CIS-MYSQL-002",
+            "benchmark": "CIS MySQL Benchmark (illustrative)",
+            "section": "Network Exposure",
+            "control_title": "Restrict database network exposure to application tiers only",
+            "text": "Database services should not be reachable from general user networks or the internet. Bind the database to internal interfaces only and use firewall rules or security groups to restrict inbound connections to the specific application servers that require access.",
+            "applies_to": [
+              "mysql"
+            ],
+            "level": 1,
+            "remediation_type": "network_configuration",
+            "similarity_score": 0.0
+          }
+        ],
+        "service_tags_used": [
+          "mysql"
+        ]
+      }
+    },
+    {
+      "type": "vuln",
+      "host": "192.168.1.11",
+      "hostname": "dbserver01.corp.local",
+      "os_guess": "Linux 4.15 - 5.6",
+      "port": 3306,
+      "protocol": "tcp",
+      "service": "mysql",
+      "product": "MySQL",
+      "version": "5.1.63",
+      "cve_refs": [
+        "CVE-2012-2122"
+      ],
+      "nse_script": "mysql-vuln-cve2012-2122",
+      "raw_output": "VULNERABLE: MySQL/MariaDB weak password authentication security bypass State: VULNERABLE (Exploitable) Risk factor: HIGH  IDs: CVE:CVE-2012-2122 Disclosure date: 2012-06-11",
+      "severity_score": 9.8,
+      "severity_band": "CRITICAL",
+      "scoring_rationale": "CVSS v3 base score 9.8 from ['CVE-2012-2122']",
+      "grounding_context": {
+        "cve_records": [
+          {
+            "id": "CVE-2012-2122",
+            "text": "sql/password.c in Oracle MySQL 5.1.x before 5.1.63, 5.5.x before 5.5.24, and 5.6.x before 5.6.6, and MariaDB 5.1.x before 5.1.62, 5.2.x before 5.2.12, 5.3.x before 5.3.6, and 5.5.x before 5.5.23, when running in certain environments with certain implementations of memcmp, allows remote attackers to bypass authentication by repeatedly authenticating with the same incorrect password, which eventually causes a token comparison to succeed due to an improperly checked return value.",
+            "cvss_v3_score": 9.8,
+            "cvss_v3_vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "cvss_severity": "CRITICAL",
+            "cwe_ids": [
+              "CWE-287"
+            ],
+            "published_date": "2012-06-11T04:55:00.000",
+            "last_modified_date": "2018-10-17T21:23:34.000",
+            "references": [
+              "https://nvd.nist.gov/vuln/detail/CVE-2012-2122",
+              "https://bugs.mysql.com/bug.php?id=64884"
+            ],
+            "kev_listed": false,
+            "kev_date_added": null
+          }
+        ],
+        "cis_matches": [
+          {
+            "id": "CIS-MYSQL-001",
+            "benchmark": "CIS MySQL Benchmark (illustrative)",
+            "section": "Authentication",
+            "control_title": "Keep database engine patched against authentication bypass vulnerabilities",
+            "text": "Database servers should run supported, patched versions of the database engine. Older MySQL/MariaDB versions have contained authentication bypass vulnerabilities that allow login without correct credentials under certain conditions. Apply vendor security patches promptly and avoid running end-of-life database versions in production.",
+            "applies_to": [
+              "mysql"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.242
+          },
+          {
+            "id": "CIS-MYSQL-002",
+            "benchmark": "CIS MySQL Benchmark (illustrative)",
+            "section": "Network Exposure",
+            "control_title": "Restrict database network exposure to application tiers only",
+            "text": "Database services should not be reachable from general user networks or the internet. Bind the database to internal interfaces only and use firewall rules or security groups to restrict inbound connections to the specific application servers that require access.",
+            "applies_to": [
+              "mysql"
+            ],
+            "level": 1,
+            "remediation_type": "network_configuration",
+            "similarity_score": 0.015
+          }
+        ],
+        "service_tags_used": [
+          "mysql"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "192.168.1.12",
+      "hostname": "webserver01.corp.local",
+      "os_guess": "Linux 5.4 - 5.15",
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-WEB-001",
+            "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+            "section": "Server Hardening",
+            "control_title": "Keep web server software on a supported, patched version",
+            "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+            "applies_to": [
+              "http",
+              "https",
+              "apache_httpd"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.315
+          },
+          {
+            "id": "CIS-TLS-001",
+            "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+            "section": "Transport Security",
+            "control_title": "Monitor and renew TLS certificates before expiry",
+            "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+            "applies_to": [
+              "https",
+              "ssl",
+              "tls",
+              "apache_httpd",
+              "nginx"
+            ],
+            "level": 1,
+            "remediation_type": "configuration",
+            "similarity_score": 0.0
+          }
+        ],
+        "service_tags_used": [
+          "http",
+          "apache_httpd"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "192.168.1.12",
+      "hostname": "webserver01.corp.local",
+      "os_guess": "Linux 5.4 - 5.15",
+      "port": 443,
+      "protocol": "tcp",
+      "service": "https",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-WEB-001",
+            "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+            "section": "Server Hardening",
+            "control_title": "Keep web server software on a supported, patched version",
+            "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+            "applies_to": [
+              "http",
+              "https",
+              "apache_httpd"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.315
+          },
+          {
+            "id": "CIS-TLS-001",
+            "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+            "section": "Transport Security",
+            "control_title": "Monitor and renew TLS certificates before expiry",
+            "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+            "applies_to": [
+              "https",
+              "ssl",
+              "tls",
+              "apache_httpd",
+              "nginx"
+            ],
+            "level": 1,
+            "remediation_type": "configuration",
+            "similarity_score": 0.0
+          }
+        ],
+        "service_tags_used": [
+          "tls",
+          "ssl",
+          "apache_httpd",
+          "https"
+        ]
+      }
+    }
+  ],
+  "synthesized": [
+    {
+      "finding_ref": "192.168.1.11:3306/tcp/mysql/mysql-vuln-cve2012-2122",
+      "host": "192.168.1.11",
+      "port": 3306,
+      "service": "mysql",
+      "nse_script": "mysql-vuln-cve2012-2122",
+      "severity_band": "CRITICAL",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 192.168.1.11 (dbserver01.corp.local)\nOS guess: Linux 4.15 - 5.6\nPort 3306/tcp service: mysql\nProduct/version: MySQL 5.1.63\nNmap NSE script flagged: mysql-vuln-cve2012-2122\nNSE raw output: VULNERABLE: MySQL/MariaDB weak password authentication security bypass State: VULNERABLE (Exploitable) Risk factor: HIGH  IDs: CVE:[CVE ID redacted] Disclosure date: 2012-06-11\nRule-engine severity: CRITICAL (score 9.8)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n- CVE-2012-2122 | CVSS v3 9.8 CRITICAL | KEV-listed: False | Description: sql/password.c in Oracle MySQL 5.1.x before 5.1.63, 5.5.x before 5.5.24, and 5.6.x before 5.6.6, and MariaDB 5.1.x before 5.1.62, 5.2.x before 5.2.12, 5.3.x before 5.3.6, and 5.5.x before 5.5.23, when running in certain environments with certain implementations of memcmp, allows remote attackers to bypass authentication by repeatedly authenticating with the same incorrect password, which eventually causes a token comparison to succeed due to an improperly checked return value.\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-MYSQL-001 (CIS MySQL Benchmark (illustrative)): Keep database engine patched against authentication bypass vulnerabilities — Database servers should run supported, patched versions of the database engine. Older MySQL/MariaDB versions have contained authentication bypass vulnerabilities that allow login without correct credentials under certain conditions. Apply vendor security patches promptly and avoid running end-of-life database versions in production.\n- CIS-MYSQL-002 (CIS MySQL Benchmark (illustrative)): Restrict database network exposure to application tiers only — Database services should not be reachable from general user networks or the internet. Bind the database to internal interfaces only and use firewall rules or security groups to restrict inbound connections to the specific application servers that require access.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [
+        "CVE-2012-2122"
+      ],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [\"CVE-2012-2122\"], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [
+          "CVE-2012-2122"
+        ],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [
+        "CVE-2012-2122"
+      ],
+      "ok": true
+    },
+    {
+      "finding_ref": "192.168.1.10:445/tcp/microsoft-ds/smb-vuln-ms17-010",
+      "host": "192.168.1.10",
+      "port": 445,
+      "service": "microsoft-ds",
+      "nse_script": "smb-vuln-ms17-010",
+      "severity_band": "HIGH",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 192.168.1.10 (fileserver01.corp.local)\nOS guess: Microsoft Windows Server 2008 R2 SP1\nPort 445/tcp service: microsoft-ds\nProduct/version: Windows Server 2008 R2 SMBv1 6.1.7601\nNmap NSE script flagged: smb-vuln-ms17-010\nNSE raw output: VULNERABLE: Remote Code Execution vulnerability in Microsoft SMBv1 servers (ms17-010) State: VULNERABLE Risk factor: HIGH  IDs: CVE:[CVE ID redacted] Disclosure date: 2017-03-14 References: https://technet.microsoft.com/en-us/library/security/ms17-010.aspx\nRule-engine severity: HIGH (score 8.1)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n- CVE-2017-0143 | CVSS v3 8.1 HIGH | KEV-listed: True | Description: The SMBv1 server in Microsoft Windows Vista SP2; Windows Server 2008 SP2 and R2 SP1; Windows 7 SP1; Windows 8.1; Windows Server 2012 Gold and R2; Windows RT 8.1; and Windows 10 Gold, 1511, and 1607; and Windows Server 2016 allows remote attackers to execute arbitrary code via crafted packets, aka 'Windows SMB Remote Code Execution Vulnerability.' This vulnerability is different from those described in CVE-2017-0144, CVE-2017-0145, CVE-2017-0146, and CVE-2017-0148.\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-SMB-001 (CIS Microsoft Windows Server Benchmark (illustrative)): Disable SMBv1 and require SMB signing — Legacy SMBv1 should be disabled on all Windows hosts, as it lacks modern security controls and is the protocol version targeted by well-known remote code execution exploits. SMB signing should be required to prevent relay and tampering attacks. Disable SMBv1 via PowerShell (Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol) or Group Policy, and verify no legacy applications depend on it before rollout.\n- CIS-SMB-002 (CIS Microsoft Windows Server Benchmark (illustrative)): Apply security updates for SMB remote code execution vulnerabilities promptly — Hosts exposing SMB services should be patched against known remote code execution vulnerabilities as a priority, since SMB is a common lateral-movement and ransomware entry vector. Maintain a patch cadence that applies critical SMB-related security updates within 72 hours of release for internet- or high-value-network-facing systems.\n- CIS-RDP-001 (CIS Microsoft Windows Server Benchmark (illustrative)): Restrict RDP exposure and enforce Network Level Authentication — Remote Desktop Protocol should not be exposed directly to untrusted networks. Where RDP is required, enforce Network Level Authentication (NLA), require multi-factor authentication, and restrict access via firewall rules or a VPN/bastion host rather than direct internet exposure. Unrestricted RDP exposure is one of the most common initial access vectors in ransomware incidents.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [
+        "CVE-2017-0143"
+      ],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [\"CVE-2017-0143\", \"CVE-2017-0144\", \"CVE-2017-0145\", \"CVE-2017-0146\", \"CVE-2017-0148\"], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [
+          "CVE-2017-0143",
+          "CVE-2017-0144",
+          "CVE-2017-0145",
+          "CVE-2017-0146",
+          "CVE-2017-0148"
+        ],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [
+        "CVE-2017-0143",
+        "CVE-2017-0144",
+        "CVE-2017-0145",
+        "CVE-2017-0146",
+        "CVE-2017-0148"
+      ],
+      "ok": true
+    },
+    {
+      "finding_ref": "192.168.1.10:445/tcp/microsoft-ds/asset",
+      "host": "192.168.1.10",
+      "port": 445,
+      "service": "microsoft-ds",
+      "nse_script": null,
+      "severity_band": "LOW",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 192.168.1.10 (fileserver01.corp.local)\nOS guess: Microsoft Windows Server 2008 R2 SP1\nPort 445/tcp service: microsoft-ds\nProduct/version: Windows Server 2008 R2 SMBv1 6.1.7601\nRule-engine severity: LOW (score 1.5)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n(none retrieved)\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-SMB-001 (CIS Microsoft Windows Server Benchmark (illustrative)): Disable SMBv1 and require SMB signing — Legacy SMBv1 should be disabled on all Windows hosts, as it lacks modern security controls and is the protocol version targeted by well-known remote code execution exploits. SMB signing should be required to prevent relay and tampering attacks. Disable SMBv1 via PowerShell (Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol) or Group Policy, and verify no legacy applications depend on it before rollout.\n- CIS-RDP-001 (CIS Microsoft Windows Server Benchmark (illustrative)): Restrict RDP exposure and enforce Network Level Authentication — Remote Desktop Protocol should not be exposed directly to untrusted networks. Where RDP is required, enforce Network Level Authentication (NLA), require multi-factor authentication, and restrict access via firewall rules or a VPN/bastion host rather than direct internet exposure. Unrestricted RDP exposure is one of the most common initial access vectors in ransomware incidents.\n- CIS-SMB-002 (CIS Microsoft Windows Server Benchmark (illustrative)): Apply security updates for SMB remote code execution vulnerabilities promptly — Hosts exposing SMB services should be patched against known remote code execution vulnerabilities as a priority, since SMB is a common lateral-movement and ransomware entry vector. Maintain a patch cadence that applies critical SMB-related security updates within 72 hours of release for internet- or high-value-network-facing systems.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [],
+      "ok": true
+    },
+    {
+      "finding_ref": "192.168.1.11:3306/tcp/mysql/asset",
+      "host": "192.168.1.11",
+      "port": 3306,
+      "service": "mysql",
+      "nse_script": null,
+      "severity_band": "LOW",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 192.168.1.11 (dbserver01.corp.local)\nOS guess: Linux 4.15 - 5.6\nPort 3306/tcp service: mysql\nProduct/version: MySQL 5.1.63\nRule-engine severity: LOW (score 1.0)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n(none retrieved)\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-MYSQL-001 (CIS MySQL Benchmark (illustrative)): Keep database engine patched against authentication bypass vulnerabilities — Database servers should run supported, patched versions of the database engine. Older MySQL/MariaDB versions have contained authentication bypass vulnerabilities that allow login without correct credentials under certain conditions. Apply vendor security patches promptly and avoid running end-of-life database versions in production.\n- CIS-MYSQL-002 (CIS MySQL Benchmark (illustrative)): Restrict database network exposure to application tiers only — Database services should not be reachable from general user networks or the internet. Bind the database to internal interfaces only and use firewall rules or security groups to restrict inbound connections to the specific application servers that require access.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [],
+      "ok": true
+    },
+    {
+      "finding_ref": "192.168.1.10:139/tcp/netbios-ssn/asset",
+      "host": "192.168.1.10",
+      "port": 139,
+      "service": "netbios-ssn",
+      "nse_script": null,
+      "severity_band": "INFO",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 192.168.1.10 (fileserver01.corp.local)\nOS guess: Microsoft Windows Server 2008 R2 SP1\nPort 139/tcp service: netbios-ssn\nProduct/version: Microsoft Windows netbios-ssn\nRule-engine severity: INFO (score 0.0)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n(none retrieved)\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-RDP-001 (CIS Microsoft Windows Server Benchmark (illustrative)): Restrict RDP exposure and enforce Network Level Authentication — Remote Desktop Protocol should not be exposed directly to untrusted networks. Where RDP is required, enforce Network Level Authentication (NLA), require multi-factor authentication, and restrict access via firewall rules or a VPN/bastion host rather than direct internet exposure. Unrestricted RDP exposure is one of the most common initial access vectors in ransomware incidents.\n- CIS-SMB-001 (CIS Microsoft Windows Server Benchmark (illustrative)): Disable SMBv1 and require SMB signing — Legacy SMBv1 should be disabled on all Windows hosts, as it lacks modern security controls and is the protocol version targeted by well-known remote code execution exploits. SMB signing should be required to prevent relay and tampering attacks. Disable SMBv1 via PowerShell (Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol) or Group Policy, and verify no legacy applications depend on it before rollout.\n- CIS-SMB-002 (CIS Microsoft Windows Server Benchmark (illustrative)): Apply security updates for SMB remote code execution vulnerabilities promptly — Hosts exposing SMB services should be patched against known remote code execution vulnerabilities as a priority, since SMB is a common lateral-movement and ransomware entry vector. Maintain a patch cadence that applies critical SMB-related security updates within 72 hours of release for internet- or high-value-network-facing systems.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [],
+      "ok": true
+    },
+    {
+      "finding_ref": "192.168.1.11:22/tcp/ssh/asset",
+      "host": "192.168.1.11",
+      "port": 22,
+      "service": "ssh",
+      "nse_script": null,
+      "severity_band": "INFO",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 192.168.1.11 (dbserver01.corp.local)\nOS guess: Linux 4.15 - 5.6\nPort 22/tcp service: ssh\nProduct/version: OpenSSH 7.4\nRule-engine severity: INFO (score 0.0)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n(none retrieved)\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-SSH-001 (CIS Generic Server Hardening Benchmark (illustrative)): Disable password authentication in favor of key-based SSH login — SSH should be configured to disable password authentication and require public-key authentication instead, reducing exposure to credential-stuffing and brute-force attacks. Combine this with disabling root login over SSH and restricting access to specific source networks where feasible.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [],
+      "ok": true
+    },
+    {
+      "finding_ref": "192.168.1.12:80/tcp/http/asset",
+      "host": "192.168.1.12",
+      "port": 80,
+      "service": "http",
+      "nse_script": null,
+      "severity_band": "INFO",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 192.168.1.12 (webserver01.corp.local)\nOS guess: Linux 5.4 - 5.15\nPort 80/tcp service: http\nProduct/version: Apache httpd 2.4.52\nRule-engine severity: INFO (score 0.0)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n(none retrieved)\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-WEB-001 (CIS Apache HTTP Server Benchmark (illustrative)): Keep web server software on a supported, patched version — Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.\n- CIS-TLS-001 (CIS Generic Server Hardening Benchmark (illustrative)): Monitor and renew TLS certificates before expiry — TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [],
+      "ok": true
+    },
+    {
+      "finding_ref": "192.168.1.12:443/tcp/https/asset",
+      "host": "192.168.1.12",
+      "port": 443,
+      "service": "https",
+      "nse_script": null,
+      "severity_band": "INFO",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 192.168.1.12 (webserver01.corp.local)\nOS guess: Linux 5.4 - 5.15\nPort 443/tcp service: https\nProduct/version: Apache httpd 2.4.52\nRule-engine severity: INFO (score 0.0)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n(none retrieved)\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-WEB-001 (CIS Apache HTTP Server Benchmark (illustrative)): Keep web server software on a supported, patched version — Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.\n- CIS-TLS-001 (CIS Generic Server Hardening Benchmark (illustrative)): Monitor and renew TLS certificates before expiry — TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [],
+      "ok": true
+    }
+  ],
+  "quota_info": {
+    "requested": 8,
+    "quota_remaining": 20,
+    "quota_exceeded": false,
+    "synthesized": 8,
+    "skipped": 0,
+    "message": " (using offline mock — no GEMINI_API_KEY)"
+  },
+  "validation_flags": [],
+  "has_hallucination": false,
+  "host_summary": [
+    {
+      "host": "192.168.1.11",
+      "hostname": "dbserver01.corp.local",
+      "os_guess": "Linux 4.15 - 5.6",
+      "open_service_count": 2,
+      "vuln_finding_count": 1,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 9.8,
+      "criticality_multiplier": 1.0,
+      "criticality_reason": "Standard asset, no elevated criticality tag matched",
+      "adjusted_risk_score": 9.8,
+      "risk_band": "CRITICAL"
+    },
+    {
+      "host": "192.168.1.10",
+      "hostname": "fileserver01.corp.local",
+      "os_guess": "Microsoft Windows Server 2008 R2 SP1",
+      "open_service_count": 2,
+      "vuln_finding_count": 1,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 8.1,
+      "criticality_multiplier": 1.0,
+      "criticality_reason": "Standard asset, no elevated criticality tag matched",
+      "adjusted_risk_score": 8.1,
+      "risk_band": "HIGH"
+    },
+    {
+      "host": "192.168.1.12",
+      "hostname": "webserver01.corp.local",
+      "os_guess": "Linux 5.4 - 5.15",
+      "open_service_count": 2,
+      "vuln_finding_count": 0,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 0.0,
+      "criticality_multiplier": 1.2,
+      "criticality_reason": "Externally-facing application server",
+      "adjusted_risk_score": 0.0,
+      "risk_band": "INFO"
+    }
+  ],
+  "cve_records_total": 2,
+  "cis_matches_total": 18,
+  "hosts_up": 3,
+  "is_empty_scan": false,
+  "is_no_findings": false
+}

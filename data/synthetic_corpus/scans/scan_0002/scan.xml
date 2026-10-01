@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='cp1252'?>
+<nmaprun scanner="nmap" version="7.94" xmloutputversion="1.05" start="1755000002" args="nmap -sS -sV -O -A -p- -oX scan.xml">
+  <scaninfo type="syn" protocol="tcp" numservices="65535" services="1-65535" />
+  <verbose level="0" />
+  <debugging level="0" />
+  <host starttime="-1" endtime="-1">
+    <status state="up" reason="syn-ack" reason_ttl="64" />
+    <address addr="10.20.30.1" addrtype="ipv4" />
+    <hostnames>
+      <hostname name="dc02.corp.local" type="PTR" />
+    </hostnames>
+    <ports>
+      <extraports state="filtered" count="65526" />
+      <port protocol="tcp" portid="135">
+        <state state="open" reason="syn-ack" reason_ttl="64" />
+        <service name="msrpc" method="probed" conf="10" product="Microsoft Windows RPC" />
+      </port>
+      <port protocol="tcp" portid="139">
+        <state state="open" reason="syn-ack" reason_ttl="64" />
+        <service name="netbios-ssn" method="probed" conf="10" product="Microsoft Windows netbios-ssn" />
+      </port>
+      <port protocol="tcp" portid="445">
+        <state state="open" reason="syn-ack" reason_ttl="64" />
+        <service name="microsoft-ds" method="probed" conf="10" product="Windows Server 2012 R2 microsoft-ds" />
+        <script id="smb-vuln-ms17-010" output="VULNERABLE: Remote Code Execution vulnerability in Microsoft SMBv1 servers (ms17-010) State: VULNERABLE Risk factor: HIGH  IDs: CVE:CVE-2017-0143" />
+      </port>
+      <port protocol="tcp" portid="3389">
+        <state state="open" reason="syn-ack" reason_ttl="64" />
+        <service name="ms-wbt-server" method="probed" conf="10" product="Microsoft Terminal Services" />
+        <script id="rdp-vuln-ms12-020" output="VULNERABLE: MS12-020 Remote Desktop Protocol Denial of Service" />
+      </port>
+    </ports>
+    <os>
+      <osmatch name="Microsoft Windows Server 2012 R2" accuracy="96" />
+    </os>
+  </host>
+  <host starttime="-1" endtime="-1">
+    <status state="up" reason="syn-ack" reason_ttl="64" />
+    <address addr="10.20.30.2" addrtype="ipv4" />
+    <hostnames>
+      <hostname name="web-apache2-02.corp.local" type="PTR" />
+    </hostnames>
+    <ports>
+      <extraports state="filtered" count="65526" />
+      <port protocol="tcp" portid="80">
+        <state state="open" reason="syn-ack" reason_ttl="64" />
+        <service name="http" method="probed" conf="10" product="Apache httpd" version="2.4.38" />
+        <script id="http-vuln-cve2019-0211" output="VULNERABLE: Apache scoreboard manipulation allows privilege escalation to root. IDs: CVE:CVE-2019-0211" />
+        <script id="http-vuln-cve2017-15715" output="VULNERABLE: FilesMatch newline bypass permits restricted file upload. IDs: CVE:CVE-2017-15715" />
+      </port>
+      <port protocol="tcp" portid="443">
+        <state state="open" reason="syn-ack" reason_ttl="64" />
+        <service name="https" method="probed" conf="10" product="Apache httpd" version="2.4.38" />
+      </port>
+    </ports>
+    <os>
+      <osmatch name="Linux 3.10 - 4.6" accuracy="96" />
+    </os>
+  </host>
+  <runstats>
+    <finished time="-1" summary="done" exit="success" />
+    <hosts up="2" down="0" total="2" />
+  </runstats>
+</nmaprun>

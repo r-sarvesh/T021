@@ -1,0 +1,201 @@
+[
+  {
+    "type": "asset",
+    "host": "10.20.30.1",
+    "hostname": "win10-09.corp.local",
+    "os_guess": "Microsoft Windows 10 1903",
+    "port": 445,
+    "protocol": "tcp",
+    "service": "microsoft-ds",
+    "product": "Windows 10 Pro 1903 microsoft-ds",
+    "version": null,
+    "cve_refs": [],
+    "nse_script": null,
+    "raw_output": null,
+    "severity_score": 1.5,
+    "severity_band": "LOW",
+    "scoring_rationale": "Baseline exposure risk for open 'microsoft-ds' service",
+    "grounding_context": {
+      "cve_records": [],
+      "cis_matches": [
+        {
+          "id": "CIS-SMB-001",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Network Security",
+          "control_title": "Disable SMBv1 and require SMB signing",
+          "text": "Legacy SMBv1 should be disabled on all Windows hosts, as it lacks modern security controls and is the protocol version targeted by well-known remote code execution exploits. SMB signing should be required to prevent relay and tampering attacks. Disable SMBv1 via PowerShell (Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol) or Group Policy, and verify no legacy applications depend on it before rollout.",
+          "applies_to": [
+            "smb",
+            "microsoft-ds",
+            "windows_server",
+            "windows"
+          ],
+          "level": 1,
+          "remediation_type": "feature_removal",
+          "similarity_score": 0.155
+        },
+        {
+          "id": "CIS-SMB-002",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Network Security",
+          "control_title": "Apply security updates for SMB remote code execution vulnerabilities promptly",
+          "text": "Hosts exposing SMB services should be patched against known remote code execution vulnerabilities as a priority, since SMB is a common lateral-movement and ransomware entry vector. Maintain a patch cadence that applies critical SMB-related security updates within 72 hours of release for internet- or high-value-network-facing systems.",
+          "applies_to": [
+            "smb",
+            "microsoft-ds",
+            "windows_server",
+            "windows"
+          ],
+          "level": 1,
+          "remediation_type": "patch_management",
+          "similarity_score": 0.0
+        }
+      ],
+      "service_tags_used": [
+        "windows",
+        "microsoft-ds"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.1",
+    "hostname": "win10-09.corp.local",
+    "os_guess": "Microsoft Windows 10 1903",
+    "port": 445,
+    "protocol": "tcp",
+    "service": "microsoft-ds",
+    "product": "Windows 10 Pro 1903 microsoft-ds",
+    "version": null,
+    "cve_refs": [
+      "CVE-2020-0796"
+    ],
+    "nse_script": "smb-vuln-smbghost",
+    "raw_output": "VULNERABLE: SMBv3 Compression buffer overflow Remote Code Execution (SMBGhost). State: VULNERABLE Risk factor: CRITICAL  IDs: CVE:CVE-2020-0796",
+    "severity_score": 10.0,
+    "severity_band": "CRITICAL",
+    "scoring_rationale": "CVSS v3 base score 10.0 from ['CVE-2020-0796']",
+    "grounding_context": {
+      "cve_records": [
+        {
+          "id": "CVE-2020-0796",
+          "text": "A remote code execution vulnerability exists in the way that the Microsoft Server Message Block 3.1.1 (SMBv3) protocol handles certain requests, aka 'Windows SMBv3 Client/Server Remote Code Execution Vulnerability'.",
+          "cvss_v3_score": 10.0,
+          "cvss_v3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+          "cvss_severity": "CRITICAL",
+          "cwe_ids": [
+            "CWE-119",
+            "CWE-119"
+          ],
+          "published_date": "2020-03-12T16:15:15.627",
+          "last_modified_date": "2026-08-12T05:17:28.620",
+          "references": [
+            "http://packetstormsecurity.com/files/156731/CoronaBlue-SMBGhost-Microsoft-Windows-10-SMB-3.1.1-Proof-Of-Concept.html",
+            "http://packetstormsecurity.com/files/156732/Microsoft-Windows-SMB-3.1.1-Remote-Code-Execution.html",
+            "http://packetstormsecurity.com/files/156980/Microsoft-Windows-10-SMB-3.1.1-Local-Privilege-Escalation.html",
+            "http://packetstormsecurity.com/files/157110/SMBv3-Compression-Buffer-Overflow.html",
+            "http://packetstormsecurity.com/files/157901/Microsoft-Windows-SMBGhost-Remote-Code-Execution.html"
+          ],
+          "kev_listed": null,
+          "kev_date_added": null
+        }
+      ],
+      "cis_matches": [
+        {
+          "id": "CIS-SMB-002",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Network Security",
+          "control_title": "Apply security updates for SMB remote code execution vulnerabilities promptly",
+          "text": "Hosts exposing SMB services should be patched against known remote code execution vulnerabilities as a priority, since SMB is a common lateral-movement and ransomware entry vector. Maintain a patch cadence that applies critical SMB-related security updates within 72 hours of release for internet- or high-value-network-facing systems.",
+          "applies_to": [
+            "smb",
+            "microsoft-ds",
+            "windows_server",
+            "windows"
+          ],
+          "level": 1,
+          "remediation_type": "patch_management",
+          "similarity_score": 0.228
+        },
+        {
+          "id": "CIS-SMB-001",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Network Security",
+          "control_title": "Disable SMBv1 and require SMB signing",
+          "text": "Legacy SMBv1 should be disabled on all Windows hosts, as it lacks modern security controls and is the protocol version targeted by well-known remote code execution exploits. SMB signing should be required to prevent relay and tampering attacks. Disable SMBv1 via PowerShell (Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol) or Group Policy, and verify no legacy applications depend on it before rollout.",
+          "applies_to": [
+            "smb",
+            "microsoft-ds",
+            "windows_server",
+            "windows"
+          ],
+          "level": 1,
+          "remediation_type": "feature_removal",
+          "similarity_score": 0.208
+        }
+      ],
+      "service_tags_used": [
+        "windows",
+        "microsoft-ds"
+      ]
+    }
+  },
+  {
+    "type": "asset",
+    "host": "10.20.30.1",
+    "hostname": "win10-09.corp.local",
+    "os_guess": "Microsoft Windows 10 1903",
+    "port": 139,
+    "protocol": "tcp",
+    "service": "netbios-ssn",
+    "product": "Microsoft Windows netbios-ssn",
+    "version": null,
+    "cve_refs": [],
+    "nse_script": null,
+    "raw_output": null,
+    "severity_score": 0.0,
+    "severity_band": "INFO",
+    "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+    "grounding_context": {
+      "cve_records": [],
+      "cis_matches": [
+        {
+          "id": "CIS-SMB-001",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Network Security",
+          "control_title": "Disable SMBv1 and require SMB signing",
+          "text": "Legacy SMBv1 should be disabled on all Windows hosts, as it lacks modern security controls and is the protocol version targeted by well-known remote code execution exploits. SMB signing should be required to prevent relay and tampering attacks. Disable SMBv1 via PowerShell (Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol) or Group Policy, and verify no legacy applications depend on it before rollout.",
+          "applies_to": [
+            "smb",
+            "microsoft-ds",
+            "windows_server",
+            "windows"
+          ],
+          "level": 1,
+          "remediation_type": "feature_removal",
+          "similarity_score": 0.155
+        },
+        {
+          "id": "CIS-SMB-002",
+          "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+          "section": "Network Security",
+          "control_title": "Apply security updates for SMB remote code execution vulnerabilities promptly",
+          "text": "Hosts exposing SMB services should be patched against known remote code execution vulnerabilities as a priority, since SMB is a common lateral-movement and ransomware entry vector. Maintain a patch cadence that applies critical SMB-related security updates within 72 hours of release for internet- or high-value-network-facing systems.",
+          "applies_to": [
+            "smb",
+            "microsoft-ds",
+            "windows_server",
+            "windows"
+          ],
+          "level": 1,
+          "remediation_type": "patch_management",
+          "similarity_score": 0.0
+        }
+      ],
+      "service_tags_used": [
+        "windows",
+        "netbios-ssn"
+      ]
+    }
+  }
+]

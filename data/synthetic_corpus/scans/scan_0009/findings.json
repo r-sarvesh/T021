@@ -1,0 +1,46 @@
+[
+  {
+    "type": "asset",
+    "host": "10.20.30.1",
+    "hostname": "win10-09.corp.local",
+    "os_guess": "Microsoft Windows 10 1903",
+    "port": 445,
+    "protocol": "tcp",
+    "service": "microsoft-ds",
+    "product": "Windows 10 Pro 1903 microsoft-ds",
+    "version": null,
+    "cve_refs": [],
+    "nse_script": null,
+    "raw_output": null
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.1",
+    "hostname": "win10-09.corp.local",
+    "os_guess": "Microsoft Windows 10 1903",
+    "port": 445,
+    "protocol": "tcp",
+    "service": "microsoft-ds",
+    "product": "Windows 10 Pro 1903 microsoft-ds",
+    "version": null,
+    "cve_refs": [
+      "CVE-2020-0796"
+    ],
+    "nse_script": "smb-vuln-smbghost",
+    "raw_output": "VULNERABLE: SMBv3 Compression buffer overflow Remote Code Execution (SMBGhost). State: VULNERABLE Risk factor: CRITICAL  IDs: CVE:CVE-2020-0796"
+  },
+  {
+    "type": "asset",
+    "host": "10.20.30.1",
+    "hostname": "win10-09.corp.local",
+    "os_guess": "Microsoft Windows 10 1903",
+    "port": 139,
+    "protocol": "tcp",
+    "service": "netbios-ssn",
+    "product": "Microsoft Windows netbios-ssn",
+    "version": null,
+    "cve_refs": [],
+    "nse_script": null,
+    "raw_output": null
+  }
+]

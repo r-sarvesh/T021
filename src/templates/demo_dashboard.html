@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+{% block title %}Demo — Grounded Findings — Cyber Health Assessment{% endblock %}
+{% block nav %}
+<a href="{{ url_for('index') }}">Scans</a>
+<a href="{{ url_for('demo_dashboard') }}">Demo</a>
+<a href="{{ url_for('benchmark_exhibit') }}">Benchmark →</a>
+<a href="{{ url_for('import_scan') }}">Import</a>
+{% endblock %}
+{% block content %}
+<div id="loading" class="banner banner-ok" role="status">Loading scan results…</div>
+<div id="error" class="banner banner-warn" role="alert" style="display:none"></div>
+
+<div id="content" style="display:none">
+  <div class="readout" id="readout"></div>
+
+  <div class="sec-label">Summary<span class="rule"></span></div>
+  <div class="stat-grid" id="stats"></div>
+
+  <div class="sec-label">Host risk<span class="rule"></span></div>
+  <div class="host-grid" id="hosts"></div>
+
+  <div class="sec-label" id="findings-label">Findings<span class="rule"></span></div>
+  <div id="findings-root"></div>
+
+  <div class="sec-label">LLM synthesis — placeholder<span class="rule"></span></div>
+  <div class="panel">
+    <div class="exhibit empty">
+      <div class="case"><span class="id">Not wired yet</span> <span class="src">synthesize.py is out of scope for this view</span></div>
+      <p class="abstract">This dashboard renders only the grounded findings layer (rule-engine score + CVE/CIS evidence). When <code>synthesize.py</code> has produced <code>llm_output.jsonl</code> with grounded/ungrounded summaries and hallucination classification, this section will display per-finding narratives and the executive summary here — without calling Gemini from the browser.</p>
+      <div class="meta">Placeholder: leave unconnected until the synthesis task is explicitly requested. Do not attempt to call Gemini from this dashboard.</div>
+    </div>
+  </div>
+
+  <div class="sec-label">Sanity check<span class="rule"></span></div>
+  <div class="banner banner-ok" id="sanity" style="border-left-color: var(--signal-info); background: transparent;"></div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+(function(){
+  const DATA_URLS = [
+    "{{ url_for('demo_data') }}",
+    "{{ url_for('demo_data_alias') }}",
+    "sample_data/demo_grounded_findings.json",
+    "./sample_data/demo_grounded_findings.json"
+  ];
+
+  function severityBand(score){
+    if (score == null) return 'UNSCORED';
+    if (score >= 9.0) return 'CRITICAL';
+    if (score >= 7.0) return 'HIGH';
+    if (score >= 4.0) return 'MEDIUM';
+    if (score > 0.0) return 'LOW';
+    return 'INFO';
+  }
+  function bandToBadgeClass(band){
+    const m = {CRITICAL:'critical', HIGH:'high', MEDIUM:'medium', LOW:'low', INFO:'info', UNSCORED:'unscored'};
+    return m[band] || 'info';
+  }
+  function bandToMarkClass(band){ return 'mark-' + (band || 'INFO'); }
+  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+  async function fetchFindings(){
+    let lastErr=null;
+    for (const url of DATA_URLS){
+      try{
+        const r = await fetch(url, {cache:'no-store'});
+        if (!r.ok) throw new Error(r.status+' '+r.statusText);
+        const j = await r.json();
+        return {data:j, url:url};
+      }catch(e){ lastErr=e; }
+    }
+    throw lastErr || new Error('no url tried');
+  }
+  function normalize(data){
+    if (Array.isArray(data)) return data;
+    if (data && Array.isArray(data.all_scored_findings)) return data.all_scored_findings;
+    if (data && Array.isArray(data.findings)) return data.findings;
+    return [];
+  }
+  function groupByHost(findings){
+    const m=new Map();
+    for(const f of findings){ const k=f.host||'unknown'; if(!m.has(k)) m.set(k,[]); m.get(k).push(f); }
+    return m;
+  }
+  function worstBandForFindings(list){
+    const order={CRITICAL:4,HIGH:3,MEDIUM:2,LOW:1,INFO:0,UNSCORED:-1};
+    let best='INFO', bestScore=-2;
+    for(const f of list){ const b=f.severity_band||severityBand(f.severity_score); const s=order[b]??-1; if(s>bestScore){bestScore=s; best=b;}}
+    return best;
+  }
+
+  function render(){
+    fetchFindings().then(({data,url})=>{
+      const findings=normalize(data);
+      document.getElementById('loading').style.display='none';
+      document.getElementById('content').style.display='';
+      const total=findings.length;
+      const cveResolved=findings.reduce((n,f)=>{ const recs=(f.grounding_context&&f.grounding_context.cve_records)||[]; return n+recs.filter(r=>!r.not_found&&r.status!=='not_found'&&r.id).length; },0);
+      const cveUnique=new Set();
+      findings.forEach(f=>{ const recs=(f.grounding_context&&f.grounding_context.cve_records)||[]; recs.forEach(r=>{ if(!r.not_found&&r.status!=='not_found'&&r.id) cveUnique.add(r.id); }); });
+      const cisGrounded=findings.filter(f=>{ const cis=(f.grounding_context&&f.grounding_context.cis_matches)||[]; return cis.length>0; }).length;
+      const pipelineErrors=findings.filter(f=> f.severity_band==='UNSCORED' || ((f.grounding_context&&f.grounding_context.cve_records||[]).some(r=>r.not_found))).length;
+      const hostsMap=groupByHost(findings);
+      document.getElementById('readout').innerHTML='<span class="mono">'+esc(url)+'</span> <span class="sep">&middot;</span> '+total+' findings <span class="sep">&middot;</span> '+cveUnique.size+' unique CVE(s) <span class="sep">&middot;</span> '+cisGrounded+'/'+total+' with CIS';
+      const stats=document.getElementById('stats');
+      stats.innerHTML='<div class="stat plain"><div class="ic-wrap"><span class="num mono">'+total+'</span></div><div class="lbl">total findings</div></div>'+
+        '<div class="stat evidence"><div class="ic-wrap"><span class="num mono">'+cveResolved+'</span></div><div class="lbl">CVEs matched (records)</div><div class="muted" style="font-family:var(--font-mono);font-size:11px">'+cveUnique.size+' unique: '+esc([...cveUnique].join(', ')||'—')+'</div></div>'+
+        '<div class="stat good"><div class="ic-wrap"><span class="num mono">'+cisGrounded+'/'+total+'</span></div><div class="lbl">grounded in CIS evidence</div></div>'+
+        '<div class="stat '+(pipelineErrors?'bad':'plain')+'"><div class="ic-wrap"><span class="num mono">'+pipelineErrors+'</span></div><div class="lbl">pipeline errors (unscored / unresolved)</div></div>';
+      const hg=document.getElementById('hosts'); hg.innerHTML='';
+      const sortedHosts=[...hostsMap.entries()].sort((a,b)=>{ const wa=worstBandForFindings(a[1]), wb=worstBandForFindings(b[1]); const order={CRITICAL:4,HIGH:3,MEDIUM:2,LOW:1,INFO:0,UNSCORED:-1}; return (order[wb]||0)-(order[wa]||0); });
+      for(const [host,list] of sortedHosts){
+        const ex=list[0]||{}; const wb=worstBandForFindings(list); const maxScore=Math.max(...list.map(f=>f.severity_score??0)); const vulnCount=list.filter(f=>f.type==='vuln').length;
+        const el=document.createElement('div'); el.className='host-card tab-'+wb;
+        el.innerHTML='<div class="hname" title="'+esc(ex.hostname||host)+'">'+esc(ex.hostname||host)+'</div><div class="hip">'+esc(host)+'</div><div class="riskline"><span class="riskval riskval-'+wb+'">'+(maxScore?maxScore.toFixed(1):'0.0')+'</span> <span class="mark '+bandToMarkClass(wb)+'">'+esc(wb)+'</span></div><div class="reason">'+esc(ex.os_guess||'OS unknown')+' · '+list.length+' findings ('+vulnCount+' vuln)<br><span class="mono" style="font-size:10px">'+esc(((ex.grounding_context&&ex.grounding_context.service_tags_used)||[]).join(', '))+'</span></div>';
+        hg.appendChild(el);
+      }
+      const root=document.getElementById('findings-root'); root.innerHTML='';
+      document.getElementById('findings-label').innerHTML='Findings <span class="muted" style="text-transform:none;letter-spacing:0">· '+total+' — every claim below is either cited or explicitly ungrounded</span><span class="rule"></span>';
+      for(const [host,list] of sortedHosts){
+        const ex=list[0]||{};
+        const sec=document.createElement('div'); sec.innerHTML='<div class="sec-label" style="margin-top:var(--sp-5)">'+esc(ex.hostname||host)+' <span class="muted" style="text-transform:none;letter-spacing:0">· '+esc(host)+' · '+list.length+' findings</span><span class="rule"></span></div>'; root.appendChild(sec);
+        const order={CRITICAL:4,HIGH:3,MEDIUM:2,LOW:1,INFO:0,UNSCORED:-1};
+        list.sort((a,b)=>{ const sa=order[a.severity_band]??-1, sb=order[b.severity_band]??-1; if(sb!==sa) return sb-sa; return (b.severity_score||0)-(a.severity_score||0); });
+        for(const f of list){
+          const band=f.severity_band||severityBand(f.severity_score);
+          const gc=f.grounding_context||{cve_records:[],cis_matches:[]};
+          const cveRecs=gc.cve_records||[]; const cis=gc.cis_matches||[];
+          const hasEvidence=(cveRecs.filter(r=>!r.not_found).length+cis.length)>0;
+          const card=document.createElement('div'); card.className='finding-card';
+          let html='<div class="fc-head"><span class="mark '+bandToMarkClass(band)+'">'+esc(band)+'</span>'; if(f.severity_score!=null) html+='<span class="muted" style="font-family:var(--font-mono);font-size:11px">'+Number(f.severity_score).toFixed(1)+'</span>'; html+='<span class="chip">'+esc(f.type||'')+'</span><span class="mono" style="font-size:11px">'+esc(f.port)+'/'+esc(f.protocol)+'</span></div>';
+          html+='<div class="fc-meta"><span>service <strong class="mono">'+esc(f.service||'—')+'</strong></span>'; if(f.product) html+='<span>product <strong class="mono">'+esc(f.product)+'</strong></span>'; if(f.version) html+='<span>version <strong class="mono">'+esc(f.version)+'</strong></span>'; if(f.nse_script) html+='<span>nse <strong class="mono">'+esc(f.nse_script)+'</strong></span>'; html+='</div>';
+          if(f.scoring_rationale) html+='<div class="muted" style="font-family:var(--font-mono);font-size:11px;margin-top:4px">Rationale: '+esc(f.scoring_rationale)+'</div>';
+          html+='<div style="margin-top:6px">'; if(f.cve_refs&&f.cve_refs.length){ for(const c of f.cve_refs) html+='<span class="chip cve">'+esc(c)+'</span>'; } else html+='<span class="nocite">— no CVE ref</span>'; html+=' '; if(hasEvidence){ const nCve=cveRecs.filter(r=>!r.not_found&&r.status!=='not_found').length; if(nCve) html+='<span class="chip cve">'+nCve+' CVE</span>'; if(cis.length) html+='<span class="chip cis">'+cis.length+' CIS</span>'; } else html+='<span class="chip drain">ungrounded</span>'; html+='</div>';
+          if(f.raw_output){ html+='<details><summary class="'+(hasEvidence?'evidence-toggle':'drain-toggle')+'">'+(hasEvidence?'Evidence':'No citation available')+' ▸</summary><div class="exhibit'+(hasEvidence?'':' empty')+'">'; if(f.scoring_rationale) html+='<div class="meta" style="margin-bottom:6px">Scoring rationale: '+esc(f.scoring_rationale)+'</div>'; if(!hasEvidence) html+='No citation available for this finding.'; for(const rec of cveRecs){ const isMiss=rec.not_found||rec.status==='not_found'; html+='<div class="case"><span class="id mono">'+esc(rec.id)+'</span>'; if(isMiss){ html+=' <span class="mark mark-UNSCORED">NOT IN KB</span> <span class="src">unresolved — no local record</span>'; } else { const sev=rec.cvss_severity||band; html+=' <span class="mark mark-'+esc(sev)+'">'+esc(sev)+'</span>'; if(rec.cvss_v3_score!=null) html+=' <span class="cvss">CVSS <b>'+esc(rec.cvss_v3_score)+'</b></span>'; if(rec.kev_listed) html+=' <span class="kev">ACTIVELY EXPLOITED'+(rec.kev_date_added?' '+esc(rec.kev_date_added):'')+'</span>'; html+=' <span class="src">verified — CVE record</span>'; } html+='</div>'; if(isMiss){ html+='<p class="abstract">No local record in the knowledge base for this CVE — grounding is incomplete.</p>'; } else { if(rec.text) html+='<p class="abstract">'+esc(rec.text)+'</p>'; html+='<div class="meta">'; if(rec.cwe_ids&&rec.cwe_ids.length) html+='<span>CWE: '+esc(rec.cwe_ids.join(', '))+'</span>'; if(rec.published_date) html+='<span> · published '+esc(String(rec.published_date).slice(0,10))+'</span>'; if(rec.cvss_v3_vector) html+='<span> · <span class="mono">'+esc(rec.cvss_v3_vector)+'</span></span>'; html+='</div>'; if(rec.references&&rec.references.length){ html+='<div class="refs meta">refs: '; for(let i=0;i<Math.min(3,rec.references.length);i++){ const r=rec.references[i]; const hp=r.split('//')[1]?r.split('//')[1].split('/')[0]:r; html+='<a href="'+esc(r)+'" target="_blank" rel="noopener">'+esc(hp)+'/…</a>'+(i<Math.min(3,rec.references.length)-1?', ':''); } html+='</div>'; } } } if(cis.length){ html+='<ul class="cis-list">'; for(const c of cis){ html+='<li><span><span class="chip cis">'+esc(c.id)+'</span> <span class="csection">'+esc(c.section)+'</span>'+(c.level!=null?' · L'+esc(c.level):'')+'<br><span style="display:inline-block;margin-top:2px">'+esc(c.control_title)+'</span></span> <span class="chip cis"><span class="sim">sim '+(c.similarity_score!=null?Number(c.similarity_score).toFixed(3):'0.000')+'</span></span></li>'; } html+='</ul>'; } if(f.raw_output) html+='<div class="meta" style="margin-top:8px;border-top:1px dotted var(--rule-strong);padding-top:6px">raw NSE: <span class="mono">'+esc(f.raw_output)+'</span></div>'; html+='</div></details>'; } else if(f.raw_output){ html+='<div class="meta" style="margin-top:6px">raw: <span class="mono">'+esc(f.raw_output)+'</span></div>'; }
+          card.innerHTML=html; root.appendChild(card);
+        }
+      }
+      const sanity=document.getElementById('sanity');
+      const expected={total:8, cve:2, cis:total};
+      const ok=total===expected.total && cveUnique.size===expected.cve && cisGrounded===expected.cis;
+      sanity.style.borderLeftColor=ok?'var(--evidence)':'var(--signal-critical)';
+      sanity.style.background=ok?'var(--evidence-wash)':'var(--signal-wash)';
+      sanity.textContent='Rendered '+total+' findings ('+[...hostsMap.keys()].length+' hosts), '+cveResolved+' CVE record(s) ('+cveUnique.size+' unique), '+cisGrounded+'/'+total+' with CIS matches, '+pipelineErrors+' pipeline error(s). File: '+url+' — '+(ok?'matches expected 8/2/8/8.':'differs from expected 8 findings / 2 CVE / 8 CIS — check that demo_grounded_findings.json has not changed.')+' synthesize.py not wired (placeholder intact).';
+      if(window.lucide) window.lucide.createIcons();
+    }).catch(err=>{
+      document.getElementById('loading').style.display='none';
+      const e=document.getElementById('error'); e.style.display='';
+      e.textContent='Could not load findings — check that demo_grounded_findings.json exists ('+(err&&err.message?err.message:err)+'). If opening via file://, serve with: python -m http.server 8000  or  python src/webapp.py  and open http://127.0.0.1:5000/demo';
+      console.error(err);
+    });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', render); else render();
+})();
+</script>
+{% endblock %}

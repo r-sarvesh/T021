@@ -1,0 +1,30 @@
+{
+  "report_id": "0f091674a8fe4510a52cd1f001f09a54",
+  "filename": "edge_empty.xml",
+  "uploaded_at": "2026-09-08T05:59:50.859376+00:00",
+  "uploaded_by": "admin",
+  "findings": [],
+  "scored": {
+    "host_risk_summary": [],
+    "prioritized_findings": [],
+    "all_scored_findings": []
+  },
+  "grounded": [],
+  "synthesized": [],
+  "quota_info": {
+    "requested": 0,
+    "quota_remaining": 17,
+    "quota_exceeded": false,
+    "synthesized": 0,
+    "skipped": 0,
+    "message": null
+  },
+  "validation_flags": [],
+  "has_hallucination": false,
+  "host_summary": [],
+  "cve_records_total": 0,
+  "cis_matches_total": 0,
+  "hosts_up": 0,
+  "is_empty_scan": true,
+  "is_no_findings": false
+}

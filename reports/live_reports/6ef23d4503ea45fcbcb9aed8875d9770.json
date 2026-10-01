@@ -1,0 +1,433 @@
+{
+  "report_id": "6ef23d4503ea45fcbcb9aed8875d9770",
+  "filename": "demo_test_small2.xml",
+  "uploaded_at": "2026-09-08T06:23:18.099872+00:00",
+  "uploaded_by": "admin",
+  "findings": [
+    {
+      "type": "asset",
+      "host": "10.0.0.20",
+      "hostname": "app-srv03.testlab.local",
+      "os_guess": "Linux 5.4 - 5.15",
+      "port": 22,
+      "protocol": "tcp",
+      "service": "ssh",
+      "product": "OpenSSH",
+      "version": "8.9p1 Ubuntu 3ubuntu0.6",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "asset",
+      "host": "10.0.0.20",
+      "hostname": "app-srv03.testlab.local",
+      "os_guess": "Linux 5.4 - 5.15",
+      "port": 8080,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache Tomcat",
+      "version": "9.0.62",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "vuln",
+      "host": "10.0.0.20",
+      "hostname": "app-srv03.testlab.local",
+      "os_guess": "Linux 5.4 - 5.15",
+      "port": 8080,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache Tomcat",
+      "version": "9.0.62",
+      "cve_refs": [
+        "CVE-2021-44228"
+      ],
+      "nse_script": "http-vuln-log4shell",
+      "raw_output": "VULNERABLE: Apache Log4j Remote Code Execution (Log4Shell). State: VULNERABLE. IDs: CVE:CVE-2021-44228. Risk factor: CRITICAL. JNDI lookup pattern detected in HTTP header injection test; server appears to be running a vulnerable Log4j 2.x version reachable via this endpoint."
+    }
+  ],
+  "scored": {
+    "host_risk_summary": [
+      {
+        "host": "10.0.0.20",
+        "hostname": "app-srv03.testlab.local",
+        "os_guess": "Linux 5.4 - 5.15",
+        "open_service_count": 2,
+        "vuln_finding_count": 1,
+        "unscored_finding_count": 0,
+        "max_raw_vuln_score": 10.0,
+        "criticality_multiplier": 1.0,
+        "criticality_reason": "Standard asset, no elevated criticality tag matched",
+        "adjusted_risk_score": 10.0,
+        "risk_band": "CRITICAL"
+      }
+    ],
+    "prioritized_findings": [
+      {
+        "type": "vuln",
+        "host": "10.0.0.20",
+        "hostname": "app-srv03.testlab.local",
+        "os_guess": "Linux 5.4 - 5.15",
+        "port": 8080,
+        "protocol": "tcp",
+        "service": "http",
+        "product": "Apache Tomcat",
+        "version": "9.0.62",
+        "cve_refs": [
+          "CVE-2021-44228"
+        ],
+        "nse_script": "http-vuln-log4shell",
+        "raw_output": "VULNERABLE: Apache Log4j Remote Code Execution (Log4Shell). State: VULNERABLE. IDs: CVE:CVE-2021-44228. Risk factor: CRITICAL. JNDI lookup pattern detected in HTTP header injection test; server appears to be running a vulnerable Log4j 2.x version reachable via this endpoint.",
+        "severity_score": 10.0,
+        "severity_band": "CRITICAL",
+        "scoring_rationale": "CVSS v3 base score 10.0 from ['CVE-2021-44228']"
+      }
+    ],
+    "all_scored_findings": [
+      {
+        "type": "asset",
+        "host": "10.0.0.20",
+        "hostname": "app-srv03.testlab.local",
+        "os_guess": "Linux 5.4 - 5.15",
+        "port": 22,
+        "protocol": "tcp",
+        "service": "ssh",
+        "product": "OpenSSH",
+        "version": "8.9p1 Ubuntu 3ubuntu0.6",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 0.0,
+        "severity_band": "INFO",
+        "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+      },
+      {
+        "type": "asset",
+        "host": "10.0.0.20",
+        "hostname": "app-srv03.testlab.local",
+        "os_guess": "Linux 5.4 - 5.15",
+        "port": 8080,
+        "protocol": "tcp",
+        "service": "http",
+        "product": "Apache Tomcat",
+        "version": "9.0.62",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 0.0,
+        "severity_band": "INFO",
+        "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+      },
+      {
+        "type": "vuln",
+        "host": "10.0.0.20",
+        "hostname": "app-srv03.testlab.local",
+        "os_guess": "Linux 5.4 - 5.15",
+        "port": 8080,
+        "protocol": "tcp",
+        "service": "http",
+        "product": "Apache Tomcat",
+        "version": "9.0.62",
+        "cve_refs": [
+          "CVE-2021-44228"
+        ],
+        "nse_script": "http-vuln-log4shell",
+        "raw_output": "VULNERABLE: Apache Log4j Remote Code Execution (Log4Shell). State: VULNERABLE. IDs: CVE:CVE-2021-44228. Risk factor: CRITICAL. JNDI lookup pattern detected in HTTP header injection test; server appears to be running a vulnerable Log4j 2.x version reachable via this endpoint.",
+        "severity_score": 10.0,
+        "severity_band": "CRITICAL",
+        "scoring_rationale": "CVSS v3 base score 10.0 from ['CVE-2021-44228']"
+      }
+    ]
+  },
+  "grounded": [
+    {
+      "type": "asset",
+      "host": "10.0.0.20",
+      "hostname": "app-srv03.testlab.local",
+      "os_guess": "Linux 5.4 - 5.15",
+      "port": 22,
+      "protocol": "tcp",
+      "service": "ssh",
+      "product": "OpenSSH",
+      "version": "8.9p1 Ubuntu 3ubuntu0.6",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-SSH-001",
+            "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+            "section": "Remote Access",
+            "control_title": "Disable password authentication in favor of key-based SSH login",
+            "text": "SSH should be configured to disable password authentication and require public-key authentication instead, reducing exposure to credential-stuffing and brute-force attacks. Combine this with disabling root login over SSH and restricting access to specific source networks where feasible.",
+            "applies_to": [
+              "ssh",
+              "openssh"
+            ],
+            "level": 1,
+            "remediation_type": "configuration",
+            "similarity_score": 0.397
+          }
+        ],
+        "service_tags_used": [
+          "ssh",
+          "openssh"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "10.0.0.20",
+      "hostname": "app-srv03.testlab.local",
+      "os_guess": "Linux 5.4 - 5.15",
+      "port": 8080,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache Tomcat",
+      "version": "9.0.62",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-WEB-001",
+            "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+            "section": "Server Hardening",
+            "control_title": "Keep web server software on a supported, patched version",
+            "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+            "applies_to": [
+              "http",
+              "https",
+              "apache_httpd"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.245
+          },
+          {
+            "id": "CIS-TLS-001",
+            "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+            "section": "Transport Security",
+            "control_title": "Monitor and renew TLS certificates before expiry",
+            "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+            "applies_to": [
+              "https",
+              "ssl",
+              "tls",
+              "apache_httpd",
+              "nginx"
+            ],
+            "level": 1,
+            "remediation_type": "configuration",
+            "similarity_score": 0.0
+          }
+        ],
+        "service_tags_used": [
+          "http",
+          "apache_httpd"
+        ]
+      }
+    },
+    {
+      "type": "vuln",
+      "host": "10.0.0.20",
+      "hostname": "app-srv03.testlab.local",
+      "os_guess": "Linux 5.4 - 5.15",
+      "port": 8080,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache Tomcat",
+      "version": "9.0.62",
+      "cve_refs": [
+        "CVE-2021-44228"
+      ],
+      "nse_script": "http-vuln-log4shell",
+      "raw_output": "VULNERABLE: Apache Log4j Remote Code Execution (Log4Shell). State: VULNERABLE. IDs: CVE:CVE-2021-44228. Risk factor: CRITICAL. JNDI lookup pattern detected in HTTP header injection test; server appears to be running a vulnerable Log4j 2.x version reachable via this endpoint.",
+      "severity_score": 10.0,
+      "severity_band": "CRITICAL",
+      "scoring_rationale": "CVSS v3 base score 10.0 from ['CVE-2021-44228']",
+      "grounding_context": {
+        "cve_records": [
+          {
+            "id": "CVE-2021-44228",
+            "text": "Apache Log4j2 2.0-beta9 through 2.15.0 (excluding security releases 2.12.2, 2.12.3, and 2.3.1) JNDI features used in configuration, log messages, and parameters do not protect against attacker controlled LDAP and other JNDI related endpoints. An attacker can execute code loaded from LDAP servers when message lookup substitution is enabled.",
+            "cvss_v3_score": 10.0,
+            "cvss_v3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+            "cvss_severity": "CRITICAL",
+            "cwe_ids": [
+              "CWE-502",
+              "CWE-20"
+            ],
+            "published_date": "2021-12-10T14:15:00.000",
+            "last_modified_date": "2024-07-02T12:15:00.000",
+            "references": [
+              "https://nvd.nist.gov/vuln/detail/CVE-2021-44228",
+              "https://logging.apache.org/log4j/2.x/security.html",
+              "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+            ],
+            "kev_listed": true,
+            "kev_date_added": "2021-12-10"
+          }
+        ],
+        "cis_matches": [
+          {
+            "id": "CIS-WEB-001",
+            "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+            "section": "Server Hardening",
+            "control_title": "Keep web server software on a supported, patched version",
+            "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+            "applies_to": [
+              "http",
+              "https",
+              "apache_httpd"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.263
+          },
+          {
+            "id": "CIS-TLS-001",
+            "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+            "section": "Transport Security",
+            "control_title": "Monitor and renew TLS certificates before expiry",
+            "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+            "applies_to": [
+              "https",
+              "ssl",
+              "tls",
+              "apache_httpd",
+              "nginx"
+            ],
+            "level": 1,
+            "remediation_type": "configuration",
+            "similarity_score": 0.0
+          }
+        ],
+        "service_tags_used": [
+          "http",
+          "apache_httpd"
+        ]
+      }
+    }
+  ],
+  "synthesized": [
+    {
+      "finding_ref": "10.0.0.20:8080/tcp/http/http-vuln-log4shell",
+      "host": "10.0.0.20",
+      "port": 8080,
+      "service": "http",
+      "nse_script": "http-vuln-log4shell",
+      "severity_band": "CRITICAL",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 10.0.0.20 (app-srv03.testlab.local)\nOS guess: Linux 5.4 - 5.15\nPort 8080/tcp service: http\nProduct/version: Apache Tomcat 9.0.62\nNmap NSE script flagged: http-vuln-log4shell\nNSE raw output: VULNERABLE: Apache Log4j Remote Code Execution (Log4Shell). State: VULNERABLE. IDs: CVE:[CVE ID redacted]. Risk factor: CRITICAL. JNDI lookup pattern detected in HTTP header injection test; server appears to be running a vulnerable Log4j 2.x version reachable via this endpoint.\nRule-engine severity: CRITICAL (score 10.0)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n- CVE-2021-44228 | CVSS v3 10.0 CRITICAL | KEV-listed: True | Description: Apache Log4j2 2.0-beta9 through 2.15.0 (excluding security releases 2.12.2, 2.12.3, and 2.3.1) JNDI features used in configuration, log messages, and parameters do not protect against attacker controlled LDAP and other JNDI related endpoints. An attacker can execute code loaded from LDAP servers when message lookup substitution is enabled.\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-WEB-001 (CIS Apache HTTP Server Benchmark (illustrative)): Keep web server software on a supported, patched version — Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.\n- CIS-TLS-001 (CIS Generic Server Hardening Benchmark (illustrative)): Monitor and renew TLS certificates before expiry — TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [
+        "CVE-2021-44228"
+      ],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [\"CVE-2021-44228\"], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [
+          "CVE-2021-44228"
+        ],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [
+        "CVE-2021-44228"
+      ],
+      "ok": true
+    },
+    {
+      "finding_ref": "10.0.0.20:22/tcp/ssh/asset",
+      "host": "10.0.0.20",
+      "port": 22,
+      "service": "ssh",
+      "nse_script": null,
+      "severity_band": "INFO",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 10.0.0.20 (app-srv03.testlab.local)\nOS guess: Linux 5.4 - 5.15\nPort 22/tcp service: ssh\nProduct/version: OpenSSH 8.9p1 Ubuntu 3ubuntu0.6\nRule-engine severity: INFO (score 0.0)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n(none retrieved)\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-SSH-001 (CIS Generic Server Hardening Benchmark (illustrative)): Disable password authentication in favor of key-based SSH login — SSH should be configured to disable password authentication and require public-key authentication instead, reducing exposure to credential-stuffing and brute-force attacks. Combine this with disabling root login over SSH and restricting access to specific source networks where feasible.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [],
+      "ok": true
+    },
+    {
+      "finding_ref": "10.0.0.20:8080/tcp/http/asset",
+      "host": "10.0.0.20",
+      "port": 8080,
+      "service": "http",
+      "nse_script": null,
+      "severity_band": "INFO",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 10.0.0.20 (app-srv03.testlab.local)\nOS guess: Linux 5.4 - 5.15\nPort 8080/tcp service: http\nProduct/version: Apache Tomcat 9.0.62\nRule-engine severity: INFO (score 0.0)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n(none retrieved)\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-WEB-001 (CIS Apache HTTP Server Benchmark (illustrative)): Keep web server software on a supported, patched version — Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.\n- CIS-TLS-001 (CIS Generic Server Hardening Benchmark (illustrative)): Monitor and renew TLS certificates before expiry — TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [],
+      "ok": true
+    }
+  ],
+  "quota_info": {
+    "requested": 3,
+    "quota_remaining": 17,
+    "quota_exceeded": false,
+    "synthesized": 3,
+    "skipped": 0,
+    "message": " (using offline mock — no GEMINI_API_KEY)"
+  },
+  "validation_flags": [],
+  "has_hallucination": false,
+  "host_summary": [
+    {
+      "host": "10.0.0.20",
+      "hostname": "app-srv03.testlab.local",
+      "os_guess": "Linux 5.4 - 5.15",
+      "open_service_count": 2,
+      "vuln_finding_count": 1,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 10.0,
+      "criticality_multiplier": 1.0,
+      "criticality_reason": "Standard asset, no elevated criticality tag matched",
+      "adjusted_risk_score": 10.0,
+      "risk_band": "CRITICAL"
+    }
+  ],
+  "cve_records_total": 1,
+  "cis_matches_total": 5,
+  "hosts_up": 1,
+  "is_empty_scan": false,
+  "is_no_findings": false
+}

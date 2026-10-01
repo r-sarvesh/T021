@@ -1,0 +1,26 @@
+[
+  {
+    "id": "CIS-MYSQL-001",
+    "benchmark": "CIS MySQL Benchmark (illustrative)",
+    "section": "Authentication",
+    "control_title": "Keep database engine patched against authentication bypass vulnerabilities",
+    "text": "Database servers should run supported, patched versions of the database engine. Older MySQL/MariaDB versions have contained authentication bypass vulnerabilities that allow login without correct credentials under certain conditions. Apply vendor security patches promptly and avoid running end-of-life database versions in production.",
+    "applies_to": [
+      "mysql"
+    ],
+    "level": 1,
+    "remediation_type": "patch_management"
+  },
+  {
+    "id": "CIS-MYSQL-002",
+    "benchmark": "CIS MySQL Benchmark (illustrative)",
+    "section": "Network Exposure",
+    "control_title": "Restrict database network exposure to application tiers only",
+    "text": "Database services should not be reachable from general user networks or the internet. Bind the database to internal interfaces only and use firewall rules or security groups to restrict inbound connections to the specific application servers that require access.",
+    "applies_to": [
+      "mysql"
+    ],
+    "level": 1,
+    "remediation_type": "network_configuration"
+  }
+]

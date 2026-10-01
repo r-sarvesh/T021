@@ -1,0 +1,26 @@
+[
+  {
+    "id": "CIS-MONGO-001",
+    "benchmark": "CIS MongoDB Benchmark (illustrative)",
+    "section": "Authentication",
+    "control_title": "Enable MongoDB authentication",
+    "text": "MongoDB should run with authorization enabled. Instances started without --auth accept every connection as the all-powerful role and expose every collection to any reachable client — a pattern behind several large-scale data breaches.",
+    "applies_to": [
+      "mongodb"
+    ],
+    "level": 1,
+    "remediation_type": "configuration"
+  },
+  {
+    "id": "CIS-MONGO-002",
+    "benchmark": "CIS MongoDB Benchmark (illustrative)",
+    "section": "Network Exposure",
+    "control_title": "Bind MongoDB to internal interfaces only",
+    "text": "MongoDB should bind to 127.0.0.1 or internal interfaces, never 0.0.0.0 on a public network. Use firewall rules or security groups to restrict inbound database traffic to the application tier.",
+    "applies_to": [
+      "mongodb"
+    ],
+    "level": 1,
+    "remediation_type": "network_configuration"
+  }
+]

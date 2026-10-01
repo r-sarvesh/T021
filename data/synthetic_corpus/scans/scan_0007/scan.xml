@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='cp1252'?>
+<nmaprun scanner="nmap" version="7.94" xmloutputversion="1.05" start="1755000007" args="nmap -sS -sV -O -A -p- -oX scan.xml">
+  <scaninfo type="syn" protocol="tcp" numservices="65535" services="1-65535" />
+  <verbose level="0" />
+  <debugging level="0" />
+  <host starttime="-1" endtime="-1">
+    <status state="up" reason="syn-ack" reason_ttl="64" />
+    <address addr="10.20.30.1" addrtype="ipv4" />
+    <hostnames>
+      <hostname name="db-mysql-07.corp.local" type="PTR" />
+    </hostnames>
+    <ports>
+      <extraports state="filtered" count="65526" />
+      <port protocol="tcp" portid="3306">
+        <state state="open" reason="syn-ack" reason_ttl="64" />
+        <service name="mysql" method="probed" conf="10" product="MySQL" version="5.5.62" />
+        <script id="mysql-vuln-cve2012-2122" output="VULNERABLE: MySQL/MariaDB weak password authentication security bypass. IDs: CVE:CVE-2012-2122" />
+        <script id="mysql-vuln-cve2016-6662" output="VULNERABLE: MySQL general_log_file privilege escalation enables root RCE. IDs: CVE:CVE-2016-6662" />
+      </port>
+    </ports>
+    <os>
+      <osmatch name="Linux 3.10 - 4.6" accuracy="96" />
+    </os>
+  </host>
+  <host starttime="-1" endtime="-1">
+    <status state="up" reason="syn-ack" reason_ttl="64" />
+    <address addr="10.20.30.2" addrtype="ipv4" />
+    <hostnames>
+      <hostname name="srv-ssh2-07.corp.local" type="PTR" />
+    </hostnames>
+    <ports>
+      <extraports state="filtered" count="65526" />
+      <port protocol="tcp" portid="22">
+        <state state="open" reason="syn-ack" reason_ttl="64" />
+        <service name="ssh" method="probed" conf="10" product="OpenSSH" version="9.3" />
+        <script id="ssh-vuln-agent-pkcs11" output="VULNERABLE: ssh-agent PKCS#11 unsanitized search path enables remote code execution when agent is forwarded. IDs: CVE:CVE-2023-38408" />
+      </port>
+    </ports>
+    <os>
+      <osmatch name="Linux 5.4 - 6.1" accuracy="96" />
+    </os>
+  </host>
+  <runstats>
+    <finished time="-1" summary="done" exit="success" />
+    <hosts up="2" down="0" total="2" />
+  </runstats>
+</nmaprun>

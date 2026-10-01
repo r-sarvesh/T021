@@ -1,0 +1,128 @@
+{% extends "base_dark.html" %}
+{% block title %}Import Nmap scan — Cyber Health Assessment{% endblock %}
+{% block breadcrumb %}<a href="{{ url_for('scans_library') }}" style="color:var(--text-muted);">Scans</a> <span style="color:var(--text-faint);">/</span> <span>Import</span>{% endblock %}
+{% block content %}
+
+<div style="max-width: 640px;">
+  <h1 style="margin:0 0 6px; font-size: 22px; font-weight: 700; color: var(--text);">Import Nmap scan</h1>
+  <p style="margin:0 0 20px; font-size: 13px; color: var(--text-muted);">Upload an Nmap XML report. The backend parses the scan, assesses severity, and grounds each finding in evidence.</p>
+
+  <div class="card">
+    {% if error %}
+    <div style="background: rgba(255,59,48,0.1); border:1px solid var(--critical-border); color: var(--critical); padding:10px 12px; border-radius:8px; font-size:13px; margin-bottom:16px; display:flex; align-items:center; gap:8px;">
+      <i data-lucide="alert-triangle" class="ic" style="width:14px;height:14px;"></i> {{ error }}
+    </div>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data" id="import-form">
+      <div style="margin-bottom:16px;">
+        <div style="font-size:13px; font-weight:600; color:var(--text); margin-bottom:4px;">Upload scan file</div>
+        <div style="font-size:12px; color:var(--text-muted);">Accepted format: Nmap XML output (nmap -oX). Maximum one file per import.</div>
+      </div>
+
+      <label for="scan_xml" id="dropzone" style="display:block; border:1px dashed var(--border-light); border-radius:12px; padding:36px 24px; text-align:center; cursor:pointer; background: var(--bg); transition: all 0.15s;">
+        <div style="width:48px; height:48px; background: var(--card); border:1px solid var(--border); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 12px; color:var(--text-muted);">
+          <i data-lucide="cloud-upload" class="ic" style="width:20px;height:20px;"></i>
+        </div>
+        <div id="dz-text" style="font-size:13px; font-weight:600; color:var(--text); margin-bottom:4px;">Drag & drop your Nmap XML file, or click to browse</div>
+        <div style="font-size:12px; color:var(--text-muted);">Your file is transmitted to the assessment backend for processing.</div>
+        <div id="dz-name" class="mono" style="display:none; margin-top:10px; font-size:12px; color:var(--accent); word-break:break-all;"></div>
+      </label>
+      <input type="file" id="scan_xml" name="scan_xml" accept=".xml" hidden>
+
+      <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:16px;">
+        <button type="button" onclick="clearFile()" style="background: var(--card); border:1px solid var(--border); color:var(--text); padding:8px 16px; border-radius:8px; font-size:13px; font-weight:500; cursor:pointer;">Clear</button>
+        <button type="submit" id="import-btn" style="background: var(--accent); color:#001018; border:none; padding:8px 16px; border-radius:8px; font-size:13px; font-weight:600; display:inline-flex; align-items:center; gap:6px; cursor:pointer;"><i data-lucide="shield-check" class="ic" style="width:14px;height:14px;"></i> Start assessment</button>
+      </div>
+
+      <div id="busy" style="display:none; text-align:center; margin-top:16px;">
+        <div style="width:28px;height:28px; border:2px solid var(--border); border-top-color:var(--accent); border-radius:50%; animation: spin 1s linear infinite; margin:0 auto 8px;"></div>
+        <div style="font-size:12px; color:var(--text-muted);">Processing scan …</div>
+      </div>
+    </form>
+  </div>
+
+  <!-- Processing assessment — shown after submit, matches screenshot -->
+  <div id="processing-card" class="card" style="display:none; margin-top:16px;">
+    <div style="font-size:14px; font-weight:600; color:var(--text); margin-bottom:4px;">Processing assessment</div>
+    <div style="font-size:12px; color:var(--text-muted); margin-bottom:16px;">The backend is analyzing <span id="proc-filename" class="mono" style="color:var(--text);">your scan</span>. This may take a moment.</div>
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+      <span style="font-size:12px; font-weight:500; color:var(--text);">Preparing assessment</span>
+      <span id="proc-pct" style="font-size:12px; color:var(--text-muted);">0%</span>
+    </div>
+    <div style="height:4px; background: var(--bg); border:1px solid var(--border); border-radius:2px; overflow:hidden; margin-bottom:16px;">
+      <div id="proc-bar" style="height:100%; width:0%; background: var(--accent); border-radius:2px; transition: width 0.4s;"></div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:10px;">
+      <div class="proc-step" data-step="0" style="display:flex; align-items:center; gap:10px; font-size:13px; color:var(--text-muted);"><span class="proc-icon" style="width:18px;height:18px; border:1px solid var(--border); border-radius:50%; display:flex;align-items:center;justify-content:center;"><i data-lucide="circle" class="ic" style="width:10px;height:10px;"></i></span> Uploading scan</div>
+      <div class="proc-step" data-step="1" style="display:flex; align-items:center; gap:10px; font-size:13px; color:var(--text-muted);"><span class="proc-icon" style="width:18px;height:18px; border:1px solid var(--border); border-radius:50%; display:flex;align-items:center;justify-content:center;"><i data-lucide="circle" class="ic" style="width:10px;height:10px;"></i></span> Processing hosts</div>
+      <div class="proc-step" data-step="2" style="display:flex; align-items:center; gap:10px; font-size:13px; color:var(--text-muted);"><span class="proc-icon" style="width:18px;height:18px; border:1px solid var(--border); border-radius:50%; display:flex;align-items:center;justify-content:center;"><i data-lucide="circle" class="ic" style="width:10px;height:10px;"></i></span> Analyzing findings</div>
+      <div class="proc-step" data-step="3" style="display:flex; align-items:center; gap:10px; font-size:13px; color:var(--text-muted);"><span class="proc-icon" style="width:18px;height:18px; border:1px solid var(--border); border-radius:50%; display:flex;align-items:center;justify-content:center;"><i data-lucide="circle" class="ic" style="width:10px;height:10px;"></i></span> Matching vulnerability evidence</div>
+      <div class="proc-step" data-step="4" style="display:flex; align-items:center; gap:10px; font-size:13px; color:var(--text); background: rgba(0,212,255,0.06); border:1px solid rgba(0,212,255,0.15); border-radius:8px; padding:8px 10px; margin:0 -10px;"><span class="proc-icon" style="width:18px;height:18px; border:1px solid var(--accent); border-radius:50%; display:flex;align-items:center;justify-content:center; background: rgba(0,212,255,0.12);"><i data-lucide="loader-2" class="ic" style="width:10px;height:10px; color:var(--accent); animation: spin 1s linear infinite;"></i></span> Preparing assessment</div>
+    </div>
+  </div>
+</div>
+
+<style>@keyframes spin { to { transform: rotate(360deg); } }</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  const input = document.getElementById('scan_xml');
+  const zone = document.getElementById('dropzone');
+  const dzText = document.getElementById('dz-text');
+  const dzName = document.getElementById('dz-name');
+  function clearFile(){ input.value=''; zone.style.borderColor=''; dzText.textContent='Drag & drop your Nmap XML file, or click to browse'; dzName.style.display='none'; dzName.textContent=''; }
+  input.addEventListener('change', function () {
+    if (input.files && input.files[0]) {
+      zone.style.borderColor = 'var(--accent)';
+      zone.style.background = 'rgba(0,212,255,0.04)';
+      dzText.textContent = 'File selected';
+      dzName.textContent = input.files[0].name + ' (' + Math.round(input.files[0].size/1024) + ' KB)';
+      dzName.style.display = '';
+    }
+  });
+  zone.addEventListener('dragover', function(e){ e.preventDefault(); zone.style.borderColor='var(--accent)'; zone.style.background='rgba(0,212,255,0.04)'; });
+  zone.addEventListener('dragleave', function(){ zone.style.borderColor=''; zone.style.background=''; });
+  zone.addEventListener('drop', function(e){ e.preventDefault(); if(e.dataTransfer.files&&e.dataTransfer.files[0]){ input.files=e.dataTransfer.files; input.dispatchEvent(new Event('change')); }});
+  document.getElementById('import-form').addEventListener('submit', function () {
+    document.getElementById('import-btn').disabled = true;
+    document.getElementById('busy').style.display = 'block';
+    // Show detailed processing assessment card like screenshot
+    const card = document.getElementById('processing-card');
+    const fname = input.files && input.files[0] ? input.files[0].name : 'your scan';
+    document.getElementById('proc-filename').textContent = fname;
+    if (card) {
+      card.style.display = 'block';
+      card.scrollIntoView({behavior:'smooth', block:'start'});
+      // Animate steps
+      const steps = card.querySelectorAll('.proc-step');
+      const bar = document.getElementById('proc-bar');
+      const pct = document.getElementById('proc-pct');
+      let idx = 0;
+      function nextStep(){
+        if (idx < 4) {
+          const icon = steps[idx].querySelector('.proc-icon');
+          icon.innerHTML = '<i data-lucide="check-circle-2" class="ic" style="width:12px;height:12px; color:var(--evidence);"></i>';
+          icon.style.borderColor = 'var(--evidence)';
+          icon.style.background = 'var(--evidence-bg)';
+          steps[idx].style.color = 'var(--text)';
+          if(window.lucide) window.lucide.createIcons();
+          idx++;
+          if(bar) bar.style.width = (idx*25)+'%';
+          if(pct) pct.textContent = (idx*25)+'%';
+          if(idx<=4) setTimeout(nextStep, 380);
+        } else {
+          // Final step stays as loading (already has spinner), fill to 100%
+          if(bar) bar.style.width = '100%';
+          if(pct) pct.textContent = '100%';
+          // Keep last step as active spinner (already)
+        }
+      }
+      // Start after a brief delay, keep last step as loading
+      setTimeout(nextStep, 300);
+      if(window.lucide) window.lucide.createIcons();
+    }
+  });
+</script>
+{% endblock %}

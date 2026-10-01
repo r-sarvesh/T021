@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="file:///usr/local/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.94 scan initiated as: nmap -sV -oX edge_empty.xml 10.255.255.0/30 -->
+<nmaprun scanner="nmap" args="nmap -sV -oX edge_empty.xml 10.255.255.0/30" start="1755080400" startstr="Wed Aug 13 09:00:00 2026" version="7.94" xmloutputversion="1.05">
+  <scaninfo type="syn" protocol="tcp" numservices="1000" services="1-1000"/>
+  <verbose level="0"/>
+  <debugging level="0"/>
+  <runstats>
+    <finished time="1755080450" timestr="Wed Aug 13 09:01:00 2026" elapsed="10.2" summary="Nmap done at Wed Aug 13 09:01:00 2026; 0 IP addresses (0 hosts up) scanned in 10.2 seconds" exit="success"/>
+    <hosts up="0" down="4" total="4"/>
+  </runstats>
+</nmaprun>

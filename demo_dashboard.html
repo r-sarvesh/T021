@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demo — Grounded Findings — Cyber Health Assessment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,620&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script defer src="src/static/lucide-umd.js"></script>
+  <style>
+    :root {
+      --ink:             #14181F;
+      --paper:           #F7F6F2;
+      --evidence:        #2A6F6F;
+      --signal-critical: #B23A2E;
+      --signal-high:     #C97A2B;
+      --signal-medium:   #A37434;
+      --signal-low:      #6E7A5A;
+      --signal-info:     #5E6B78;
+      --signal-mute:     #8B8A85;
+      --rule-strong: rgba(20,24,31,.35);
+      --rule:        rgba(20,24,31,.18);
+      --rule-faint:  rgba(20,24,31,.10);
+      --evidence-wash: rgba(42,111,111,.08);
+      --signal-wash:   rgba(178,58,46,.07);
+      --font-display: "Fraunces", "Georgia", serif;
+      --font-body:    "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+      --font-mono:    "IBM Plex Mono", Consolas, "Courier New", monospace;
+      --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 24px; --sp-6: 36px;
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body { margin: 0; font-family: var(--font-body); background: var(--paper); color: var(--ink); font-size: 15px; line-height: 1.5; }
+    a { color: var(--evidence); text-decoration: none; } a:hover { text-decoration: underline; }
+    header { display: flex; align-items: baseline; gap: var(--sp-4); padding: var(--sp-3) var(--sp-5); border-bottom: 2px solid var(--ink); background: var(--paper); }
+    .brand { display: flex; align-items: baseline; gap: var(--sp-3); min-width: 0; }
+    .brand h1 { margin: 0; font-family: var(--font-mono); font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
+    .brand .sub { font-family: var(--font-mono); font-size: 11px; color: var(--signal-mute); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .nav { margin-left: auto; display: flex; gap: var(--sp-4); }
+    .nav a { font-family: var(--font-mono); font-size: 11px; letter-spacing: .05em; text-transform: uppercase; color: var(--ink); }
+    .nav a:hover { color: var(--evidence); }
+    main { padding: var(--sp-5) var(--sp-5) var(--sp-6); max-width: 1180px; margin: 0 auto; }
+    footer { padding: var(--sp-4) var(--sp-5) var(--sp-6); text-align: center; color: var(--signal-mute); font-family: var(--font-mono); font-size: 11px; letter-spacing: .04em; }
+    footer .pipe { margin: 0 var(--sp-2); color: var(--rule-strong); }
+    .sec-label { display: flex; align-items: center; gap: var(--sp-3); font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); margin: var(--sp-6) 0 var(--sp-3); }
+    .sec-label:first-child { margin-top: 0; }
+    .sec-label .rule { flex: 1; border-bottom: 1px solid var(--rule); }
+    code, .mono, [data-mono="true"] { font-family: var(--font-mono); }
+    .muted { color: var(--signal-mute); }
+    .mark { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; padding: 3px 8px; border: 1px solid var(--rule-strong); border-left-width: 3px; background: var(--paper); line-height: 1.3; white-space: nowrap; }
+    .mark-CRITICAL { color: var(--signal-critical); border-left-color: var(--signal-critical); }
+    .mark-HIGH     { color: var(--signal-high);     border-left-color: var(--signal-high); }
+    .mark-MEDIUM   { color: var(--signal-medium);   border-left-color: var(--signal-medium); }
+    .mark-LOW      { color: var(--signal-low);      border-left-color: var(--signal-low); }
+    .mark-INFO     { color: var(--signal-info);     border-left-color: var(--signal-info); }
+    .mark-UNSCORED { color: var(--signal-mute);     border-left-color: var(--signal-mute); filter: grayscale(.4); }
+    .badge { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; padding: 3px 8px; border: 1px solid var(--rule-strong); border-left-width: 3px; background: var(--paper); line-height: 1.3; white-space: nowrap; }
+    .badge.critical { color: var(--signal-critical); border-left-color: var(--signal-critical); }
+    .badge.high     { color: var(--signal-high); border-left-color: var(--signal-high); }
+    .badge.medium   { color: var(--signal-medium); border-left-color: var(--signal-medium); }
+    .badge.low      { color: var(--signal-low); border-left-color: var(--signal-low); }
+    .badge.info     { color: var(--signal-info); border-left-color: var(--signal-info); }
+    .badge.unscored { color: var(--signal-mute); border-left-color: var(--signal-mute); }
+    .ic { display: inline-block; width: 1em; height: 1em; vertical-align: -0.15em; flex: 0 0 auto; }
+    .ic-lg { width: 64px; height: 64px; }
+    .ic-evidence { color: var(--evidence); } .ic-critical { color: var(--signal-critical); } .ic-high { color: var(--signal-high); } .ic-mute { color: var(--signal-mute); } .ic-ink { color: var(--ink); }
+    .host-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: var(--sp-3); }
+    .host-card { background: var(--paper); border: 1px solid var(--rule-strong); border-radius: 2px; padding: var(--sp-3) var(--sp-4); border-top: 3px solid var(--ink); min-width: 0; }
+    .host-card .hname { font-family: var(--font-display); font-weight: 620; font-size: 17px; letter-spacing: .01em; margin: 0 0 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .host-card .hip { font-size: 12px; color: var(--signal-mute); font-family: var(--font-mono); }
+    .host-card .riskline { display: flex; align-items: baseline; gap: var(--sp-2); margin: var(--sp-2) 0 var(--sp-2); }
+    .host-card .riskval { font-family: var(--font-mono); font-weight: 600; font-size: 19px; }
+    .riskval-CRITICAL { color: var(--signal-critical); } .riskval-HIGH { color: var(--signal-high); } .riskval-MEDIUM { color: var(--signal-medium); } .riskval-LOW { color: var(--signal-low); } .riskval-INFO { color: var(--signal-info); } .riskval-UNSCORED { color: var(--signal-mute); }
+    .host-card .reason { font-size: 11px; line-height: 1.4; color: var(--signal-mute); border-top: 1px dotted var(--rule-strong); padding-top: var(--sp-2); }
+    .host-card.tab-CRITICAL { border-top-color: var(--signal-critical); } .host-card.tab-HIGH { border-top-color: var(--signal-high); } .host-card.tab-MEDIUM { border-top-color: var(--signal-medium); } .host-card.tab-LOW { border-top-color: var(--signal-low); } .host-card.tab-INFO { border-top-color: var(--signal-info); } .host-card.tab-UNSCORED { border-top-color: var(--signal-mute); }
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--sp-2); margin: var(--sp-3) 0; }
+    .stat { border: 1px solid var(--rule); border-top: 3px solid var(--rule-strong); border-radius: 2px; background: var(--paper); padding: var(--sp-3) var(--sp-3); display: flex; flex-direction: column; gap: 6px; }
+    .stat .ic-wrap { display: flex; align-items: center; gap: 8px; }
+    .stat .ic { width: 16px; height: 16px; }
+    .stat .num { font-family: var(--font-mono); font-weight: 600; font-size: 22px; }
+    .stat .lbl { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--signal-mute); margin-top: 2px; }
+    .stat.evidence { border-top-color: var(--evidence); } .stat.drain { border-top-color: var(--signal-mute); } .stat.good { border-top-color: var(--signal-low); } .stat.bad { border-top-color: var(--signal-critical); } .stat.plain { border-top-color: var(--signal-info); }
+    .panel { margin-bottom: var(--sp-5); }
+    .ledger { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .ledger th { font-family: var(--font-mono); font-size: 10.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); text-align: left; padding: var(--sp-3) var(--sp-3); border-bottom: 1px solid var(--rule-strong); background: var(--paper); position: sticky; top: 0; }
+    .ledger td { padding: 14px var(--sp-3); border-bottom: 1px solid var(--rule-faint); vertical-align: top; }
+    .ledger tbody tr { transition: background .08s ease; }
+    .ledger tbody tr:nth-child(even) td { background: rgba(20,24,31,.035); }
+    .ledger tbody tr:hover td { background: var(--evidence-wash); }
+    .ledger td.mono-cell { font-family: var(--font-mono); font-size: 12.5px; }
+    .chip { display: inline-flex; align-items: baseline; gap: 4px; font-family: var(--font-mono); font-size: 11px; border: 1px solid var(--rule-strong); border-radius: 2px; padding: 1px 6px; margin: 1px 2px 1px 0; background: var(--paper); color: var(--ink); }
+    .chip.cve  { border-color: var(--evidence); color: var(--evidence); background: var(--evidence-wash); }
+    .chip.cis  { border-color: var(--signal-info); color: var(--signal-info); }
+    .chip.drain { border-color: var(--signal-mute); color: var(--signal-mute); background: transparent; }
+    .chip .sim  { border-left: 1px solid currentColor; padding-left: 5px; opacity: .8; }
+    .exhibit { border: 1px solid var(--rule-strong); border-left: 4px solid var(--evidence); border-radius: 2px; background: var(--paper); margin: var(--sp-2) 0 0; padding: var(--sp-3); }
+    .exhibit.empty { border-left-color: var(--signal-mute); background: transparent; color: var(--signal-mute); }
+    .exhibit .case { font-family: var(--font-mono); font-weight: 600; font-size: 12.5px; letter-spacing: .03em; display: flex; align-items: baseline; gap: var(--sp-2); flex-wrap: wrap; margin-bottom: var(--sp-2); padding-bottom: var(--sp-2); border-bottom: 1px dotted var(--rule-strong); }
+    .exhibit .case .id { color: var(--ink); }
+    .exhibit .case .src { font-size: 10px; color: var(--signal-mute); text-transform: uppercase; letter-spacing: .1em; }
+    .exhibit .case .kev { font-size: 9.5px; letter-spacing: .12em; font-weight: 600; color: var(--signal-critical); border: 1px solid var(--signal-critical); border-radius: 1px; padding: 1px 5px; transform: rotate(-.5deg); text-transform: uppercase; }
+    .exhibit .cvss { font-family: var(--font-mono); font-size: 11.5px; }
+    .exhibit .cvss b { font-weight: 600; }
+    .exhibit .abstract { font-size: 12.5px; margin: 0 0 var(--sp-2); color: var(--ink); }
+    .exhibit .meta { font-family: var(--font-mono); font-size: 10.5px; color: var(--signal-mute); letter-spacing: .02em; }
+    .cis-list { margin: var(--sp-2) 0 0; padding: 0; list-style: none; }
+    .cis-list li { display: flex; justify-content: space-between; align-items: baseline; gap: var(--sp-3); border-top: 1px solid var(--rule-faint); padding: var(--sp-2) 0; font-size: 12px; }
+    .cis-list .csection { font-family: var(--font-mono); font-size: 10.5px; color: var(--signal-mute); text-transform: uppercase; }
+    details { margin-top: var(--sp-2); }
+    summary { cursor: pointer; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; display: inline-list-item; list-style-position: outside; user-select: none; }
+    summary:hover { color: var(--evidence); }
+    summary.evidence-toggle { color: var(--evidence); } summary.drain-toggle { color: var(--signal-mute); }
+    .nocite { font-family: var(--font-mono); font-size: 11px; letter-spacing: .04em; color: var(--signal-mute); }
+    .banner { display: flex; align-items: flex-start; gap: 8px; border: 1px solid var(--rule-strong); border-left-width: 4px; border-radius: 2px; padding: 10px 12px; font-size: 12.5px; margin: 0 0 var(--sp-4); }
+    .banner .ic { flex: 0 0 auto; margin-top: 2px; }
+    .banner-ok   { border-left-color: var(--evidence); background: var(--evidence-wash); color: var(--ink); }
+    .banner-warn { border-left-color: var(--signal-critical); background: var(--signal-wash); color: var(--ink); }
+    .readout { font-family: var(--font-mono); font-size: 12px; color: var(--ink); margin: 0 0 var(--sp-2); }
+    .readout .sep { color: var(--rule-strong); margin: 0 var(--sp-2); }
+    .empty { padding: var(--sp-5); text-align: center; color: var(--signal-mute); font-size: 13px; }
+    .finding-card { border: 1px solid var(--rule-strong); border-radius: 2px; padding: var(--sp-3) var(--sp-4); background: var(--paper); margin-bottom: var(--sp-3); }
+    .finding-card .fc-head { display: flex; align-items: center; gap: var(--sp-3); flex-wrap: wrap; margin-bottom: var(--sp-2); }
+    .finding-card .fc-meta { font-family: var(--font-mono); font-size: 11px; color: var(--signal-mute); display: flex; gap: var(--sp-3); flex-wrap: wrap; }
+    .finding-card .fc-meta strong { color: var(--ink); font-weight: 600; }
+    @media (max-width: 900px) { .host-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); } main { padding: var(--sp-4); } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <h1>Cyber Health Assessment</h1>
+      <span class="sub">demo — live pipeline</span>
+    </div>
+    <div class="nav">
+      <a href="demo_dashboard.html">Demo</a>
+      <a href="/benchmark">View hallucination benchmark →</a>
+      <a href="sample_data/demo_grounded_findings.json" target="_blank" rel="noopener">Raw JSON</a>
+    </div>
+  </header>
+  <main>
+    <div id="loading" class="banner banner-ok" role="status">Loading scan results…</div>
+    <div id="error" class="banner banner-warn" role="alert" style="display:none"></div>
+
+    <div id="content" style="display:none">
+      <div class="readout" id="readout"></div>
+
+      <div class="sec-label">Summary<span class="rule"></span></div>
+      <div class="stat-grid" id="stats"></div>
+
+      <div class="sec-label">Host risk<span class="rule"></span></div>
+      <div class="host-grid" id="hosts"></div>
+
+      <div class="sec-label" id="findings-label">Findings<span class="rule"></span></div>
+      <div id="findings-root"></div>
+
+      <div class="sec-label">LLM synthesis — placeholder<span class="rule"></span></div>
+      <div class="panel">
+        <div class="exhibit empty">
+          <div class="case"><span class="id">Not wired yet</span> <span class="src">synthesize.py is out of scope for this view</span></div>
+          <p class="abstract">This dashboard renders only the grounded findings layer (rule-engine score + CVE/CIS evidence). When <code>synthesize.py</code> has produced <code>llm_output.jsonl</code> with grounded/ungrounded summaries and hallucination classification, this section will display per-finding narratives and the executive summary here — without calling Gemini from the browser.</p>
+          <div class="meta">Placeholder: leave unconnected until the synthesis task is explicitly requested. Do not attempt to call Gemini from this dashboard.</div>
+        </div>
+      </div>
+
+      <div class="sec-label">Sanity check<span class="rule"></span></div>
+      <div class="banner banner-ok" id="sanity" style="border-left-color: var(--signal-info); background: transparent;"></div>
+    </div>
+  </main>
+  <footer>
+    rule-engine scoring <span class="pipe">&bull;</span>
+    CVE / CIS grounding <span class="pipe">&bull;</span>
+    LLM synthesis <span class="pipe">&bull;</span>
+    every severity claim must carry a citation
+  </footer>
+
+<script>
+(function(){
+  const DATA_URLS = [
+    'sample_data/demo_grounded_findings.json',
+    './sample_data/demo_grounded_findings.json',
+    'sample_data/demo_grounded_findings.json?v=' + Date.now()
+  ];
+
+  function severityBand(score){
+    if (score == null) return 'UNSCORED';
+    if (score >= 9.0) return 'CRITICAL';
+    if (score >= 7.0) return 'HIGH';
+    if (score >= 4.0) return 'MEDIUM';
+    if (score > 0.0) return 'LOW';
+    return 'INFO';
+  }
+  function bandToBadgeClass(band){
+    const m = {CRITICAL:'critical', HIGH:'high', MEDIUM:'medium', LOW:'low', INFO:'info', UNSCORED:'unscored'};
+    return m[band] || 'info';
+  }
+  function bandToMarkClass(band){
+    return 'mark-' + (band || 'INFO');
+  }
+  function esc(s){
+    return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  async function fetchFindings(){
+    let lastErr = null;
+    for (const url of DATA_URLS){
+      try{
+        const r = await fetch(url, {cache:'no-store'});
+        if (!r.ok) throw new Error(r.status + ' ' + r.statusText);
+        const j = await r.json();
+        return {data: j, url: url};
+      } catch(e){ lastErr = e; }
+    }
+    throw lastErr || new Error('no url tried');
+  }
+
+  function normalize(data){
+    // retrieval.py outputs a flat array; rule_engine outputs {all_scored_findings:[]}
+    if (Array.isArray(data)) return data;
+    if (data && Array.isArray(data.all_scored_findings)) return data.all_scored_findings;
+    if (data && Array.isArray(data.findings)) return data.findings;
+    return [];
+  }
+
+  function groupByHost(findings){
+    const m = new Map();
+    for (const f of findings){
+      const k = f.host || 'unknown';
+      if (!m.has(k)) m.set(k, []);
+      m.get(k).push(f);
+    }
+    return m;
+  }
+
+  function worstBandForFindings(list){
+    const order = {CRITICAL:4,HIGH:3,MEDIUM:2,LOW:1,INFO:0,UNSCORED:-1};
+    let best = 'INFO', bestScore=-2;
+    for (const f of list){
+      const b = f.severity_band || severityBand(f.severity_score);
+      const s = order[b] ?? -1;
+      if (s > bestScore) { bestScore=s; best=b; }
+    }
+    return best;
+  }
+
+  function render(){
+    fetchFindings().then(({data, url})=>{
+      const findings = normalize(data);
+      document.getElementById('loading').style.display='none';
+      document.getElementById('content').style.display='';
+      if (window.lucide) window.lucide.createIcons();
+
+      const total = findings.length;
+      const cveResolved = findings.reduce((n,f)=>{
+        const recs = (f.grounding_context && f.grounding_context.cve_records) || [];
+        return n + recs.filter(r => !r.not_found && r.status !== 'not_found' && r.id).length;
+      }, 0);
+      const cveUnique = new Set();
+      findings.forEach(f => {
+        const recs = (f.grounding_context && f.grounding_context.cve_records) || [];
+        recs.forEach(r => { if (!r.not_found && r.status !== 'not_found' && r.id) cveUnique.add(r.id); });
+      });
+      const cisGrounded = findings.filter(f => {
+        const cis = (f.grounding_context && f.grounding_context.cis_matches) || [];
+        return cis.length > 0;
+      }).length;
+      const pipelineErrors = findings.filter(f => f.severity_band === 'UNSCORED' || (f.grounding_context && f.grounding_context.cve_records||[]).some(r=>r.not_found)).length;
+      const hostsMap = groupByHost(findings);
+
+      // readout
+      document.getElementById('readout').innerHTML =
+        '<span class="mono">' + esc(url) + '</span> <span class="sep">&middot;</span> ' +
+        total + ' findings <span class="sep">&middot;</span> ' +
+        cveUnique.size + ' unique CVE(s) <span class="sep">&middot;</span> ' +
+        cisGrounded + '/' + total + ' with CIS';
+
+      // stats
+      const stats = document.getElementById('stats');
+      stats.innerHTML =
+        '<div class="stat plain"><div class="ic-wrap"><span class="num mono">' + total + '</span></div><div class="lbl">total findings</div></div>' +
+        '<div class="stat evidence"><div class="ic-wrap"><span class="num mono">' + cveResolved + '</span></div><div class="lbl">CVEs matched (records)</div><div class="muted" style="font-family:var(--font-mono);font-size:11px">' + cveUnique.size + ' unique: ' + esc([...cveUnique].join(', ') || '—') + '</div></div>' +
+        '<div class="stat good"><div class="ic-wrap"><span class="num mono">' + cisGrounded + '/' + total + '</span></div><div class="lbl">grounded in CIS evidence</div></div>' +
+        '<div class="stat ' + (pipelineErrors ? 'bad' : 'plain') + '"><div class="ic-wrap"><span class="num mono">' + pipelineErrors + '</span></div><div class="lbl">pipeline errors (unscored / unresolved)</div></div>';
+
+      // host grid
+      const hg = document.getElementById('hosts');
+      hg.innerHTML = '';
+      const sortedHosts = [...hostsMap.entries()].sort((a,b)=>{
+        const wa = worstBandForFindings(a[1]), wb = worstBandForFindings(b[1]);
+        const order={CRITICAL:4,HIGH:3,MEDIUM:2,LOW:1,INFO:0,UNSCORED:-1};
+        return (order[wb]||0)-(order[wa]||0);
+      });
+      for (const [host, list] of sortedHosts){
+        const ex = list[0] || {};
+        const wb = worstBandForFindings(list);
+        const maxScore = Math.max(...list.map(f=> f.severity_score ?? 0));
+        const vulnCount = list.filter(f=> f.type==='vuln').length;
+        const el = document.createElement('div');
+        el.className = 'host-card tab-' + wb;
+        el.innerHTML =
+          '<div class="hname" title="' + esc(ex.hostname || host) + '">' + esc(ex.hostname || host) + '</div>' +
+          '<div class="hip">' + esc(host) + '</div>' +
+          '<div class="riskline"><span class="riskval riskval-' + wb + '">' + (maxScore ? maxScore.toFixed(1) : '0.0') + '</span> <span class="mark ' + bandToMarkClass(wb) + '"><span class="badge ' + bandToBadgeClass(wb) + '" style="border:none;padding:0;background:transparent">' + esc(wb) + '</span></span></div>' +
+          '<div class="reason">' + esc(ex.os_guess || 'OS unknown') + ' · ' + list.length + ' findings (' + vulnCount + ' vuln)<br><span class="mono" style="font-size:10px">' + esc((ex.grounding_context && ex.grounding_context.service_tags_used || []).join(', ')) + '</span></div>';
+        hg.appendChild(el);
+      }
+
+      // findings grouped by host
+      const root = document.getElementById('findings-root');
+      root.innerHTML = '';
+      document.getElementById('findings-label').innerHTML = 'Findings <span class="muted" style="text-transform:none;letter-spacing:0">· ' + total + ' — every claim below is either cited or explicitly ungrounded</span><span class="rule"></span>';
+
+      for (const [host, list] of sortedHosts){
+        const ex = list[0] || {};
+        const sec = document.createElement('div');
+        sec.innerHTML = '<div class="sec-label" style="margin-top:var(--sp-5)">' + esc(ex.hostname || host) + ' <span class="muted" style="text-transform:none;letter-spacing:0">· ' + esc(host) + ' · ' + list.length + ' findings</span><span class="rule"></span></div>';
+        root.appendChild(sec);
+        // sort findings inside host by severity
+        const order={CRITICAL:4,HIGH:3,MEDIUM:2,LOW:1,INFO:0,UNSCORED:-1};
+        list.sort((a,b)=>{
+          const sa = order[a.severity_band] ?? -1, sb = order[b.severity_band] ?? -1;
+          if (sb!==sa) return sb-sa;
+          return (b.severity_score||0)-(a.severity_score||0);
+        });
+        for (const f of list){
+          const band = f.severity_band || severityBand(f.severity_score);
+          const gc = f.grounding_context || {cve_records:[], cis_matches:[]};
+          const cveRecs = gc.cve_records || [];
+          const cis = gc.cis_matches || [];
+          const hasEvidence = (cveRecs.filter(r=>!r.not_found).length + cis.length) > 0;
+          const card = document.createElement('div');
+          card.className = 'finding-card';
+          let html = '';
+          html += '<div class="fc-head">';
+          html += '<span class="mark ' + bandToMarkClass(band) + '">' + esc(band) + '</span>';
+          html += '<span class="badge ' + bandToBadgeClass(band) + '" style="display:none">' + esc(band) + '</span>';
+          if (f.severity_score != null) html += '<span class="muted" style="font-family:var(--font-mono);font-size:11px">' + Number(f.severity_score).toFixed(1) + '</span>';
+          html += '<span class="chip">' + esc(f.type || '') + '</span>';
+          html += '<span class="mono" style="font-size:11px">' + esc(f.port) + '/' + esc(f.protocol) + '</span>';
+          html += '</div>';
+          html += '<div class="fc-meta">';
+          html += '<span>service <strong class="mono">' + esc(f.service || '—') + '</strong></span>';
+          if (f.product) html += '<span>product <strong class="mono">' + esc(f.product) + '</strong></span>';
+          if (f.version) html += '<span>version <strong class="mono">' + esc(f.version) + '</strong></span>';
+          if (f.nse_script) html += '<span>nse <strong class="mono">' + esc(f.nse_script) + '</strong></span>';
+          html += '</div>';
+          if (f.scoring_rationale) html += '<div class="muted" style="font-family:var(--font-mono);font-size:11px;margin-top:4px">Rationale: ' + esc(f.scoring_rationale) + '</div>';
+          // CVE refs chips
+          html += '<div style="margin-top:6px">';
+          if (f.cve_refs && f.cve_refs.length){
+            for (const c of f.cve_refs) html += '<span class="chip cve">' + esc(c) + '</span>';
+          } else {
+            html += '<span class="nocite">— no CVE ref</span>';
+          }
+          html += ' ';
+          if (hasEvidence){
+            const nCve = cveRecs.filter(r=>!r.not_found && r.status!=='not_found').length;
+            if (nCve) html += '<span class="chip cve">' + nCve + ' CVE</span>';
+            if (cis.length) html += '<span class="chip cis">' + cis.length + ' CIS</span>';
+          } else {
+            html += '<span class="chip drain">ungrounded</span>';
+          }
+          html += '</div>';
+          if (f.raw_output){
+            html += '<details><summary class="' + (hasEvidence ? 'evidence-toggle' : 'drain-toggle') + '">' + (hasEvidence ? 'Evidence' : 'No citation available') + ' ▸</summary>';
+            html += '<div class="exhibit' + (hasEvidence ? '' : ' empty') + '">';
+            if (f.scoring_rationale) html += '<div class="meta" style="margin-bottom:6px">Scoring rationale: ' + esc(f.scoring_rationale) + '</div>';
+            if (!hasEvidence){
+              html += 'No citation available for this finding.';
+            }
+            for (const rec of cveRecs){
+              const isMiss = rec.not_found || rec.status==='not_found';
+              html += '<div class="case"><span class="id mono">' + esc(rec.id) + '</span>';
+              if (isMiss){
+                html += ' <span class="mark mark-UNSCORED">NOT IN KB</span> <span class="src">unresolved — no local record</span>';
+              } else {
+                const sev = rec.cvss_severity || band;
+                html += ' <span class="mark mark-' + esc(sev) + '">' + esc(sev) + '</span>';
+                if (rec.cvss_v3_score != null) html += ' <span class="cvss">CVSS <b>' + esc(rec.cvss_v3_score) + '</b></span>';
+                if (rec.kev_listed) html += ' <span class="kev">ACTIVELY EXPLOITED' + (rec.kev_date_added ? ' ' + esc(rec.kev_date_added) : '') + '</span>';
+                html += ' <span class="src">verified — CVE record</span>';
+              }
+              html += '</div>';
+              if (isMiss){
+                html += '<p class="abstract">No local record in the knowledge base for this CVE — grounding is incomplete.</p>';
+              } else {
+                if (rec.text) html += '<p class="abstract">' + esc(rec.text) + '</p>';
+                html += '<div class="meta">';
+                if (rec.cwe_ids && rec.cwe_ids.length) html += '<span>CWE: ' + esc(rec.cwe_ids.join(', ')) + '</span>';
+                if (rec.published_date) html += '<span> · published ' + esc(String(rec.published_date).slice(0,10)) + '</span>';
+                if (rec.cvss_v3_vector) html += '<span> · <span class="mono">' + esc(rec.cvss_v3_vector) + '</span></span>';
+                html += '</div>';
+                if (rec.references && rec.references.length){
+                  html += '<div class="refs meta">refs: ';
+                  for (let i=0;i<Math.min(3,rec.references.length);i++){
+                    const r=rec.references[i];
+                    const hostPart = r.split('//')[1] ? r.split('//')[1].split('/')[0] : r;
+                    html += '<a href="' + esc(r) + '" target="_blank" rel="noopener">' + esc(hostPart) + '/…</a>' + (i < Math.min(3,rec.references.length)-1 ? ', ' : '');
+                  }
+                  html += '</div>';
+                }
+              }
+            }
+            if (cis.length){
+              html += '<ul class="cis-list">';
+              for (const c of cis){
+                html += '<li><span><span class="chip cis">' + esc(c.id) + '</span> <span class="csection">' + esc(c.section) + '</span>' + (c.level != null ? ' · L' + esc(c.level) : '') + '<br><span style="display:inline-block;margin-top:2px">' + esc(c.control_title) + '</span></span> <span class="chip cis"><span class="sim">sim ' + (c.similarity_score != null ? Number(c.similarity_score).toFixed(3) : '0.000') + '</span></span></li>';
+              }
+              html += '</ul>';
+            }
+            if (f.raw_output) html += '<div class="meta" style="margin-top:8px;border-top:1px dotted var(--rule-strong);padding-top:6px">raw NSE: <span class="mono">' + esc(f.raw_output) + '</span></div>';
+            html += '</div></details>';
+          } else if (f.raw_output){
+            html += '<div class="meta" style="margin-top:6px">raw: <span class="mono">' + esc(f.raw_output) + '</span></div>';
+          }
+          card.innerHTML = html;
+          root.appendChild(card);
+        }
+      }
+
+      // sanity
+      const sanity = document.getElementById('sanity');
+      const expected = {total:8, cve:2, cis:total};
+      const ok = total===expected.total && cveUnique.size===expected.cve && cisGrounded===expected.cis;
+      sanity.style.borderLeftColor = ok ? 'var(--evidence)' : 'var(--signal-critical)';
+      sanity.style.background = ok ? 'var(--evidence-wash)' : 'var(--signal-wash)';
+      sanity.textContent = 'Rendered ' + total + ' findings (' + [...hostsMap.keys()].length + ' hosts), ' + cveResolved + ' CVE record(s) (' + cveUnique.size + ' unique), ' + cisGrounded + '/' + total + ' with CIS matches, ' + pipelineErrors + ' pipeline error(s). File: ' + url + ' — ' + (ok ? 'matches expected 8/2/8/8.' : 'differs from expected 8 findings / 2 CVE / 8 CIS — check that demo_grounded_findings.json has not changed.') + ' synthesize.py not wired (placeholder intact).';
+
+      if (window.lucide) window.lucide.createIcons();
+    }).catch(err=>{
+      document.getElementById('loading').style.display='none';
+      const e = document.getElementById('error');
+      e.style.display='';
+      e.textContent = 'Could not load findings — check that demo_grounded_findings.json exists (' + (err && err.message ? err.message : err) + '). If opening via file://, serve with: python -m http.server 8000  or  python src/webapp.py  and open http://127.0.0.1:5000/demo';
+      console.error(err);
+    });
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', render);
+  else render();
+})();
+</script>
+</body>
+</html>

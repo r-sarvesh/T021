@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="file:///usr/local/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.94 scan initiated as: nmap -sV -script default -oX edge_missing_fields.xml 192.168.1.60-61 -->
+<nmaprun scanner="nmap" args="nmap -sV --script default -oX edge_missing_fields.xml 192.168.1.60-61" start="1755080400" startstr="Wed Aug 13 09:00:00 2026" version="7.94" xmloutputversion="1.05">
+  <scaninfo type="syn" protocol="tcp" numservices="1000" services="1-1000"/>
+  <verbose level="0"/>
+  <debugging level="0"/>
+  <!-- Host 1: missing <address> ipv4 (only ipv6), missing <hostnames>, missing <os>, service element missing entirely -->
+  <host starttime="1755080401" endtime="1755080410">
+    <status state="up" reason="syn-ack" reason_ttl="64"/>
+    <address addr="fe80::1" addrtype="ipv6"/>
+    <ports>
+      <port protocol="tcp" portid="80">
+        <state state="open" reason="syn-ack" reason_ttl="64"/>
+        <!-- no <service> element -->
+      </port>
+      <port protocol="tcp" portid="443">
+        <state state="open" reason="syn-ack" reason_ttl="64"/>
+        <service name="https" product="Apache httpd" version="2.4.52" extrainfo="test &amp; demo &lt;tag&gt;" method="probed" conf="10"/>
+      </port>
+    </ports>
+  </host>
+  <!-- Host 2: has ports element missing entirely, host with no ports -->
+  <host starttime="1755080401" endtime="1755080415">
+    <status state="up" reason="syn-ack" reason_ttl="64"/>
+    <address addr="192.168.1.61" addrtype="ipv4"/>
+    <hostnames>
+      <hostname name="ghost.corp.local" type="PTR"/>
+    </hostnames>
+    <!-- no <ports> at all -->
+    <os>
+      <osmatch name="Unknown" accuracy="50"/>
+    </os>
+  </host>
+  <!-- Host 3: port without state element, and port without portid (malformed) -->
+  <host starttime="1755080401" endtime="1755080420">
+    <status state="up" reason="syn-ack" reason_ttl="64"/>
+    <address addr="192.168.1.62" addrtype="ipv4"/>
+    <hostnames>
+      <hostname name="weird.corp.local" type="PTR"/>
+    </hostnames>
+    <ports>
+      <port protocol="tcp" portid="22">
+        <!-- missing <state> -->
+        <service name="ssh" product="OpenSSH" version="7.4" method="probed" conf="10"/>
+      </port>
+      <port protocol="tcp">
+        <state state="open" reason="syn-ack" reason_ttl="64"/>
+        <service name="http" product="nginx" version="1.18.0" method="probed" conf="10"/>
+      </port>
+    </ports>
+  </host>
+  <runstats>
+    <finished time="1755080420" timestr="Wed Aug 13 09:01:00 2026" elapsed="20.0" summary="Nmap done at Wed Aug 13 09:01:00 2026; 3 IP addresses (3 hosts up) scanned in 20.0 seconds" exit="success"/>
+    <hosts up="3" down="0" total="3"/>
+  </runstats>
+</nmaprun>

@@ -1,0 +1,36 @@
+========================================================================
+HALLUCINATION BENCHMARK SUMMARY
+========================================================================
+Existence mode : live NVD API 2.0
+Input files    : ../reports/llm_live_small.jsonl
+
+--- VARIANT: GROUNDED (2 scored findings) ---
+  per-finding  , any bad citation : 0/2 (0.0%)
+  per-finding  , fabricated CVE   : 0/2 (0.0%)
+  per-finding  , unsupported CVE  : 0/2 (0.0%)
+  findings with zero citations    : 0 (0/2)
+  per-citation , bad citations    : 0/2 (0.0%) (of 2 total citations)
+  per-citation , fabricated CVE   : 0/2 (0.0%)
+  per-citation , unsupported CVE  : 0/2 (0.0%)
+
+--- VARIANT: UNGROUNDED (2 scored findings) ---
+  per-finding  , any bad citation : 2/2 (100.0%)
+  per-finding  , fabricated CVE   : 0/2 (0.0%)
+  per-finding  , unsupported CVE  : 2/2 (100.0%)
+  findings with zero citations    : 0 (0/2)
+  per-citation , bad citations    : 2/2 (100.0%) (of 2 total citations)
+  per-citation , fabricated CVE   : 0/2 (0.0%)
+  per-citation , unsupported CVE  : 2/2 (100.0%)
+  findings with >=1 bad citation:
+    - 192.168.1.10:445/tcp/microsoft-ds/smb-vuln-ms17-010
+    - 192.168.1.20:3306/tcp/mysql/mysql-vuln-cve2012-2122
+
+--- GROUNDED vs UNGROUNDED (headline) ---
+  per-finding bad-citation rate : grounded 0/2 (0.0%)  vs  ungrounded 2/2 (100.0%)
+  per-citation bad-citation rate : grounded 0/2 (0.0%)  vs  ungrounded 2/2 (100.0%)
+
+Interpretation:
+  - fabricated_cve (grounded) should be ~0: the model only saw
+    retrieved context, so inventing IDs is structurally blocked.
+  - unsupported_cve (ungrounded) is the interesting delta: real
+    CVEs cited from memory without retrieval evidence.

@@ -1,0 +1,1252 @@
+[
+  {
+    "id": "a-28cdbaa6",
+    "timestamp": "2026-09-24T15:05:32.534169Z",
+    "user": "M. Lindqvist",
+    "role": "analyst",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-5b1cf1c6",
+    "timestamp": "2026-09-24T15:05:32.316831Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-ffe525c5",
+    "timestamp": "2026-09-24T15:05:32.250304Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "scan_import",
+    "target": "vsftpd_test.xml",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-d447eafb",
+    "timestamp": "2026-09-24T15:05:32.072046Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-e30defcb",
+    "timestamp": "2026-09-24T15:05:31.996896Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "scan_import",
+    "target": "quota_test.xml",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-0f0104ff",
+    "timestamp": "2026-09-24T15:05:31.724482Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-c0fc2e4f",
+    "timestamp": "2026-09-24T15:05:26.984609Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "scan_import",
+    "target": "edge_empty.xml",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-18705b9f",
+    "timestamp": "2026-09-24T15:05:26.886365Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "scan_import",
+    "target": "edge_empty.xml",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-45a98e78",
+    "timestamp": "2026-09-24T15:05:26.325756Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-82ac70cf",
+    "timestamp": "2026-09-24T15:05:19.573588Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-255f3db2",
+    "timestamp": "2026-09-24T15:05:13.030047Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-df22656f",
+    "timestamp": "2026-09-24T15:05:06.325042Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-9ebfd955",
+    "timestamp": "2026-09-24T15:04:59.887800Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-774303bb",
+    "timestamp": "2026-09-24T15:04:53.601820Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-c60b00ec",
+    "timestamp": "2026-09-24T15:04:47.086282Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-267ed874",
+    "timestamp": "2026-09-24T15:04:40.635920Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-d8df5646",
+    "timestamp": "2026-09-24T15:04:33.925232Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-4e04fc54",
+    "timestamp": "2026-09-24T15:04:30.105077Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-7b1cced9",
+    "timestamp": "2026-09-24T15:04:27.828222Z",
+    "user": "admin",
+    "role": "analyst",
+    "action": "login_failed",
+    "target": "username: admin",
+    "result": "failure",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-aa178863",
+    "timestamp": "2026-09-24T15:04:23.902557Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-2268d54f",
+    "timestamp": "2026-09-24T15:04:23.880524Z",
+    "user": "admin",
+    "role": "analyst",
+    "action": "login_failed",
+    "target": "username: admin",
+    "result": "failure",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-c847c015",
+    "timestamp": "2026-09-24T15:04:16.446438Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "scan_import",
+    "target": "quota_test.xml",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-42bcd654",
+    "timestamp": "2026-09-24T15:04:16.354200Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "scan_import",
+    "target": "dept.xml",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-6b109790",
+    "timestamp": "2026-09-24T15:04:16.235105Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "scan_import",
+    "target": "vsftpd_test.xml",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-5f93f574",
+    "timestamp": "2026-09-24T15:04:13.024267Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-ae8f1bac",
+    "timestamp": "2026-09-24T15:00:03.206129Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-614c4381",
+    "timestamp": "2026-09-24T14:59:05.818133Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-875559bd",
+    "timestamp": "2026-09-24T14:59:00.898271Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "scan_import",
+    "target": "edge_empty.xml",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-ffbb04f8",
+    "timestamp": "2026-09-24T14:59:00.860835Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "scan_import",
+    "target": "edge_empty.xml",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-bc8d1318",
+    "timestamp": "2026-09-24T14:59:00.589798Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-fa019241",
+    "timestamp": "2026-09-24T14:58:53.706247Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-0820478c",
+    "timestamp": "2026-09-24T14:58:46.571186Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-6dff7a0e",
+    "timestamp": "2026-09-24T14:58:39.525140Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-b0ccb6c4",
+    "timestamp": "2026-09-24T14:58:33.336653Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-06b92fd3",
+    "timestamp": "2026-09-24T14:58:27.202629Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-9496f82a",
+    "timestamp": "2026-09-24T14:58:20.536623Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-79284f71",
+    "timestamp": "2026-09-24T14:58:14.229464Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-620c2dec",
+    "timestamp": "2026-09-24T14:58:07.135675Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-1150c9d6",
+    "timestamp": "2026-09-24T14:58:03.376610Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-533f72c4",
+    "timestamp": "2026-09-24T14:58:00.938575Z",
+    "user": "admin",
+    "role": "analyst",
+    "action": "login_failed",
+    "target": "username: admin",
+    "result": "failure",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-027cb43e",
+    "timestamp": "2026-09-24T14:57:55.492319Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-c72ddcab",
+    "timestamp": "2026-09-24T14:57:55.464592Z",
+    "user": "admin",
+    "role": "analyst",
+    "action": "login_failed",
+    "target": "username: admin",
+    "result": "failure",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-64d2fecf",
+    "timestamp": "2026-09-24T14:52:25.840226Z",
+    "user": "M. Lindqvist",
+    "role": "analyst",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-c152a932",
+    "timestamp": "2026-09-24T14:52:25.799033Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-9d08ea85",
+    "timestamp": "2026-09-24T14:52:25.654702Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-6d6795fe",
+    "timestamp": "2026-09-24T14:52:25.525150Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-42b982da",
+    "timestamp": "2026-09-24T14:52:20.075998Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "scan_import",
+    "target": "edge_empty.xml",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-98b424c8",
+    "timestamp": "2026-09-24T14:52:20.030222Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "scan_import",
+    "target": "edge_empty.xml",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-021edaf4",
+    "timestamp": "2026-09-24T14:52:19.678120Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-44e4624f",
+    "timestamp": "2026-09-24T14:52:13.004365Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-ada20148",
+    "timestamp": "2026-09-24T14:52:06.192019Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-c675c28d",
+    "timestamp": "2026-09-24T14:51:59.436707Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-8129cf7d",
+    "timestamp": "2026-09-24T14:51:53.495726Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-aa56bb62",
+    "timestamp": "2026-09-24T14:51:47.099623Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-ac71fac2",
+    "timestamp": "2026-09-24T14:51:39.655879Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-6c5322e2",
+    "timestamp": "2026-09-24T14:51:33.491068Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-a2ba6c2c",
+    "timestamp": "2026-09-24T14:51:27.004013Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-02f33430",
+    "timestamp": "2026-09-24T14:51:22.906023Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-9f304a0e",
+    "timestamp": "2026-09-24T14:51:20.766780Z",
+    "user": "admin",
+    "role": "analyst",
+    "action": "login_failed",
+    "target": "username: admin",
+    "result": "failure",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-598d9fcd",
+    "timestamp": "2026-09-24T14:51:13.368922Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-42cf37c6",
+    "timestamp": "2026-09-24T14:51:13.326647Z",
+    "user": "admin",
+    "role": "analyst",
+    "action": "login_failed",
+    "target": "username: admin",
+    "result": "failure",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-be0aba6e",
+    "timestamp": "2026-09-17T06:03:58.091916Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-33e64cdd",
+    "timestamp": "2026-09-17T06:02:49.036334Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "scan_import",
+    "target": "demo_test_small2.xml",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-295a338a",
+    "timestamp": "2026-09-17T06:01:33.178194Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-a856eda6",
+    "timestamp": "2026-09-17T06:01:08.794009Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-5aef6460",
+    "timestamp": "2026-09-14T17:26:16.215910Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-d1fc35bc",
+    "timestamp": "2026-09-14T17:25:57.294869Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-31e8b631",
+    "timestamp": "2026-09-14T17:25:28.408705Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-a0dc1c66",
+    "timestamp": "2026-09-14T17:17:35.991769Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "scan_import",
+    "target": "dept.xml",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-3e7453ba",
+    "timestamp": "2026-09-14T17:11:41.649245Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-8acfc2a1",
+    "timestamp": "2026-09-14T17:11:08.392212Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-04f62e4b",
+    "timestamp": "2026-09-08T07:31:58.622398Z",
+    "user": "unknown",
+    "role": "analyst",
+    "action": "scan_import",
+    "target": "dept.xml",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-14e5c2bd",
+    "timestamp": "2026-09-08T07:29:21.279773Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-14f5c28c",
+    "timestamp": "2026-09-08T07:29:04.424418Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "logout",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-a139375f",
+    "timestamp": "2026-09-08T07:18:07.139053Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "scan_import",
+    "target": "demo_test_small2.xml",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-53dc021d",
+    "timestamp": "2026-09-08T06:51:25.171015Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-5ba91c5c",
+    "timestamp": "2026-09-08T06:51:14.923902Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "logout",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-78888a21",
+    "timestamp": "2026-09-08T06:42:15.020400Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-0df8bde7",
+    "timestamp": "2026-09-08T06:30:56.804998Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-842e2604",
+    "timestamp": "2026-09-08T06:30:41.517767Z",
+    "user": "a",
+    "role": "analyst",
+    "action": "login_failed",
+    "target": "username: a",
+    "result": "failure",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-236ae49e",
+    "timestamp": "2026-09-08T06:23:18.125527Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "scan_import",
+    "target": "demo_test_small2.xml",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-bda1981a",
+    "timestamp": "2026-09-08T06:21:31.533737Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-f6a68846",
+    "timestamp": "2026-09-08T06:20:32.620674Z",
+    "user": "M. Lindqvist",
+    "role": "analyst",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-1175f1f7",
+    "timestamp": "2026-09-08T06:20:32.539339Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-a661c670",
+    "timestamp": "2026-09-08T06:18:43.146135Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-622e028a",
+    "timestamp": "2026-09-08T06:18:36.805907Z",
+    "user": "M. Lindqvist",
+    "role": "analyst",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-feb84297",
+    "timestamp": "2026-09-08T06:18:36.759618Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-a23c39cd",
+    "timestamp": "2026-09-08T06:01:13.748555Z",
+    "user": "M. Lindqvist",
+    "role": "analyst",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-9edf46e1",
+    "timestamp": "2026-09-08T06:01:13.707914Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-4a3d8301",
+    "timestamp": "2026-09-08T05:59:56.204128Z",
+    "user": "M. Lindqvist",
+    "role": "analyst",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-cec8194b",
+    "timestamp": "2026-09-08T05:59:56.178067Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-66a9c35e",
+    "timestamp": "2026-09-08T05:59:56.104507Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-08487673",
+    "timestamp": "2026-09-08T05:59:56.006391Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-0e75972c",
+    "timestamp": "2026-09-08T05:59:51.042399Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "scan_import",
+    "target": "edge_empty.xml",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-df2653c0",
+    "timestamp": "2026-09-08T05:59:51.001977Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "scan_import",
+    "target": "edge_empty.xml",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-c31af741",
+    "timestamp": "2026-09-08T05:59:50.750556Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-44b42308",
+    "timestamp": "2026-09-08T05:59:44.804203Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-a77b5812",
+    "timestamp": "2026-09-08T05:59:39.153791Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-b5bd43d9",
+    "timestamp": "2026-09-08T05:59:33.287207Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-9a1be248",
+    "timestamp": "2026-09-08T05:59:27.531286Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-df668fa6",
+    "timestamp": "2026-09-08T05:59:20.816368Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-3e0777e1",
+    "timestamp": "2026-09-08T05:59:14.462544Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-a6e332bc",
+    "timestamp": "2026-09-08T05:59:08.107527Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-0ebbb0f9",
+    "timestamp": "2026-09-08T05:59:02.471085Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-2488e408",
+    "timestamp": "2026-09-08T05:59:00.788722Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-d962cd86",
+    "timestamp": "2026-09-08T05:58:56.910060Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-8a1195d5",
+    "timestamp": "2026-09-08T05:58:54.655303Z",
+    "user": "admin",
+    "role": "analyst",
+    "action": "login_failed",
+    "target": "username: admin",
+    "result": "failure",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-57dbeb44",
+    "timestamp": "2026-09-08T05:58:49.518905Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-49f11d91",
+    "timestamp": "2026-09-08T05:58:49.464939Z",
+    "user": "admin",
+    "role": "analyst",
+    "action": "login_failed",
+    "target": "username: admin",
+    "result": "failure",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-20f9991d",
+    "timestamp": "2026-09-08T05:57:48.485940Z",
+    "user": "M. Lindqvist",
+    "role": "analyst",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-d49467e4",
+    "timestamp": "2026-09-08T05:57:48.437677Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-5266ff09",
+    "timestamp": "2026-09-08T05:57:39.298732Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-9ff3be7a",
+    "timestamp": "2026-09-08T05:57:31.385096Z",
+    "user": "M. Lindqvist",
+    "role": "analyst",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-9be08254",
+    "timestamp": "2026-09-08T05:57:31.321618Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-aba350bf",
+    "timestamp": "2026-09-08T05:53:57.867503Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
+    "id": "a-1",
+    "timestamp": "2026-08-16T07:31:12Z",
+    "user": "M. Lindqvist",
+    "role": "analyst",
+    "action": "scan_import",
+    "target": "edge-gateway-2026-08-16.xml",
+    "result": "success",
+    "ip": "10.4.12.30"
+  },
+  {
+    "id": "a-2",
+    "timestamp": "2026-08-16T07:29:55Z",
+    "user": "M. Lindqvist",
+    "role": "analyst",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "10.4.12.30"
+  },
+  {
+    "id": "a-3",
+    "timestamp": "2026-08-15T22:14:03Z",
+    "user": "unknown",
+    "role": "analyst",
+    "action": "login_failed",
+    "target": "username: root",
+    "result": "failure",
+    "ip": "198.51.100.77"
+  },
+  {
+    "id": "a-4",
+    "timestamp": "2026-08-15T22:13:41Z",
+    "user": "unknown",
+    "role": "analyst",
+    "action": "login_failed",
+    "target": "username: admin",
+    "result": "failure",
+    "ip": "198.51.100.77"
+  },
+  {
+    "id": "a-5",
+    "timestamp": "2026-08-14T09:20:11Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "report_export",
+    "target": "DMZ Perimeter Sweep",
+    "result": "success",
+    "ip": "10.4.12.11"
+  },
+  {
+    "id": "a-6",
+    "timestamp": "2026-08-14T09:12:00Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "scan_import",
+    "target": "dmz-perimeter-2026-08-14.xml",
+    "result": "success",
+    "ip": "10.4.12.11"
+  },
+  {
+    "id": "a-7",
+    "timestamp": "2026-08-14T09:05:22Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "10.4.12.11"
+  },
+  {
+    "id": "a-8",
+    "timestamp": "2026-08-12T14:47:00Z",
+    "user": "M. Lindqvist",
+    "role": "analyst",
+    "action": "scan_import",
+    "target": "internal-app-tier-2026-08-12.xml",
+    "result": "success",
+    "ip": "10.4.12.30"
+  },
+  {
+    "id": "a-9",
+    "timestamp": "2026-08-12T14:30:09Z",
+    "user": "M. Lindqvist",
+    "role": "analyst",
+    "action": "scan_access",
+    "target": "Finance VLAN Audit",
+    "result": "success",
+    "ip": "10.4.12.30"
+  },
+  {
+    "id": "a-10",
+    "timestamp": "2026-08-05T16:21:44Z",
+    "user": "M. Lindqvist",
+    "role": "analyst",
+    "action": "scan_import",
+    "target": "lab-segment-2026-08-05.xml",
+    "result": "failure",
+    "ip": "10.4.12.30"
+  }
+]

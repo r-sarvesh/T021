@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign in — Cyber Health Assessment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script defer src="{{ url_for('static', filename='lucide-umd.js') }}"></script>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin:0; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #080A0F;
+      color: #E6E8EB;
+      display: flex;
+      min-height: 100vh;
+    }
+    /* Left panel */
+    .left {
+      flex: 1;
+      background: #0B0E13;
+      border-right: 1px solid #1E2633;
+      display: flex;
+      flex-direction: column;
+      padding: 24px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .left::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(0,212,255,0.04) 0%, transparent 50%),
+                  linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px);
+      background-size: auto, 40px 40px, 40px 40px;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 10px;
+      position: relative; z-index: 1;
+    }
+    .brand .logo {
+      width: 32px; height: 32px;
+      background: #11151C;
+      border: 1px solid #1E2633;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: #00D4FF;
+    }
+    .brand h1 { margin:0; font-size:13px; font-weight:700; color:#E6E8EB; line-height:1.2; }
+    .brand .sub { font-size:11px; color:#8B949E; }
+    .hero {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 460px;
+      position: relative; z-index: 1;
+    }
+    .hero h2 {
+      font-size: 32px; font-weight: 800;
+      line-height: 1.15; letter-spacing: -0.02em;
+      color: #FFFFFF;
+      margin: 0 0 20px;
+    }
+    .hero ul {
+      list-style: none; padding:0; margin:0;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .hero li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 13px; color: #8B949E; line-height: 1.5;
+    }
+    .hero li::before {
+      content: "";
+      width: 6px; height: 6px;
+      background: #00D4FF;
+      border-radius: 50%;
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+    .left-footer {
+      position: relative; z-index: 1;
+      font-size: 11px; color: #5A6573;
+      margin-top: 24px;
+    }
+    /* Right panel */
+    .right {
+      width: 480px;
+      background: #080A0F;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 40px;
+      flex-shrink: 0;
+    }
+    .signin-wrap { max-width: 360px; width: 100%; margin: 0 auto; }
+    .restricted {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #11151C;
+      border: 1px solid #1E2633;
+      color: #8B949E;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 11px; font-weight: 500;
+      margin-bottom: 16px;
+    }
+    .signin-wrap h1 { margin:0 0 6px; font-size: 22px; font-weight: 700; color: #FFFFFF; }
+    .signin-wrap .sub { font-size: 13px; color: #8B949E; margin:0 0 20px; }
+    .field { margin-bottom: 16px; }
+    .field label { display:block; font-size:13px; font-weight:500; color:#E6E8EB; margin-bottom:6px; }
+    .field input {
+      width: 100%;
+      background: #11151C;
+      border: 1px solid #1E2633;
+      color: #E6E8EB;
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .field input:focus { border-color: #00D4FF; box-shadow: 0 0 0 3px rgba(0,212,255,0.1); }
+    .field input::placeholder { color: #5A6573; }
+    .password-wrap { position: relative; }
+    .password-wrap button {
+      position: absolute; right: 8px; top:50%; transform:translateY(-50%);
+      background: transparent; border:none; color:#8B949E; cursor:pointer;
+      padding:4px; display:flex;
+    }
+    .btn-signin {
+      width: 100%;
+      background: #00D4FF;
+      color: #001018;
+      border: none;
+      padding: 11px;
+      border-radius: 8px;
+      font-size: 14px; font-weight: 600;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.15s;
+    }
+    .btn-signin:hover { background: #00B8E6; }
+    .error {
+      background: rgba(255,59,48,0.1);
+      border:1px solid rgba(255,59,48,0.3);
+      color: #FF3B30;
+      padding:10px 12px;
+      border-radius:8px;
+      font-size:13px;
+      margin-bottom:16px;
+      display:flex; align-items:center; gap:8px;
+    }
+    .demo-box {
+      margin-top: 20px;
+      background: #11151C;
+      border:1px solid #1E2633;
+      border-radius:8px;
+      padding:14px;
+    }
+    .demo-box .title { font-size:12px; font-weight:600; color:#E6E8EB; margin-bottom:8px; }
+    .demo-box .creds { font-family:'IBM Plex Mono',monospace; font-size:11px; color:#8B949E; line-height:1.6; }
+    .demo-box .creds span { color:#5A6573; }
+    @media (max-width: 900px) {
+      body { flex-direction: column; }
+      .left { display:none; }
+      .right { width:100%; padding:24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="left">
+    <div class="brand">
+      <div class="logo"><i data-lucide="shield-check" class="ic" style="width:16px;height:16px;"></i></div>
+      <div>
+        <h1>Cyber Health Assess</h1>
+        <div class="sub">Vulnerability Assessment Platform</div>
+      </div>
+    </div>
+    <div class="hero">
+      <h2>Evidence-backed<br>cybersecurity assessment<br>for security operations.</h2>
+      <ul>
+        <li>Import Nmap scans and monitor backend processing end to end.</li>
+        <li>Every finding is traced to its CVE and CIS evidence — or clearly marked unverified.</li>
+        <li>Compare host risk and export professional security reports.</li>
+      </ul>
+    </div>
+    <div class="left-footer">Restricted access. Authorized security personnel only. All activity is logged.</div>
+  </div>
+
+  <div class="right">
+    <div class="signin-wrap">
+      <div class="restricted"><i data-lucide="lock" class="ic" style="width:12px;height:12px;"></i> Restricted access</div>
+      <h1>Sign in</h1>
+      <p class="sub">Enter your credentials to access the assessment platform.</p>
+
+      <form method="post" autocomplete="off">
+        <div class="field">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" placeholder="e.g. analyst" autocomplete="username" required autofocus>
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <div class="password-wrap">
+            <input type="password" id="password" name="password" placeholder="••••••••" autocomplete="current-password" required>
+            <button type="button" onclick="const i=document.getElementById('password'); i.type=i.type==='password'?'text':'password'"><i data-lucide="eye" class="ic" style="width:14px;height:14px;"></i></button>
+          </div>
+        </div>
+        {% if error %}
+        <div class="error" role="alert"><i data-lucide="alert-triangle" class="ic" style="width:14px;height:14px;"></i>{{ error }}</div>
+        {% endif %}
+        <button type="submit" class="btn-signin">Sign in</button>
+      </form>
+
+      <div class="demo-box">
+        <div class="title">Demo credentials</div>
+        <div class="creds">
+          admin / admin123 <span>— Administrator</span><br>
+          analyst / analyst123 <span>— Security Analyst</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){ if(window.lucide) window.lucide.createIcons(); });
+  </script>
+</body>
+</html>

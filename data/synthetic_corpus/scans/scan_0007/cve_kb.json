@@ -1,0 +1,63 @@
+{
+  "CVE-2012-2122": {
+    "id": "CVE-2012-2122",
+    "text": "sql/password.c in Oracle MySQL 5.1.x before 5.1.63, 5.5.x before 5.5.24, and 5.6.x before 5.6.6, and MariaDB 5.1.x before 5.1.62, 5.2.x before 5.2.12, 5.3.x before 5.3.6, and 5.5.x before 5.5.23, when running in certain environments with certain implementations of memcmp, allows remote attackers to bypass authentication by repeatedly authenticating with the same incorrect password, which eventually causes a token comparison to succeed due to an improperly checked return value.",
+    "cvss_v3_score": 9.8,
+    "cvss_v3_vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+    "cvss_severity": "CRITICAL",
+    "cwe_ids": [
+      "CWE-287"
+    ],
+    "published_date": "2012-06-11T04:55:00.000",
+    "last_modified_date": "2018-10-17T21:23:34.000",
+    "references": [
+      "https://nvd.nist.gov/vuln/detail/CVE-2012-2122",
+      "https://bugs.mysql.com/bug.php?id=64884"
+    ],
+    "kev_listed": false,
+    "kev_date_added": null
+  },
+  "CVE-2016-6662": {
+    "id": "CVE-2016-6662",
+    "text": "Oracle MySQL through 5.5.52, 5.6.x through 5.6.33, and 5.7.x through 5.7.15; MariaDB before 5.5.51, 10.0.x before 10.0.27, and 10.1.x before 10.1.17; and Percona Server before 5.5.51-38.1, 5.6.x before 5.6.32-78.0, and 5.7.x before 5.7.14-7 allow local users to create arbitrary configurations and bypass certain protection mechanisms by setting general_log_file to a my.cnf configuration. NOTE: this can be leveraged to execute arbitrary code with root privileges by setting malloc_lib. NOTE: the affected MySQL version information is from Oracle's October 2016 CPU. Oracle has not commented on third-party claims that the issue was silently patched in MySQL 5.5.52, 5.6.33, and 5.7.15.",
+    "cvss_v3_score": 9.8,
+    "cvss_v3_vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+    "cvss_severity": "CRITICAL",
+    "cwe_ids": [
+      "CWE-264"
+    ],
+    "published_date": "2016-09-20T18:59:00.127",
+    "last_modified_date": "2026-06-17T00:51:32.947",
+    "references": [
+      "http://legalhackers.com/advisories/MySQL-Exploit-Remote-Root-Code-Execution-Privesc-CVE-2016-6662.html",
+      "http://rhn.redhat.com/errata/RHSA-2016-2058.html",
+      "http://rhn.redhat.com/errata/RHSA-2016-2059.html",
+      "http://rhn.redhat.com/errata/RHSA-2016-2060.html",
+      "http://rhn.redhat.com/errata/RHSA-2016-2061.html"
+    ],
+    "kev_listed": null,
+    "kev_date_added": null
+  },
+  "CVE-2023-38408": {
+    "id": "CVE-2023-38408",
+    "text": "The PKCS#11 feature in ssh-agent in OpenSSH before 9.3p2 has an insufficiently trustworthy search path, leading to remote code execution if an agent is forwarded to an attacker-controlled system. (Code in /usr/lib is not necessarily safe for loading into ssh-agent.) NOTE: this issue exists because of an incomplete fix for CVE-2016-10009.",
+    "cvss_v3_score": 9.8,
+    "cvss_v3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+    "cvss_severity": "CRITICAL",
+    "cwe_ids": [
+      "CWE-428",
+      "CWE-428"
+    ],
+    "published_date": "2023-07-20T03:15:10.170",
+    "last_modified_date": "2026-06-17T06:10:06.760",
+    "references": [
+      "http://packetstormsecurity.com/files/173661/OpenSSH-Forwarded-SSH-Agent-Remote-Code-Execution.html",
+      "http://www.openwall.com/lists/oss-security/2023/07/20/1",
+      "http://www.openwall.com/lists/oss-security/2023/07/20/2",
+      "http://www.openwall.com/lists/oss-security/2023/09/22/11",
+      "http://www.openwall.com/lists/oss-security/2023/09/22/9"
+    ],
+    "kev_listed": null,
+    "kev_date_added": null
+  }
+}

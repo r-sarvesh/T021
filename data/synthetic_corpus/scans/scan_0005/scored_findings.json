@@ -1,0 +1,106 @@
+{
+  "host_risk_summary": [
+    {
+      "host": "10.20.30.1",
+      "hostname": "decoy-web-05.corp.local",
+      "os_guess": "Linux 4.15 - 5.6",
+      "open_service_count": 1,
+      "vuln_finding_count": 2,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 4.0,
+      "criticality_multiplier": 1.2,
+      "criticality_reason": "Externally-facing application server",
+      "adjusted_risk_score": 4.8,
+      "risk_band": "MEDIUM"
+    }
+  ],
+  "prioritized_findings": [
+    {
+      "type": "vuln",
+      "host": "10.20.30.1",
+      "hostname": "decoy-web-05.corp.local",
+      "os_guess": "Linux 4.15 - 5.6",
+      "port": 443,
+      "protocol": "tcp",
+      "service": "https",
+      "product": "Apache httpd",
+      "version": "2.4.29",
+      "cve_refs": [],
+      "nse_script": "ssl-known-key",
+      "raw_output": "Certificate expired",
+      "severity_score": 4.0,
+      "severity_band": "MEDIUM",
+      "scoring_rationale": "Expired TLS certificate undermines transport trust and may trigger client warnings"
+    },
+    {
+      "type": "vuln",
+      "host": "10.20.30.1",
+      "hostname": "decoy-web-05.corp.local",
+      "os_guess": "Linux 4.15 - 5.6",
+      "port": 443,
+      "protocol": "tcp",
+      "service": "https",
+      "product": "Apache httpd",
+      "version": "2.4.29",
+      "cve_refs": [],
+      "nse_script": "ssl-cert",
+      "raw_output": "Subject: commonName=decoy-web.corp.local  Not valid after: 2024-05-10T00:00:00",
+      "severity_score": 3.5,
+      "severity_band": "LOW",
+      "scoring_rationale": "TLS certificate has expired \u2014 encrypted channel cannot be authenticated"
+    }
+  ],
+  "all_scored_findings": [
+    {
+      "type": "asset",
+      "host": "10.20.30.1",
+      "hostname": "decoy-web-05.corp.local",
+      "os_guess": "Linux 4.15 - 5.6",
+      "port": 443,
+      "protocol": "tcp",
+      "service": "https",
+      "product": "Apache httpd",
+      "version": "2.4.29",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+    },
+    {
+      "type": "vuln",
+      "host": "10.20.30.1",
+      "hostname": "decoy-web-05.corp.local",
+      "os_guess": "Linux 4.15 - 5.6",
+      "port": 443,
+      "protocol": "tcp",
+      "service": "https",
+      "product": "Apache httpd",
+      "version": "2.4.29",
+      "cve_refs": [],
+      "nse_script": "ssl-cert",
+      "raw_output": "Subject: commonName=decoy-web.corp.local  Not valid after: 2024-05-10T00:00:00",
+      "severity_score": 3.5,
+      "severity_band": "LOW",
+      "scoring_rationale": "TLS certificate has expired \u2014 encrypted channel cannot be authenticated"
+    },
+    {
+      "type": "vuln",
+      "host": "10.20.30.1",
+      "hostname": "decoy-web-05.corp.local",
+      "os_guess": "Linux 4.15 - 5.6",
+      "port": 443,
+      "protocol": "tcp",
+      "service": "https",
+      "product": "Apache httpd",
+      "version": "2.4.29",
+      "cve_refs": [],
+      "nse_script": "ssl-known-key",
+      "raw_output": "Certificate expired",
+      "severity_score": 4.0,
+      "severity_band": "MEDIUM",
+      "scoring_rationale": "Expired TLS certificate undermines transport trust and may trigger client warnings"
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="file:///usr/local/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.94 scan initiated as: nmap -sS -sV -O -A -p- -oX sample_scan.xml 192.168.1.0/24 -->
+<nmaprun scanner="nmap" args="nmap -sS -sV -O -A -p- -oX sample_scan.xml 192.168.1.0/24" start="1755080400" startstr="Wed Aug 13 09:00:00 2026" version="7.94" xmloutputversion="1.05">
+  <scaninfo type="syn" protocol="tcp" numservices="65535" services="1-65535"/>
+  <verbose level="0"/>
+  <debugging level="0"/>
+
+  <host starttime="1755080401" endtime="1755080455">
+    <status state="up" reason="arp-response" reason_ttl="0"/>
+    <address addr="192.168.1.10" addrtype="ipv4"/>
+    <address addr="00:0C:29:3A:5B:7E" addrtype="mac" vendor="VMware, Inc."/>
+    <hostnames>
+      <hostname name="dc01.corp.local" type="PTR"/>
+    </hostnames>
+    <ports>
+      <extraports state="filtered" count="65520"/>
+      <port protocol="tcp" portid="21">
+        <state state="open" reason="syn-ack" reason_ttl="128"/>
+        <service name="ftp" product="Microsoft ftpd" ostype="Windows" method="probed" conf="10"/>
+        <script id="ftp-anon" output="Anonymous FTP login allowed (FTP code 230)"/>
+      </port>
+      <port protocol="tcp" portid="53">
+        <state state="open" reason="syn-ack" reason_ttl="128"/>
+        <service name="domain" product="Microsoft DNS" method="probed" conf="10"/>
+      </port>
+      <port protocol="tcp" portid="135">
+        <state state="open" reason="syn-ack" reason_ttl="128"/>
+        <service name="msrpc" product="Microsoft Windows RPC" method="probed" conf="10"/>
+      </port>
+      <port protocol="tcp" portid="139">
+        <state state="open" reason="syn-ack" reason_ttl="128"/>
+        <service name="netbios-ssn" product="Microsoft Windows netbios-ssn" method="probed" conf="10"/>
+      </port>
+      <port protocol="tcp" portid="389">
+        <state state="open" reason="syn-ack" reason_ttl="128"/>
+        <service name="ldap" product="Microsoft Windows Active Directory LDAP" version="Active Directory" method="probed" conf="10"/>
+      </port>
+      <port protocol="tcp" portid="445">
+        <state state="open" reason="syn-ack" reason_ttl="128"/>
+        <service name="microsoft-ds" product="Windows Server 2012 R2 microsoft-ds" method="probed" conf="10"/>
+        <script id="smb-vuln-ms17-010" output="VULNERABLE: Remote Code Execution vulnerability in Microsoft SMBv1 servers (ms17-010) State: VULNERABLE Risk factor: HIGH  IDs: CVE:CVE-2017-0143"/>
+      </port>
+      <port protocol="tcp" portid="3389">
+        <state state="open" reason="syn-ack" reason_ttl="128"/>
+        <service name="ms-wbt-server" product="Microsoft Terminal Services" method="probed" conf="10"/>
+        <script id="rdp-vuln-ms12-020" output="VULNERABLE: MS12-020 Remote Desktop Protocol Denial of Service"/>
+      </port>
+    </ports>
+    <os>
+      <osmatch name="Microsoft Windows Server 2012 R2" accuracy="98"/>
+    </os>
+  </host>
+
+  <host starttime="1755080401" endtime="1755080460">
+    <status state="up" reason="arp-response" reason_ttl="0"/>
+    <address addr="192.168.1.20" addrtype="ipv4"/>
+    <address addr="00:0C:29:AA:1C:22" addrtype="mac" vendor="VMware, Inc."/>
+    <hostnames>
+      <hostname name="webapp01.corp.local" type="PTR"/>
+    </hostnames>
+    <ports>
+      <extraports state="closed" count="65530"/>
+      <port protocol="tcp" portid="22">
+        <state state="open" reason="syn-ack" reason_ttl="64"/>
+        <service name="ssh" product="OpenSSH" version="7.4" extrainfo="protocol 2.0" ostype="Linux" method="probed" conf="10"/>
+      </port>
+      <port protocol="tcp" portid="80">
+        <state state="open" reason="syn-ack" reason_ttl="64"/>
+        <service name="http" product="Apache httpd" version="2.4.29" method="probed" conf="10"/>
+        <script id="http-title" output="Welcome - Corp Internal App"/>
+      </port>
+      <port protocol="tcp" portid="443">
+        <state state="open" reason="syn-ack" reason_ttl="64"/>
+        <service name="https" product="Apache httpd" version="2.4.29" tunnel="ssl" method="probed" conf="10"/>
+        <script id="ssl-cert" output="Subject: commonName=webapp01.corp.local Not valid after: 2024-05-10T00:00:00"/>
+        <script id="ssl-known-key" output="Certificate expired"/>
+      </port>
+      <port protocol="tcp" portid="3306">
+        <state state="open" reason="syn-ack" reason_ttl="64"/>
+        <service name="mysql" product="MySQL" version="5.5.62" method="probed" conf="10"/>
+        <script id="mysql-vuln-cve2012-2122" output="VULNERABLE: MySQL/MariaDB weak password authentication security bypass. IDs: CVE:CVE-2012-2122"/>
+      </port>
+    </ports>
+    <os>
+      <osmatch name="Linux 4.15 - 5.6" accuracy="95"/>
+    </os>
+  </host>
+
+  <host starttime="1755080401" endtime="1755080450">
+    <status state="up" reason="arp-response" reason_ttl="0"/>
+    <address addr="192.168.1.30" addrtype="ipv4"/>
+    <address addr="00:0C:29:BB:2D:33" addrtype="mac" vendor="VMware, Inc."/>
+    <hostnames>
+      <hostname name="ws-fin-07.corp.local" type="PTR"/>
+    </hostnames>
+    <ports>
+      <extraports state="filtered" count="65531"/>
+      <port protocol="tcp" portid="135">
+        <state state="open" reason="syn-ack" reason_ttl="128"/>
+        <service name="msrpc" product="Microsoft Windows RPC" method="probed" conf="10"/>
+      </port>
+      <port protocol="tcp" portid="445">
+        <state state="open" reason="syn-ack" reason_ttl="128"/>
+        <service name="microsoft-ds" product="Windows 10 Pro microsoft-ds" method="probed" conf="10"/>
+      </port>
+      <port protocol="tcp" portid="3389">
+        <state state="open" reason="syn-ack" reason_ttl="128"/>
+        <service name="ms-wbt-server" product="Microsoft Terminal Services" method="probed" conf="10"/>
+      </port>
+    </ports>
+    <os>
+      <osmatch name="Microsoft Windows 10" accuracy="97"/>
+    </os>
+  </host>
+
+  <runstats>
+    <finished time="1755080460" timestr="Wed Aug 13 09:01:00 2026" elapsed="60.32" summary="Nmap done at Wed Aug 13 09:01:00 2026; 3 IP addresses (3 hosts up) scanned in 60.32 seconds" exit="success"/>
+    <hosts up="3" down="0" total="3"/>
+  </runstats>
+</nmaprun>

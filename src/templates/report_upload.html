@@ -1,0 +1,139 @@
+{% extends "base_dark.html" %}
+{% block title %}Live report — Cyber Health Assessment{% endblock %}
+{% block breadcrumb %}<a href="{{ url_for('scans_library') }}" style="color:var(--text-muted);">Scans</a> <span style="color:var(--text-faint);">/</span> <span>Live Report</span>{% endblock %}
+{% block content %}
+
+<div style="max-width: 640px;">
+  <div style="margin-bottom: 20px;">
+    <h1 style="margin:0 0 6px; font-size: 22px; font-weight: 700; color: var(--text); display:flex; align-items:center; gap:8px;">
+      <span style="width:28px;height:28px; background: var(--card); border:1px solid var(--border); border-radius:6px; display:flex;align-items:center;justify-content:center; color:var(--accent);"><i data-lucide="file-up" class="ic" style="width:14px;height:14px;"></i></span>
+      Live report — upload an Nmap XML scan
+    </h1>
+    <p style="margin:0; font-size:12px; color:var(--text-muted); font-family:'IBM Plex Mono',monospace; letter-spacing:0.02em;">validated → parsed → scored → grounded → Gemini synthesis (if quota) → hallucination-checked</p>
+  </div>
+
+  <div class="card">
+    {% if error %}
+    <div style="background: rgba(255,59,48,0.1); border:1px solid var(--critical-border); color: var(--critical); padding:10px 12px; border-radius:8px; font-size:13px; margin-bottom:16px; display:flex; align-items:center; gap:8px;">
+      <i data-lucide="alert-triangle" class="ic" style="width:14px;height:14px;"></i> {{ error }}
+    </div>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data" id="report-form" action="{{ url_for('report_upload') }}">
+      <div style="margin-bottom:12px;">
+        <div style="font-size:11px; font-weight:600; color:var(--text-muted); letter-spacing:0.05em; text-transform:uppercase; margin-bottom:8px;">NMAP XML FILE (FIELD: SCAN_FILE, .XML, MAX 5 MB)</div>
+        <label for="scan_file" id="dropzone" style="display:block; border:1px dashed var(--border-light); border-radius:12px; padding:32px 24px; text-align:center; cursor:pointer; background: var(--bg); transition: all 0.15s;">
+          <div style="width:40px; height:40px; background: var(--card); border:1px solid var(--border); border-radius:8px; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; color:var(--text-muted);">
+            <i data-lucide="upload" class="ic" style="width:16px;height:16px;"></i>
+          </div>
+          <div id="dz-text" style="font-size:12px; font-weight:600; color:var(--text); margin-bottom:4px; letter-spacing:0.04em;">CHOOSE A .XML FILE, OR DROP IT HERE</div>
+          <div id="dz-name" class="mono" style="display:none; margin-top:8px; font-size:11px; color:var(--accent); word-break:break-all;"></div>
+        </label>
+        <input type="file" id="scan_file" name="scan_file" accept=".xml" hidden>
+        <div style="font-size:11px; color:var(--text-faint); margin-top:8px; line-height:1.4; font-family:'IBM Plex Mono',monospace;">
+          Validated: .xml → 5 MB cap → XML parse → &lt;nmaprun&gt; root → pipeline.<br>
+          Synthesis: live Gemini per finding (grounded only), top-N by severity if daily quota (20/day) exceeded — rest labeled not synthesized — daily quota reached.
+        </div>
+      </div>
+
+      <button type="submit" id="report-btn" style="width:100%; background: #0F1419; border:1px solid var(--border); color:var(--text); padding:10px; border-radius:8px; font-size:12px; font-weight:600; letter-spacing:0.06em; display:flex; align-items:center; justify-content:center; gap:8px; cursor:pointer;">
+        <i data-lucide="sparkles" class="ic" style="width:12px;height:12px;"></i> GENERATE LIVE REPORT
+      </button>
+
+      <div id="busy" style="display:none; text-align:center; margin-top:16px;">
+        <div style="width:28px;height:28px; border:2px solid var(--border); border-top-color:var(--accent); border-radius:50%; animation: spin 1s linear infinite; margin:0 auto 8px;"></div>
+        <div style="font-size:12px; color:var(--text-muted);">Generating report — this may take a minute for Gemini calls…</div>
+      </div>
+    </form>
+  </div>
+
+  <!-- Processing assessment — shown after submit -->
+  <div id="processing-card" class="card" style="display:none; margin-top:16px;">
+    <div style="font-size:14px; font-weight:600; color:var(--text); margin-bottom:4px;">Processing assessment</div>
+    <div style="font-size:12px; color:var(--text-muted); margin-bottom:16px;">The backend is analyzing <span id="proc-filename" class="mono" style="color:var(--text);">your scan</span>. This may take a moment.</div>
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+      <span style="font-size:12px; font-weight:500; color:var(--text);">Preparing assessment</span>
+      <span id="proc-pct" style="font-size:12px; color:var(--text-muted);">0%</span>
+    </div>
+    <div style="height:4px; background: var(--bg); border:1px solid var(--border); border-radius:2px; overflow:hidden; margin-bottom:16px;">
+      <div id="proc-bar" style="height:100%; width:0%; background: var(--accent); border-radius:2px; transition: width 0.4s;"></div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:10px;">
+      <div class="proc-step" data-step="0" style="display:flex; align-items:center; gap:10px; font-size:13px; color:var(--text-muted);"><span class="proc-icon" style="width:18px;height:18px; border:1px solid var(--border); border-radius:50%; display:flex;align-items:center;justify-content:center;"><i data-lucide="circle" class="ic" style="width:10px;height:10px;"></i></span> Uploading scan</div>
+      <div class="proc-step" data-step="1" style="display:flex; align-items:center; gap:10px; font-size:13px; color:var(--text-muted);"><span class="proc-icon" style="width:18px;height:18px; border:1px solid var(--border); border-radius:50%; display:flex;align-items:center;justify-content:center;"><i data-lucide="circle" class="ic" style="width:10px;height:10px;"></i></span> Processing hosts</div>
+      <div class="proc-step" data-step="2" style="display:flex; align-items:center; gap:10px; font-size:13px; color:var(--text-muted);"><span class="proc-icon" style="width:18px;height:18px; border:1px solid var(--border); border-radius:50%; display:flex;align-items:center;justify-content:center;"><i data-lucide="circle" class="ic" style="width:10px;height:10px;"></i></span> Analyzing findings</div>
+      <div class="proc-step" data-step="3" style="display:flex; align-items:center; gap:10px; font-size:13px; color:var(--text-muted);"><span class="proc-icon" style="width:18px;height:18px; border:1px solid var(--border); border-radius:50%; display:flex;align-items:center;justify-content:center;"><i data-lucide="circle" class="ic" style="width:10px;height:10px;"></i></span> Matching vulnerability evidence</div>
+      <div class="proc-step" data-step="4" style="display:flex; align-items:center; gap:10px; font-size:13px; color:var(--text); background: rgba(0,212,255,0.06); border:1px solid rgba(0,212,255,0.15); border-radius:8px; padding:8px 10px; margin:0 -10px;"><span class="proc-icon" style="width:18px;height:18px; border:1px solid var(--accent); border-radius:50%; display:flex;align-items:center;justify-content:center; background: rgba(0,212,255,0.12);"><i data-lucide="loader-2" class="ic" style="width:10px;height:10px; color:var(--accent); animation: spin 1s linear infinite;"></i></span> Preparing assessment</div>
+    </div>
+  </div>
+
+  <div style="margin-top:16px; font-size:11px; color:var(--text-faint); font-family:'IBM Plex Mono',monospace;">
+    After upload you'll be redirected to <span style="color:var(--text-muted);">/report/&lt;report_id&gt;</span> — bookmark it. PDF at <span style="color:var(--text-muted);">/report/&lt;report_id&gt;/pdf</span>.
+  </div>
+
+  <div style="margin-top:32px; text-align:center; font-size:10px; color:var(--text-faint); letter-spacing:0.06em; font-family:'IBM Plex Mono',monospace;">
+    rule-engine scoring <span style="margin:0 8px; opacity:0.5;">·</span> CVE / CIS grounding <span style="margin:0 8px; opacity:0.5;">·</span> LLM synthesis <span style="margin:0 8px; opacity:0.5;">·</span> every severity claim must carry a citation
+  </div>
+</div>
+
+<style>@keyframes spin { to { transform: rotate(360deg); } }</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  const input = document.getElementById('scan_file');
+  const zone = document.getElementById('dropzone');
+  const dzText = document.getElementById('dz-text');
+  const dzName = document.getElementById('dz-name');
+  input.addEventListener('change', function () {
+    if (input.files && input.files[0]) {
+      zone.style.borderColor = 'var(--accent)';
+      zone.style.background = 'rgba(0,212,255,0.04)';
+      dzText.textContent = 'File selected';
+      dzName.textContent = input.files[0].name + ' (' + Math.round(input.files[0].size/1024) + ' KB)';
+      dzName.style.display = '';
+      if (input.files[0].size > 5*1024*1024) {
+        dzText.textContent = 'File too large — max 5 MB';
+        zone.style.borderColor = 'var(--critical)';
+      }
+    }
+  });
+  zone.addEventListener('dragover', function(e){ e.preventDefault(); zone.style.borderColor='var(--accent)'; zone.style.background='rgba(0,212,255,0.04)'; });
+  zone.addEventListener('dragleave', function(){ zone.style.borderColor=''; zone.style.background=''; });
+  zone.addEventListener('drop', function(e){ e.preventDefault(); if(e.dataTransfer.files&&e.dataTransfer.files[0]){ input.files=e.dataTransfer.files; input.dispatchEvent(new Event('change')); }});
+  document.getElementById('report-form').addEventListener('submit', function () {
+    document.getElementById('report-btn').disabled = true;
+    document.getElementById('busy').style.display = 'block';
+    const card = document.getElementById('processing-card');
+    const fname = input.files && input.files[0] ? input.files[0].name : 'your scan';
+    document.getElementById('proc-filename').textContent = fname;
+    if (card) {
+      card.style.display = 'block';
+      card.scrollIntoView({behavior:'smooth', block:'start'});
+      const steps = card.querySelectorAll('.proc-step');
+      const bar = document.getElementById('proc-bar');
+      const pct = document.getElementById('proc-pct');
+      let idx = 0;
+      function nextStep(){
+        if (idx < 4) {
+          const icon = steps[idx].querySelector('.proc-icon');
+          icon.innerHTML = '<i data-lucide="check-circle-2" class="ic" style="width:12px;height:12px; color:var(--evidence);"></i>';
+          icon.style.borderColor = 'var(--evidence)';
+          icon.style.background = 'var(--evidence-bg)';
+          steps[idx].style.color = 'var(--text)';
+          if(window.lucide) window.lucide.createIcons();
+          idx++;
+          if(bar) bar.style.width = (idx*25)+'%';
+          if(pct) pct.textContent = (idx*25)+'%';
+          if(idx<=4) setTimeout(nextStep, 400);
+        } else {
+          if(bar) bar.style.width = '100%';
+          if(pct) pct.textContent = '100%';
+        }
+      }
+      setTimeout(nextStep, 300);
+      if(window.lucide) window.lucide.createIcons();
+    }
+  });
+</script>
+{% endblock %}

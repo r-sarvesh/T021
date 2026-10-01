@@ -1,0 +1,447 @@
+{
+  "config": {
+    "seed": 42,
+    "repo": "D:\\Downloads\\KnowledgeRAG4LLMVulD",
+    "dataset_file": "dataset/Linux_kernel_clean_data_top10_CWEs.json",
+    "dedupe": "one record per CVE ID {cve_id, cwe, description}",
+    "cwe_field": "cwe[0] primary",
+    "description_field": "cve_description",
+    "knowledge_join": "CVE_id == cve_id",
+    "split": {
+      "indexed": 1059,
+      "unseen": 266,
+      "stratified_by_cwe": true,
+      "seed": 42,
+      "total_unique_cve": 1325
+    },
+    "temp_kb": "D:\\Downloads\\op\\eval\\results\\tmp_vulrag_kb.json",
+    "retrieval": {
+      "store": "CveStore (direct lookup) for storage + TF-IDF/Cosine (TfidfVectorizer(stop_words='english') + cosine_similarity) mirroring CisIndex.search (no service_tags filtering, no explicit threshold in retrieval.py)",
+      "existing_threshold": "NONE in retrieval.py (CveStore never abstains; CisIndex only returns [] when no tags/empty vocab). For this eval, default threshold considered 0.0 (never abstain). CveStore is exact-ID lookup with no threshold; this evaluates a TF-IDF retriever mirroring CisIndex.",
+      "sweep_thresholds": [
+        0.0,
+        0.1,
+        0.2,
+        0.3,
+        0.4,
+        0.5
+      ]
+    },
+    "query_modes": {
+      "truncated": "first ~50% words of description",
+      "knowledge": "concatenated purpose+function+analysis+solution+vulnerability_behavior text from vulnerability knowledge files"
+    },
+    "assumptions": {
+      "knowledge_text": "concatenated all textual knowledge fields per CVE_id",
+      "truncated_ratio": 0.5,
+      "top_k": 5,
+      "cwe_match_definition": "top-1 wrong but shares same primary CWE",
+      "abstention_logic": "max cosine similarity < threshold => abstain",
+      "suggestion_metric": "maximize (in-KB correct retained + unseen correct abstention) - reported as suggestion only"
+    }
+  },
+  "metrics": {
+    "in_kb_truncated": {
+      "base": {
+        "n": 1059,
+        "top1": 991,
+        "top5": 1027,
+        "top1_acc": 0.9357884796978282,
+        "top5_acc": 0.9697828139754485,
+        "mrr": 0.9508569032732971,
+        "cwe_match": 36,
+        "cwe_rate": 0.0339943342776204
+      },
+      "per_threshold": {
+        "0.0": {
+          "threshold": 0.0,
+          "coverage": 1.0,
+          "answered": 1059,
+          "n": 1059,
+          "precision_at_coverage": 0.9357884796978282,
+          "correct_answered": 991,
+          "correct_at_0": 991,
+          "correct_lost": 0,
+          "correct_lost_pct": 0.0,
+          "correct_retained": 991
+        },
+        "0.1": {
+          "threshold": 0.1,
+          "coverage": 1.0,
+          "answered": 1059,
+          "n": 1059,
+          "precision_at_coverage": 0.9357884796978282,
+          "correct_answered": 991,
+          "correct_at_0": 991,
+          "correct_lost": 0,
+          "correct_lost_pct": 0.0,
+          "correct_retained": 991
+        },
+        "0.2": {
+          "threshold": 0.2,
+          "coverage": 0.9952785646836638,
+          "answered": 1054,
+          "n": 1059,
+          "precision_at_coverage": 0.9402277039848197,
+          "correct_answered": 991,
+          "correct_at_0": 991,
+          "correct_lost": 0,
+          "correct_lost_pct": 0.0,
+          "correct_retained": 991
+        },
+        "0.3": {
+          "threshold": 0.3,
+          "coverage": 0.9943342776203966,
+          "answered": 1053,
+          "n": 1059,
+          "precision_at_coverage": 0.9411206077872745,
+          "correct_answered": 991,
+          "correct_at_0": 991,
+          "correct_lost": 0,
+          "correct_lost_pct": 0.0,
+          "correct_retained": 991
+        },
+        "0.4": {
+          "threshold": 0.4,
+          "coverage": 0.9508970727101038,
+          "answered": 1007,
+          "n": 1059,
+          "precision_at_coverage": 0.9721946375372393,
+          "correct_answered": 979,
+          "correct_at_0": 991,
+          "correct_lost": 12,
+          "correct_lost_pct": 0.012108980827447022,
+          "correct_retained": 979
+        },
+        "0.5": {
+          "threshold": 0.5,
+          "coverage": 0.9187913125590179,
+          "answered": 973,
+          "n": 1059,
+          "precision_at_coverage": 0.9825282631038027,
+          "correct_answered": 956,
+          "correct_at_0": 991,
+          "correct_lost": 35,
+          "correct_lost_pct": 0.035317860746720484,
+          "correct_retained": 956
+        }
+      }
+    },
+    "in_kb_knowledge": {
+      "base": {
+        "n": 921,
+        "top1": 475,
+        "top5": 667,
+        "top1_acc": 0.5157437567861021,
+        "top5_acc": 0.7242128121606949,
+        "mrr": 0.6122675153010428,
+        "cwe_match": 182,
+        "cwe_rate": 0.1976112920738328
+      },
+      "per_threshold": {
+        "0.0": {
+          "threshold": 0.0,
+          "coverage": 1.0,
+          "answered": 921,
+          "n": 921,
+          "precision_at_coverage": 0.5157437567861021,
+          "correct_answered": 475,
+          "correct_at_0": 475,
+          "correct_lost": 0,
+          "correct_lost_pct": 0.0,
+          "correct_retained": 475
+        },
+        "0.1": {
+          "threshold": 0.1,
+          "coverage": 1.0,
+          "answered": 921,
+          "n": 921,
+          "precision_at_coverage": 0.5157437567861021,
+          "correct_answered": 475,
+          "correct_at_0": 475,
+          "correct_lost": 0,
+          "correct_lost_pct": 0.0,
+          "correct_retained": 475
+        },
+        "0.2": {
+          "threshold": 0.2,
+          "coverage": 0.9326818675352877,
+          "answered": 859,
+          "n": 921,
+          "precision_at_coverage": 0.5436554132712457,
+          "correct_answered": 467,
+          "correct_at_0": 475,
+          "correct_lost": 8,
+          "correct_lost_pct": 0.016842105263157894,
+          "correct_retained": 467
+        },
+        "0.3": {
+          "threshold": 0.3,
+          "coverage": 0.48968512486427795,
+          "answered": 451,
+          "n": 921,
+          "precision_at_coverage": 0.7405764966740577,
+          "correct_answered": 334,
+          "correct_at_0": 475,
+          "correct_lost": 141,
+          "correct_lost_pct": 0.2968421052631579,
+          "correct_retained": 334
+        },
+        "0.4": {
+          "threshold": 0.4,
+          "coverage": 0.18023887079261672,
+          "answered": 166,
+          "n": 921,
+          "precision_at_coverage": 0.9156626506024096,
+          "correct_answered": 152,
+          "correct_at_0": 475,
+          "correct_lost": 323,
+          "correct_lost_pct": 0.68,
+          "correct_retained": 152
+        },
+        "0.5": {
+          "threshold": 0.5,
+          "coverage": 0.04668838219326819,
+          "answered": 43,
+          "n": 921,
+          "precision_at_coverage": 1.0,
+          "correct_answered": 43,
+          "correct_at_0": 475,
+          "correct_lost": 432,
+          "correct_lost_pct": 0.9094736842105263,
+          "correct_retained": 43
+        }
+      },
+      "skipped": false
+    },
+    "unseen_truncated": {
+      "0.0": {
+        "threshold": 0.0,
+        "correct_abstention_rate": 0.0,
+        "false_citation_rate": 1.0,
+        "correct_abstain": 0,
+        "false_cite": 266,
+        "n": 266
+      },
+      "0.1": {
+        "threshold": 0.1,
+        "correct_abstention_rate": 0.0,
+        "false_citation_rate": 1.0,
+        "correct_abstain": 0,
+        "false_cite": 266,
+        "n": 266
+      },
+      "0.2": {
+        "threshold": 0.2,
+        "correct_abstention_rate": 0.022556390977443608,
+        "false_citation_rate": 0.9774436090225563,
+        "correct_abstain": 6,
+        "false_cite": 260,
+        "n": 266
+      },
+      "0.3": {
+        "threshold": 0.3,
+        "correct_abstention_rate": 0.24060150375939848,
+        "false_citation_rate": 0.7593984962406015,
+        "correct_abstain": 64,
+        "false_cite": 202,
+        "n": 266
+      },
+      "0.4": {
+        "threshold": 0.4,
+        "correct_abstention_rate": 0.5714285714285714,
+        "false_citation_rate": 0.42857142857142855,
+        "correct_abstain": 152,
+        "false_cite": 114,
+        "n": 266
+      },
+      "0.5": {
+        "threshold": 0.5,
+        "correct_abstention_rate": 0.7744360902255639,
+        "false_citation_rate": 0.22556390977443608,
+        "correct_abstain": 206,
+        "false_cite": 60,
+        "n": 266
+      }
+    },
+    "combined_truncated": {
+      "0.0": {
+        "threshold": 0.0,
+        "in_kb_coverage": 1.0,
+        "in_kb_precision": 0.9357884796978282,
+        "in_kb_correct_lost": 0,
+        "in_kb_correct_lost_pct": 0.0,
+        "in_kb_correct_retained": 991,
+        "unseen_correct_abstention": 0.0,
+        "unseen_false_citation": 1.0,
+        "score_retained_plus_abstain": 991
+      },
+      "0.1": {
+        "threshold": 0.1,
+        "in_kb_coverage": 1.0,
+        "in_kb_precision": 0.9357884796978282,
+        "in_kb_correct_lost": 0,
+        "in_kb_correct_lost_pct": 0.0,
+        "in_kb_correct_retained": 991,
+        "unseen_correct_abstention": 0.0,
+        "unseen_false_citation": 1.0,
+        "score_retained_plus_abstain": 991
+      },
+      "0.2": {
+        "threshold": 0.2,
+        "in_kb_coverage": 0.9952785646836638,
+        "in_kb_precision": 0.9402277039848197,
+        "in_kb_correct_lost": 0,
+        "in_kb_correct_lost_pct": 0.0,
+        "in_kb_correct_retained": 991,
+        "unseen_correct_abstention": 0.022556390977443608,
+        "unseen_false_citation": 0.9774436090225563,
+        "score_retained_plus_abstain": 997
+      },
+      "0.3": {
+        "threshold": 0.3,
+        "in_kb_coverage": 0.9943342776203966,
+        "in_kb_precision": 0.9411206077872745,
+        "in_kb_correct_lost": 0,
+        "in_kb_correct_lost_pct": 0.0,
+        "in_kb_correct_retained": 991,
+        "unseen_correct_abstention": 0.24060150375939848,
+        "unseen_false_citation": 0.7593984962406015,
+        "score_retained_plus_abstain": 1055
+      },
+      "0.4": {
+        "threshold": 0.4,
+        "in_kb_coverage": 0.9508970727101038,
+        "in_kb_precision": 0.9721946375372393,
+        "in_kb_correct_lost": 12,
+        "in_kb_correct_lost_pct": 0.012108980827447022,
+        "in_kb_correct_retained": 979,
+        "unseen_correct_abstention": 0.5714285714285714,
+        "unseen_false_citation": 0.42857142857142855,
+        "score_retained_plus_abstain": 1131
+      },
+      "0.5": {
+        "threshold": 0.5,
+        "in_kb_coverage": 0.9187913125590179,
+        "in_kb_precision": 0.9825282631038027,
+        "in_kb_correct_lost": 35,
+        "in_kb_correct_lost_pct": 0.035317860746720484,
+        "in_kb_correct_retained": 956,
+        "unseen_correct_abstention": 0.7744360902255639,
+        "unseen_false_citation": 0.22556390977443608,
+        "score_retained_plus_abstain": 1162
+      }
+    },
+    "combined_knowledge": {
+      "0.0": {
+        "threshold": 0.0,
+        "in_kb_coverage": 1.0,
+        "in_kb_precision": 0.5157437567861021,
+        "in_kb_correct_lost": 0,
+        "in_kb_correct_lost_pct": 0.0,
+        "in_kb_correct_retained": 475,
+        "unseen_correct_abstention": 0.0,
+        "unseen_false_citation": 1.0,
+        "score_retained_plus_abstain": 475
+      },
+      "0.1": {
+        "threshold": 0.1,
+        "in_kb_coverage": 1.0,
+        "in_kb_precision": 0.5157437567861021,
+        "in_kb_correct_lost": 0,
+        "in_kb_correct_lost_pct": 0.0,
+        "in_kb_correct_retained": 475,
+        "unseen_correct_abstention": 0.0,
+        "unseen_false_citation": 1.0,
+        "score_retained_plus_abstain": 475
+      },
+      "0.2": {
+        "threshold": 0.2,
+        "in_kb_coverage": 0.9326818675352877,
+        "in_kb_precision": 0.5436554132712457,
+        "in_kb_correct_lost": 8,
+        "in_kb_correct_lost_pct": 0.016842105263157894,
+        "in_kb_correct_retained": 467,
+        "unseen_correct_abstention": 0.022556390977443608,
+        "unseen_false_citation": 0.9774436090225563,
+        "score_retained_plus_abstain": 473
+      },
+      "0.3": {
+        "threshold": 0.3,
+        "in_kb_coverage": 0.48968512486427795,
+        "in_kb_precision": 0.7405764966740577,
+        "in_kb_correct_lost": 141,
+        "in_kb_correct_lost_pct": 0.2968421052631579,
+        "in_kb_correct_retained": 334,
+        "unseen_correct_abstention": 0.24060150375939848,
+        "unseen_false_citation": 0.7593984962406015,
+        "score_retained_plus_abstain": 398
+      },
+      "0.4": {
+        "threshold": 0.4,
+        "in_kb_coverage": 0.18023887079261672,
+        "in_kb_precision": 0.9156626506024096,
+        "in_kb_correct_lost": 323,
+        "in_kb_correct_lost_pct": 0.68,
+        "in_kb_correct_retained": 152,
+        "unseen_correct_abstention": 0.5714285714285714,
+        "unseen_false_citation": 0.42857142857142855,
+        "score_retained_plus_abstain": 304
+      },
+      "0.5": {
+        "threshold": 0.5,
+        "in_kb_coverage": 0.04668838219326819,
+        "in_kb_precision": 1.0,
+        "in_kb_correct_lost": 432,
+        "in_kb_correct_lost_pct": 0.9094736842105263,
+        "in_kb_correct_retained": 43,
+        "unseen_correct_abstention": 0.7744360902255639,
+        "unseen_false_citation": 0.22556390977443608,
+        "score_retained_plus_abstain": 249
+      }
+    },
+    "suggestion": {
+      "truncated_mode": {
+        "threshold": 0.5,
+        "score": 1162,
+        "retained": 956,
+        "abstain": 206
+      },
+      "knowledge_mode": {
+        "threshold": 0.0,
+        "score": 475,
+        "retained": 475,
+        "abstain": 0
+      },
+      "note": "Suggestion only - maximizes retained correct + abstention, not a tuned threshold"
+    },
+    "sibling_confusions": {
+      "truncated_mode_count": 36,
+      "knowledge_mode_count": 182,
+      "description": "in-KB queries where top-1 was wrong but shares same CWE"
+    },
+    "counts": {
+      "total_unique_cve": 1325,
+      "indexed": 1059,
+      "unseen": 266,
+      "knowledge_total": 1154,
+      "knowledge_joinable_indexed": 921,
+      "temp_kb_size": 1059
+    }
+  },
+  "cwe_distribution": {
+    "CWE-119": 128,
+    "CWE-20": 93,
+    "CWE-200": 108,
+    "CWE-264": 45,
+    "CWE-787": 116,
+    "CWE-362": 164,
+    "CWE-476": 189,
+    "CWE-416": 283,
+    "CWE-125": 104,
+    "CWE-284": 1,
+    "CWE-401": 92,
+    "CWE-415": 1,
+    "CWE-369": 1
+  }
+}

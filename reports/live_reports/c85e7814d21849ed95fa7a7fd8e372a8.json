@@ -1,0 +1,3446 @@
+{
+  "report_id": "c85e7814d21849ed95fa7a7fd8e372a8",
+  "filename": "quota_test.xml",
+  "uploaded_at": "2026-09-24T15:05:31.978211+00:00",
+  "uploaded_by": "admin",
+  "findings": [
+    {
+      "type": "asset",
+      "host": "10.0.1.0",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.1",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.2",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.3",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.4",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.5",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.6",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.7",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.8",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.9",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.10",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.11",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.12",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.13",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.14",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.15",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.16",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.17",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.18",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.19",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.20",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.21",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.22",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.23",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.24",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null
+    }
+  ],
+  "scored": {
+    "host_risk_summary": [
+      {
+        "host": "10.0.1.0",
+        "hostname": null,
+        "os_guess": null,
+        "open_service_count": 1,
+        "vuln_finding_count": 0,
+        "unscored_finding_count": 0,
+        "max_raw_vuln_score": 0.0,
+        "criticality_multiplier": 1.0,
+        "criticality_reason": "Standard asset, no elevated criticality tag matched",
+        "adjusted_risk_score": 0.0,
+        "risk_band": "INFO"
+      },
+      {
+        "host": "10.0.1.1",
+        "hostname": null,
+        "os_guess": null,
+        "open_service_count": 1,
+        "vuln_finding_count": 0,
+        "unscored_finding_count": 0,
+        "max_raw_vuln_score": 0.0,
+        "criticality_multiplier": 1.0,
+        "criticality_reason": "Standard asset, no elevated criticality tag matched",
+        "adjusted_risk_score": 0.0,
+        "risk_band": "INFO"
+      },
+      {
+        "host": "10.0.1.2",
+        "hostname": null,
+        "os_guess": null,
+        "open_service_count": 1,
+        "vuln_finding_count": 0,
+        "unscored_finding_count": 0,
+        "max_raw_vuln_score": 0.0,
+        "criticality_multiplier": 1.0,
+        "criticality_reason": "Standard asset, no elevated criticality tag matched",
+        "adjusted_risk_score": 0.0,
+        "risk_band": "INFO"
+      },
+      {
+        "host": "10.0.1.3",
+        "hostname": null,
+        "os_guess": null,
+        "open_service_count": 1,
+        "vuln_finding_count": 0,
+        "unscored_finding_count": 0,
+        "max_raw_vuln_score": 0.0,
+        "criticality_multiplier": 1.0,
+        "criticality_reason": "Standard asset, no elevated criticality tag matched",
+        "adjusted_risk_score": 0.0,
+        "risk_band": "INFO"
+      },
+      {
+        "host": "10.0.1.4",
+        "hostname": null,
+        "os_guess": null,
+        "open_service_count": 1,
+        "vuln_finding_count": 0,
+        "unscored_finding_count": 0,
+        "max_raw_vuln_score": 0.0,
+        "criticality_multiplier": 1.0,
+        "criticality_reason": "Standard asset, no elevated criticality tag matched",
+        "adjusted_risk_score": 0.0,
+        "risk_band": "INFO"
+      },
+      {
+        "host": "10.0.1.5",
+        "hostname": null,
+        "os_guess": null,
+        "open_service_count": 1,
+        "vuln_finding_count": 0,
+        "unscored_finding_count": 0,
+        "max_raw_vuln_score": 0.0,
+        "criticality_multiplier": 1.0,
+        "criticality_reason": "Standard asset, no elevated criticality tag matched",
+        "adjusted_risk_score": 0.0,
+        "risk_band": "INFO"
+      },
+      {
+        "host": "10.0.1.6",
+        "hostname": null,
+        "os_guess": null,
+        "open_service_count": 1,
+        "vuln_finding_count": 0,
+        "unscored_finding_count": 0,
+        "max_raw_vuln_score": 0.0,
+        "criticality_multiplier": 1.0,
+        "criticality_reason": "Standard asset, no elevated criticality tag matched",
+        "adjusted_risk_score": 0.0,
+        "risk_band": "INFO"
+      },
+      {
+        "host": "10.0.1.7",
+        "hostname": null,
+        "os_guess": null,
+        "open_service_count": 1,
+        "vuln_finding_count": 0,
+        "unscored_finding_count": 0,
+        "max_raw_vuln_score": 0.0,
+        "criticality_multiplier": 1.0,
+        "criticality_reason": "Standard asset, no elevated criticality tag matched",
+        "adjusted_risk_score": 0.0,
+        "risk_band": "INFO"
+      },
+      {
+        "host": "10.0.1.8",
+        "hostname": null,
+        "os_guess": null,
+        "open_service_count": 1,
+        "vuln_finding_count": 0,
+        "unscored_finding_count": 0,
+        "max_raw_vuln_score": 0.0,
+        "criticality_multiplier": 1.0,
+        "criticality_reason": "Standard asset, no elevated criticality tag matched",
+        "adjusted_risk_score": 0.0,
+        "risk_band": "INFO"
+      },
+      {
+        "host": "10.0.1.9",
+        "hostname": null,
+        "os_guess": null,
+        "open_service_count": 1,
+        "vuln_finding_count": 0,
+        "unscored_finding_count": 0,
+        "max_raw_vuln_score": 0.0,
+        "criticality_multiplier": 1.0,
+        "criticality_reason": "Standard asset, no elevated criticality tag matched",
+        "adjusted_risk_score": 0.0,
+        "risk_band": "INFO"
+      },
+      {
+        "host": "10.0.1.10",
+        "hostname": null,
+        "os_guess": null,
+        "open_service_count": 1,
+        "vuln_finding_count": 0,
+        "unscored_finding_count": 0,
+        "max_raw_vuln_score": 0.0,
+        "criticality_multiplier": 1.0,
+        "criticality_reason": "Standard asset, no elevated criticality tag matched",
+        "adjusted_risk_score": 0.0,
+        "risk_band": "INFO"
+      },
+      {
+        "host": "10.0.1.11",
+        "hostname": null,
+        "os_guess": null,
+        "open_service_count": 1,
+        "vuln_finding_count": 0,
+        "unscored_finding_count": 0,
+        "max_raw_vuln_score": 0.0,
+        "criticality_multiplier": 1.0,
+        "criticality_reason": "Standard asset, no elevated criticality tag matched",
+        "adjusted_risk_score": 0.0,
+        "risk_band": "INFO"
+      },
+      {
+        "host": "10.0.1.12",
+        "hostname": null,
+        "os_guess": null,
+        "open_service_count": 1,
+        "vuln_finding_count": 0,
+        "unscored_finding_count": 0,
+        "max_raw_vuln_score": 0.0,
+        "criticality_multiplier": 1.0,
+        "criticality_reason": "Standard asset, no elevated criticality tag matched",
+        "adjusted_risk_score": 0.0,
+        "risk_band": "INFO"
+      },
+      {
+        "host": "10.0.1.13",
+        "hostname": null,
+        "os_guess": null,
+        "open_service_count": 1,
+        "vuln_finding_count": 0,
+        "unscored_finding_count": 0,
+        "max_raw_vuln_score": 0.0,
+        "criticality_multiplier": 1.0,
+        "criticality_reason": "Standard asset, no elevated criticality tag matched",
+        "adjusted_risk_score": 0.0,
+        "risk_band": "INFO"
+      },
+      {
+        "host": "10.0.1.14",
+        "hostname": null,
+        "os_guess": null,
+        "open_service_count": 1,
+        "vuln_finding_count": 0,
+        "unscored_finding_count": 0,
+        "max_raw_vuln_score": 0.0,
+        "criticality_multiplier": 1.0,
+        "criticality_reason": "Standard asset, no elevated criticality tag matched",
+        "adjusted_risk_score": 0.0,
+        "risk_band": "INFO"
+      },
+      {
+        "host": "10.0.1.15",
+        "hostname": null,
+        "os_guess": null,
+        "open_service_count": 1,
+        "vuln_finding_count": 0,
+        "unscored_finding_count": 0,
+        "max_raw_vuln_score": 0.0,
+        "criticality_multiplier": 1.0,
+        "criticality_reason": "Standard asset, no elevated criticality tag matched",
+        "adjusted_risk_score": 0.0,
+        "risk_band": "INFO"
+      },
+      {
+        "host": "10.0.1.16",
+        "hostname": null,
+        "os_guess": null,
+        "open_service_count": 1,
+        "vuln_finding_count": 0,
+        "unscored_finding_count": 0,
+        "max_raw_vuln_score": 0.0,
+        "criticality_multiplier": 1.0,
+        "criticality_reason": "Standard asset, no elevated criticality tag matched",
+        "adjusted_risk_score": 0.0,
+        "risk_band": "INFO"
+      },
+      {
+        "host": "10.0.1.17",
+        "hostname": null,
+        "os_guess": null,
+        "open_service_count": 1,
+        "vuln_finding_count": 0,
+        "unscored_finding_count": 0,
+        "max_raw_vuln_score": 0.0,
+        "criticality_multiplier": 1.0,
+        "criticality_reason": "Standard asset, no elevated criticality tag matched",
+        "adjusted_risk_score": 0.0,
+        "risk_band": "INFO"
+      },
+      {
+        "host": "10.0.1.18",
+        "hostname": null,
+        "os_guess": null,
+        "open_service_count": 1,
+        "vuln_finding_count": 0,
+        "unscored_finding_count": 0,
+        "max_raw_vuln_score": 0.0,
+        "criticality_multiplier": 1.0,
+        "criticality_reason": "Standard asset, no elevated criticality tag matched",
+        "adjusted_risk_score": 0.0,
+        "risk_band": "INFO"
+      },
+      {
+        "host": "10.0.1.19",
+        "hostname": null,
+        "os_guess": null,
+        "open_service_count": 1,
+        "vuln_finding_count": 0,
+        "unscored_finding_count": 0,
+        "max_raw_vuln_score": 0.0,
+        "criticality_multiplier": 1.0,
+        "criticality_reason": "Standard asset, no elevated criticality tag matched",
+        "adjusted_risk_score": 0.0,
+        "risk_band": "INFO"
+      },
+      {
+        "host": "10.0.1.20",
+        "hostname": null,
+        "os_guess": null,
+        "open_service_count": 1,
+        "vuln_finding_count": 0,
+        "unscored_finding_count": 0,
+        "max_raw_vuln_score": 0.0,
+        "criticality_multiplier": 1.0,
+        "criticality_reason": "Standard asset, no elevated criticality tag matched",
+        "adjusted_risk_score": 0.0,
+        "risk_band": "INFO"
+      },
+      {
+        "host": "10.0.1.21",
+        "hostname": null,
+        "os_guess": null,
+        "open_service_count": 1,
+        "vuln_finding_count": 0,
+        "unscored_finding_count": 0,
+        "max_raw_vuln_score": 0.0,
+        "criticality_multiplier": 1.0,
+        "criticality_reason": "Standard asset, no elevated criticality tag matched",
+        "adjusted_risk_score": 0.0,
+        "risk_band": "INFO"
+      },
+      {
+        "host": "10.0.1.22",
+        "hostname": null,
+        "os_guess": null,
+        "open_service_count": 1,
+        "vuln_finding_count": 0,
+        "unscored_finding_count": 0,
+        "max_raw_vuln_score": 0.0,
+        "criticality_multiplier": 1.0,
+        "criticality_reason": "Standard asset, no elevated criticality tag matched",
+        "adjusted_risk_score": 0.0,
+        "risk_band": "INFO"
+      },
+      {
+        "host": "10.0.1.23",
+        "hostname": null,
+        "os_guess": null,
+        "open_service_count": 1,
+        "vuln_finding_count": 0,
+        "unscored_finding_count": 0,
+        "max_raw_vuln_score": 0.0,
+        "criticality_multiplier": 1.0,
+        "criticality_reason": "Standard asset, no elevated criticality tag matched",
+        "adjusted_risk_score": 0.0,
+        "risk_band": "INFO"
+      },
+      {
+        "host": "10.0.1.24",
+        "hostname": null,
+        "os_guess": null,
+        "open_service_count": 1,
+        "vuln_finding_count": 0,
+        "unscored_finding_count": 0,
+        "max_raw_vuln_score": 0.0,
+        "criticality_multiplier": 1.0,
+        "criticality_reason": "Standard asset, no elevated criticality tag matched",
+        "adjusted_risk_score": 0.0,
+        "risk_band": "INFO"
+      }
+    ],
+    "prioritized_findings": [],
+    "all_scored_findings": [
+      {
+        "type": "asset",
+        "host": "10.0.1.0",
+        "hostname": null,
+        "os_guess": null,
+        "port": 80,
+        "protocol": "tcp",
+        "service": "http",
+        "product": "Apache httpd",
+        "version": "2.4.52",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 0.0,
+        "severity_band": "INFO",
+        "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+      },
+      {
+        "type": "asset",
+        "host": "10.0.1.1",
+        "hostname": null,
+        "os_guess": null,
+        "port": 80,
+        "protocol": "tcp",
+        "service": "http",
+        "product": "Apache httpd",
+        "version": "2.4.52",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 0.0,
+        "severity_band": "INFO",
+        "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+      },
+      {
+        "type": "asset",
+        "host": "10.0.1.2",
+        "hostname": null,
+        "os_guess": null,
+        "port": 80,
+        "protocol": "tcp",
+        "service": "http",
+        "product": "Apache httpd",
+        "version": "2.4.52",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 0.0,
+        "severity_band": "INFO",
+        "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+      },
+      {
+        "type": "asset",
+        "host": "10.0.1.3",
+        "hostname": null,
+        "os_guess": null,
+        "port": 80,
+        "protocol": "tcp",
+        "service": "http",
+        "product": "Apache httpd",
+        "version": "2.4.52",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 0.0,
+        "severity_band": "INFO",
+        "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+      },
+      {
+        "type": "asset",
+        "host": "10.0.1.4",
+        "hostname": null,
+        "os_guess": null,
+        "port": 80,
+        "protocol": "tcp",
+        "service": "http",
+        "product": "Apache httpd",
+        "version": "2.4.52",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 0.0,
+        "severity_band": "INFO",
+        "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+      },
+      {
+        "type": "asset",
+        "host": "10.0.1.5",
+        "hostname": null,
+        "os_guess": null,
+        "port": 80,
+        "protocol": "tcp",
+        "service": "http",
+        "product": "Apache httpd",
+        "version": "2.4.52",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 0.0,
+        "severity_band": "INFO",
+        "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+      },
+      {
+        "type": "asset",
+        "host": "10.0.1.6",
+        "hostname": null,
+        "os_guess": null,
+        "port": 80,
+        "protocol": "tcp",
+        "service": "http",
+        "product": "Apache httpd",
+        "version": "2.4.52",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 0.0,
+        "severity_band": "INFO",
+        "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+      },
+      {
+        "type": "asset",
+        "host": "10.0.1.7",
+        "hostname": null,
+        "os_guess": null,
+        "port": 80,
+        "protocol": "tcp",
+        "service": "http",
+        "product": "Apache httpd",
+        "version": "2.4.52",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 0.0,
+        "severity_band": "INFO",
+        "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+      },
+      {
+        "type": "asset",
+        "host": "10.0.1.8",
+        "hostname": null,
+        "os_guess": null,
+        "port": 80,
+        "protocol": "tcp",
+        "service": "http",
+        "product": "Apache httpd",
+        "version": "2.4.52",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 0.0,
+        "severity_band": "INFO",
+        "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+      },
+      {
+        "type": "asset",
+        "host": "10.0.1.9",
+        "hostname": null,
+        "os_guess": null,
+        "port": 80,
+        "protocol": "tcp",
+        "service": "http",
+        "product": "Apache httpd",
+        "version": "2.4.52",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 0.0,
+        "severity_band": "INFO",
+        "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+      },
+      {
+        "type": "asset",
+        "host": "10.0.1.10",
+        "hostname": null,
+        "os_guess": null,
+        "port": 80,
+        "protocol": "tcp",
+        "service": "http",
+        "product": "Apache httpd",
+        "version": "2.4.52",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 0.0,
+        "severity_band": "INFO",
+        "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+      },
+      {
+        "type": "asset",
+        "host": "10.0.1.11",
+        "hostname": null,
+        "os_guess": null,
+        "port": 80,
+        "protocol": "tcp",
+        "service": "http",
+        "product": "Apache httpd",
+        "version": "2.4.52",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 0.0,
+        "severity_band": "INFO",
+        "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+      },
+      {
+        "type": "asset",
+        "host": "10.0.1.12",
+        "hostname": null,
+        "os_guess": null,
+        "port": 80,
+        "protocol": "tcp",
+        "service": "http",
+        "product": "Apache httpd",
+        "version": "2.4.52",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 0.0,
+        "severity_band": "INFO",
+        "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+      },
+      {
+        "type": "asset",
+        "host": "10.0.1.13",
+        "hostname": null,
+        "os_guess": null,
+        "port": 80,
+        "protocol": "tcp",
+        "service": "http",
+        "product": "Apache httpd",
+        "version": "2.4.52",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 0.0,
+        "severity_band": "INFO",
+        "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+      },
+      {
+        "type": "asset",
+        "host": "10.0.1.14",
+        "hostname": null,
+        "os_guess": null,
+        "port": 80,
+        "protocol": "tcp",
+        "service": "http",
+        "product": "Apache httpd",
+        "version": "2.4.52",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 0.0,
+        "severity_band": "INFO",
+        "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+      },
+      {
+        "type": "asset",
+        "host": "10.0.1.15",
+        "hostname": null,
+        "os_guess": null,
+        "port": 80,
+        "protocol": "tcp",
+        "service": "http",
+        "product": "Apache httpd",
+        "version": "2.4.52",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 0.0,
+        "severity_band": "INFO",
+        "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+      },
+      {
+        "type": "asset",
+        "host": "10.0.1.16",
+        "hostname": null,
+        "os_guess": null,
+        "port": 80,
+        "protocol": "tcp",
+        "service": "http",
+        "product": "Apache httpd",
+        "version": "2.4.52",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 0.0,
+        "severity_band": "INFO",
+        "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+      },
+      {
+        "type": "asset",
+        "host": "10.0.1.17",
+        "hostname": null,
+        "os_guess": null,
+        "port": 80,
+        "protocol": "tcp",
+        "service": "http",
+        "product": "Apache httpd",
+        "version": "2.4.52",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 0.0,
+        "severity_band": "INFO",
+        "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+      },
+      {
+        "type": "asset",
+        "host": "10.0.1.18",
+        "hostname": null,
+        "os_guess": null,
+        "port": 80,
+        "protocol": "tcp",
+        "service": "http",
+        "product": "Apache httpd",
+        "version": "2.4.52",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 0.0,
+        "severity_band": "INFO",
+        "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+      },
+      {
+        "type": "asset",
+        "host": "10.0.1.19",
+        "hostname": null,
+        "os_guess": null,
+        "port": 80,
+        "protocol": "tcp",
+        "service": "http",
+        "product": "Apache httpd",
+        "version": "2.4.52",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 0.0,
+        "severity_band": "INFO",
+        "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+      },
+      {
+        "type": "asset",
+        "host": "10.0.1.20",
+        "hostname": null,
+        "os_guess": null,
+        "port": 80,
+        "protocol": "tcp",
+        "service": "http",
+        "product": "Apache httpd",
+        "version": "2.4.52",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 0.0,
+        "severity_band": "INFO",
+        "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+      },
+      {
+        "type": "asset",
+        "host": "10.0.1.21",
+        "hostname": null,
+        "os_guess": null,
+        "port": 80,
+        "protocol": "tcp",
+        "service": "http",
+        "product": "Apache httpd",
+        "version": "2.4.52",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 0.0,
+        "severity_band": "INFO",
+        "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+      },
+      {
+        "type": "asset",
+        "host": "10.0.1.22",
+        "hostname": null,
+        "os_guess": null,
+        "port": 80,
+        "protocol": "tcp",
+        "service": "http",
+        "product": "Apache httpd",
+        "version": "2.4.52",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 0.0,
+        "severity_band": "INFO",
+        "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+      },
+      {
+        "type": "asset",
+        "host": "10.0.1.23",
+        "hostname": null,
+        "os_guess": null,
+        "port": 80,
+        "protocol": "tcp",
+        "service": "http",
+        "product": "Apache httpd",
+        "version": "2.4.52",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 0.0,
+        "severity_band": "INFO",
+        "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+      },
+      {
+        "type": "asset",
+        "host": "10.0.1.24",
+        "hostname": null,
+        "os_guess": null,
+        "port": 80,
+        "protocol": "tcp",
+        "service": "http",
+        "product": "Apache httpd",
+        "version": "2.4.52",
+        "cve_refs": [],
+        "nse_script": null,
+        "raw_output": null,
+        "severity_score": 0.0,
+        "severity_band": "INFO",
+        "scoring_rationale": "Standard open service, no elevated exposure risk assigned"
+      }
+    ]
+  },
+  "grounded": [
+    {
+      "type": "asset",
+      "host": "10.0.1.0",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-WEB-001",
+            "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+            "section": "Server Hardening",
+            "control_title": "Keep web server software on a supported, patched version",
+            "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+            "applies_to": [
+              "http",
+              "https",
+              "apache_httpd"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.315
+          },
+          {
+            "id": "CIS-TLS-001",
+            "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+            "section": "Transport Security",
+            "control_title": "Monitor and renew TLS certificates before expiry",
+            "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+            "applies_to": [
+              "https",
+              "ssl",
+              "tls",
+              "apache_httpd",
+              "nginx"
+            ],
+            "level": 1,
+            "remediation_type": "configuration",
+            "similarity_score": 0.0
+          }
+        ],
+        "service_tags_used": [
+          "http",
+          "apache_httpd"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.1",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-WEB-001",
+            "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+            "section": "Server Hardening",
+            "control_title": "Keep web server software on a supported, patched version",
+            "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+            "applies_to": [
+              "http",
+              "https",
+              "apache_httpd"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.315
+          },
+          {
+            "id": "CIS-TLS-001",
+            "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+            "section": "Transport Security",
+            "control_title": "Monitor and renew TLS certificates before expiry",
+            "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+            "applies_to": [
+              "https",
+              "ssl",
+              "tls",
+              "apache_httpd",
+              "nginx"
+            ],
+            "level": 1,
+            "remediation_type": "configuration",
+            "similarity_score": 0.0
+          }
+        ],
+        "service_tags_used": [
+          "http",
+          "apache_httpd"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.2",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-WEB-001",
+            "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+            "section": "Server Hardening",
+            "control_title": "Keep web server software on a supported, patched version",
+            "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+            "applies_to": [
+              "http",
+              "https",
+              "apache_httpd"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.315
+          },
+          {
+            "id": "CIS-TLS-001",
+            "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+            "section": "Transport Security",
+            "control_title": "Monitor and renew TLS certificates before expiry",
+            "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+            "applies_to": [
+              "https",
+              "ssl",
+              "tls",
+              "apache_httpd",
+              "nginx"
+            ],
+            "level": 1,
+            "remediation_type": "configuration",
+            "similarity_score": 0.0
+          }
+        ],
+        "service_tags_used": [
+          "http",
+          "apache_httpd"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.3",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-WEB-001",
+            "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+            "section": "Server Hardening",
+            "control_title": "Keep web server software on a supported, patched version",
+            "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+            "applies_to": [
+              "http",
+              "https",
+              "apache_httpd"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.315
+          },
+          {
+            "id": "CIS-TLS-001",
+            "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+            "section": "Transport Security",
+            "control_title": "Monitor and renew TLS certificates before expiry",
+            "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+            "applies_to": [
+              "https",
+              "ssl",
+              "tls",
+              "apache_httpd",
+              "nginx"
+            ],
+            "level": 1,
+            "remediation_type": "configuration",
+            "similarity_score": 0.0
+          }
+        ],
+        "service_tags_used": [
+          "http",
+          "apache_httpd"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.4",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-WEB-001",
+            "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+            "section": "Server Hardening",
+            "control_title": "Keep web server software on a supported, patched version",
+            "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+            "applies_to": [
+              "http",
+              "https",
+              "apache_httpd"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.315
+          },
+          {
+            "id": "CIS-TLS-001",
+            "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+            "section": "Transport Security",
+            "control_title": "Monitor and renew TLS certificates before expiry",
+            "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+            "applies_to": [
+              "https",
+              "ssl",
+              "tls",
+              "apache_httpd",
+              "nginx"
+            ],
+            "level": 1,
+            "remediation_type": "configuration",
+            "similarity_score": 0.0
+          }
+        ],
+        "service_tags_used": [
+          "http",
+          "apache_httpd"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.5",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-WEB-001",
+            "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+            "section": "Server Hardening",
+            "control_title": "Keep web server software on a supported, patched version",
+            "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+            "applies_to": [
+              "http",
+              "https",
+              "apache_httpd"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.315
+          },
+          {
+            "id": "CIS-TLS-001",
+            "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+            "section": "Transport Security",
+            "control_title": "Monitor and renew TLS certificates before expiry",
+            "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+            "applies_to": [
+              "https",
+              "ssl",
+              "tls",
+              "apache_httpd",
+              "nginx"
+            ],
+            "level": 1,
+            "remediation_type": "configuration",
+            "similarity_score": 0.0
+          }
+        ],
+        "service_tags_used": [
+          "http",
+          "apache_httpd"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.6",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-WEB-001",
+            "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+            "section": "Server Hardening",
+            "control_title": "Keep web server software on a supported, patched version",
+            "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+            "applies_to": [
+              "http",
+              "https",
+              "apache_httpd"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.315
+          },
+          {
+            "id": "CIS-TLS-001",
+            "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+            "section": "Transport Security",
+            "control_title": "Monitor and renew TLS certificates before expiry",
+            "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+            "applies_to": [
+              "https",
+              "ssl",
+              "tls",
+              "apache_httpd",
+              "nginx"
+            ],
+            "level": 1,
+            "remediation_type": "configuration",
+            "similarity_score": 0.0
+          }
+        ],
+        "service_tags_used": [
+          "http",
+          "apache_httpd"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.7",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-WEB-001",
+            "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+            "section": "Server Hardening",
+            "control_title": "Keep web server software on a supported, patched version",
+            "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+            "applies_to": [
+              "http",
+              "https",
+              "apache_httpd"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.315
+          },
+          {
+            "id": "CIS-TLS-001",
+            "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+            "section": "Transport Security",
+            "control_title": "Monitor and renew TLS certificates before expiry",
+            "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+            "applies_to": [
+              "https",
+              "ssl",
+              "tls",
+              "apache_httpd",
+              "nginx"
+            ],
+            "level": 1,
+            "remediation_type": "configuration",
+            "similarity_score": 0.0
+          }
+        ],
+        "service_tags_used": [
+          "http",
+          "apache_httpd"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.8",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-WEB-001",
+            "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+            "section": "Server Hardening",
+            "control_title": "Keep web server software on a supported, patched version",
+            "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+            "applies_to": [
+              "http",
+              "https",
+              "apache_httpd"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.315
+          },
+          {
+            "id": "CIS-TLS-001",
+            "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+            "section": "Transport Security",
+            "control_title": "Monitor and renew TLS certificates before expiry",
+            "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+            "applies_to": [
+              "https",
+              "ssl",
+              "tls",
+              "apache_httpd",
+              "nginx"
+            ],
+            "level": 1,
+            "remediation_type": "configuration",
+            "similarity_score": 0.0
+          }
+        ],
+        "service_tags_used": [
+          "http",
+          "apache_httpd"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.9",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-WEB-001",
+            "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+            "section": "Server Hardening",
+            "control_title": "Keep web server software on a supported, patched version",
+            "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+            "applies_to": [
+              "http",
+              "https",
+              "apache_httpd"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.315
+          },
+          {
+            "id": "CIS-TLS-001",
+            "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+            "section": "Transport Security",
+            "control_title": "Monitor and renew TLS certificates before expiry",
+            "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+            "applies_to": [
+              "https",
+              "ssl",
+              "tls",
+              "apache_httpd",
+              "nginx"
+            ],
+            "level": 1,
+            "remediation_type": "configuration",
+            "similarity_score": 0.0
+          }
+        ],
+        "service_tags_used": [
+          "http",
+          "apache_httpd"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.10",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-WEB-001",
+            "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+            "section": "Server Hardening",
+            "control_title": "Keep web server software on a supported, patched version",
+            "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+            "applies_to": [
+              "http",
+              "https",
+              "apache_httpd"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.315
+          },
+          {
+            "id": "CIS-TLS-001",
+            "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+            "section": "Transport Security",
+            "control_title": "Monitor and renew TLS certificates before expiry",
+            "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+            "applies_to": [
+              "https",
+              "ssl",
+              "tls",
+              "apache_httpd",
+              "nginx"
+            ],
+            "level": 1,
+            "remediation_type": "configuration",
+            "similarity_score": 0.0
+          }
+        ],
+        "service_tags_used": [
+          "http",
+          "apache_httpd"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.11",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-WEB-001",
+            "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+            "section": "Server Hardening",
+            "control_title": "Keep web server software on a supported, patched version",
+            "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+            "applies_to": [
+              "http",
+              "https",
+              "apache_httpd"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.315
+          },
+          {
+            "id": "CIS-TLS-001",
+            "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+            "section": "Transport Security",
+            "control_title": "Monitor and renew TLS certificates before expiry",
+            "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+            "applies_to": [
+              "https",
+              "ssl",
+              "tls",
+              "apache_httpd",
+              "nginx"
+            ],
+            "level": 1,
+            "remediation_type": "configuration",
+            "similarity_score": 0.0
+          }
+        ],
+        "service_tags_used": [
+          "http",
+          "apache_httpd"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.12",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-WEB-001",
+            "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+            "section": "Server Hardening",
+            "control_title": "Keep web server software on a supported, patched version",
+            "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+            "applies_to": [
+              "http",
+              "https",
+              "apache_httpd"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.315
+          },
+          {
+            "id": "CIS-TLS-001",
+            "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+            "section": "Transport Security",
+            "control_title": "Monitor and renew TLS certificates before expiry",
+            "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+            "applies_to": [
+              "https",
+              "ssl",
+              "tls",
+              "apache_httpd",
+              "nginx"
+            ],
+            "level": 1,
+            "remediation_type": "configuration",
+            "similarity_score": 0.0
+          }
+        ],
+        "service_tags_used": [
+          "http",
+          "apache_httpd"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.13",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-WEB-001",
+            "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+            "section": "Server Hardening",
+            "control_title": "Keep web server software on a supported, patched version",
+            "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+            "applies_to": [
+              "http",
+              "https",
+              "apache_httpd"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.315
+          },
+          {
+            "id": "CIS-TLS-001",
+            "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+            "section": "Transport Security",
+            "control_title": "Monitor and renew TLS certificates before expiry",
+            "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+            "applies_to": [
+              "https",
+              "ssl",
+              "tls",
+              "apache_httpd",
+              "nginx"
+            ],
+            "level": 1,
+            "remediation_type": "configuration",
+            "similarity_score": 0.0
+          }
+        ],
+        "service_tags_used": [
+          "http",
+          "apache_httpd"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.14",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-WEB-001",
+            "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+            "section": "Server Hardening",
+            "control_title": "Keep web server software on a supported, patched version",
+            "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+            "applies_to": [
+              "http",
+              "https",
+              "apache_httpd"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.315
+          },
+          {
+            "id": "CIS-TLS-001",
+            "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+            "section": "Transport Security",
+            "control_title": "Monitor and renew TLS certificates before expiry",
+            "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+            "applies_to": [
+              "https",
+              "ssl",
+              "tls",
+              "apache_httpd",
+              "nginx"
+            ],
+            "level": 1,
+            "remediation_type": "configuration",
+            "similarity_score": 0.0
+          }
+        ],
+        "service_tags_used": [
+          "http",
+          "apache_httpd"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.15",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-WEB-001",
+            "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+            "section": "Server Hardening",
+            "control_title": "Keep web server software on a supported, patched version",
+            "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+            "applies_to": [
+              "http",
+              "https",
+              "apache_httpd"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.315
+          },
+          {
+            "id": "CIS-TLS-001",
+            "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+            "section": "Transport Security",
+            "control_title": "Monitor and renew TLS certificates before expiry",
+            "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+            "applies_to": [
+              "https",
+              "ssl",
+              "tls",
+              "apache_httpd",
+              "nginx"
+            ],
+            "level": 1,
+            "remediation_type": "configuration",
+            "similarity_score": 0.0
+          }
+        ],
+        "service_tags_used": [
+          "http",
+          "apache_httpd"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.16",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-WEB-001",
+            "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+            "section": "Server Hardening",
+            "control_title": "Keep web server software on a supported, patched version",
+            "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+            "applies_to": [
+              "http",
+              "https",
+              "apache_httpd"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.315
+          },
+          {
+            "id": "CIS-TLS-001",
+            "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+            "section": "Transport Security",
+            "control_title": "Monitor and renew TLS certificates before expiry",
+            "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+            "applies_to": [
+              "https",
+              "ssl",
+              "tls",
+              "apache_httpd",
+              "nginx"
+            ],
+            "level": 1,
+            "remediation_type": "configuration",
+            "similarity_score": 0.0
+          }
+        ],
+        "service_tags_used": [
+          "http",
+          "apache_httpd"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.17",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-WEB-001",
+            "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+            "section": "Server Hardening",
+            "control_title": "Keep web server software on a supported, patched version",
+            "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+            "applies_to": [
+              "http",
+              "https",
+              "apache_httpd"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.315
+          },
+          {
+            "id": "CIS-TLS-001",
+            "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+            "section": "Transport Security",
+            "control_title": "Monitor and renew TLS certificates before expiry",
+            "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+            "applies_to": [
+              "https",
+              "ssl",
+              "tls",
+              "apache_httpd",
+              "nginx"
+            ],
+            "level": 1,
+            "remediation_type": "configuration",
+            "similarity_score": 0.0
+          }
+        ],
+        "service_tags_used": [
+          "http",
+          "apache_httpd"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.18",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-WEB-001",
+            "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+            "section": "Server Hardening",
+            "control_title": "Keep web server software on a supported, patched version",
+            "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+            "applies_to": [
+              "http",
+              "https",
+              "apache_httpd"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.315
+          },
+          {
+            "id": "CIS-TLS-001",
+            "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+            "section": "Transport Security",
+            "control_title": "Monitor and renew TLS certificates before expiry",
+            "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+            "applies_to": [
+              "https",
+              "ssl",
+              "tls",
+              "apache_httpd",
+              "nginx"
+            ],
+            "level": 1,
+            "remediation_type": "configuration",
+            "similarity_score": 0.0
+          }
+        ],
+        "service_tags_used": [
+          "http",
+          "apache_httpd"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.19",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-WEB-001",
+            "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+            "section": "Server Hardening",
+            "control_title": "Keep web server software on a supported, patched version",
+            "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+            "applies_to": [
+              "http",
+              "https",
+              "apache_httpd"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.315
+          },
+          {
+            "id": "CIS-TLS-001",
+            "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+            "section": "Transport Security",
+            "control_title": "Monitor and renew TLS certificates before expiry",
+            "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+            "applies_to": [
+              "https",
+              "ssl",
+              "tls",
+              "apache_httpd",
+              "nginx"
+            ],
+            "level": 1,
+            "remediation_type": "configuration",
+            "similarity_score": 0.0
+          }
+        ],
+        "service_tags_used": [
+          "http",
+          "apache_httpd"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.20",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-WEB-001",
+            "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+            "section": "Server Hardening",
+            "control_title": "Keep web server software on a supported, patched version",
+            "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+            "applies_to": [
+              "http",
+              "https",
+              "apache_httpd"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.315
+          },
+          {
+            "id": "CIS-TLS-001",
+            "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+            "section": "Transport Security",
+            "control_title": "Monitor and renew TLS certificates before expiry",
+            "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+            "applies_to": [
+              "https",
+              "ssl",
+              "tls",
+              "apache_httpd",
+              "nginx"
+            ],
+            "level": 1,
+            "remediation_type": "configuration",
+            "similarity_score": 0.0
+          }
+        ],
+        "service_tags_used": [
+          "http",
+          "apache_httpd"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.21",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-WEB-001",
+            "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+            "section": "Server Hardening",
+            "control_title": "Keep web server software on a supported, patched version",
+            "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+            "applies_to": [
+              "http",
+              "https",
+              "apache_httpd"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.315
+          },
+          {
+            "id": "CIS-TLS-001",
+            "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+            "section": "Transport Security",
+            "control_title": "Monitor and renew TLS certificates before expiry",
+            "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+            "applies_to": [
+              "https",
+              "ssl",
+              "tls",
+              "apache_httpd",
+              "nginx"
+            ],
+            "level": 1,
+            "remediation_type": "configuration",
+            "similarity_score": 0.0
+          }
+        ],
+        "service_tags_used": [
+          "http",
+          "apache_httpd"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.22",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-WEB-001",
+            "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+            "section": "Server Hardening",
+            "control_title": "Keep web server software on a supported, patched version",
+            "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+            "applies_to": [
+              "http",
+              "https",
+              "apache_httpd"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.315
+          },
+          {
+            "id": "CIS-TLS-001",
+            "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+            "section": "Transport Security",
+            "control_title": "Monitor and renew TLS certificates before expiry",
+            "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+            "applies_to": [
+              "https",
+              "ssl",
+              "tls",
+              "apache_httpd",
+              "nginx"
+            ],
+            "level": 1,
+            "remediation_type": "configuration",
+            "similarity_score": 0.0
+          }
+        ],
+        "service_tags_used": [
+          "http",
+          "apache_httpd"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.23",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-WEB-001",
+            "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+            "section": "Server Hardening",
+            "control_title": "Keep web server software on a supported, patched version",
+            "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+            "applies_to": [
+              "http",
+              "https",
+              "apache_httpd"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.315
+          },
+          {
+            "id": "CIS-TLS-001",
+            "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+            "section": "Transport Security",
+            "control_title": "Monitor and renew TLS certificates before expiry",
+            "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+            "applies_to": [
+              "https",
+              "ssl",
+              "tls",
+              "apache_httpd",
+              "nginx"
+            ],
+            "level": 1,
+            "remediation_type": "configuration",
+            "similarity_score": 0.0
+          }
+        ],
+        "service_tags_used": [
+          "http",
+          "apache_httpd"
+        ]
+      }
+    },
+    {
+      "type": "asset",
+      "host": "10.0.1.24",
+      "hostname": null,
+      "os_guess": null,
+      "port": 80,
+      "protocol": "tcp",
+      "service": "http",
+      "product": "Apache httpd",
+      "version": "2.4.52",
+      "cve_refs": [],
+      "nse_script": null,
+      "raw_output": null,
+      "severity_score": 0.0,
+      "severity_band": "INFO",
+      "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+      "grounding_context": {
+        "cve_records": [],
+        "cis_matches": [
+          {
+            "id": "CIS-WEB-001",
+            "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+            "section": "Server Hardening",
+            "control_title": "Keep web server software on a supported, patched version",
+            "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+            "applies_to": [
+              "http",
+              "https",
+              "apache_httpd"
+            ],
+            "level": 1,
+            "remediation_type": "patch_management",
+            "similarity_score": 0.315
+          },
+          {
+            "id": "CIS-TLS-001",
+            "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+            "section": "Transport Security",
+            "control_title": "Monitor and renew TLS certificates before expiry",
+            "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+            "applies_to": [
+              "https",
+              "ssl",
+              "tls",
+              "apache_httpd",
+              "nginx"
+            ],
+            "level": 1,
+            "remediation_type": "configuration",
+            "similarity_score": 0.0
+          }
+        ],
+        "service_tags_used": [
+          "http",
+          "apache_httpd"
+        ]
+      }
+    }
+  ],
+  "synthesized": [
+    {
+      "finding_ref": "10.0.1.0:80/tcp/http/asset",
+      "host": "10.0.1.0",
+      "port": 80,
+      "service": "http",
+      "nse_script": null,
+      "severity_band": "INFO",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 10.0.1.0 (unknown hostname)\nOS guess: unknown\nPort 80/tcp service: http\nProduct/version: Apache httpd 2.4.52\nRule-engine severity: INFO (score 0.0)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n(none retrieved)\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-WEB-001 (CIS Apache HTTP Server Benchmark (illustrative)): Keep web server software on a supported, patched version — Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.\n- CIS-TLS-001 (CIS Generic Server Hardening Benchmark (illustrative)): Monitor and renew TLS certificates before expiry — TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [],
+      "ok": true
+    },
+    {
+      "finding_ref": "10.0.1.1:80/tcp/http/asset",
+      "host": "10.0.1.1",
+      "port": 80,
+      "service": "http",
+      "nse_script": null,
+      "severity_band": "INFO",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 10.0.1.1 (unknown hostname)\nOS guess: unknown\nPort 80/tcp service: http\nProduct/version: Apache httpd 2.4.52\nRule-engine severity: INFO (score 0.0)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n(none retrieved)\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-WEB-001 (CIS Apache HTTP Server Benchmark (illustrative)): Keep web server software on a supported, patched version — Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.\n- CIS-TLS-001 (CIS Generic Server Hardening Benchmark (illustrative)): Monitor and renew TLS certificates before expiry — TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [],
+      "ok": true
+    },
+    {
+      "finding_ref": "10.0.1.2:80/tcp/http/asset",
+      "host": "10.0.1.2",
+      "port": 80,
+      "service": "http",
+      "nse_script": null,
+      "severity_band": "INFO",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 10.0.1.2 (unknown hostname)\nOS guess: unknown\nPort 80/tcp service: http\nProduct/version: Apache httpd 2.4.52\nRule-engine severity: INFO (score 0.0)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n(none retrieved)\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-WEB-001 (CIS Apache HTTP Server Benchmark (illustrative)): Keep web server software on a supported, patched version — Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.\n- CIS-TLS-001 (CIS Generic Server Hardening Benchmark (illustrative)): Monitor and renew TLS certificates before expiry — TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [],
+      "ok": true
+    },
+    {
+      "finding_ref": "10.0.1.3:80/tcp/http/asset",
+      "host": "10.0.1.3",
+      "port": 80,
+      "service": "http",
+      "nse_script": null,
+      "severity_band": "INFO",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 10.0.1.3 (unknown hostname)\nOS guess: unknown\nPort 80/tcp service: http\nProduct/version: Apache httpd 2.4.52\nRule-engine severity: INFO (score 0.0)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n(none retrieved)\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-WEB-001 (CIS Apache HTTP Server Benchmark (illustrative)): Keep web server software on a supported, patched version — Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.\n- CIS-TLS-001 (CIS Generic Server Hardening Benchmark (illustrative)): Monitor and renew TLS certificates before expiry — TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [],
+      "ok": true
+    },
+    {
+      "finding_ref": "10.0.1.4:80/tcp/http/asset",
+      "host": "10.0.1.4",
+      "port": 80,
+      "service": "http",
+      "nse_script": null,
+      "severity_band": "INFO",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 10.0.1.4 (unknown hostname)\nOS guess: unknown\nPort 80/tcp service: http\nProduct/version: Apache httpd 2.4.52\nRule-engine severity: INFO (score 0.0)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n(none retrieved)\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-WEB-001 (CIS Apache HTTP Server Benchmark (illustrative)): Keep web server software on a supported, patched version — Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.\n- CIS-TLS-001 (CIS Generic Server Hardening Benchmark (illustrative)): Monitor and renew TLS certificates before expiry — TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [],
+      "ok": true
+    },
+    {
+      "finding_ref": "10.0.1.5:80/tcp/http/asset",
+      "host": "10.0.1.5",
+      "port": 80,
+      "service": "http",
+      "nse_script": null,
+      "severity_band": "INFO",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 10.0.1.5 (unknown hostname)\nOS guess: unknown\nPort 80/tcp service: http\nProduct/version: Apache httpd 2.4.52\nRule-engine severity: INFO (score 0.0)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n(none retrieved)\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-WEB-001 (CIS Apache HTTP Server Benchmark (illustrative)): Keep web server software on a supported, patched version — Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.\n- CIS-TLS-001 (CIS Generic Server Hardening Benchmark (illustrative)): Monitor and renew TLS certificates before expiry — TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [],
+      "ok": true
+    },
+    {
+      "finding_ref": "10.0.1.6:80/tcp/http/asset",
+      "host": "10.0.1.6",
+      "port": 80,
+      "service": "http",
+      "nse_script": null,
+      "severity_band": "INFO",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 10.0.1.6 (unknown hostname)\nOS guess: unknown\nPort 80/tcp service: http\nProduct/version: Apache httpd 2.4.52\nRule-engine severity: INFO (score 0.0)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n(none retrieved)\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-WEB-001 (CIS Apache HTTP Server Benchmark (illustrative)): Keep web server software on a supported, patched version — Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.\n- CIS-TLS-001 (CIS Generic Server Hardening Benchmark (illustrative)): Monitor and renew TLS certificates before expiry — TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [],
+      "ok": true
+    },
+    {
+      "finding_ref": "10.0.1.7:80/tcp/http/asset",
+      "host": "10.0.1.7",
+      "port": 80,
+      "service": "http",
+      "nse_script": null,
+      "severity_band": "INFO",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 10.0.1.7 (unknown hostname)\nOS guess: unknown\nPort 80/tcp service: http\nProduct/version: Apache httpd 2.4.52\nRule-engine severity: INFO (score 0.0)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n(none retrieved)\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-WEB-001 (CIS Apache HTTP Server Benchmark (illustrative)): Keep web server software on a supported, patched version — Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.\n- CIS-TLS-001 (CIS Generic Server Hardening Benchmark (illustrative)): Monitor and renew TLS certificates before expiry — TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [],
+      "ok": true
+    },
+    {
+      "finding_ref": "10.0.1.8:80/tcp/http/asset",
+      "host": "10.0.1.8",
+      "port": 80,
+      "service": "http",
+      "nse_script": null,
+      "severity_band": "INFO",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 10.0.1.8 (unknown hostname)\nOS guess: unknown\nPort 80/tcp service: http\nProduct/version: Apache httpd 2.4.52\nRule-engine severity: INFO (score 0.0)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n(none retrieved)\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-WEB-001 (CIS Apache HTTP Server Benchmark (illustrative)): Keep web server software on a supported, patched version — Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.\n- CIS-TLS-001 (CIS Generic Server Hardening Benchmark (illustrative)): Monitor and renew TLS certificates before expiry — TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [],
+      "ok": true
+    },
+    {
+      "finding_ref": "10.0.1.9:80/tcp/http/asset",
+      "host": "10.0.1.9",
+      "port": 80,
+      "service": "http",
+      "nse_script": null,
+      "severity_band": "INFO",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 10.0.1.9 (unknown hostname)\nOS guess: unknown\nPort 80/tcp service: http\nProduct/version: Apache httpd 2.4.52\nRule-engine severity: INFO (score 0.0)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n(none retrieved)\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-WEB-001 (CIS Apache HTTP Server Benchmark (illustrative)): Keep web server software on a supported, patched version — Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.\n- CIS-TLS-001 (CIS Generic Server Hardening Benchmark (illustrative)): Monitor and renew TLS certificates before expiry — TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [],
+      "ok": true
+    },
+    {
+      "finding_ref": "10.0.1.10:80/tcp/http/asset",
+      "host": "10.0.1.10",
+      "port": 80,
+      "service": "http",
+      "nse_script": null,
+      "severity_band": "INFO",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 10.0.1.10 (unknown hostname)\nOS guess: unknown\nPort 80/tcp service: http\nProduct/version: Apache httpd 2.4.52\nRule-engine severity: INFO (score 0.0)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n(none retrieved)\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-WEB-001 (CIS Apache HTTP Server Benchmark (illustrative)): Keep web server software on a supported, patched version — Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.\n- CIS-TLS-001 (CIS Generic Server Hardening Benchmark (illustrative)): Monitor and renew TLS certificates before expiry — TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [],
+      "ok": true
+    },
+    {
+      "finding_ref": "10.0.1.11:80/tcp/http/asset",
+      "host": "10.0.1.11",
+      "port": 80,
+      "service": "http",
+      "nse_script": null,
+      "severity_band": "INFO",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 10.0.1.11 (unknown hostname)\nOS guess: unknown\nPort 80/tcp service: http\nProduct/version: Apache httpd 2.4.52\nRule-engine severity: INFO (score 0.0)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n(none retrieved)\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-WEB-001 (CIS Apache HTTP Server Benchmark (illustrative)): Keep web server software on a supported, patched version — Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.\n- CIS-TLS-001 (CIS Generic Server Hardening Benchmark (illustrative)): Monitor and renew TLS certificates before expiry — TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [],
+      "ok": true
+    },
+    {
+      "finding_ref": "10.0.1.12:80/tcp/http/asset",
+      "host": "10.0.1.12",
+      "port": 80,
+      "service": "http",
+      "nse_script": null,
+      "severity_band": "INFO",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 10.0.1.12 (unknown hostname)\nOS guess: unknown\nPort 80/tcp service: http\nProduct/version: Apache httpd 2.4.52\nRule-engine severity: INFO (score 0.0)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n(none retrieved)\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-WEB-001 (CIS Apache HTTP Server Benchmark (illustrative)): Keep web server software on a supported, patched version — Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.\n- CIS-TLS-001 (CIS Generic Server Hardening Benchmark (illustrative)): Monitor and renew TLS certificates before expiry — TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [],
+      "ok": true
+    },
+    {
+      "finding_ref": "10.0.1.13:80/tcp/http/asset",
+      "host": "10.0.1.13",
+      "port": 80,
+      "service": "http",
+      "nse_script": null,
+      "severity_band": "INFO",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 10.0.1.13 (unknown hostname)\nOS guess: unknown\nPort 80/tcp service: http\nProduct/version: Apache httpd 2.4.52\nRule-engine severity: INFO (score 0.0)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n(none retrieved)\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-WEB-001 (CIS Apache HTTP Server Benchmark (illustrative)): Keep web server software on a supported, patched version — Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.\n- CIS-TLS-001 (CIS Generic Server Hardening Benchmark (illustrative)): Monitor and renew TLS certificates before expiry — TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [],
+      "ok": true
+    },
+    {
+      "finding_ref": "10.0.1.14:80/tcp/http/asset",
+      "host": "10.0.1.14",
+      "port": 80,
+      "service": "http",
+      "nse_script": null,
+      "severity_band": "INFO",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 10.0.1.14 (unknown hostname)\nOS guess: unknown\nPort 80/tcp service: http\nProduct/version: Apache httpd 2.4.52\nRule-engine severity: INFO (score 0.0)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n(none retrieved)\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-WEB-001 (CIS Apache HTTP Server Benchmark (illustrative)): Keep web server software on a supported, patched version — Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.\n- CIS-TLS-001 (CIS Generic Server Hardening Benchmark (illustrative)): Monitor and renew TLS certificates before expiry — TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [],
+      "ok": true
+    },
+    {
+      "finding_ref": "10.0.1.15:80/tcp/http/asset",
+      "host": "10.0.1.15",
+      "port": 80,
+      "service": "http",
+      "nse_script": null,
+      "severity_band": "INFO",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 10.0.1.15 (unknown hostname)\nOS guess: unknown\nPort 80/tcp service: http\nProduct/version: Apache httpd 2.4.52\nRule-engine severity: INFO (score 0.0)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n(none retrieved)\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-WEB-001 (CIS Apache HTTP Server Benchmark (illustrative)): Keep web server software on a supported, patched version — Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.\n- CIS-TLS-001 (CIS Generic Server Hardening Benchmark (illustrative)): Monitor and renew TLS certificates before expiry — TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [],
+      "ok": true
+    },
+    {
+      "finding_ref": "10.0.1.16:80/tcp/http/asset",
+      "host": "10.0.1.16",
+      "port": 80,
+      "service": "http",
+      "nse_script": null,
+      "severity_band": "INFO",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 10.0.1.16 (unknown hostname)\nOS guess: unknown\nPort 80/tcp service: http\nProduct/version: Apache httpd 2.4.52\nRule-engine severity: INFO (score 0.0)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n(none retrieved)\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-WEB-001 (CIS Apache HTTP Server Benchmark (illustrative)): Keep web server software on a supported, patched version — Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.\n- CIS-TLS-001 (CIS Generic Server Hardening Benchmark (illustrative)): Monitor and renew TLS certificates before expiry — TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [],
+      "ok": true
+    },
+    {
+      "finding_ref": "10.0.1.17:80/tcp/http/asset",
+      "host": "10.0.1.17",
+      "port": 80,
+      "service": "http",
+      "nse_script": null,
+      "severity_band": "INFO",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 10.0.1.17 (unknown hostname)\nOS guess: unknown\nPort 80/tcp service: http\nProduct/version: Apache httpd 2.4.52\nRule-engine severity: INFO (score 0.0)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n(none retrieved)\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-WEB-001 (CIS Apache HTTP Server Benchmark (illustrative)): Keep web server software on a supported, patched version — Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.\n- CIS-TLS-001 (CIS Generic Server Hardening Benchmark (illustrative)): Monitor and renew TLS certificates before expiry — TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [],
+      "ok": true
+    },
+    {
+      "finding_ref": "10.0.1.18:80/tcp/http/asset",
+      "host": "10.0.1.18",
+      "port": 80,
+      "service": "http",
+      "nse_script": null,
+      "severity_band": "INFO",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 10.0.1.18 (unknown hostname)\nOS guess: unknown\nPort 80/tcp service: http\nProduct/version: Apache httpd 2.4.52\nRule-engine severity: INFO (score 0.0)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n(none retrieved)\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-WEB-001 (CIS Apache HTTP Server Benchmark (illustrative)): Keep web server software on a supported, patched version — Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.\n- CIS-TLS-001 (CIS Generic Server Hardening Benchmark (illustrative)): Monitor and renew TLS certificates before expiry — TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [],
+      "ok": true
+    },
+    {
+      "finding_ref": "10.0.1.19:80/tcp/http/asset",
+      "host": "10.0.1.19",
+      "port": 80,
+      "service": "http",
+      "nse_script": null,
+      "severity_band": "INFO",
+      "prompt_variant": "grounded",
+      "prompt": "You are a cybersecurity reporting assistant. Explain the following security finding to a non-technical stakeholder, using ONLY the retrieved evidence provided.\n\nFINDING:\nHost 10.0.1.19 (unknown hostname)\nOS guess: unknown\nPort 80/tcp service: http\nProduct/version: Apache httpd 2.4.52\nRule-engine severity: INFO (score 0.0)\n\nRETRIEVED CVE DATA (the only CVEs you may cite):\n(none retrieved)\n\nRETRIEVED CIS CONTROLS (the only CIS controls you may cite):\n- CIS-WEB-001 (CIS Apache HTTP Server Benchmark (illustrative)): Keep web server software on a supported, patched version — Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.\n- CIS-TLS-001 (CIS Generic Server Hardening Benchmark (illustrative)): Monitor and renew TLS certificates before expiry — TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.\n\nINSTRUCTIONS:\nCRITICAL RULE: You may only cite CVE IDs and CVSS scores that appear in the RETRIEVED data below. You may only cite CIS control IDs that appear in the RETRIEVED data below. Do not introduce any CVE ID, CVSS score, CWE, or benchmark ID that is not present in the retrieved data. If the retrieved data is insufficient to explain the severity, say so explicitly instead of estimating.\n\nReply with a single JSON object, no markdown, with exactly these fields:\n{\n  \"plain_language_explanation\": \"2-3 sentences a non-technical stakeholder can understand. What is exposed, why it matters, how bad the rule engine rated it.\",\n  \"cve_ids_mentioned\": [\"CVE-YYYY-NNNNN\", ...],\n  \"cis_controls_referenced\": [\"CIS-...\", ...],\n  \"remediation_steps\": [\"step 1\", \"step 2\", ...]\n}\nRules:\n- \"cve_ids_mentioned\" must list every CVE ID you actually reference, and no others.\n- \"cis_controls_referenced\" must list every CIS control ID you reference, and no others.\n- If you reference no CVE or no CIS control, use an empty list.\n",
+      "retrieved_cve_ids": [],
+      "raw_output": "{\"plain_language_explanation\": \"This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.\", \"cve_ids_mentioned\": [], \"cis_controls_referenced\": [], \"remediation_steps\": [\"Patch the affected software\", \"Re-scan to verify\"]}",
+      "parsed": {
+        "plain_language_explanation": "This finding exposes a known vulnerability on the affected service. Apply the referenced remediation and verify the fix.",
+        "cve_ids_mentioned": [],
+        "cis_controls_referenced": [],
+        "remediation_steps": [
+          "Patch the affected software",
+          "Re-scan to verify"
+        ]
+      },
+      "extracted_cve_ids": [],
+      "ok": true
+    },
+    {
+      "finding_ref": "10.0.1.20:80/tcp/http/asset",
+      "host": "10.0.1.20",
+      "port": 80,
+      "service": "http",
+      "nse_script": null,
+      "severity_band": "INFO",
+      "prompt_variant": "grounded",
+      "ok": false,
+      "not_synthesized": true,
+      "error": "not synthesized — daily quota reached",
+      "retrieved_cve_ids": [],
+      "extracted_cve_ids": [],
+      "parsed": {}
+    },
+    {
+      "finding_ref": "10.0.1.21:80/tcp/http/asset",
+      "host": "10.0.1.21",
+      "port": 80,
+      "service": "http",
+      "nse_script": null,
+      "severity_band": "INFO",
+      "prompt_variant": "grounded",
+      "ok": false,
+      "not_synthesized": true,
+      "error": "not synthesized — daily quota reached",
+      "retrieved_cve_ids": [],
+      "extracted_cve_ids": [],
+      "parsed": {}
+    },
+    {
+      "finding_ref": "10.0.1.22:80/tcp/http/asset",
+      "host": "10.0.1.22",
+      "port": 80,
+      "service": "http",
+      "nse_script": null,
+      "severity_band": "INFO",
+      "prompt_variant": "grounded",
+      "ok": false,
+      "not_synthesized": true,
+      "error": "not synthesized — daily quota reached",
+      "retrieved_cve_ids": [],
+      "extracted_cve_ids": [],
+      "parsed": {}
+    },
+    {
+      "finding_ref": "10.0.1.23:80/tcp/http/asset",
+      "host": "10.0.1.23",
+      "port": 80,
+      "service": "http",
+      "nse_script": null,
+      "severity_band": "INFO",
+      "prompt_variant": "grounded",
+      "ok": false,
+      "not_synthesized": true,
+      "error": "not synthesized — daily quota reached",
+      "retrieved_cve_ids": [],
+      "extracted_cve_ids": [],
+      "parsed": {}
+    },
+    {
+      "finding_ref": "10.0.1.24:80/tcp/http/asset",
+      "host": "10.0.1.24",
+      "port": 80,
+      "service": "http",
+      "nse_script": null,
+      "severity_band": "INFO",
+      "prompt_variant": "grounded",
+      "ok": false,
+      "not_synthesized": true,
+      "error": "not synthesized — daily quota reached",
+      "retrieved_cve_ids": [],
+      "extracted_cve_ids": [],
+      "parsed": {}
+    }
+  ],
+  "quota_info": {
+    "requested": 25,
+    "quota_remaining": 20,
+    "quota_exceeded": true,
+    "synthesized": 20,
+    "skipped": 5,
+    "message": "Daily Gemini quota (20/day) exceeded: requested 25, synthesized top 20 highest-severity findings, 5 not synthesized — daily quota reached. (using offline mock — no GEMINI_API_KEY)"
+  },
+  "validation_flags": [],
+  "has_hallucination": false,
+  "host_summary": [
+    {
+      "host": "10.0.1.0",
+      "hostname": null,
+      "os_guess": null,
+      "open_service_count": 1,
+      "vuln_finding_count": 0,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 0.0,
+      "criticality_multiplier": 1.0,
+      "criticality_reason": "Standard asset, no elevated criticality tag matched",
+      "adjusted_risk_score": 0.0,
+      "risk_band": "INFO"
+    },
+    {
+      "host": "10.0.1.1",
+      "hostname": null,
+      "os_guess": null,
+      "open_service_count": 1,
+      "vuln_finding_count": 0,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 0.0,
+      "criticality_multiplier": 1.0,
+      "criticality_reason": "Standard asset, no elevated criticality tag matched",
+      "adjusted_risk_score": 0.0,
+      "risk_band": "INFO"
+    },
+    {
+      "host": "10.0.1.2",
+      "hostname": null,
+      "os_guess": null,
+      "open_service_count": 1,
+      "vuln_finding_count": 0,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 0.0,
+      "criticality_multiplier": 1.0,
+      "criticality_reason": "Standard asset, no elevated criticality tag matched",
+      "adjusted_risk_score": 0.0,
+      "risk_band": "INFO"
+    },
+    {
+      "host": "10.0.1.3",
+      "hostname": null,
+      "os_guess": null,
+      "open_service_count": 1,
+      "vuln_finding_count": 0,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 0.0,
+      "criticality_multiplier": 1.0,
+      "criticality_reason": "Standard asset, no elevated criticality tag matched",
+      "adjusted_risk_score": 0.0,
+      "risk_band": "INFO"
+    },
+    {
+      "host": "10.0.1.4",
+      "hostname": null,
+      "os_guess": null,
+      "open_service_count": 1,
+      "vuln_finding_count": 0,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 0.0,
+      "criticality_multiplier": 1.0,
+      "criticality_reason": "Standard asset, no elevated criticality tag matched",
+      "adjusted_risk_score": 0.0,
+      "risk_band": "INFO"
+    },
+    {
+      "host": "10.0.1.5",
+      "hostname": null,
+      "os_guess": null,
+      "open_service_count": 1,
+      "vuln_finding_count": 0,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 0.0,
+      "criticality_multiplier": 1.0,
+      "criticality_reason": "Standard asset, no elevated criticality tag matched",
+      "adjusted_risk_score": 0.0,
+      "risk_band": "INFO"
+    },
+    {
+      "host": "10.0.1.6",
+      "hostname": null,
+      "os_guess": null,
+      "open_service_count": 1,
+      "vuln_finding_count": 0,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 0.0,
+      "criticality_multiplier": 1.0,
+      "criticality_reason": "Standard asset, no elevated criticality tag matched",
+      "adjusted_risk_score": 0.0,
+      "risk_band": "INFO"
+    },
+    {
+      "host": "10.0.1.7",
+      "hostname": null,
+      "os_guess": null,
+      "open_service_count": 1,
+      "vuln_finding_count": 0,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 0.0,
+      "criticality_multiplier": 1.0,
+      "criticality_reason": "Standard asset, no elevated criticality tag matched",
+      "adjusted_risk_score": 0.0,
+      "risk_band": "INFO"
+    },
+    {
+      "host": "10.0.1.8",
+      "hostname": null,
+      "os_guess": null,
+      "open_service_count": 1,
+      "vuln_finding_count": 0,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 0.0,
+      "criticality_multiplier": 1.0,
+      "criticality_reason": "Standard asset, no elevated criticality tag matched",
+      "adjusted_risk_score": 0.0,
+      "risk_band": "INFO"
+    },
+    {
+      "host": "10.0.1.9",
+      "hostname": null,
+      "os_guess": null,
+      "open_service_count": 1,
+      "vuln_finding_count": 0,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 0.0,
+      "criticality_multiplier": 1.0,
+      "criticality_reason": "Standard asset, no elevated criticality tag matched",
+      "adjusted_risk_score": 0.0,
+      "risk_band": "INFO"
+    },
+    {
+      "host": "10.0.1.10",
+      "hostname": null,
+      "os_guess": null,
+      "open_service_count": 1,
+      "vuln_finding_count": 0,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 0.0,
+      "criticality_multiplier": 1.0,
+      "criticality_reason": "Standard asset, no elevated criticality tag matched",
+      "adjusted_risk_score": 0.0,
+      "risk_band": "INFO"
+    },
+    {
+      "host": "10.0.1.11",
+      "hostname": null,
+      "os_guess": null,
+      "open_service_count": 1,
+      "vuln_finding_count": 0,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 0.0,
+      "criticality_multiplier": 1.0,
+      "criticality_reason": "Standard asset, no elevated criticality tag matched",
+      "adjusted_risk_score": 0.0,
+      "risk_band": "INFO"
+    },
+    {
+      "host": "10.0.1.12",
+      "hostname": null,
+      "os_guess": null,
+      "open_service_count": 1,
+      "vuln_finding_count": 0,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 0.0,
+      "criticality_multiplier": 1.0,
+      "criticality_reason": "Standard asset, no elevated criticality tag matched",
+      "adjusted_risk_score": 0.0,
+      "risk_band": "INFO"
+    },
+    {
+      "host": "10.0.1.13",
+      "hostname": null,
+      "os_guess": null,
+      "open_service_count": 1,
+      "vuln_finding_count": 0,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 0.0,
+      "criticality_multiplier": 1.0,
+      "criticality_reason": "Standard asset, no elevated criticality tag matched",
+      "adjusted_risk_score": 0.0,
+      "risk_band": "INFO"
+    },
+    {
+      "host": "10.0.1.14",
+      "hostname": null,
+      "os_guess": null,
+      "open_service_count": 1,
+      "vuln_finding_count": 0,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 0.0,
+      "criticality_multiplier": 1.0,
+      "criticality_reason": "Standard asset, no elevated criticality tag matched",
+      "adjusted_risk_score": 0.0,
+      "risk_band": "INFO"
+    },
+    {
+      "host": "10.0.1.15",
+      "hostname": null,
+      "os_guess": null,
+      "open_service_count": 1,
+      "vuln_finding_count": 0,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 0.0,
+      "criticality_multiplier": 1.0,
+      "criticality_reason": "Standard asset, no elevated criticality tag matched",
+      "adjusted_risk_score": 0.0,
+      "risk_band": "INFO"
+    },
+    {
+      "host": "10.0.1.16",
+      "hostname": null,
+      "os_guess": null,
+      "open_service_count": 1,
+      "vuln_finding_count": 0,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 0.0,
+      "criticality_multiplier": 1.0,
+      "criticality_reason": "Standard asset, no elevated criticality tag matched",
+      "adjusted_risk_score": 0.0,
+      "risk_band": "INFO"
+    },
+    {
+      "host": "10.0.1.17",
+      "hostname": null,
+      "os_guess": null,
+      "open_service_count": 1,
+      "vuln_finding_count": 0,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 0.0,
+      "criticality_multiplier": 1.0,
+      "criticality_reason": "Standard asset, no elevated criticality tag matched",
+      "adjusted_risk_score": 0.0,
+      "risk_band": "INFO"
+    },
+    {
+      "host": "10.0.1.18",
+      "hostname": null,
+      "os_guess": null,
+      "open_service_count": 1,
+      "vuln_finding_count": 0,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 0.0,
+      "criticality_multiplier": 1.0,
+      "criticality_reason": "Standard asset, no elevated criticality tag matched",
+      "adjusted_risk_score": 0.0,
+      "risk_band": "INFO"
+    },
+    {
+      "host": "10.0.1.19",
+      "hostname": null,
+      "os_guess": null,
+      "open_service_count": 1,
+      "vuln_finding_count": 0,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 0.0,
+      "criticality_multiplier": 1.0,
+      "criticality_reason": "Standard asset, no elevated criticality tag matched",
+      "adjusted_risk_score": 0.0,
+      "risk_band": "INFO"
+    },
+    {
+      "host": "10.0.1.20",
+      "hostname": null,
+      "os_guess": null,
+      "open_service_count": 1,
+      "vuln_finding_count": 0,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 0.0,
+      "criticality_multiplier": 1.0,
+      "criticality_reason": "Standard asset, no elevated criticality tag matched",
+      "adjusted_risk_score": 0.0,
+      "risk_band": "INFO"
+    },
+    {
+      "host": "10.0.1.21",
+      "hostname": null,
+      "os_guess": null,
+      "open_service_count": 1,
+      "vuln_finding_count": 0,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 0.0,
+      "criticality_multiplier": 1.0,
+      "criticality_reason": "Standard asset, no elevated criticality tag matched",
+      "adjusted_risk_score": 0.0,
+      "risk_band": "INFO"
+    },
+    {
+      "host": "10.0.1.22",
+      "hostname": null,
+      "os_guess": null,
+      "open_service_count": 1,
+      "vuln_finding_count": 0,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 0.0,
+      "criticality_multiplier": 1.0,
+      "criticality_reason": "Standard asset, no elevated criticality tag matched",
+      "adjusted_risk_score": 0.0,
+      "risk_band": "INFO"
+    },
+    {
+      "host": "10.0.1.23",
+      "hostname": null,
+      "os_guess": null,
+      "open_service_count": 1,
+      "vuln_finding_count": 0,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 0.0,
+      "criticality_multiplier": 1.0,
+      "criticality_reason": "Standard asset, no elevated criticality tag matched",
+      "adjusted_risk_score": 0.0,
+      "risk_band": "INFO"
+    },
+    {
+      "host": "10.0.1.24",
+      "hostname": null,
+      "os_guess": null,
+      "open_service_count": 1,
+      "vuln_finding_count": 0,
+      "unscored_finding_count": 0,
+      "max_raw_vuln_score": 0.0,
+      "criticality_multiplier": 1.0,
+      "criticality_reason": "Standard asset, no elevated criticality tag matched",
+      "adjusted_risk_score": 0.0,
+      "risk_band": "INFO"
+    }
+  ],
+  "cve_records_total": 0,
+  "cis_matches_total": 50,
+  "hosts_up": 25,
+  "is_empty_scan": false,
+  "is_no_findings": false
+}

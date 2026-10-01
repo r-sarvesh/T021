@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='cp1252'?>
+<nmaprun scanner="nmap" version="7.94" xmloutputversion="1.05" start="1755000011" args="nmap -sS -sV -O -A -p- -oX scan.xml">
+  <scaninfo type="syn" protocol="tcp" numservices="65535" services="1-65535" />
+  <verbose level="0" />
+  <debugging level="0" />
+  <host starttime="-1" endtime="-1">
+    <status state="up" reason="syn-ack" reason_ttl="64" />
+    <address addr="10.20.30.1" addrtype="ipv4" />
+    <hostnames>
+      <hostname name="decoy-ftp-11.corp.local" type="PTR" />
+    </hostnames>
+    <ports>
+      <extraports state="filtered" count="65526" />
+      <port protocol="tcp" portid="21">
+        <state state="open" reason="syn-ack" reason_ttl="64" />
+        <service name="ftp" method="probed" conf="10" product="ProFTPD" version="1.3.5" />
+        <script id="ftp-anon" output="Anonymous FTP login allowed (FTP code 230)" />
+      </port>
+      <port protocol="tcp" portid="22">
+        <state state="open" reason="syn-ack" reason_ttl="64" />
+        <service name="ssh" method="probed" conf="10" product="OpenSSH" version="7.2" />
+      </port>
+    </ports>
+    <os>
+      <osmatch name="FreeBSD 9.x" accuracy="96" />
+    </os>
+  </host>
+  <runstats>
+    <finished time="-1" summary="done" exit="success" />
+    <hosts up="1" down="0" total="1" />
+  </runstats>
+</nmaprun>

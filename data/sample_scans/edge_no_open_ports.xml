@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="file:///usr/local/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.94 scan initiated as: nmap -sS -sV -oX edge_no_open_ports.xml 192.168.1.99 -->
+<nmaprun scanner="nmap" args="nmap -sS -sV -oX edge_no_open_ports.xml 192.168.1.99" start="1755080400" startstr="Wed Aug 13 09:00:00 2026" version="7.94" xmloutputversion="1.05">
+  <scaninfo type="syn" protocol="tcp" numservices="65535" services="1-65535"/>
+  <verbose level="0"/>
+  <debugging level="0"/>
+  <host starttime="1755080401" endtime="1755080420">
+    <status state="up" reason="arp-response" reason_ttl="0"/>
+    <address addr="192.168.1.99" addrtype="ipv4"/>
+    <address addr="AA:BB:CC:DD:EE:FF" addrtype="mac" vendor="Unknown"/>
+    <hostnames>
+      <hostname name="nowhere.corp.local" type="PTR"/>
+    </hostnames>
+    <ports>
+      <extraports state="filtered" count="65532"/>
+      <port protocol="tcp" portid="22">
+        <state state="filtered" reason="no-response" reason_ttl="0"/>
+        <service name="ssh" product="OpenSSH" version="8.9" method="probed" conf="10"/>
+      </port>
+      <port protocol="tcp" portid="80">
+        <state state="closed" reason="reset" reason_ttl="0"/>
+        <service name="http" product="Apache httpd" version="2.4.52" method="probed" conf="10"/>
+      </port>
+      <port protocol="tcp" portid="443">
+        <state state="filtered" reason="no-response" reason_ttl="0"/>
+        <service name="https" product="nginx" version="1.18.0" method="probed" conf="10"/>
+      </port>
+    </ports>
+    <os>
+      <osmatch name="Linux 5.4" accuracy="95"/>
+    </os>
+  </host>
+  <runstats>
+    <finished time="1755080420" timestr="Wed Aug 13 09:01:00 2026" elapsed="20.1" summary="Nmap done at Wed Aug 13 09:01:00 2026; 1 IP addresses (1 hosts up) scanned in 20.1 seconds" exit="success"/>
+    <hosts up="1" down="0" total="1"/>
+  </runstats>
+</nmaprun>

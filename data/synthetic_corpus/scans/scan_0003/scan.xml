@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='cp1252'?>
+<nmaprun scanner="nmap" version="7.94" xmloutputversion="1.05" start="1755000003" args="nmap -sS -sV -O -A -p- -oX scan.xml">
+  <scaninfo type="syn" protocol="tcp" numservices="65535" services="1-65535" />
+  <verbose level="0" />
+  <debugging level="0" />
+  <host starttime="-1" endtime="-1">
+    <status state="up" reason="syn-ack" reason_ttl="64" />
+    <address addr="10.20.30.1" addrtype="ipv4" />
+    <hostnames>
+      <hostname name="ws-legacy-03.corp.local" type="PTR" />
+    </hostnames>
+    <ports>
+      <extraports state="filtered" count="65526" />
+      <port protocol="tcp" portid="135">
+        <state state="open" reason="syn-ack" reason_ttl="64" />
+        <service name="msrpc" method="probed" conf="10" product="Microsoft Windows RPC" />
+      </port>
+      <port protocol="tcp" portid="445">
+        <state state="open" reason="syn-ack" reason_ttl="64" />
+        <service name="microsoft-ds" method="probed" conf="10" product="Windows 7 Professional microsoft-ds" />
+      </port>
+      <port protocol="tcp" portid="3389">
+        <state state="open" reason="syn-ack" reason_ttl="64" />
+        <service name="ms-wbt-server" method="probed" conf="10" product="Microsoft Terminal Services" />
+        <script id="rdp-vuln-ms12-020" output="VULNERABLE: MS12-020 Remote Desktop Protocol Denial of Service" />
+        <script id="smb-vuln-ms17-010" output="VULNERABLE: Pre-auth Remote Code Execution in RDP (BlueKeep). Risk factor: CRITICAL  IDs: CVE:CVE-2019-0708" />
+      </port>
+    </ports>
+    <os>
+      <osmatch name="Microsoft Windows 7 SP1" accuracy="96" />
+    </os>
+  </host>
+  <host starttime="-1" endtime="-1">
+    <status state="up" reason="syn-ack" reason_ttl="64" />
+    <address addr="10.20.30.2" addrtype="ipv4" />
+    <hostnames>
+      <hostname name="cache-redis-03.corp.local" type="PTR" />
+    </hostnames>
+    <ports>
+      <extraports state="filtered" count="65526" />
+      <port protocol="tcp" portid="6379">
+        <state state="open" reason="syn-ack" reason_ttl="64" />
+        <service name="redis" method="probed" conf="10" product="Redis key-value store" version="6.0.15" />
+        <script id="redis-info" output="VULNERABLE: Redis server reachable with no password (no requirepass configured)." />
+        <script id="redis-vuln-cve2022-0543" output="VULNERABLE: Debian-packaged Redis Lua sandbox escape allows remote code execution. IDs: CVE:CVE-2022-0543" />
+        <script id="redis-vuln-cve2021-32761" output="VULNERABLE: Redis integer overflow in BIT commands corrupts heap / leaks contents. IDs: CVE:CVE-2021-32761" />
+      </port>
+    </ports>
+    <os>
+      <osmatch name="Linux 4.15 - 5.6" accuracy="96" />
+    </os>
+  </host>
+  <runstats>
+    <finished time="-1" summary="done" exit="success" />
+    <hosts up="2" down="0" total="2" />
+  </runstats>
+</nmaprun>

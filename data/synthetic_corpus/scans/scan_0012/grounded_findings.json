@@ -1,0 +1,172 @@
+[
+  {
+    "type": "asset",
+    "host": "10.20.30.1",
+    "hostname": "srv-ssh-12.corp.local",
+    "os_guess": "Linux 4.15 - 5.6",
+    "port": 22,
+    "protocol": "tcp",
+    "service": "ssh",
+    "product": "OpenSSH",
+    "version": "7.4",
+    "cve_refs": [],
+    "nse_script": null,
+    "raw_output": null,
+    "severity_score": 0.0,
+    "severity_band": "INFO",
+    "scoring_rationale": "Standard open service, no elevated exposure risk assigned",
+    "grounding_context": {
+      "cve_records": [],
+      "cis_matches": [
+        {
+          "id": "CIS-SSH-001",
+          "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+          "section": "Remote Access",
+          "control_title": "Disable password authentication in favor of key-based SSH login",
+          "text": "SSH should be configured to disable password authentication and require public-key authentication instead, reducing exposure to credential-stuffing and brute-force attacks. Combine this with disabling root login over SSH and restricting access to specific source networks where feasible.",
+          "applies_to": [
+            "ssh",
+            "openssh"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.375
+        }
+      ],
+      "service_tags_used": [
+        "openssh",
+        "ssh"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.1",
+    "hostname": "srv-ssh-12.corp.local",
+    "os_guess": "Linux 4.15 - 5.6",
+    "port": 22,
+    "protocol": "tcp",
+    "service": "ssh",
+    "product": "OpenSSH",
+    "version": "7.4",
+    "cve_refs": [
+      "CVE-2018-15473"
+    ],
+    "nse_script": "ssh2-enum-algos",
+    "raw_output": "VULNERABLE: OpenSSH username enumeration via auth bailout timing. IDs: CVE:CVE-2018-15473",
+    "severity_score": 5.3,
+    "severity_band": "MEDIUM",
+    "scoring_rationale": "CVSS v3 base score 5.3 from ['CVE-2018-15473']",
+    "grounding_context": {
+      "cve_records": [
+        {
+          "id": "CVE-2018-15473",
+          "text": "OpenSSH through 7.7 is prone to a user enumeration vulnerability due to not delaying bailout for an invalid authenticating user until after the packet containing the request has been fully parsed, related to auth2-gss.c, auth2-hostbased.c, and auth2-pubkey.c.",
+          "cvss_v3_score": 5.3,
+          "cvss_v3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+          "cvss_severity": "MEDIUM",
+          "cwe_ids": [
+            "CWE-362",
+            "CWE-362"
+          ],
+          "published_date": "2018-08-17T19:29:00.223",
+          "last_modified_date": "2026-06-17T01:42:35.090",
+          "references": [
+            "http://www.openwall.com/lists/oss-security/2018/08/15/5",
+            "http://www.securityfocus.com/bid/105140",
+            "http://www.securitytracker.com/id/1041487",
+            "https://access.redhat.com/errata/RHSA-2019:0711",
+            "https://access.redhat.com/errata/RHSA-2019:2143"
+          ],
+          "kev_listed": null,
+          "kev_date_added": null
+        }
+      ],
+      "cis_matches": [
+        {
+          "id": "CIS-SSH-001",
+          "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+          "section": "Remote Access",
+          "control_title": "Disable password authentication in favor of key-based SSH login",
+          "text": "SSH should be configured to disable password authentication and require public-key authentication instead, reducing exposure to credential-stuffing and brute-force attacks. Combine this with disabling root login over SSH and restricting access to specific source networks where feasible.",
+          "applies_to": [
+            "ssh",
+            "openssh"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.354
+        }
+      ],
+      "service_tags_used": [
+        "openssh",
+        "ssh"
+      ]
+    }
+  },
+  {
+    "type": "vuln",
+    "host": "10.20.30.1",
+    "hostname": "srv-ssh-12.corp.local",
+    "os_guess": "Linux 4.15 - 5.6",
+    "port": 22,
+    "protocol": "tcp",
+    "service": "ssh",
+    "product": "OpenSSH",
+    "version": "7.4",
+    "cve_refs": [
+      "CVE-2016-6210"
+    ],
+    "nse_script": "ssh-vuln-cve2016-6210",
+    "raw_output": "VULNERABLE: OpenSSH user enumeration via password-hash timing difference. IDs: CVE:CVE-2016-6210",
+    "severity_score": 5.9,
+    "severity_band": "MEDIUM",
+    "scoring_rationale": "CVSS v3 base score 5.9 from ['CVE-2016-6210']",
+    "grounding_context": {
+      "cve_records": [
+        {
+          "id": "CVE-2016-6210",
+          "text": "sshd in OpenSSH before 7.3, when SHA256 or SHA512 are used for user password hashing, uses BLOWFISH hashing on a static password when the username does not exist, which allows remote attackers to enumerate users by leveraging the timing difference between responses when a large password is provided.",
+          "cvss_v3_score": 5.9,
+          "cvss_v3_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "cvss_severity": "MEDIUM",
+          "cwe_ids": [
+            "CWE-200",
+            "CWE-200"
+          ],
+          "published_date": "2017-02-13T17:59:00.153",
+          "last_modified_date": "2026-06-17T00:50:38.270",
+          "references": [
+            "http://seclists.org/fulldisclosure/2016/Jul/51",
+            "http://www.debian.org/security/2016/dsa-3626",
+            "http://www.securityfocus.com/bid/91812",
+            "http://www.securitytracker.com/id/1036319",
+            "https://access.redhat.com/errata/RHSA-2017:2029"
+          ],
+          "kev_listed": null,
+          "kev_date_added": null
+        }
+      ],
+      "cis_matches": [
+        {
+          "id": "CIS-SSH-001",
+          "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+          "section": "Remote Access",
+          "control_title": "Disable password authentication in favor of key-based SSH login",
+          "text": "SSH should be configured to disable password authentication and require public-key authentication instead, reducing exposure to credential-stuffing and brute-force attacks. Combine this with disabling root login over SSH and restricting access to specific source networks where feasible.",
+          "applies_to": [
+            "ssh",
+            "openssh"
+          ],
+          "level": 1,
+          "remediation_type": "configuration",
+          "similarity_score": 0.375
+        }
+      ],
+      "service_tags_used": [
+        "openssh",
+        "ssh"
+      ]
+    }
+  }
+]

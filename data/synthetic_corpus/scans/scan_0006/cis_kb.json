@@ -1,0 +1,62 @@
+[
+  {
+    "id": "CIS-SMB-001",
+    "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+    "section": "Network Security",
+    "control_title": "Disable SMBv1 and require SMB signing",
+    "text": "Legacy SMBv1 should be disabled on all Windows hosts, as it lacks modern security controls and is the protocol version targeted by well-known remote code execution exploits. SMB signing should be required to prevent relay and tampering attacks. Disable SMBv1 via PowerShell (Disable-WindowsOptionalFeature -Online -FeatureName SMB1Protocol) or Group Policy, and verify no legacy applications depend on it before rollout.",
+    "applies_to": [
+      "smb",
+      "microsoft-ds",
+      "windows_server",
+      "windows"
+    ],
+    "level": 1,
+    "remediation_type": "feature_removal"
+  },
+  {
+    "id": "CIS-SMB-002",
+    "benchmark": "CIS Microsoft Windows Server Benchmark (illustrative)",
+    "section": "Network Security",
+    "control_title": "Apply security updates for SMB remote code execution vulnerabilities promptly",
+    "text": "Hosts exposing SMB services should be patched against known remote code execution vulnerabilities as a priority, since SMB is a common lateral-movement and ransomware entry vector. Maintain a patch cadence that applies critical SMB-related security updates within 72 hours of release for internet- or high-value-network-facing systems.",
+    "applies_to": [
+      "smb",
+      "microsoft-ds",
+      "windows_server",
+      "windows"
+    ],
+    "level": 1,
+    "remediation_type": "patch_management"
+  },
+  {
+    "id": "CIS-TLS-001",
+    "benchmark": "CIS Generic Server Hardening Benchmark (illustrative)",
+    "section": "Transport Security",
+    "control_title": "Monitor and renew TLS certificates before expiry",
+    "text": "TLS certificates should be tracked with automated expiry monitoring and renewed well before their expiration date. An expired certificate causes client trust warnings or hard connection failures, and in some client configurations, silently downgrades security expectations. Automated renewal (e.g. via ACME/Let's Encrypt or enterprise PKI tooling) is preferred over manual tracking.",
+    "applies_to": [
+      "https",
+      "ssl",
+      "tls",
+      "apache_httpd",
+      "nginx"
+    ],
+    "level": 1,
+    "remediation_type": "configuration"
+  },
+  {
+    "id": "CIS-WEB-001",
+    "benchmark": "CIS Apache HTTP Server Benchmark (illustrative)",
+    "section": "Server Hardening",
+    "control_title": "Keep web server software on a supported, patched version",
+    "text": "Web server software should be kept current with vendor security patches, and end-of-life versions should be upgraded. Older Apache httpd releases have accumulated known vulnerabilities that are fixed in later maintenance branches; running an outdated version increases exposure without proportionate benefit.",
+    "applies_to": [
+      "http",
+      "https",
+      "apache_httpd"
+    ],
+    "level": 1,
+    "remediation_type": "patch_management"
+  }
+]

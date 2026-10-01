@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='cp1252'?>
+<nmaprun scanner="nmap" version="7.94" xmloutputversion="1.05" start="1755000006" args="nmap -sS -sV -O -A -p- -oX scan.xml">
+  <scaninfo type="syn" protocol="tcp" numservices="65535" services="1-65535" />
+  <verbose level="0" />
+  <debugging level="0" />
+  <host starttime="-1" endtime="-1">
+    <status state="up" reason="syn-ack" reason_ttl="64" />
+    <address addr="10.20.30.1" addrtype="ipv4" />
+    <hostnames>
+      <hostname name="web-apache-06.corp.local" type="PTR" />
+    </hostnames>
+    <ports>
+      <extraports state="filtered" count="65526" />
+      <port protocol="tcp" portid="80">
+        <state state="open" reason="syn-ack" reason_ttl="64" />
+        <service name="http" method="probed" conf="10" product="Apache httpd" version="2.4.49" />
+        <script id="http-vuln-cve2021-41773" output="VULNERABLE: Apache 2.4.49 path traversal leading to file disclosure and RCE. IDs: CVE:CVE-2021-41773" />
+        <script id="http-title" output="Welcome to the Internal Portal" />
+      </port>
+      <port protocol="tcp" portid="443">
+        <state state="open" reason="syn-ack" reason_ttl="64" />
+        <service name="https" method="probed" conf="10" product="Apache httpd" version="2.4.49" />
+        <script id="ssl-ccs-injection" output="VULNERABLE: TLS server vulnerable to BN_mod_sqrt infinite-loop denial of service. IDs: CVE:CVE-2022-0778" />
+      </port>
+    </ports>
+    <os>
+      <osmatch name="Linux 4.15 - 5.6" accuracy="96" />
+    </os>
+  </host>
+  <host starttime="-1" endtime="-1">
+    <status state="up" reason="syn-ack" reason_ttl="64" />
+    <address addr="10.20.30.2" addrtype="ipv4" />
+    <hostnames>
+      <hostname name="win10-06.corp.local" type="PTR" />
+    </hostnames>
+    <ports>
+      <extraports state="filtered" count="65526" />
+      <port protocol="tcp" portid="445">
+        <state state="open" reason="syn-ack" reason_ttl="64" />
+        <service name="microsoft-ds" method="probed" conf="10" product="Windows 10 Pro 1903 microsoft-ds" />
+        <script id="smb-vuln-smbghost" output="VULNERABLE: SMBv3 Compression buffer overflow Remote Code Execution (SMBGhost). State: VULNERABLE Risk factor: CRITICAL  IDs: CVE:CVE-2020-0796" />
+      </port>
+      <port protocol="tcp" portid="139">
+        <state state="open" reason="syn-ack" reason_ttl="64" />
+        <service name="netbios-ssn" method="probed" conf="10" product="Microsoft Windows netbios-ssn" />
+      </port>
+    </ports>
+    <os>
+      <osmatch name="Microsoft Windows 10 1903" accuracy="96" />
+    </os>
+  </host>
+  <runstats>
+    <finished time="-1" summary="done" exit="success" />
+    <hosts up="2" down="0" total="2" />
+  </runstats>
+</nmaprun>

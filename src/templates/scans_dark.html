@@ -1,0 +1,141 @@
+{% extends "base_dark.html" %}
+{% block title %}Scans — Cyber Health Assessment{% endblock %}
+{% block breadcrumb %}<span>Scans</span>{% endblock %}
+{% block topbar_actions %}
+<a href="{{ url_for('report_upload') }}" class="btn-primary"><i data-lucide="upload" class="ic" style="width:14px;height:14px;"></i> Import Nmap scan</a>
+{% endblock %}
+{% block content %}
+<div style="margin-bottom: 24px;">
+  <h1 style="margin:0 0 4px; font-size: 20px; font-weight: 700; color: var(--text);">Scan library</h1>
+  <p style="margin:0; font-size: 13px; color: var(--text-muted);">Imported Nmap assessments across all monitored segments.</p>
+</div>
+
+<div class="card" style="padding: 12px; margin-bottom: 16px; display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+  <div style="flex:1; min-width:200px; position:relative;">
+    <i data-lucide="search" class="ic" style="position:absolute; left:10px; top:50%; transform:translateY(-50%); width:14px;height:14px; color:var(--text-muted);"></i>
+    <input type="search" id="scan-search" placeholder="Search scans by name or filename…" style="width:100%; background: var(--bg); border:1px solid var(--border); color: var(--text); padding:8px 12px 8px 32px; border-radius:8px; font-size:13px; outline:none;">
+  </div>
+  <select id="filter-hosts" style="background: var(--bg); border:1px solid var(--border); color: var(--text); padding:8px 12px; border-radius:8px; font-size:13px; min-width:100px;">
+    <option value="all">all hosts</option>
+    <option value="1">1 host</option>
+    <option value="3">3 hosts</option>
+    <option value="6">6 hosts</option>
+  </select>
+  <select id="filter-findings" style="background: var(--bg); border:1px solid var(--border); color: var(--text); padding:8px 12px; border-radius:8px; font-size:13px; min-width:100px;">
+    <option value="all">all findings</option>
+    <option value="0">0 findings</option>
+    <option value="20+">20+ findings</option>
+  </select>
+  <select id="filter-risk" style="background: var(--bg); border:1px solid var(--border); color: var(--text); padding:8px 12px; border-radius:8px; font-size:13px; min-width:100px;">
+    <option value="all">all risk</option>
+    <option value="CRITICAL">Critical</option>
+    <option value="HIGH">High</option>
+    <option value="INFO">Info</option>
+  </select>
+  <select style="background: var(--bg); border:1px solid var(--border); color: var(--text); padding:8px 12px; border-radius:8px; font-size:13px; min-width:100px;">
+    <option>recent</option>
+    <option>oldest</option>
+  </select>
+</div>
+
+<div class="card" style="padding:0; overflow:hidden;">
+  <div style="overflow-x:auto;">
+    <table style="width:100%; border-collapse:collapse; font-size:13px;">
+      <thead>
+        <tr style="border-bottom:1px solid var(--border);">
+          <th style="text-align:left; padding:12px 16px; font-size:11px; font-weight:600; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em;">Scan</th>
+          <th style="text-align:left; padding:12px 16px; font-size:11px; font-weight:600; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em;">Imported by</th>
+          <th style="text-align:left; padding:12px 16px; font-size:11px; font-weight:600; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em;">Imported</th>
+          <th style="text-align:center; padding:12px 16px; font-size:11px; font-weight:600; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em;">Hosts</th>
+          <th style="text-align:center; padding:12px 16px; font-size:11px; font-weight:600; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em;">Findings</th>
+          <th style="text-align:left; padding:12px 16px; font-size:11px; font-weight:600; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em;">Highest</th>
+          <th style="text-align:left; padding:12px 16px; font-size:11px; font-weight:600; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em;">Evidence</th>
+          <th style="text-align:center; padding:12px 16px; font-size:11px; font-weight:600; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em;">Status</th>
+        </tr>
+      </thead>
+      <tbody id="scans-tbody">
+        {% for s in scans %}
+        <tr data-search="{{ s.scan_id }} {{ s.filename or '' }}" data-hosts="{{ s.hosts }}" data-findings="{{ s.findings }}" data-risk="{{ s.worst_band }}" style="border-bottom:1px solid var(--border); transition: background 0.15s;">
+          <td style="padding:14px 16px;">
+            <a href="{{ url_for('scan', scan_id=s.scan_id) }}" style="font-weight:600; color:var(--text); display:block; margin-bottom:2px;">{{ s.display_name or s.scan_id }}</a>
+            <span class="mono" style="font-size:11px; color:var(--text-faint);">{{ s.filename or s.scan_id + '.xml' }}</span>
+          </td>
+          <td style="padding:14px 16px; color:var(--text-muted); font-size:13px;">{{ s.imported_by or 'System' }}</td>
+          <td style="padding:14px 16px; color:var(--text-muted); font-size:13px; white-space:nowrap;">{{ s.imported_at or '16 Aug 2026, 13:01' }}</td>
+          <td style="padding:14px 16px; text-align:center; color:var(--text);">{{ s.hosts }}</td>
+          <td style="padding:14px 16px; text-align:center; color:var(--text);">{{ s.findings }}</td>
+          <td style="padding:14px 16px;">
+            {% if s.worst_band == 'CRITICAL' %}
+            <span style="background: var(--critical-bg); border:1px solid var(--critical-border); color:var(--critical); padding:3px 8px; border-radius:6px; font-size:11px; font-weight:600; display:inline-flex; align-items:center; gap:4px;"><i data-lucide="shield-alert" class="ic" style="width:12px;height:12px;"></i> Critical</span>
+            {% elif s.worst_band == 'HIGH' %}
+            <span style="background: var(--high-bg); border:1px solid var(--high-border); color:var(--high); padding:3px 8px; border-radius:6px; font-size:11px; font-weight:600; display:inline-flex; align-items:center; gap:4px;"><i data-lucide="alert-triangle" class="ic" style="width:12px;height:12px;"></i> High</span>
+            {% elif s.worst_band == 'MEDIUM' %}
+            <span style="background: var(--medium-bg); border:1px solid var(--medium-border); color:var(--medium); padding:3px 8px; border-radius:6px; font-size:11px; font-weight:600;">Medium</span>
+            {% elif s.worst_band == 'LOW' %}
+            <span style="background: var(--low-bg); border:1px solid var(--low-border); color:var(--low); padding:3px 8px; border-radius:6px; font-size:11px; font-weight:600;">Low</span>
+            {% else %}
+            <span style="color:var(--text-faint);">—</span>
+            {% endif %}
+          </td>
+          <td style="padding:14px 16px;">
+            {% if s.findings > 0 %}
+            <div style="display:flex; align-items:center; gap:8px;">
+              <div style="width:60px; height:6px; background: var(--bg); border:1px solid var(--border); border-radius:3px; overflow:hidden;">
+                <div style="height:100%; width: {{ s.evidence_pct }}%; background: var(--evidence);"></div>
+              </div>
+              <span style="font-size:12px; color:var(--text-muted);">{{ s.evidence_pct }}%</span>
+            </div>
+            {% else %}
+            <span style="color:var(--text-faint);">—</span>
+            {% endif %}
+          </td>
+          <td style="padding:14px 16px; text-align:center;">
+            {% if s.status == 'Processing' %}
+            <span style="background: rgba(0,212,255,0.12); border:1px solid rgba(0,212,255,0.3); color:var(--accent); padding:4px 10px; border-radius:12px; font-size:11px; font-weight:600; display:inline-flex; align-items:center; gap:4px;"><i data-lucide="loader-2" class="ic" style="width:12px;height:12px; animation: spin 1s linear infinite;"></i> Processing</span>
+            {% elif s.status == 'Completed' or not s.status %}
+            <span style="background: var(--evidence-bg); border:1px solid var(--evidence-border); color:var(--evidence); padding:4px 10px; border-radius:12px; font-size:11px; font-weight:600; display:inline-flex; align-items:center; gap:4px;"><i data-lucide="check-circle" class="ic" style="width:12px;height:12px;"></i> Completed</span>
+            {% else %}
+            <span style="background: var(--evidence-bg); border:1px solid var(--evidence-border); color:var(--evidence); padding:4px 10px; border-radius:12px; font-size:11px; font-weight:600;">{{ s.status }}</span>
+            {% endif %}
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="8" style="padding:40px; text-align:center; color:var(--text-muted);">No scans yet. <a href="{{ url_for('report_upload') }}">Import your first Nmap scan</a>.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<style>
+  @keyframes spin { to { transform: rotate(360deg); } }
+  tbody tr:hover { background: rgba(255,255,255,0.02); }
+</style>
+{% endblock %}
+{% block scripts %}
+<script>
+  const search = document.getElementById('scan-search');
+  const hostsFilter = document.getElementById('filter-hosts');
+  const findingsFilter = document.getElementById('filter-findings');
+  const riskFilter = document.getElementById('filter-risk');
+  const tbody = document.getElementById('scans-tbody');
+  const rows = Array.from(tbody.querySelectorAll('tr[data-search]'));
+  function apply() {
+    const q = search.value.toLowerCase();
+    const h = hostsFilter.value;
+    const f = findingsFilter.value;
+    const r = riskFilter.value;
+    rows.forEach(row => {
+      const okQ = !q || row.dataset.search.toLowerCase().includes(q);
+      const okH = h === 'all' || row.dataset.hosts === h;
+      const okF = f === 'all' || (f === '0' ? row.dataset.findings === '0' : parseInt(row.dataset.findings) >= 20);
+      const okR = r === 'all' || row.dataset.risk === r;
+      row.style.display = (okQ && okH && okF && okR) ? '' : 'none';
+    });
+  }
+  if (search) search.addEventListener('input', apply);
+  if (hostsFilter) hostsFilter.addEventListener('change', apply);
+  if (findingsFilter) findingsFilter.addEventListener('change', apply);
+  if (riskFilter) riskFilter.addEventListener('change', apply);
+</script>
+{% endblock %}

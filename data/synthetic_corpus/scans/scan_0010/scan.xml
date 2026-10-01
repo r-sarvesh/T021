@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='cp1252'?>
+<nmaprun scanner="nmap" version="7.94" xmloutputversion="1.05" start="1755000010" args="nmap -sS -sV -O -A -p- -oX scan.xml">
+  <scaninfo type="syn" protocol="tcp" numservices="65535" services="1-65535" />
+  <verbose level="0" />
+  <debugging level="0" />
+  <host starttime="-1" endtime="-1">
+    <status state="up" reason="syn-ack" reason_ttl="64" />
+    <address addr="10.20.30.1" addrtype="ipv4" />
+    <hostnames>
+      <hostname name="db-mongo-10.corp.local" type="PTR" />
+    </hostnames>
+    <ports>
+      <extraports state="filtered" count="65526" />
+      <port protocol="tcp" portid="27017">
+        <state state="open" reason="syn-ack" reason_ttl="64" />
+        <service name="mongodb" method="probed" conf="10" product="MongoDB" version="3.6.13" />
+        <script id="mongodb-info" output="VULNERABLE: MongoDB server running with no authentication — every connection is authorized as admin." />
+        <script id="mongodb-vuln-cve2019-2386" output="VULNERABLE: MongoDB authorization session persists after user deletion (user-account conflation). IDs: CVE:CVE-2019-2386" />
+      </port>
+    </ports>
+    <os>
+      <osmatch name="Linux 4.15 - 5.6" accuracy="96" />
+    </os>
+  </host>
+  <runstats>
+    <finished time="-1" summary="done" exit="success" />
+    <hosts up="1" down="0" total="1" />
+  </runstats>
+</nmaprun>
