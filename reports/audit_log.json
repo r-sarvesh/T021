@@ -1,5 +1,15 @@
 [
   {
+    "id": "a-1868c488",
+    "timestamp": "2026-10-01T15:56:02.709286Z",
+    "user": "Peter",
+    "role": "admin",
+    "action": "login",
+    "target": "session",
+    "result": "success",
+    "ip": "127.0.0.1"
+  },
+  {
     "id": "a-28cdbaa6",
     "timestamp": "2026-09-24T15:05:32.534169Z",
     "user": "M. Lindqvist",

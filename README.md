@@ -82,7 +82,7 @@ Never commit this file. If a key is ever exposed, rotate it immediately.
 ### 2. Run the backend
 
 ```bash
-pip install -r requirements.txt
+pip install flask requests scikit-learn reportlab
 python start_flask.py
 ```
 
@@ -99,16 +99,20 @@ Open http://localhost:3000.
 
 ### 4. Try a demo scan
 
-Upload `vsftpd_test.xml` (a single-finding scan) through the UI.
+Upload `vsftpd_test.xml` (a single-finding scan) through the UI — safe to run against the live free tier.
 
->
+> **⚠ Do not upload `fixtures/quota_test_25findings_DO_NOT_RUN_LIVE.xml` against a live key.** Its 25 findings would request 25 syntheses against the 20/day free-tier quota. Use it only with the offline MockClient (launch Flask with `GEMINI_API_KEY` unset).
 
 ## Repository layout
 
 ```
 src/        Backend pipeline (parser, rules, retrieval, synthesis, web API)
+app/        Next.js pages
+components/ React components
 eval/       Hallucination benchmark harnesses and results
 tests/      Parity tests (Jinja routes vs Next.js pages) and browser tests
+fixtures/   Nmap XML test fixtures
+scripts/    One-off maintenance scripts
 ```
 
 Demo files `demo_dashboard.html` and `benchmark_exhibit.html` are generated from real Gemini runs and should not be edited by hand.
