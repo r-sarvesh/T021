@@ -2,14 +2,26 @@
 
 import { getBenchmarkData } from '@/lib/api/client'
 import { useAsync } from '@/lib/use-async'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
 import { ErrorState, TableSkeleton } from '@/components/data-states'
+import { StatCard } from '@/components/benchmark/stat-card'
+import { CompareCard } from '@/components/benchmark/compare-card'
+import { SummaryPanel } from '@/components/benchmark/summary-panel'
+import { ratioPctText, type Ratio } from '@/components/benchmark/metric-row'
 
-function fmt(num: number, den: number) {
-  if (den === 0) return `0/0 N/A (abstention)`
-  const pct = ((num / den) * 100).toFixed(1)
-  return `${num}/${den} (${pct}%)`
+interface Condition {
+  per_finding_any: Ratio
+  per_finding_unsupported: Ratio
+  per_finding_fabricated: Ratio
+  per_citation_bad: Ratio
+  per_citation_fabricated: Ratio
+  findings_zero_citations: Ratio
+  total_citations: number
+}
+
+function rawLine(c: Condition) {
+  const any = c.per_finding_any
+  const cit = c.per_citation_bad
+  return `${any.num}/${any.den} findings · ${cit.num}/${cit.den} citations`
 }
 
 export function BenchmarkView() {
@@ -20,134 +32,147 @@ export function BenchmarkView() {
 
   const data: any = bench.data
   const side = data.side_by_side
-  const scoredGrounded = side.scored_grounded
-  const scoredUngrounded = side.scored_ungrounded
-  const groundedRec = side.grounded
-  const ungroundedRec = side.ungrounded
+  const groundedRec: any = side.grounded
+  const ungroundedRec: any = side.ungrounded
+  const scoredGrounded: any = side.scored_grounded
+  const scoredUngrounded: any = side.scored_ungrounded
   const live = data.summary_live_small?.structured
   const corpus = data.summary_corpus?.structured
 
-  const renderCard = (variant: 'grounded' | 'ungrounded', rec: any, scored: any) => {
-    const isGrounded = variant === 'grounded'
-    const hasBad = scored.has_bad_citation
-    const isSupported = !hasBad
-    const border = isGrounded ? (isSupported ? 'border-verified/30' : 'border-critical/30') : hasBad ? 'border-critical/30' : 'border-border'
-    const bg = !isSupported ? 'bg-critical/5' : isGrounded ? 'bg-verified/5' : 'bg-card'
-    const cveIds: string[] = rec.extracted_cve_ids || rec.parsed?.cve_ids_mentioned || []
-    const allowed: string[] = scored.allowed_cve_ids || []
-    const unsupported: string[] = scored.unsupported_cve_ids || []
-    const fabricated: string[] = scored.fabricated_cve_ids || []
-    return (
-      <Card className={`${border} ${bg} border-l-4`}>
-        <CardHeader>
-          <CardTitle className="flex flex-wrap items-center gap-2 text-sm">
-            <span className="font-mono uppercase">{variant}</span>
-            <Badge variant={isSupported ? 'outline' : 'destructive'} className={isSupported ? 'border-verified/30 bg-verified/10 text-verified' : ''}>
-              {isSupported ? 'SUPPORTED' : 'FLAGGED'}
-            </Badge>
-            <span className="text-xs font-normal text-muted-foreground">{isGrounded ? 'grounded — only retrieved CVEs may be cited' : 'ungrounded — no retrieval context'}</span>
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="flex flex-col gap-2 text-sm">
-          <div className="font-mono text-xs text-muted-foreground">
-            Finding {rec.finding_ref} · {rec.severity_band} · retrieved: {rec.retrieved_cve_ids?.join(', ') || '(none)'}
-          </div>
-          <p className="text-sm leading-relaxed">{rec.parsed?.plain_language_explanation || rec.raw_output || ''}</p>
-          <div className="flex flex-wrap gap-1">
-            {cveIds.length ? cveIds.map((c) => (
-              <span key={c} className="inline-flex items-center gap-1 rounded-md border border-verified/30 bg-verified/10 px-2 py-0.5 text-xs font-medium text-verified">
-                {c}
-                {fabricated.includes(c) && <Badge variant="destructive" className="ml-1 px-1 py-0 text-[9px]">fabricated_cve</Badge>}
-                {unsupported.includes(c) && <Badge variant="destructive" className="ml-1 px-1 py-0 text-[9px]">unsupported_cve</Badge>}
-              </span>
-            )) : <span className="text-xs text-muted-foreground">— no CVE cited</span>}
-          </div>
-          <div className="font-mono text-xs text-muted-foreground">Allowed: {allowed.join(', ') || '(none — ungrounded)'} · Citation count: {scored.citation_count} · Bad: {scored.bad_citation_count}</div>
-          {rec.parsed?.cis_controls_referenced && <div className="font-mono text-xs">CIS referenced: {rec.parsed.cis_controls_referenced.join(', ') || '—'}</div>}
-          {rec.parsed?.remediation_steps && (
-            <ul className="list-disc pl-5 text-xs">
-              {rec.parsed.remediation_steps.map((s: string, i: number) => <li key={i}>{s}</li>)}
-            </ul>
-          )}
-          <details>
-            <summary className="cursor-pointer text-xs text-muted-foreground">Raw LLM JSON</summary>
-            <pre className="mt-1 whitespace-pre-wrap rounded border border-border bg-muted/20 p-2 font-mono text-[11px]">{rec.raw_output || ''}</pre>
-          </details>
-        </CardContent>
-      </Card>
-    )
-  }
+  // Fabricated CVE citations across every loaded dataset (computed, never typed)
+  const conditions: Condition[] = [
+    live?.grounded,
+    live?.ungrounded,
+    corpus?.grounded,
+    corpus?.ungrounded,
+  ].filter(Boolean)
+  const fabricatedTotal = conditions.reduce(
+    (sum, c) => sum + (c.per_citation_fabricated?.num || 0),
+    0,
+  )
+  const citationTotal = conditions.reduce((sum, c) => sum + (c.total_citations || 0), 0)
+  const datasets = [live && 'live small', corpus && 'corpus'].filter(Boolean).join(' + ')
 
-  const renderSummaryTable = (title: string, summary: any) => {
-    const g = summary.grounded, u = summary.ungrounded
-    const Row = ({ label, variant, data, tone }: { label: string; variant: 'grounded' | 'ungrounded'; data: any; tone: string }) => (
-      <div className="rounded-lg border border-border p-3 flex flex-col gap-2">
-        <div className="flex items-center gap-2">
-          <Badge variant={variant === 'grounded' ? 'outline' : 'destructive'} className={variant === 'grounded' ? 'border-verified/30 bg-verified/10 text-verified' : ''}>{label}</Badge>
-          <span className={`text-xs font-medium ${tone}`}>{variant}</span>
-        </div>
-        <div className="grid grid-cols-2 gap-2 text-xs">
-          <div><span className="text-muted-foreground">Per-finding any bad:</span> <span className="font-mono">{fmt(data.per_finding_any.num, data.per_finding_any.den)}</span></div>
-          <div><span className="text-muted-foreground">Zero citations:</span> <span className="font-mono">{data.findings_zero_citations.num}/{data.findings_zero_citations.den}</span></div>
-          <div><span className="text-muted-foreground">Per-finding fabricated:</span> <span className="font-mono">{fmt(data.per_finding_fabricated.num, data.per_finding_fabricated.den)}</span></div>
-          <div><span className="text-muted-foreground">Per-citation bad:</span> <span className="font-mono">{fmt(data.per_citation_bad.num, data.per_citation_bad.den)}</span></div>
-          <div><span className="text-muted-foreground">Per-finding unsupported:</span> <span className="font-mono">{fmt(data.per_finding_unsupported.num, data.per_finding_unsupported.den)}</span></div>
-          <div><span className="text-muted-foreground">Per-citation unsupported:</span> <span className="font-mono">{fmt(data.per_citation_unsupported.num, data.per_citation_unsupported.den)}</span></div>
-          <div className="col-span-2"><span className="text-muted-foreground">Per-citation fabricated:</span> <span className="font-mono">{fmt(data.per_citation_fabricated.num, data.per_citation_fabricated.den)}</span></div>
-        </div>
-      </div>
-    )
-    return (
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-xs">{title}</CardTitle>
-        </CardHeader>
-        <CardContent className="flex flex-col gap-3">
-          <Row label="grounded" variant="grounded" data={g} tone="text-verified" />
-          <Row label="ungrounded" variant="ungrounded" data={u} tone="text-critical" />
-        </CardContent>
-      </Card>
-    )
-  }
+  const retrieved: string[] = groundedRec.retrieved_cve_ids || []
+  const liveCaseId = scoredUngrounded.unsupported_cve_ids?.[0]
 
   return (
-    <div className="flex flex-col gap-6">
-      <div className="rounded-md border border-verified/30 bg-verified/5 p-3 text-sm">
-        <span className="font-mono font-medium">Benchmark — real Gemini API calls</span> · grounded vs ungrounded prompt conditions · distinct from the live-pipeline retrieval view in <span className="font-mono">/demo</span> · source: <span className="font-mono">reports/llm_live_small.jsonl + reports/summary_live_small.txt</span> (live NVD API 2.0)
-      </div>
+    <div className="mx-auto flex w-full max-w-[1120px] flex-col gap-8">
+      {/* Hero */}
+      <section className="flex flex-col items-start gap-4">
+        <span className="inline-flex w-fit items-center gap-2 rounded-full border border-good/30 bg-good/10 px-3 py-1 font-mono text-xs text-good">
+          <span className="size-1.5 rounded-full bg-good" aria-hidden="true" />
+          Real Gemini API calls · {data.meta.existence_mode_live_small}
+        </span>
+        <h1 className="text-3xl font-semibold tracking-tight md:text-4xl">
+          Same findings, two prompt conditions,{' '}
+          <span className="bg-gradient-to-r from-good to-brand bg-clip-text text-transparent">
+            every citation checked.
+          </span>
+        </h1>
+        <p className="max-w-[72ch] text-sm leading-relaxed text-muted-foreground">
+          {data.meta.label}
+        </p>
+      </section>
 
-      <div>
-        <h3 className="text-sm font-semibold tracking-tight">Side-by-side — same finding, two prompt conditions</h3>
-        <div className="mt-1 font-mono text-xs text-muted-foreground">
-          Finding {side.finding_ref} · {side.severity_band} · smb-vuln-ms17-010 on 192.168.1.10:445 · retrieved: CVE-2017-0143
+      {/* Headline stats */}
+      {live && (
+        <section aria-label="Headline statistics" className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <StatCard
+            tone="good"
+            value={ratioPctText(live.grounded.per_finding_any)}
+            label="Grounded bad-citation rate"
+            raw={rawLine(live.grounded)}
+          />
+          <StatCard
+            tone="bad"
+            value={ratioPctText(live.ungrounded.per_finding_any)}
+            label="Ungrounded bad-citation rate"
+            raw={rawLine(live.ungrounded)}
+          />
+          <StatCard
+            tone="brand"
+            value={String(fabricatedTotal)}
+            label="Fabricated CVEs"
+            raw={`${fabricatedTotal}/${citationTotal} citations · ${datasets}`}
+          />
+        </section>
+      )}
+
+      {/* Side by side */}
+      <section className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2">
+          <h2 className="text-sm font-semibold tracking-tight">
+            Side by side — same finding, two prompt conditions
+          </h2>
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="rounded-lg border border-border bg-muted/40 px-2 py-1 font-mono text-xs break-all text-foreground">
+              {side.finding_ref}
+            </span>
+            <span className="rounded-lg border border-high/40 bg-high/10 px-2 py-1 text-xs font-medium text-high">
+              {side.severity_band}
+            </span>
+            <span className="text-[11px] text-muted-foreground">retrieved</span>
+            {retrieved.map((cve: string) => (
+              <span
+                key={cve}
+                className="rounded-lg border border-border bg-muted/40 px-2 py-1 font-mono text-xs text-foreground"
+              >
+                {cve}
+              </span>
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div className="grid gap-3 lg:grid-cols-2">
-        {renderCard('grounded', groundedRec, scoredGrounded)}
-        {renderCard('ungrounded', ungroundedRec, scoredUngrounded)}
-      </div>
+        <div className="grid gap-4 lg:grid-cols-2">
+          <CompareCard variant="grounded" record={groundedRec} scored={scoredGrounded} />
+          <CompareCard variant="ungrounded" record={ungroundedRec} scored={scoredUngrounded} />
+        </div>
+      </section>
 
-      <div>
-        <h3 className="text-sm font-semibold">Summary — hallucination rates (raw counts + %)</h3>
-        <p className="text-xs text-muted-foreground">Always show raw counts alongside rates — split by fabricated_cve (invented ID) vs unsupported_cve (real ID, not in retrieved context)</p>
-      </div>
+      {/* Hallucination rates */}
+      <section className="flex flex-col gap-4">
+        <div className="flex flex-col gap-1">
+          <h2 className="text-sm font-semibold tracking-tight">Hallucination rates</h2>
+          <p className="text-xs text-muted-foreground">
+            Raw counts alongside rates — split by fabricated_cve (invented ID) vs unsupported_cve
+            (real ID, not in retrieved context)
+          </p>
+        </div>
 
-      {live && renderSummaryTable('Live small validation — 2 findings (the CVE-2017-0144 case)', live)}
-      {live && <div className="font-mono text-xs text-muted-foreground">Headline — per-finding: {live.headline_per_finding} · per-citation: {live.headline_per_citation} · source {data.summary_live_small.source_file}</div>}
+        <div className="grid gap-4 lg:grid-cols-2">
+          {live && (
+            <SummaryPanel
+              title={`Live small validation — ${live.grounded.per_finding_any.den} findings`}
+              caseNote={liveCaseId ? `the ${liveCaseId} case` : undefined}
+              sourceFile={data.summary_live_small?.source_file}
+              structured={live}
+            />
+          )}
+          {corpus && (
+            <SummaryPanel
+              title={`Full synthetic corpus — ${corpus.grounded.per_finding_any.den} findings (corpus-scale run)`}
+              sourceFile={data.summary_corpus?.source_file}
+              structured={corpus}
+            />
+          )}
+        </div>
+      </section>
 
-      {corpus && renderSummaryTable('Full synthetic corpus — 58 findings (corpus-scale run)', corpus)}
-      {corpus && <div className="font-mono text-xs text-muted-foreground">{(corpus as any).headline_detailed || `Headline — per-finding: ${corpus.headline_per_finding} · per-citation: ${corpus.headline_per_citation} · source ${data.summary_corpus.source_file}`}</div>}
-
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-xs">Verbatim — hallucination_summary.txt</CardTitle>
-        </CardHeader>
-        <CardContent className="flex flex-col gap-3">
-          <pre className="whitespace-pre-wrap rounded border border-border bg-muted/20 p-3 font-mono text-[11px]">{data.summary_live_small.verbatim}</pre>
-          <pre className="whitespace-pre-wrap rounded border border-border bg-muted/20 p-3 font-mono text-[11px]">{data.summary_corpus.verbatim}</pre>
-        </CardContent>
-      </Card>
+      {/* Verbatim evidence (collapsed) */}
+      <details className="rounded-2xl border border-border bg-card p-[22px]">
+        <summary className="cursor-pointer text-xs font-medium text-foreground">
+          Verbatim summary
+        </summary>
+        <div className="mt-3 flex flex-col gap-3">
+          <pre className="overflow-x-auto rounded-lg border border-border bg-muted/20 p-3 font-mono text-[11px] break-words whitespace-pre-wrap">
+            {data.summary_live_small?.verbatim}
+          </pre>
+          <pre className="overflow-x-auto rounded-lg border border-border bg-muted/20 p-3 font-mono text-[11px] break-words whitespace-pre-wrap">
+            {data.summary_corpus?.verbatim}
+          </pre>
+        </div>
+      </details>
     </div>
   )
 }

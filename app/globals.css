@@ -54,6 +54,12 @@
   --color-unverified: var(--unverified);
   --color-unverified-foreground: var(--unverified-foreground);
 
+  /* Benchmark exhibit semantic accents (good / bad / brand / warn) */
+  --color-good: var(--good);
+  --color-bad: var(--bad);
+  --color-brand: var(--brand);
+  --color-warn: var(--warn);
+
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -108,6 +114,12 @@
   --unverified: oklch(0.6 0.01 254);
   --unverified-foreground: oklch(0.96 0.005 254);
 
+  /* Benchmark exhibit accents — dark palette */
+  --good: #34d399;
+  --bad: #fb7185;
+  --brand: #818cf8;
+  --warn: #fbbf24;
+
   --radius: 0.5rem;
 
   --sidebar: oklch(0.19 0.009 254);
@@ -118,6 +130,17 @@
   --sidebar-accent-foreground: oklch(0.94 0.005 250);
   --sidebar-border: oklch(1 0 0 / 8%);
   --sidebar-ring: oklch(0.72 0.13 205);
+}
+
+/*
+ * Light-theme overrides for the benchmark exhibit accents. The shell renders
+ * dark by default (html.dark); if the theme toggle removes that class these
+ * swap to the darker light-mode variants so contrast stays legible.
+ */
+html:not(.dark) {
+  --good: #0d9f6e;
+  --bad: #d92d4a;
+  --warn: #fbbf24;
 }
 
 @layer base {
